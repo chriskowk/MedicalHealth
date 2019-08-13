@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<quartz xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 				version="1.0"
+				overwrite-existing-jobs="true">
+    <job>
+        <job-detail>
+            <name>MyJob</name>
+            <group>MyJob</group>
+			<job-type>MyJob.TaskJob, MyJob</job-type>
+        </job-detail>
+        <trigger>
+            <cron>
+                <name>cronMyJob</name>
+                <group>cronMyJob</group>
+                <job-name>MyJob</job-name>
+                <job-group>MyJob</job-group>
+				<!--周一到周五每天的8点到20点，每一分钟触发一次-->
+				<!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
+				<!--每天9点50点触发-->
+				<cron-expression>0 50 9 ? * *</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+</quartz>

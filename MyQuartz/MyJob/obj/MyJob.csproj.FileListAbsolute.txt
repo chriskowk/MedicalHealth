@@ -1,0 +1,5 @@
+C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\MyJob\bin\Debug\MyJob.dll
+C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\MyJob\bin\Debug\MyJob.pdb
+C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\MyJob\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\MyJob\obj\Debug\MyJob.dll
+C:\Documents and Settings\Administrator\桌面\新建文件夹 (3)\MyJob\obj\Debug\MyJob.pdb

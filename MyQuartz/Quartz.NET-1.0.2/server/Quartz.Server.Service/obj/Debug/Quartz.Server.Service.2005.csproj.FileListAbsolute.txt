@@ -1,0 +1,9 @@
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Service\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Service\obj\Debug\Quartz.Server.Service.QuartzService.resources
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Service\obj\Debug\Quartz.Server.Service.2005.csproj.GenerateResource.Cache
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Service\quartz.config
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Service\Quartz.Server.Service.exe.config
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Service\Quartz.Server.Service.exe
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Service\Quartz.Server.Service.pdb
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Service\obj\Debug\Quartz.Server.Service.exe
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Service\obj\Debug\Quartz.Server.Service.pdb

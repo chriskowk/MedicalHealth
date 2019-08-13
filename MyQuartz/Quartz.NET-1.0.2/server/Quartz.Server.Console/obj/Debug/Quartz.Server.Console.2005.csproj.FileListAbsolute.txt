@@ -1,0 +1,7 @@
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Console\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Console\quartz.config
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Console\Quartz.Server.Console.exe.config
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Console\Quartz.Server.Console.exe
+C:\Work\Quartz\Quartz-1.0-Maintenance\build\2.0\Debug\Quartz.Server.Console\Quartz.Server.Console.pdb
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Console\obj\Debug\Quartz.Server.Console.exe
+C:\Work\Quartz\Quartz-1.0-Maintenance\server\Quartz.Server.Console\obj\Debug\Quartz.Server.Console.pdb

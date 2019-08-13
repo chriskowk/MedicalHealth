@@ -1,0 +1,10 @@
+E:\VSTS\VS2015\MyQuartz\CheckVersion\bin\Debug\CheckVersion.exe.config
+E:\VSTS\VS2015\MyQuartz\CheckVersion\bin\Debug\CheckVersion.exe
+E:\VSTS\VS2015\MyQuartz\CheckVersion\bin\Debug\CheckVersion.pdb
+E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Properties.Resources.resources
+E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csproj.GenerateResource.Cache
+E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.exe
+E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.pdb
+E:\VSTS\VS2015\MyQuartz\CheckVersion\bin\Debug\SharpCompress.dll
+E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Desktop.resources
+E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csprojResolveAssemblyReference.cache
