@@ -162,7 +162,6 @@ namespace MyJob
         }
     }
 
-
     public class TaskJobC : TaskJobBase
     {
         public static string BASE_PATH;
