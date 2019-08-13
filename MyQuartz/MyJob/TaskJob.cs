@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 using Quartz;
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace MyJob
 {
