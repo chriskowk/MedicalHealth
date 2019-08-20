@@ -25,6 +25,7 @@ using System.Management;
 using static System.Management.PropertyDataCollection;
 using MyJob;
 using System.Configuration;
+using Microsoft.Win32;
 
 namespace JobController
 {
@@ -254,6 +255,35 @@ namespace JobController
             this.notifyIcon1.Icon = _icons[string.Format("{0}.Tray{1}.ico", _trayIconPath, _index)] as Icon;
             RefreshDurationText();
             RewriteConfigAndRestartJob();
+            CheckAllJobExecuteStates();
+        }
+
+        private IDictionary<string, string> _states = new Dictionary<string, string>();
+        private void CheckAllJobExecuteStates()
+        {
+            CheckJobExecuteState(typeof(TaskJob).ToString());
+            CheckJobExecuteState(typeof(TaskJobA).ToString());
+            CheckJobExecuteState(typeof(TaskJobB).ToString());
+            CheckJobExecuteState(typeof(TaskJobC).ToString());
+            CheckJobExecuteState(typeof(TaskJobD).ToString());
+            CheckJobExecuteState(typeof(TaskJobE).ToString());
+        }
+
+        private void CheckJobExecuteState(string jobType)
+        {
+            string temp = GetJobExecuteState(jobType);
+            bool askuser = _states.ContainsKey(jobType) && _states[jobType] != temp && temp == "STATE_COMPLETE";
+            _states[jobType] = temp;
+            if (askuser)
+            {
+                System.Windows.Forms.MessageBox.Show(string.Format("{0} 任务刚结束！", jobType), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
+            }
+        }
+
+        private string GetJobExecuteState(string jobType)
+        {
+            object state = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + jobType, "State", "");
+            return state == null ? "" : state.ToString();
         }
 
         private void RewriteConfigAndRestartJob()

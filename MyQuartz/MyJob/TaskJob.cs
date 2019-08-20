@@ -1,8 +1,11 @@
-using Quartz;
 using System;
+using System.Collections.Generic;
+using System.Text;
+
+using Quartz;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
+using Microsoft.Win32;
 
 namespace MyJob
 {
@@ -26,6 +29,7 @@ namespace MyJob
 
         public void Execute(JobExecutionContext context)
         {
+            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
             if (JobStarting != null) JobStarting(this, new EventArgs());
 
             //todo:此处为执行的任务
@@ -34,6 +38,7 @@ namespace MyJob
             RebuildDataModels();
 
             if (JobFinished != null) JobFinished(this, new EventArgs());
+            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
         }
 
         private void TFGetLatestVersion()
@@ -161,6 +166,7 @@ namespace MyJob
             get { return GetJSSVCFilePath(); }
         }
     }
+
 
     public class TaskJobC : TaskJobBase
     {

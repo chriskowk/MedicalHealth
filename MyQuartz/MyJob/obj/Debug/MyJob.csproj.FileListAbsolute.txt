@@ -23,3 +23,8 @@ E:\VSTS\VS2015\MyQuartz\MyJob\bin\Debug\MyJob.pdb
 E:\VSTS\VS2015\MyQuartz\MyJob\obj\Debug\MyJob.dll
 E:\VSTS\VS2015\MyQuartz\MyJob\obj\Debug\MyJob.pdb
 E:\VSTS\VS2015\MyQuartz\MyJob\obj\Debug\MyJob.csprojResolveAssemblyReference.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\MyJob.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\MyJob.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csprojResolveAssemblyReference.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.pdb

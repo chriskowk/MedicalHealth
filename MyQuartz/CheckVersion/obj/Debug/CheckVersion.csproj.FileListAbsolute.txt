@@ -8,3 +8,13 @@ E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.pdb
 E:\VSTS\VS2015\MyQuartz\CheckVersion\bin\Debug\SharpCompress.dll
 E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Desktop.resources
 E:\VSTS\VS2015\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csprojResolveAssemblyReference.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\CheckVersion.exe.config
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\CheckVersion.exe
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\CheckVersion.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\SharpCompress.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csprojResolveAssemblyReference.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Desktop.resources
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Properties.Resources.resources
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csproj.GenerateResource.Cache
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.exe
+D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.pdb

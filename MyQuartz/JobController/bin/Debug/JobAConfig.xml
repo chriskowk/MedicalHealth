@@ -1,27 +1,26 @@
-<?xml version="1.0" encoding="utf - 8" ?>
+ï»¿<?xml version="1.0" encoding="utf-8" ?>
 <quartz xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="1.0"
-    overwrite-existing-jobs="true">
-    <job>
-      <job-detail>
-          <name>MyJobA</name>
-          <group>MyJobA</group>
-          <job-type>MyJob.TaskJobA, MyJob</job-type>
-      </job-detail>
-      <trigger>
-          <cron>
-            <name>cronMyJobA</name>
-            <group>cronMyJobA</group>
-            <job-name>MyJobA</job-name>
-            <job-group>MyJobA</job-group>
-            <!--Ãë ·Ö Ð¡Ê± ÔÂÄÚÈÕÆÚ ÔÂ ÖÜÄÚÈÕÆÚ Äê£¨¿ÉÑ¡×Ö¶Î£©-->
-            <!--ÖÜÒ»µ½ÖÜÎåÃ¿ÌìµÄ8µãµ½20µã£¬Ã¿Ò»·ÖÖÓ´¥·¢Ò»´Î-->
-            <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
-            <!--Ã¿Ìì21µã´¥·¢-->
-            <!--<cron-expression>0 0 21 ? * *</cron-expression>-->
-            <cron-expression>0 20 12 ? * *</cron-expression>
-          </cron>
-      </trigger>
-    </job>
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 				version="1.0"
+				overwrite-existing-jobs="true">
+  <job>
+    <job-detail>
+      <name>MyJobA</name>
+      <group>MyGroupA</group>
+      <job-type>MyJob.TaskJobA, MyJob</job-type>
+    </job-detail>
+    <trigger>
+      <cron>
+        <name>cronMyJobA</name>
+        <group>cronMyJobA</group>
+        <job-name>MyJobA</job-name>
+        <job-group>MyJobA</job-group>
+        <!--ç§’ åˆ† å°æ—¶ æœˆå†…æ—¥æœŸ æœˆ å‘¨å†…æ—¥æœŸ å¹´ï¼ˆå¯é€‰å­—æ®µï¼‰-->
+        <!--å‘¨ä¸€åˆ°å‘¨äº”æ¯å¤©çš„8ç‚¹åˆ°20ç‚¹ï¼Œæ¯ä¸€åˆ†é’Ÿè§¦å‘ä¸€æ¬¡-->
+        <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
+        <!--æ¯å¤©21ç‚¹40åˆ†è§¦å‘-->
+        <cron-expression>0 50 16 ? * *</cron-expression>
+      </cron>
+    </trigger>
+  </job>
 </quartz>

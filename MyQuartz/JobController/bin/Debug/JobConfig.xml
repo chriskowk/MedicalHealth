@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf - 8" ?>
+ï»¿<?xml version="1.0" encoding="utf-8" ?>
 <quartz xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="1.0"
-    overwrite-existing-jobs="true">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 				version="1.0"
+				overwrite-existing-jobs="true">
     <job>
       <job-detail>
-          <name>MyJob</name>
-          <group>MyJob</group>
-          <job-type>MyJob.TaskJob, MyJob</job-type>
+        <name>MyJob</name>
+        <group>MyGroup</group>
+        <job-type>MyJob.TaskJob, MyJob</job-type>
       </job-detail>
       <trigger>
           <cron>
@@ -15,12 +15,11 @@
             <group>cronMyJob</group>
             <job-name>MyJob</job-name>
             <job-group>MyJob</job-group>
-            <!--Ãë ·Ö Ð¡Ê± ÔÂÄÚÈÕÆÚ ÔÂ ÖÜÄÚÈÕÆÚ Äê£¨¿ÉÑ¡×Ö¶Î£©-->
-            <!--ÖÜÒ»µ½ÖÜÎåÃ¿ÌìµÄ8µãµ½20µã£¬Ã¿Ò»·ÖÖÓ´¥·¢Ò»´Î-->
-            <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
-            <!--Ã¿Ìì21µã´¥·¢-->
-            <!--<cron-expression>0 0 21 ? * *</cron-expression>-->
-            <cron-expression>0 5 9 ? * *</cron-expression>
+            <!--ç§’ åˆ† å°æ—¶ æœˆå†…æ—¥æœŸ æœˆ å‘¨å†…æ—¥æœŸ å¹´ï¼ˆå¯é€‰å­—æ®µï¼‰-->
+            <!--å‘¨ä¸€åˆ°å‘¨äº”æ¯å¤©çš„8ç‚¹åˆ°20ç‚¹ï¼Œæ¯ä¸€åˆ†é’Ÿè§¦å‘ä¸€æ¬¡-->
+		        <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
+		        <!--æ¯å¤©21ç‚¹è§¦å‘-->
+		        <cron-expression>0 54 17 ? * *</cron-expression>
           </cron>
       </trigger>
     </job>
