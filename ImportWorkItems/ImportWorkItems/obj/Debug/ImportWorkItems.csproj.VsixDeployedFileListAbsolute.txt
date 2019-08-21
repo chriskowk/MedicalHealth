@@ -1,0 +1,16 @@
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\ImportWorkItems.dll
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\ImportWorkItems.pdb
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\Microsoft.TeamFoundation.Client.dll
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\Microsoft.TeamFoundation.Common.dll
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\Microsoft.TeamFoundation.VersionControl.Client.dll
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\Microsoft.TeamFoundation.WorkItemTracking.Client.dll
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\ImportWorkItems.pkgdef
+C:\Users\guoshaoyue\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\guoshaoyue\ImportWorkItems\1.0\\extension.vsixmanifest
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\ImportWorkItems.dll
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\ImportWorkItems.pdb
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\Microsoft.TeamFoundation.Client.dll
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\Microsoft.TeamFoundation.Common.dll
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\Microsoft.TeamFoundation.VersionControl.Client.dll
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\Microsoft.TeamFoundation.WorkItemTracking.Client.dll
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\ImportWorkItems.pkgdef
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn\\extension.vsixmanifest
