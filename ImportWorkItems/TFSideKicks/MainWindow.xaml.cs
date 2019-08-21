@@ -4,7 +4,9 @@ using System;
 using System.Collections;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Windows;
 
 namespace TFSideKicks
@@ -26,6 +28,11 @@ namespace TFSideKicks
 
             string str1 = Process.GetCurrentProcess().MainModule.FileName;
             string str2 = Environment.CurrentDirectory;
+
+            string location = Assembly.GetExecutingAssembly().Location;
+            FileInfo fi = new FileInfo(location);
+            this.Title = string.Format("导入工作项 Built-{0:yyyyMMdd.HH.mm}", fi.CreationTime);
+
             //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
             WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
             _cboProject.Items.Clear();

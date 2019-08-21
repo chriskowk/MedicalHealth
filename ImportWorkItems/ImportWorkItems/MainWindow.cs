@@ -47,7 +47,7 @@ namespace ImportWorkItems
             string location = Assembly.GetExecutingAssembly().Location;
             FileInfo fi = new FileInfo(location);
 
-            this.Text = string.Format("导入工作项 Built-{0:yyyyMMddHH.mm}", fi.CreationTime);
+            this.Text = string.Format("导入工作项 Built-{0:yyyyMMdd.HH.mm}", fi.CreationTime);
 
             //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
             WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();

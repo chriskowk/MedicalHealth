@@ -178,3 +178,17 @@ E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.pdb
 E:\VSTS\VS2015\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.exe.config
 E:\VSTS\VS2015\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.exe
 E:\VSTS\VS2015\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.exe.config
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.exe
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.exe
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojResolveAssemblyReference.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\MainWindow.g.cs
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\App.g.cs
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks_MarkupCompile.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks_MarkupCompile.lref
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\MainWindow.baml
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.g.resources
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.Properties.Resources.resources
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj.GenerateResource.Cache
