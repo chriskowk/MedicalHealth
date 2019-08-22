@@ -183,7 +183,6 @@ D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFS
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.pdb
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.exe
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\TFSideKicks.pdb
-D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojResolveAssemblyReference.cache
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\MainWindow.g.cs
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\App.g.cs
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks_MarkupCompile.cache
