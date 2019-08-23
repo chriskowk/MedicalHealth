@@ -58,13 +58,14 @@ namespace ImportWorkItems
             string location = Assembly.GetExecutingAssembly().Location;
             FileInfo fi = new FileInfo(location);
             this.Text = string.Format("导入工作项 Built-{0:yyyyMMdd.HH.mm}", fi.LastWriteTime);
+            if (_cboTfsUris.Items.Count > 0) { _cboTfsUris.SelectedIndex = 0; }
 
             _formLoaded = true;
         }
 
         private void MainWindow_Activated(object sender, EventArgs e)
         {
-            _cboTfsUris.SelectedIndex = 0;
+            if (_cboTfsUris.Items.Count > 0) { _cboTfsUris.SelectedIndex = 0; }
         }
 
         private void RefreshProjectComboItems(TfsTeamProjectCollectionUri item)
@@ -80,8 +81,8 @@ namespace ImportWorkItems
 
         private void _cboTfsUris_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TfsTeamProjectCollectionUri item = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
-            RefreshProjectComboItems(item);
+            TfsTeamProjectCollectionUri uri = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
+            RefreshProjectComboItems(uri);
         }
 
         private IList<Project> BuildProjectItems(TfsTeamProjectCollectionUri uri)
@@ -120,9 +121,8 @@ namespace ImportWorkItems
             WorkItem workItem;
             string updateSQL = string.Empty;
 
-            //NetworkCredential credential = new NetworkCredential("guoshaoyue", "Bronzepen13", "hissoft.com");//初始化用户  
-            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), CredentialCache.DefaultCredentials);
+            TfsTeamProjectCollectionUri uri = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultCredentials);
             tpc.Authenticate();
 
             // [System.Title], [System.WorkItemType], [System.State], [System.ChangedDate], [System.Id]

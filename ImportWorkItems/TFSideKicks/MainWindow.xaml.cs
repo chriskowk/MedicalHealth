@@ -43,12 +43,14 @@ namespace TFSideKicks
             string location = Assembly.GetExecutingAssembly().Location;
             FileInfo fi = new FileInfo(location);
             this.Title = string.Format("导入工作项 Built-{0:yyyyMMdd.HH.mm}", fi.LastWriteTime);
+            if (_cboTfsUris.Items.Count > 0) { _cboTfsUris.SelectedIndex = 0; }
         }
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            _cboTfsUris.SelectedIndex = 0;
+            if (_cboTfsUris.Items.Count > 0) { _cboTfsUris.SelectedIndex = 0; }
         }
+
         private void RefreshProjectComboItems(TfsTeamProjectCollectionUri item)
         {
             IList<Project> projs = BuildProjectItems(item);
@@ -62,8 +64,8 @@ namespace TFSideKicks
 
         private void _cboTfsUris_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            TfsTeamProjectCollectionUri item = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
-            RefreshProjectComboItems(item);
+            TfsTeamProjectCollectionUri uri = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
+            RefreshProjectComboItems(uri);
         }
 
         private IList<Project> BuildProjectItems(TfsTeamProjectCollectionUri uri)
@@ -71,7 +73,8 @@ namespace TFSideKicks
             IList<Project> projs = new List<Project>();
             if (!_projects.ContainsKey(uri))
             {
-                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultCredentials);
+                NetworkCredential credential = CredentialCache.DefaultNetworkCredentials; //初始化用户  
+                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), credential);
                 tpc.Authenticate();
 
                 //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
@@ -108,9 +111,9 @@ namespace TFSideKicks
             WorkItem workItem;
             string updateSQL = string.Empty;
 
-            //NetworkCredential credential = new NetworkCredential("guoshaoyue", "Bronzepen13", "hissoft.com");//初始化用户  
-            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), CredentialCache.DefaultCredentials);
+            TfsTeamProjectCollectionUri uri = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
+            NetworkCredential credential = CredentialCache.DefaultNetworkCredentials; //初始化用户  
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), credential);
             tpc.Authenticate();
 
             // [System.Title], [System.WorkItemType], [System.State], [System.ChangedDate], [System.Id]
