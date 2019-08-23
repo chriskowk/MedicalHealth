@@ -1,6 +1,7 @@
 ﻿using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using Microsoft.VisualStudio.Services.Common;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,8 +9,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,23 +25,73 @@ namespace DesktopTools
         {
             InitializeComponent();
         }
+
+        private const string _HKEY_LOCAL_MACHINE = "HKEY_LOCAL_MACHINE";
+        private static string _tfsUrisKeyPath = @"SOFTWARE\JetSun\3.0\Quartz\TfsTeamProjectCollectionUris";
+        private IDictionary<TfsTeamProjectCollectionUri, IList<Project>> _projects = new Dictionary<TfsTeamProjectCollectionUri, IList<Project>>();
+        private bool _formLoaded = false;
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"));
-            tpc.Authenticate();
+            if (_formLoaded) return;
 
-            //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
-            WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
-            _cboProject.Items.Clear();
-            foreach (Project item in workItemStore.Projects)
+            RegistryKey rk = RegistryHelper.GetRegistryKey(_tfsUrisKeyPath);
+            if (rk != null)
             {
-                if (!item.Name.StartsWith("CDSS")) _cboProject.Items.Add(item.Name);
+                foreach (string name in rk.GetValueNames())
+                {
+                    object obj = RegistryHelper.GetRegistryValue(_tfsUrisKeyPath, name);
+                    _cboTfsUris.Items.Add(new TfsTeamProjectCollectionUri(name, obj == null ? string.Empty : obj.ToString()));
+                }
+                rk.Close();
             }
+            string location = Assembly.GetExecutingAssembly().Location;
+            FileInfo fi = new FileInfo(location);
+            this.Text = string.Format("导入工作项 Built-{0:yyyyMMdd.HH.mm}", fi.LastWriteTime);
+
+            _formLoaded = true;
         }
 
         private void MainWindow_Activated(object sender, EventArgs e)
         {
-            _cboProject.SelectedIndex = 0;
+            if (_cboTfsUris.Items.Count > 0)
+                _cboTfsUris.SelectedIndex = 0;
+        }
+
+        private void RefreshProjectComboItems(TfsTeamProjectCollectionUri item)
+        {
+            IList<Project> projs = BuildProjectItems(item);
+            _cboProjects.Items.Clear();
+            foreach (Project p in projs)
+            {
+                _cboProjects.Items.Add(p.Name);
+            }
+            _cboProjects.SelectedIndex = 0;
+        }
+
+        private void _cboTfsUris_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TfsTeamProjectCollectionUri item = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
+            RefreshProjectComboItems(item);
+        }
+
+        private IList<Project> BuildProjectItems(TfsTeamProjectCollectionUri uri)
+        {
+            IList<Project> projs = new List<Project>();
+            if (!_projects.ContainsKey(uri))
+            {
+                VssCredentials credential = new VssCredentials(new Microsoft.VisualStudio.Services.Common.WindowsCredential(true));//初始化用户  
+                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), credential);
+                tpc.Authenticate();
+
+                //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
+                WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
+                foreach (Project item in workItemStore.Projects)
+                {
+                    if (!item.Name.StartsWith("CDSS")) projs.Add(item);
+                }
+                _projects[uri] = projs;
+            }
+            return _projects[uri];
         }
 
         private void _btnSave_Click(object sender, EventArgs e)
@@ -47,7 +100,7 @@ namespace DesktopTools
             string ids = _txtWorkItemIDs.Text.Replace(" ", "");
             ids = ids.Replace("、", ",");
             ids = ids.Replace(";", ",");
-            if (SaveWorkItem(ids, _cboProject.SelectedItem.ToString(), out errMsg))
+            if (SaveWorkItem(ids, _cboProjects.SelectedItem.ToString(), out errMsg))
             {
                 _tbStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 工作项（{1}）导入成功。", DateTime.Now, ids);
             }
@@ -64,9 +117,9 @@ namespace DesktopTools
             errMsg = null;
             string updateSQL = string.Empty;
 
+            TfsTeamProjectCollectionUri uri = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
             VssCredentials credential = new VssCredentials(new Microsoft.VisualStudio.Services.Common.WindowsCredential(true));//初始化用户  
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
-            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"));
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), credential);
             tpc.Authenticate();
 
             // [System.Title], [System.WorkItemType], [System.State], [System.ChangedDate], [System.Id]

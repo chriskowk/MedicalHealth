@@ -51,6 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\RegistryHelper.cs" />
     <Compile Include="Helpers\SqlDbHelper.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
