@@ -1,7 +1,9 @@
 ﻿using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
+using Microsoft.Win32;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -20,31 +22,67 @@ namespace TFSideKicks
         {
             InitializeComponent();
         }
+        private const string _HKEY_LOCAL_MACHINE = "HKEY_LOCAL_MACHINE";
+        private static string _tfsUrisKeyPath = @"SOFTWARE\JetSun\3.0\Quartz\TfsTeamProjectCollectionUris";
+        private IDictionary<TfsTeamProjectCollectionUri, IList<Project>> _projects = new Dictionary<TfsTeamProjectCollectionUri, IList<Project>>();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), CredentialCache.DefaultCredentials);
-            tpc.Authenticate();
+            RegistryKey rk = RegistryHelper.GetRegistryKey(_tfsUrisKeyPath);
+            if (rk != null)
+            {
+                foreach (string name in rk.GetValueNames())
+                {
+                    object obj = RegistryHelper.GetRegistryValue(_tfsUrisKeyPath, name);
+                    _cboTfsUris.Items.Add(new TfsTeamProjectCollectionUri(name, obj == null ? string.Empty : obj.ToString()));
+                }
+                rk.Close();
+            }
 
             string str1 = Process.GetCurrentProcess().MainModule.FileName;
-            string str2 = Environment.CurrentDirectory;
-
             string location = Assembly.GetExecutingAssembly().Location;
             FileInfo fi = new FileInfo(location);
             this.Title = string.Format("导入工作项 Built-{0:yyyyMMdd.HH.mm}", fi.LastWriteTime);
-
-            //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
-            WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
-            _cboProject.Items.Clear();
-            foreach (Project item in workItemStore.Projects)
-            {
-                if (!item.Name.StartsWith("CDSS")) _cboProject.Items.Add(item.Name);
-            }
         }
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            _cboProject.SelectedIndex = 0;
+            _cboTfsUris.SelectedIndex = 0;
+        }
+        private void RefreshProjectComboItems(TfsTeamProjectCollectionUri item)
+        {
+            IList<Project> projs = BuildProjectItems(item);
+            _cboProjects.Items.Clear();
+            foreach (Project p in projs)
+            {
+                _cboProjects.Items.Add(p.Name);
+            }
+            _cboProjects.SelectedIndex = 0;
+        }
+
+        private void _cboTfsUris_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            TfsTeamProjectCollectionUri item = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
+            RefreshProjectComboItems(item);
+        }
+
+        private IList<Project> BuildProjectItems(TfsTeamProjectCollectionUri uri)
+        {
+            IList<Project> projs = new List<Project>();
+            if (!_projects.ContainsKey(uri))
+            {
+                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultCredentials);
+                tpc.Authenticate();
+
+                //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
+                WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
+                foreach (Project item in workItemStore.Projects)
+                {
+                    if (!item.Name.StartsWith("CDSS")) projs.Add(item);
+                }
+                _projects[uri] = projs;
+            }
+            return _projects[uri];
         }
 
         private void _btnSave_Click(object sender, RoutedEventArgs e)
@@ -52,7 +90,7 @@ namespace TFSideKicks
             string ids = _txtWorkItemIDs.Text.Replace(" ", "");
             ids = ids.Replace("、", ",");
             ids = ids.Replace(";", ",");
-            if (SaveWorkItem(ids, _cboProject.SelectedItem.ToString()))
+            if (SaveWorkItem(ids, _cboProjects.SelectedItem.ToString()))
             {
                 _tbStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 工作项（{1}）导入成功。", DateTime.Now, ids);
             }

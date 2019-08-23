@@ -48,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
     <CopyVsixExtensionFiles>True</CopyVsixExtensionFiles>
     <CopyVsixExtensionLocation>C:\Program Files %28x86%29\Microsoft Visual Studio 14.0\ImportWorkItemsAddIn</CopyVsixExtensionLocation>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,6 +59,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\RegistryHelper.cs" />
     <Compile Include="Helpers\SqlDbHelper.cs" />
     <Compile Include="ImportWorkItemsCommand.cs" />
     <Compile Include="ImportWorkItemsCommandPackage.cs" />

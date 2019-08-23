@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this._cboProject = new System.Windows.Forms.ComboBox();
+            this._cboProjects = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this._txtWorkItemIDs = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,22 +39,24 @@
             this._tbStatus = new System.Windows.Forms.TextBox();
             this._btnSave = new System.Windows.Forms.Button();
             this._btnClose = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this._cboTfsUris = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // _cboProject
+            // _cboProjects
             // 
-            this._cboProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._cboProject.FormattingEnabled = true;
-            this._cboProject.Location = new System.Drawing.Point(169, 14);
-            this._cboProject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this._cboProject.Name = "_cboProject";
-            this._cboProject.Size = new System.Drawing.Size(400, 27);
-            this._cboProject.TabIndex = 0;
+            this._cboProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cboProjects.FormattingEnabled = true;
+            this._cboProjects.Location = new System.Drawing.Point(180, 54);
+            this._cboProjects.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this._cboProjects.Name = "_cboProjects";
+            this._cboProjects.Size = new System.Drawing.Size(400, 27);
+            this._cboProjects.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(23, 59);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 19);
@@ -64,7 +66,7 @@
             // _txtWorkItemIDs
             // 
             this._txtWorkItemIDs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._txtWorkItemIDs.Location = new System.Drawing.Point(169, 52);
+            this._txtWorkItemIDs.Location = new System.Drawing.Point(180, 92);
             this._txtWorkItemIDs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this._txtWorkItemIDs.Multiline = true;
             this._txtWorkItemIDs.Name = "_txtWorkItemIDs";
@@ -75,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 55);
+            this.label2.Location = new System.Drawing.Point(23, 95);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 19);
@@ -85,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 162);
+            this.label3.Location = new System.Drawing.Point(23, 202);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 19);
@@ -95,7 +97,7 @@
             // _txtTFSWorkItemIDs
             // 
             this._txtTFSWorkItemIDs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._txtTFSWorkItemIDs.Location = new System.Drawing.Point(169, 158);
+            this._txtTFSWorkItemIDs.Location = new System.Drawing.Point(180, 198);
             this._txtTFSWorkItemIDs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this._txtTFSWorkItemIDs.Multiline = true;
             this._txtTFSWorkItemIDs.Name = "_txtTFSWorkItemIDs";
@@ -107,7 +109,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 268);
+            this.label4.Location = new System.Drawing.Point(24, 308);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 19);
@@ -117,7 +119,7 @@
             // _tbStatus
             // 
             this._tbStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._tbStatus.Location = new System.Drawing.Point(171, 263);
+            this._tbStatus.Location = new System.Drawing.Point(182, 303);
             this._tbStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this._tbStatus.Multiline = true;
             this._tbStatus.Name = "_tbStatus";
@@ -128,7 +130,7 @@
             // 
             // _btnSave
             // 
-            this._btnSave.Location = new System.Drawing.Point(383, 399);
+            this._btnSave.Location = new System.Drawing.Point(394, 439);
             this._btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this._btnSave.Name = "_btnSave";
             this._btnSave.Size = new System.Drawing.Size(79, 35);
@@ -139,7 +141,7 @@
             // 
             // _btnClose
             // 
-            this._btnClose.Location = new System.Drawing.Point(489, 399);
+            this._btnClose.Location = new System.Drawing.Point(500, 439);
             this._btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this._btnClose.Name = "_btnClose";
             this._btnClose.Size = new System.Drawing.Size(79, 35);
@@ -148,11 +150,35 @@
             this._btnClose.UseVisualStyleBackColor = true;
             this._btnClose.Click += new System.EventHandler(this._btnClose_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 19);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 19);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "客户版本 (TFS URL)";
+            // 
+            // _cboTfsUris
+            // 
+            this._cboTfsUris.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cboTfsUris.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this._cboTfsUris.FormattingEnabled = true;
+            this._cboTfsUris.Location = new System.Drawing.Point(179, 14);
+            this._cboTfsUris.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this._cboTfsUris.Name = "_cboTfsUris";
+            this._cboTfsUris.Size = new System.Drawing.Size(400, 27);
+            this._cboTfsUris.TabIndex = 10;
+            this._cboTfsUris.SelectedIndexChanged += new System.EventHandler(this._cboTfsUris_SelectedIndexChanged);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 446);
+            this.ClientSize = new System.Drawing.Size(593, 497);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this._cboTfsUris);
             this.Controls.Add(this._btnClose);
             this.Controls.Add(this._btnSave);
             this.Controls.Add(this.label4);
@@ -162,7 +188,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this._txtWorkItemIDs);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this._cboProject);
+            this.Controls.Add(this._cboProjects);
             this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -180,7 +206,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox _cboProject;
+        private System.Windows.Forms.ComboBox _cboProjects;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox _txtWorkItemIDs;
         private System.Windows.Forms.Label label2;
@@ -190,5 +216,7 @@
         private System.Windows.Forms.TextBox _tbStatus;
         private System.Windows.Forms.Button _btnSave;
         private System.Windows.Forms.Button _btnClose;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox _cboTfsUris;
     }
 }
