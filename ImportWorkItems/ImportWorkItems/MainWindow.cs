@@ -90,7 +90,7 @@ namespace ImportWorkItems
             IList<Project> projs = new List<Project>();
             if (!_projects.ContainsKey(uri))
             {
-                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultCredentials);
+                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultNetworkCredentials);
                 tpc.Authenticate();
 
                 //运行路径（E:\VSTS\VS2015\ImportWorkItems\TFSideKicks\bin\Debug）下必须存在如下文件：Microsoft.WITDataStore64.dll，否则报错。另外“生成”Any CPU；去掉勾选“首选32位”选项
@@ -122,7 +122,7 @@ namespace ImportWorkItems
             string updateSQL = string.Empty;
 
             TfsTeamProjectCollectionUri uri = _cboTfsUris.SelectedItem as TfsTeamProjectCollectionUri;
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultCredentials);
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(uri.Value), CredentialCache.DefaultNetworkCredentials);
             tpc.Authenticate();
 
             // [System.Title], [System.WorkItemType], [System.State], [System.ChangedDate], [System.Id]

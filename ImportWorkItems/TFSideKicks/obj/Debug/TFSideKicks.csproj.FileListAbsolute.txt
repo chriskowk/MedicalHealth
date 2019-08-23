@@ -358,4 +358,3 @@ D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\ru\
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
-D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojResolveAssemblyReference.cache

@@ -446,7 +446,6 @@ D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\zh-Hans\Microsoft.VisualStudio.GraphModel.resources.dll
-D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.csprojResolveAssemblyReference.cache
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\VSPackage.resources
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.MainWindow.resources
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.csproj.GenerateResource.Cache
