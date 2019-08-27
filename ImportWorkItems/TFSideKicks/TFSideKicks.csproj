@@ -40,6 +40,36 @@
     <ApplicationIcon>application.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetSkin">
+      <HintPath>Lib\DotNetSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Genersoft.Platform.AppFramework.Service">
+      <HintPath>Lib\Genersoft.Platform.AppFramework.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="genersoft.platform.appframework.spi">
+      <HintPath>Lib\genersoft.platform.appframework.spi.dll</HintPath>
+    </Reference>
+    <Reference Include="genersoft.platform.core.common">
+      <HintPath>Lib\genersoft.platform.core.common.dll</HintPath>
+    </Reference>
+    <Reference Include="genersoft.platform.core.dataaccess">
+      <HintPath>Lib\genersoft.platform.core.dataaccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Genersoft.Platform.Core.InterProcComm">
+      <HintPath>Lib\Genersoft.Platform.Core.InterProcComm.dll</HintPath>
+    </Reference>
+    <Reference Include="Genersoft.Platform.Core.ObjectBuilder">
+      <HintPath>Lib\Genersoft.Platform.Core.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Genersoft.Platform.Core.Protobuf">
+      <HintPath>Lib\Genersoft.Platform.Core.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Genersoft.Platform.Performance.Service">
+      <HintPath>Lib\Genersoft.Platform.Performance.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="IrisSkin4">
+      <HintPath>Lib\IrisSkin4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.TeamFoundation.Client">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Microsoft.TeamFoundation.Client.dll</HintPath>
     </Reference>
@@ -53,6 +83,7 @@
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
@@ -73,6 +104,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ProfilerWindow.xaml.cs">
+      <DependentUpon>ProfilerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistryHelper.cs" />
     <Compile Include="SqlDbHelper.cs" />
     <Page Include="MainWindow.xaml">
@@ -87,6 +121,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProfilerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -117,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="application.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

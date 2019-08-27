@@ -1,0 +1,72 @@
+﻿<Window x:Class="TFSideKicks.ProfilerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TFSideKicks"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="OracleSqlProfiler" Height="768" Width="1024" Icon="1.ico" Activated="Window_Activated">
+    <Grid Margin="5,5,5,5">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="80"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" >Source</Label>
+        <TextBox Name="tb_source" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="172.18.99.243:1521/orclbak" ToolTip="like xx.xx.xx.xx:1521/orcl" />
+        <TextBox Name="tb_log" Grid.Row="0" Grid.Column="5" Grid.RowSpan="8" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
+        <Label Grid.Row="2" >User ID</Label>
+        <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+        <Label Grid.Row="2" Grid.Column="2">Password</Label>
+        <PasswordBox Name="tb_password" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" />
+        <CheckBox Name="cb_save" Grid.Row="4" Grid.Column="1" Content="Save to table" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="cb_save_Checked"/>
+        <TextBox Name="tb_oraname" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" />
+        <CheckBox Name="cb_curruser" Grid.Row="6" Grid.Column="1" Content="Trace only current user" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Name="button1" Grid.Row="6" Grid.Column="2" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button1_Click"/>
+        <Button Name="button2" Grid.Row="6" Grid.Column="3" Content="Stop" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button2_Click"/>
+        <TextBlock Grid.Row="8" Grid.ColumnSpan="5">shows only 100 lines order by elapsed_time desc,  see more to save data to table.</TextBlock>
+        <DataGrid Name="_dgSQLlines" ItemsSource="{Binding}" Grid.Row="10" Grid.ColumnSpan="5" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="70" Header="SCHEMA" Binding="{Binding SCHEMA}" />
+                <DataGridTextColumn Width="70" Header="MODULE" Binding="{Binding MODULE}" />
+                <DataGridTextColumn Width="*" MinWidth="120" Header="SQL TEXT" Binding="{Binding SQL_TEXT}" />
+                <DataGridTextColumn Width="100" Header="PARSE CALLS" Binding="{Binding PARSE_CALLS}" />
+                <DataGridTextColumn Width="80" Header="BUFFER GETS" Binding="{Binding BUFFER_GETS}" />
+                <DataGridTextColumn Width="80" Header="DISK READS" Binding="{Binding DISK_READS}" />
+                <DataGridTextColumn Width="90" Header="EXECUTIONS" Binding="{Binding EXECUTIONS}" />
+                <DataGridTextColumn Width="80" Header="CPU TIME" Binding="{Binding CPU_TIME}" />
+                <DataGridTextColumn Width="120" Header="CPU TIME PER EXE" Binding="{Binding CPU_TIME_PER_EXE}" />
+                <DataGridTextColumn Width="150" Header="ELAPSED TIME PER EXE" Binding="{Binding ELAPSED_TIME_PER_EXE}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Name="tb_Status" Grid.Row="12" Grid.ColumnSpan="5" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" />
+    </Grid>
+</Window>

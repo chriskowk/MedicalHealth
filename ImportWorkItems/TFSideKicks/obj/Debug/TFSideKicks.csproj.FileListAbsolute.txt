@@ -358,3 +358,15 @@ D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\ru\
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ProfilerWindow.g.cs
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ProfilerWindow.baml
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\DotNetSkin.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.AppFramework.Service.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\genersoft.platform.appframework.spi.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\genersoft.platform.core.common.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\genersoft.platform.core.dataaccess.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.Core.InterProcComm.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.Core.ObjectBuilder.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.Core.Protobuf.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.Performance.Service.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\IrisSkin4.dll
