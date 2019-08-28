@@ -108,7 +108,7 @@ namespace TFSideKicks
             this.button2.IsEnabled = true;
             this.tb_log.Clear();
             this.tb_Status.Clear();
-            this._dgSQLlines.DataContext = null;
+            this.dg_SQLlines.DataContext = null;
 
             this.tb_log.AppendText("-----------------------------------------------\r\n");
             this.tb_log.AppendText("Getting ready...\r\n");
@@ -222,14 +222,14 @@ namespace TFSideKicks
             DataSet ds_result = this.DB.ExecuteDataSet(sql);
             if (ds_result != null)
             {
-                this._dgSQLlines.DataContext = ds_result.Tables[0];
+                this.dg_SQLlines.DataContext = ds_result.Tables[0];
             }
             this.tb_log.AppendText("Success!\r\n");
         }
 
         private void _dgSQLlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataRowView dr = _dgSQLlines.CurrentItem as DataRowView;
+            DataRowView dr = dg_SQLlines.CurrentItem as DataRowView;
             if (dr != null) tb_Status.Text = dr["SQL_TEXT"].ToString();
         }
     }

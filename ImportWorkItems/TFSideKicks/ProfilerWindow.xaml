@@ -57,7 +57,7 @@
         <Button Name="button1" Grid.Row="8" Grid.Column="2" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button1_Click"/>
         <Button Name="button2" Grid.Row="8" Grid.Column="3" Content="Stop" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button2_Click"/>
         <TextBlock Grid.Row="10" Grid.ColumnSpan="5">shows only 100 lines order by elapsed_time desc,  see more to save data to table.</TextBlock>
-        <DataGrid Name="_dgSQLlines" ItemsSource="{Binding}" Grid.Row="12" Grid.ColumnSpan="5" AutoGenerateColumns="False" SelectionChanged="_dgSQLlines_SelectionChanged">
+        <DataGrid Name="dg_SQLlines" ItemsSource="{Binding}" Grid.Row="12" Grid.ColumnSpan="5" AutoGenerateColumns="False" SelectionChanged="_dgSQLlines_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="70" Header="SCHEMA" Binding="{Binding SCHEMA}" />
                 <DataGridTextColumn Width="70" Header="MODULE" Binding="{Binding MODULE}" />
