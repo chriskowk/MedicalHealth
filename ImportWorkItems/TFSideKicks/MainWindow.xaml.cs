@@ -100,7 +100,8 @@ namespace TFSideKicks
 
         private void _btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            this.Close();
         }
 
         private bool SaveWorkItem(string workItemIds, string projectName)

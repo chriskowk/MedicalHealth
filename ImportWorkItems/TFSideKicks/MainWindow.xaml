@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TFSideKicks"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Team Foundation Sidekicks 2015" Height="448.773" Width="525" Loaded="Window_Loaded" Activated="Window_Activated" Icon="application.ico" >
+        Title="Team Foundation Sidekicks" Height="448.773" Width="525" Loaded="Window_Loaded" Activated="Window_Activated" Icon="application.ico" >
     <Grid Margin="5,5,5,5">
         <Grid.Resources>
             <Style TargetType="Label">
