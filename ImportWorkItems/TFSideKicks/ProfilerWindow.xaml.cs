@@ -163,7 +163,7 @@ namespace TFSideKicks
             this.tb_log.AppendText("Processing data...\r\n");
             string createTableSql = "create table " + this.NewTable + " as select * from v$sqlarea";
             this.DB.ExecSqlStatement(createTableSql);
-            string sqlbase = string.Format("SELECT n.parsing_schema_name AS SCHEMA,n.module AS MODULE, DBMS_LOB.SUBSTR(n.Sql_Fulltext, 2000, 1) AS SQL_TEXT, n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS, n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS, n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS, n.executions - nvl(o.executions, 0) AS EXECUTIONS, round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME, round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE, round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address WHERE n.last_active_time > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') AND(n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> ORDER BY ELAPSED_TIME_PER_EXE DESC", this.NewTable, this.OldTable, this.Sysdate);
+            string sqlbase = string.Format("SELECT n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT, DBMS_LOB.SUBSTR(n.sql_fulltext, 4000, 1) AS SQL_FULLTEXT, n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS, n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS, n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS, n.executions - nvl(o.executions, 0) AS EXECUTIONS, round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME, round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE, round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address WHERE n.last_active_time > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') AND(n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> ORDER BY ELAPSED_TIME_PER_EXE DESC", this.NewTable, this.OldTable, this.Sysdate);
             string sql = "";
             string criteria = "";
             if (this.IsCurrUser)
@@ -229,8 +229,9 @@ namespace TFSideKicks
 
         private void _dgSQLlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            tb_Status.Clear();
             DataRowView dr = dg_SQLlines.CurrentItem as DataRowView;
-            if (dr != null) tb_Status.Text = dr["SQL_TEXT"].ToString();
+            if (dr != null) tb_Status.Text = dr["SQL_FULLTEXT"].ToString();
         }
     }
 }

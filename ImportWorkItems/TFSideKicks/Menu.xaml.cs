@@ -28,6 +28,12 @@ namespace TFSideKicks
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)e.OriginalSource;
+            if (button.Tag.ToString() == "exit")
+            {
+                this.Close();
+                Application.Current.Shutdown();
+                return;
+            }
 
             // Create an instance of the window named
             // by the current button.
