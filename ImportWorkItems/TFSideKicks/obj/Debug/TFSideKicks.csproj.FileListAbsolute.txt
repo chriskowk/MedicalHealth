@@ -370,3 +370,4 @@ D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Gen
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.Core.Protobuf.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Genersoft.Platform.Performance.Service.dll
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\IrisSkin4.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojResolveAssemblyReference.cache

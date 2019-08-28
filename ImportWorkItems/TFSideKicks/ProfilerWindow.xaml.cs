@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace TFSideKicks
 {
@@ -79,12 +81,13 @@ namespace TFSideKicks
             return new OracleDatabase(configData);
         }
 
-        private void cb_save_Checked(object sender, RoutedEventArgs e)
+        private void cb_save_Click(object sender, RoutedEventArgs e)
         {
-            if (this.cb_save.IsChecked.Value)
+            if (this.cb_save.IsChecked.HasValue && this.cb_save.IsChecked.Value)
             {
                 this.IsSaveOracle = true;
                 this.tb_oraname.IsEnabled = true;
+                this.tb_oraname.Focus();
             }
             else
             {
@@ -103,7 +106,7 @@ namespace TFSideKicks
             this.button1.IsEnabled = false;
             this.button2.IsEnabled = true;
             this.tb_log.Clear();
-            this.tb_log.AppendText("------------------------------\r\n");
+            this.tb_log.AppendText("-----------------------------------------------\r\n");
             this.tb_log.AppendText("Getting ready...\r\n");
             this.tb_log.AppendText("Clear data...\r\n");
             string sql1 = "select table_name from user_tables where table_name='" + this.OldTable + "'";
@@ -134,7 +137,7 @@ namespace TFSideKicks
                 this.IsCurrUser = true;
             }
             this.tb_log.AppendText("Success!\r\n");
-            this.tb_log.AppendText("------------------------------\r\n\r\n");
+            this.tb_log.AppendText("-----------------------------------------------\r\n\r\n");
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
@@ -203,6 +206,12 @@ namespace TFSideKicks
                 this._dgSQLlines.DataContext = ds_result.Tables[0];
             }
             this.tb_log.AppendText("Success!\r\n");
+        }
+
+        private void _dgSQLlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView dr = _dgSQLlines.CurrentItem as DataRowView;
+            tb_Status.Text = dr["SQL_TEXT"].ToString();
         }
     }
 }

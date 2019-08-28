@@ -27,6 +27,8 @@
             <RowDefinition Height="5" />
             <RowDefinition Height="30" />
             <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="16" />
             <RowDefinition Height="5" />
             <RowDefinition Height="*"/>
@@ -47,13 +49,15 @@
         <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
         <Label Grid.Row="2" Grid.Column="2">Password</Label>
         <PasswordBox Name="tb_password" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" />
-        <CheckBox Name="cb_save" Grid.Row="4" Grid.Column="1" Content="Save to table" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="cb_save_Checked"/>
+        <CheckBox Name="cb_save" Grid.Row="4" Grid.Column="1" Content="Save to table" HorizontalAlignment="Left" VerticalAlignment="Center" Click="cb_save_Click"/>
         <TextBox Name="tb_oraname" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" />
         <CheckBox Name="cb_curruser" Grid.Row="6" Grid.Column="1" Content="Trace only current user" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button Name="button1" Grid.Row="6" Grid.Column="2" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button1_Click"/>
-        <Button Name="button2" Grid.Row="6" Grid.Column="3" Content="Stop" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button2_Click"/>
-        <TextBlock Grid.Row="8" Grid.ColumnSpan="5">shows only 100 lines order by elapsed_time desc,  see more to save data to table.</TextBlock>
-        <DataGrid Name="_dgSQLlines" ItemsSource="{Binding}" Grid.Row="10" Grid.ColumnSpan="5" AutoGenerateColumns="False" >
+        <Label Grid.Row="6" Grid.Column="2">Trace module</Label>
+        <TextBox Name="tb_module" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" Text="w3wp.exe"/>
+        <Button Name="button1" Grid.Row="8" Grid.Column="2" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button1_Click"/>
+        <Button Name="button2" Grid.Row="8" Grid.Column="3" Content="Stop" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button2_Click"/>
+        <TextBlock Grid.Row="10" Grid.ColumnSpan="5">shows only 100 lines order by elapsed_time desc,  see more to save data to table.</TextBlock>
+        <DataGrid Name="_dgSQLlines" ItemsSource="{Binding}" Grid.Row="12" Grid.ColumnSpan="5" AutoGenerateColumns="False" SelectionChanged="_dgSQLlines_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="70" Header="SCHEMA" Binding="{Binding SCHEMA}" />
                 <DataGridTextColumn Width="70" Header="MODULE" Binding="{Binding MODULE}" />
@@ -67,6 +71,6 @@
                 <DataGridTextColumn Width="150" Header="ELAPSED TIME PER EXE" Binding="{Binding ELAPSED_TIME_PER_EXE}" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Name="tb_Status" Grid.Row="12" Grid.ColumnSpan="5" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" />
+        <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="14" Grid.ColumnSpan="5" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" />
     </Grid>
 </Window>
