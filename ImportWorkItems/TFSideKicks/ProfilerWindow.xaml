@@ -46,7 +46,7 @@
         <TextBox Name="tb_source" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="172.18.99.243:1521/orclbak" ToolTip="like xx.xx.xx.xx:1521/orcl" />
         <TextBox Name="tb_log" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
         <Label Grid.Row="2" >User ID</Label>
-        <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+        <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="apps"/>
         <Label Grid.Row="2" Grid.Column="2">Password</Label>
         <PasswordBox Name="tb_password" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" />
         <CheckBox Name="cb_save" Grid.Row="4" Grid.Column="1" Content="Save to table" HorizontalAlignment="Left" VerticalAlignment="Center" Click="cb_save_Click"/>
