@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Genersoft.Platform.Core.DataAccess;
+using Genersoft.Platform.Core.DataAccess.Configuration;
+using Genersoft.Platform.Core.DataAccess.Oracle;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -670,5 +673,37 @@ namespace TFSideKicks
             return command;
         }
         #endregion
+    }
+
+    public class OracleDatabaseContext
+    {
+        public static string OldTable = "TEMP_ORACLESQLOLD";
+        public static string NewTable = "TEMP_ORACLESQLNEW";
+        private IGSPDatabase _db;
+        public OracleDatabaseContext(string source, string userid, string password)
+        {
+            _db = new OracleDatabase(GetConfigData(source, userid, password));
+        }
+
+        public IGSPDatabase DB
+        {
+            get { return _db; }
+        }
+
+        private static GSPDbConfigData _configData = null;
+        private static GSPDbConfigData GetConfigData(string source, string userid, string password)
+        {
+            if (_configData == null)
+            {
+                _configData = new GSPDbConfigData();
+                _configData.DbType = GSPDbType.Oracle;
+                _configData.ConnectionString = string.Format("DATA SOURCE = {0}; USER ID = {1}; PASSWORD = {2};", source, userid, password);
+                _configData.Source = source;
+                _configData.UserId = userid;
+                _configData.Password = password;
+            }
+
+            return _configData;
+        }
     }
 }
