@@ -7,10 +7,20 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Tool Menu" Height="435" Width="300" Icon="favicon.ico">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+            </Style>
+        </Grid.Resources>
         <StackPanel Margin="5" Button.Click="Button_Click">
             <GroupBox Header="">
                 <StackPanel>
-                    <Button Content="Team Foundation Sidekicks" Tag="MainWindow"></Button>
+                    <Button Content="Import WorkItems to TFS" Tag="MainWindow"></Button>
                     <Button Content="Oracle SqlProfiler" Tag="ProfilerWindow"></Button>
                 </StackPanel>
             </GroupBox>

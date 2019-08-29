@@ -233,5 +233,10 @@ namespace TFSideKicks
             DataRowView dr = dg_SQLlines.CurrentItem as DataRowView;
             if (dr != null) tb_Status.Text = dr["SQL_FULLTEXT"].ToString();
         }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

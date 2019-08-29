@@ -54,10 +54,24 @@
         <CheckBox Name="cb_curruser" Grid.Row="6" Grid.Column="1" Content="Trace only current user" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label Grid.Row="6" Grid.Column="2">Trace module</Label>
         <TextBox Name="tb_module" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" Text="w3wp.exe"/>
-        <Button Name="button1" IsEnabled="True" Grid.Row="8" Grid.Column="2" Content="Start" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button1_Click"/>
-        <Button Name="button2" IsEnabled="False" Grid.Row="8" Grid.Column="3" Content="Stop" HorizontalAlignment="Right" VerticalAlignment="Center" Click="button2_Click"/>
+        <Grid Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" >
+                <Button Margin="2,0" Name="button1" IsEnabled="True" Content="Start" Click="button1_Click"/>
+                <Button Margin="2,0" Name="button2" IsEnabled="False" Content="Stop" Click="button2_Click"/>
+                <Button Margin="2,0,0,0" Name="btn_close" Content="Close" Click="btn_close_Click"/>
+            </StackPanel>
+        </Grid>
+
         <TextBlock Grid.Row="10" Grid.ColumnSpan="5">shows only 100 lines order by elapsed_time desc,  see more to save data to table.</TextBlock>
         <DataGrid Name="dg_SQLlines" ItemsSource="{Binding}" Grid.Row="12" Grid.ColumnSpan="5" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="_dgSQLlines_SelectionChanged">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="MaxHeight" Value="100" />
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Width="70" Header="SCHEMA" Binding="{Binding SCHEMA}" />
                 <DataGridTextColumn Width="70" Header="MODULE" Binding="{Binding MODULE}" />
@@ -71,6 +85,6 @@
                 <DataGridTextColumn Width="150" Header="ELAPSED TIME PER EXE" Binding="{Binding ELAPSED_TIME_PER_EXE}" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="14" Grid.ColumnSpan="5" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" />
+        <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="14" Grid.ColumnSpan="5" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" />
     </Grid>
 </Window>

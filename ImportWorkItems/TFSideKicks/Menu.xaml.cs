@@ -41,9 +41,23 @@ namespace TFSideKicks
             Assembly assembly = type.Assembly;
 
             Window win = (Window)assembly.CreateInstance(type.Namespace + "." + (string)button.Tag);
+            win.Loaded -= Win_Loaded;
+            win.Loaded += Win_Loaded;
+            win.Unloaded -= Win_Unloaded;
+            win.Unloaded += Win_Unloaded;
 
             // Show the window.
             win.Show();
+        }
+
+        private void Win_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void Win_Unloaded(object sender, RoutedEventArgs e)
+        {
+            this.Show();
         }
     }
 }
