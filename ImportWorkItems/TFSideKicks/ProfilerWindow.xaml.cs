@@ -86,22 +86,9 @@ namespace TFSideKicks
             this.tb_log.AppendText("Creating data table...\r\n");
             bool onlycurruser = this.cb_curruser.IsChecked.Value;
             await Task.Run(() => CreateTables(onlycurruser));
-            this.tb_log.AppendText("Create data table succeed.\r\n");
             this.tb_log.AppendText("Success!\r\n");
             this.tb_log.AppendText("-----------------------------------------------\r\n\r\n");
             this.button2.IsEnabled = true;
-        }
-
-        private void CreateTables(bool onlycurruser)
-        {
-            string createTableSql = "create table " + OracleDbContext.OldTable + " as select * from v$sqlarea";
-            Context.DB.ExecSqlStatement(createTableSql);
-            string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') as currdate FROM dual";
-            DataSet ds = Context.DB.ExecuteDataSet(getDateSql);
-            if (ds != null)
-                this.Sysdate = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]);
-            if (onlycurruser)
-                this.IsCurrUser = true;
         }
 
         private void DropTables(string source, string userid, string password)
@@ -119,6 +106,18 @@ namespace TFSideKicks
             {
                 Context.DB.ExecSqlStatement("drop table " + OracleDbContext.NewTable + " purge");
             }
+        }
+
+        private void CreateTables(bool onlycurruser)
+        {
+            string createTableSql = "create table " + OracleDbContext.OldTable + " as select * from v$sqlarea";
+            Context.DB.ExecSqlStatement(createTableSql);
+            this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
+
+            string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') as currdate FROM dual";
+            DataSet ds = Context.DB.ExecuteDataSet(getDateSql);
+            if (ds != null) { this.Sysdate = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]); }
+            if (onlycurruser) { this.IsCurrUser = true; }
         }
 
         private async void button2_Click(object sender, RoutedEventArgs e)
@@ -150,7 +149,11 @@ namespace TFSideKicks
             string sqlbase = string.Format("SELECT n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT, DBMS_LOB.SUBSTR(n.sql_fulltext, 4000, 1) AS SQL_FULLTEXT, n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS, n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS, n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS, n.executions - nvl(o.executions, 0) AS EXECUTIONS, round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME, round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE, round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address WHERE n.last_active_time > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') AND(n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> ORDER BY ELAPSED_TIME_PER_EXE DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.Sysdate);
 
             string criteria = "";
-            if (this.IsCurrUser)
+            if (!this.IsCurrUser)
+            {
+                if (!string.IsNullOrWhiteSpace(module)) { criteria = string.Format("AND n.module = '{0}'", module); }
+            }
+            else
             {
                 string user = "";
                 string usersql = "select user from dual";
@@ -160,38 +163,25 @@ namespace TFSideKicks
 
                 criteria = string.Format("AND n.parsing_schema_name = '{0}'", user);
                 if (!string.IsNullOrWhiteSpace(module)) { criteria = string.Format("{0} AND n.module = '{1}'", criteria, module); }
-                sqlbase = sqlbase.Replace("<CRITERIA>", criteria);
-                sql = string.Format("SELECT * FROM ({0}) WHERE ROWNUM<=100", sqlbase);
-                if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
-                {
-                    string sql1 = "select table_name from user_tables where table_name='" + tablename + "'";
-                    DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
-                    if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
-                    {
-                        Context.DB.ExecSqlStatement("drop table " + tablename + " purge");
-                    }
-                    string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
-                    Context.DB.ExecSqlStatement(createTable);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrWhiteSpace(module)) { criteria = string.Format("AND n.module = '{0}'", module); }
-                sqlbase = sqlbase.Replace("<CRITERIA>", criteria);
-                sql = string.Format("SELECT * FROM ({0}) WHERE ROWNUM<=100", sqlbase);
-                if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
-                {
-                    string sql1 = "select table_name from user_tables where table_name='" + tablename + "'";
-                    DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
-                    if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
-                    {
-                        Context.DB.ExecSqlStatement("drop table " + tablename + " purge");
-                    }
-                    string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
-                    Context.DB.ExecSqlStatement(createTable);
-                }
             }
 
+            sqlbase = sqlbase.Replace("<CRITERIA>", criteria);
+            if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
+            {
+                this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Checking table:" + tablename + "...\r\n")));
+                string sql1 = "select table_name from user_tables where table_name='" + tablename + "'";
+                DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
+                if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
+                {
+                    this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + "...\r\n")));
+                    Context.DB.ExecSqlStatement("drop table " + tablename + " purge");
+                }
+                this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Creating table:" + tablename + "...\r\n")));
+                string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
+                Context.DB.ExecSqlStatement(createTable);
+            }
+
+            sql = string.Format("SELECT * FROM ({0}) WHERE ROWNUM <= 100", sqlbase);
             return true;
         }
 
