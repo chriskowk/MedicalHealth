@@ -94,27 +94,27 @@ namespace TFSideKicks
         private void DropTables(string source, string userid, string password)
         {
             _context = new OracleDbContext(source, userid, password);
-            string sql1 = "select table_name from user_tables where table_name='" + OracleDbContext.OldTable + "'";
-            string sql2 = "select table_name from user_tables where table_name='" + OracleDbContext.NewTable + "'";
+            string sql1 = "SELECT table_name FROM user_tables WHERE table_name='" + OracleDbContext.OldTable + "'";
+            string sql2 = "SELECT table_name FROM user_tables WHERE table_name='" + OracleDbContext.NewTable + "'";
             DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
             DataSet ds2 = Context.DB.ExecuteDataSet(sql2);
             if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == OracleDbContext.OldTable))
             {
-                Context.DB.ExecSqlStatement("drop table " + OracleDbContext.OldTable + " purge");
+                Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.OldTable + " PURGE");
             }
             if (((ds2 != null) && (ds2.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds2.Tables[0].Rows[0]["table_name"]) == OracleDbContext.NewTable))
             {
-                Context.DB.ExecSqlStatement("drop table " + OracleDbContext.NewTable + " purge");
+                Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.NewTable + " PURGE");
             }
         }
 
         private void CreateTables(bool onlycurruser)
         {
-            string createTableSql = "create table " + OracleDbContext.OldTable + " as select * from v$sqlarea";
+            string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sqlarea";
             Context.DB.ExecSqlStatement(createTableSql);
             this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
 
-            string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') as currdate FROM dual";
+            string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') AS currdate FROM dual";
             DataSet ds = Context.DB.ExecuteDataSet(getDateSql);
             if (ds != null) { this.Sysdate = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]); }
             if (onlycurruser) { this.IsCurrUser = true; }
@@ -144,7 +144,7 @@ namespace TFSideKicks
 
         private bool ProcessData(string tablename, string module, ref string sql)
         {
-            string createTableSql = "create table " + OracleDbContext.NewTable + " as select * from v$sqlarea";
+            string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
             Context.DB.ExecSqlStatement(createTableSql);
             string sqlbase = string.Format("SELECT n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT, DBMS_LOB.SUBSTR(n.sql_fulltext, 4000, 1) AS SQL_FULLTEXT, n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS, n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS, n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS, n.executions - nvl(o.executions, 0) AS EXECUTIONS, round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME, round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE, round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address WHERE n.last_active_time > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') AND(n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> ORDER BY ELAPSED_TIME_PER_EXE DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.Sysdate);
 
@@ -156,7 +156,7 @@ namespace TFSideKicks
             else
             {
                 string user = "";
-                string usersql = "select user from dual";
+                string usersql = "SELECT user FROM dual";
                 DataSet ds = Context.DB.ExecuteDataSet(usersql);
                 if ((ds != null) && (ds.Tables[0].Rows.Count > 0))
                     user = Convert.ToString(ds.Tables[0].Rows[0]["user"]);
@@ -169,12 +169,12 @@ namespace TFSideKicks
             if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
             {
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Checking table:" + tablename + "...\r\n")));
-                string sql1 = "select table_name from user_tables where table_name='" + tablename + "'";
+                string sql1 = "SELECT table_name FROM user_tables WHERE table_name='" + tablename + "'";
                 DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
                 if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
                 {
                     this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + "...\r\n")));
-                    Context.DB.ExecSqlStatement("drop table " + tablename + " purge");
+                    Context.DB.ExecSqlStatement("DROP TABLE " + tablename + " PURGE");
                 }
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Creating table:" + tablename + "...\r\n")));
                 string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
