@@ -50,7 +50,7 @@
         <Label Grid.Row="2" Grid.Column="2">Password</Label>
         <PasswordBox Name="tb_password" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" />
         <CheckBox Name="cb_save" Grid.Row="4" Grid.Column="1" Content="Save to table" HorizontalAlignment="Left" VerticalAlignment="Center" Click="cb_save_Click"/>
-        <TextBox Name="tb_oraname" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" />
+        <TextBox Name="tb_oraname" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10,0,0,0" />
         <CheckBox Name="cb_curruser" Grid.Row="6" Grid.Column="1" Content="Trace only current user" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label Grid.Row="6" Grid.Column="2">Trace module</Label>
         <TextBox Name="tb_module" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" Text="w3wp.exe"/>

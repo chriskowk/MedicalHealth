@@ -675,12 +675,15 @@ namespace TFSideKicks
         #endregion
     }
 
-    public class OracleDatabaseContext
+    /// <summary>
+    /// ORACLE数据库上下文
+    /// </summary>
+    public class OracleDbContext
     {
         public static string OldTable = "TEMP_ORACLESQLOLD";
         public static string NewTable = "TEMP_ORACLESQLNEW";
         private IGSPDatabase _db;
-        public OracleDatabaseContext(string source, string userid, string password)
+        public OracleDbContext(string source, string userid, string password)
         {
             _db = new OracleDatabase(GetConfigData(source, userid, password));
         }
