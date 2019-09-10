@@ -276,7 +276,7 @@ namespace JobController
             _states[jobType] = temp;
             if (askuser)
             {
-                System.Windows.Forms.MessageBox.Show(string.Format("{0} 任务刚结束！", jobType), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
+                System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
             }
         }
 
@@ -355,8 +355,9 @@ namespace JobController
             _starting = DateTime.Now;
             _dtpRestart.Value = _starting.AddMinutes(1);
 
-            string filename = string.Format("Job{0}Config.xml", this.VersionTag);
-            WriteJobConfig(filename, this.VersionTag, _dtpRestart.Value);
+            string vt = this.VersionTag.Replace("MyJob.TaskJob", string.Empty);
+            string filename = string.Format("Job{0}Config.xml", vt);
+            WriteJobConfig(filename, vt, _dtpRestart.Value);
 
             Restart();
         }
@@ -674,17 +675,17 @@ namespace JobController
             {
                 switch (this.VersionTag)
                 {
-                    case "":
+                    case "MyJob.TaskJob":
                         return TaskJob.GetJSSVCFilePath();
-                    case "A":
+                    case "MyJob.TaskJobA":
                         return TaskJobA.GetJSSVCFilePath();
-                    case "B":
+                    case "MyJob.TaskJobB":
                         return TaskJobB.GetJSSVCFilePath();
-                    case "C":
+                    case "MyJob.TaskJobC":
                         return TaskJobC.GetJSSVCFilePath();
-                    case "D":
+                    case "MyJob.TaskJobD":
                         return TaskJobD.GetJSSVCFilePath();
-                    case "E":
+                    case "MyJob.TaskJobE":
                         return TaskJobE.GetJSSVCFilePath();
                     default:
                         return TaskJob.GetJSSVCFilePath();

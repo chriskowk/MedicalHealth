@@ -230,6 +230,7 @@
             this._rbZSYK.Size = new System.Drawing.Size(47, 16);
             this._rbZSYK.TabIndex = 18;
             this._rbZSYK.TabStop = true;
+            this._rbZSYK.Tag = "MyJob.TaskJob";
             this._rbZSYK.Text = "眼科";
             this._rbZSYK.UseVisualStyleBackColor = true;
             this._rbZSYK.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
@@ -242,7 +243,7 @@
             this._rbSY.Size = new System.Drawing.Size(47, 16);
             this._rbSY.TabIndex = 19;
             this._rbSY.TabStop = true;
-            this._rbSY.Tag = "A";
+            this._rbSY.Tag = "MyJob.TaskJobA";
             this._rbSY.Text = "省医";
             this._rbSY.UseVisualStyleBackColor = true;
             this._rbSY.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
@@ -285,7 +286,7 @@
             this._rbS12.Size = new System.Drawing.Size(59, 16);
             this._rbS12.TabIndex = 23;
             this._rbS12.TabStop = true;
-            this._rbS12.Tag = "B";
+            this._rbS12.Tag = "MyJob.TaskJobB";
             this._rbS12.Text = "市十二";
             this._rbS12.UseVisualStyleBackColor = true;
             this._rbS12.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
@@ -318,7 +319,7 @@
             this._rbGH.Size = new System.Drawing.Size(71, 16);
             this._rbGH.TabIndex = 25;
             this._rbGH.TabStop = true;
-            this._rbGH.Tag = "C";
+            this._rbGH.Tag = "MyJob.TaskJobC";
             this._rbGH.Text = "光华口腔";
             this._rbGH.UseVisualStyleBackColor = true;
             this._rbGH.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
@@ -341,7 +342,7 @@
             this._rbS1.Size = new System.Drawing.Size(47, 16);
             this._rbS1.TabIndex = 27;
             this._rbS1.TabStop = true;
-            this._rbS1.Tag = "D";
+            this._rbS1.Tag = "MyJob.TaskJobD";
             this._rbS1.Text = "市一";
             this._rbS1.UseVisualStyleBackColor = true;
             this._rbS1.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
@@ -364,7 +365,7 @@
             this._rbSGS1.Size = new System.Drawing.Size(71, 16);
             this._rbSGS1.TabIndex = 29;
             this._rbSGS1.TabStop = true;
-            this._rbSGS1.Tag = "E";
+            this._rbSGS1.Tag = "MyJob.TaskJobE";
             this._rbSGS1.Text = "韶关市一";
             this._rbSGS1.UseVisualStyleBackColor = true;
             this._rbSGS1.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
