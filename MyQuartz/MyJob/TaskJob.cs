@@ -48,7 +48,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.ExecBatch(path, true, true, ref errMsg);
+            string output = JobHelper.ExecBatch(path, true, true, 60000, ref errMsg);
 
             FileStream fs = new FileStream(string.Format(@"{0}\Log\TFGetLog{1}.txt", BatchFilesPath, DateTime.Now.ToString("yyyyMMddHHmmss")), FileMode.Append);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
@@ -253,6 +253,11 @@ namespace MyJob
     {
         public static string ExecBatch(string batPath, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
         {
+            return ExecBatch(batPath, redirectStandardOutput, redirectStandardError, 0, ref errMsg);
+        }
+
+        public static string ExecBatch(string batPath, bool redirectStandardOutput, bool redirectStandardError, int milliseconds, ref string errMsg)
+        {
             string outputString = string.Empty;
             using (Process pro = new Process())
             {
@@ -265,7 +270,10 @@ namespace MyJob
                 pro.StartInfo.UseShellExecute = false;
 
                 pro.Start();
-                pro.WaitForExit();
+                if (milliseconds <= 0)
+                    pro.WaitForExit();
+                else
+                    pro.WaitForExit(milliseconds);
 
                 outputString = pro.StartInfo.RedirectStandardOutput ? pro.StandardOutput.ReadToEnd() : string.Empty;
                 errMsg = pro.StartInfo.RedirectStandardError ? pro.StandardError.ReadToEnd() : string.Empty;
