@@ -270,10 +270,8 @@ namespace MyJob
                 pro.StartInfo.UseShellExecute = false;
 
                 pro.Start();
-                if (milliseconds <= 0)
-                    pro.WaitForExit();
-                else
-                    pro.WaitForExit(milliseconds);
+                milliseconds = (milliseconds <= 0) ? int.MaxValue : milliseconds;
+                pro.WaitForExit(milliseconds);
 
                 outputString = pro.StartInfo.RedirectStandardOutput ? pro.StandardOutput.ReadToEnd() : string.Empty;
                 errMsg = pro.StartInfo.RedirectStandardError ? pro.StandardError.ReadToEnd() : string.Empty;
