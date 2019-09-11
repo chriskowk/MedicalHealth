@@ -190,10 +190,10 @@
             // 
             // btnRetrieve
             // 
-            this.btnRetrieve.Location = new System.Drawing.Point(95, 44);
+            this.btnRetrieve.Location = new System.Drawing.Point(81, 43);
             this.btnRetrieve.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRetrieve.Name = "btnRetrieve";
-            this.btnRetrieve.Size = new System.Drawing.Size(70, 27);
+            this.btnRetrieve.Size = new System.Drawing.Size(84, 28);
             this.btnRetrieve.TabIndex = 17;
             this.btnRetrieve.Text = "提取";
             this.btnRetrieve.UseVisualStyleBackColor = true;

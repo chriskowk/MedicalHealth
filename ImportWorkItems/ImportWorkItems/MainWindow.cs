@@ -191,7 +191,7 @@ namespace ImportWorkItems
             sb.AppendLine("declare @s varchar(4000), @ids varchar(4000);");
             sb.AppendLine("set @s = ''; set @ids = '<SYSTEMVERSIONID>';");
             sb.AppendLine("select @s = @s + ', ' + convert(varchar(10), BugID) from tBug where SystemVersionID in (select ID from dbo.fnIDInString(@IDs) );");
-            sb.AppendLine("select substring(@s, 3, len(@s)) BugIDs;");
+            sb.AppendLine("select substring(@s, 3, len(@s)) BugIDs;"); 
 
             _txtWorkItemIDs.Text = string.Empty;
             string query = sb.ToString().Replace("<SYSTEMVERSIONID>", _txtVersionID.Text);
