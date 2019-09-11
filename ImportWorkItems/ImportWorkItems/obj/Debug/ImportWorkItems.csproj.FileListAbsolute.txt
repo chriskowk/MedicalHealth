@@ -459,3 +459,4 @@ D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.pkgdef
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.latest.pkgdef
 D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\extension.vsixmanifest
+D:\CHRIS的文档\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.csprojResolveAssemblyReference.cache

@@ -182,5 +182,32 @@ namespace ImportWorkItems
             //只能关闭窗口，不能使用上面语句（退出进程），否则会卡死
             this.Close();
         }
+
+        private void btnRetrieve_Click(object sender, EventArgs e)
+        {
+            if (!IsNumberic(_txtVersionID.Text)) return;
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("declare @s varchar(4000), @ids varchar(4000);");
+            sb.AppendLine("set @s = ''; set @ids = '<SYSTEMVERSIONID>';");
+            sb.AppendLine("select @s = @s + ', ' + convert(varchar(10), BugID) from tBug where SystemVersionID in (select ID from dbo.fnIDInString(@IDs) );");
+            sb.AppendLine("select substring(@s, 3, len(@s)) BugIDs;");
+
+            _txtWorkItemIDs.Text = string.Empty;
+            string query = sb.ToString().Replace("<SYSTEMVERSIONID>", _txtVersionID.Text);
+            DataSet ds = SqlDbHelper.Query(query);
+            string rets = string.Empty;
+            foreach (DataRowView item in ds.Tables[0].DefaultView)
+            {
+                _txtWorkItemIDs.AppendText(item["BugIDs"].ToString());
+            }
+        }
+
+        private bool IsNumberic(string num)
+        {
+            double ret;
+            bool result = double.TryParse(num, System.Globalization.NumberStyles.Float, System.Globalization.NumberFormatInfo.InvariantInfo, out ret);
+            return result;
+        }
     }
 }
