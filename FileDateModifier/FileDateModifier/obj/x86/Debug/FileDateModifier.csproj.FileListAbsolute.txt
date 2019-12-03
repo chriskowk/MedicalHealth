@@ -30,3 +30,6 @@ F:\Chris\VS2010\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier
 F:\Chris\VS2015\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe.config
 F:\Chris\VS2015\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.exe
 F:\Chris\VS2015\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe.config
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.exe
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.pdb
