@@ -3,3 +3,8 @@ F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.BaseLayer.WCF.To
 F:\Chris\VS2015\WCF-WindowService-master\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Tool\obj\Debug\HeBianGu.BaseLayer.WCF.Tool.csprojResolveAssemblyReference.cache
 F:\Chris\VS2015\WCF-WindowService-master\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Tool\obj\Debug\HeBianGu.BaseLayer.WCF.Tool.dll
 F:\Chris\VS2015\WCF-WindowService-master\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Tool\obj\Debug\HeBianGu.BaseLayer.WCF.Tool.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.BaseLayer.WCF.Tool.dll
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.BaseLayer.WCF.Tool.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Tool\obj\Debug\HeBianGu.BaseLayer.WCF.Tool.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Tool\obj\Debug\HeBianGu.BaseLayer.WCF.Tool.dll
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Tool\obj\Debug\HeBianGu.BaseLayer.WCF.Tool.pdb

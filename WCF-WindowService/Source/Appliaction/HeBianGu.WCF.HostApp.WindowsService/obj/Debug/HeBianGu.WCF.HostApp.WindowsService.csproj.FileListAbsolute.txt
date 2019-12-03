@@ -6,3 +6,11 @@ F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp
 F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.csproj.GenerateResource.Cache
 F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.exe
 F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.WCF.HostApp.WindowsService.exe.config
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.WCF.HostApp.WindowsService.exe
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.WCF.HostApp.WindowsService.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.ProjectInstaller.resources
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.csproj.GenerateResource.Cache
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.exe
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.pdb

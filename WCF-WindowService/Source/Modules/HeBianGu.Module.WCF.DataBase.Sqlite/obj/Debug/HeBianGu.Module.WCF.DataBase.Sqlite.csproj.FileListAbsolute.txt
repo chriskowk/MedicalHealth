@@ -4,3 +4,9 @@ F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Module.WCF.DataB
 F:\Chris\VS2015\WCF-WindowService-master\Source\Modules\HeBianGu.Module.WCF.DataBase.Sqlite\obj\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.csprojResolveAssemblyReference.cache
 F:\Chris\VS2015\WCF-WindowService-master\Source\Modules\HeBianGu.Module.WCF.DataBase.Sqlite\obj\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.dll
 F:\Chris\VS2015\WCF-WindowService-master\Source\Modules\HeBianGu.Module.WCF.DataBase.Sqlite\obj\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.dll.config
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.dll
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Modules\HeBianGu.Module.WCF.DataBase.Sqlite\obj\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Modules\HeBianGu.Module.WCF.DataBase.Sqlite\obj\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.dll
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\Modules\HeBianGu.Module.WCF.DataBase.Sqlite\obj\Debug\HeBianGu.Module.WCF.DataBase.Sqlite.pdb

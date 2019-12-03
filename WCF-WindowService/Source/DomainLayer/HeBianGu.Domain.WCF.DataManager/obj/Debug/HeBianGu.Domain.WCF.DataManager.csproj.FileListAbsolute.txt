@@ -3,3 +3,8 @@ F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Domain.WCF.DataM
 F:\Chris\VS2015\WCF-WindowService-master\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.csprojResolveAssemblyReference.cache
 F:\Chris\VS2015\WCF-WindowService-master\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.dll
 F:\Chris\VS2015\WCF-WindowService-master\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.Domain.WCF.DataManager.dll
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.Domain.WCF.DataManager.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.dll
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.pdb

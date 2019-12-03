@@ -4,3 +4,9 @@ F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.Test.LocalCo
 F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.DBConsoleApp\obj\Debug\HeBianGu.Test.WCF.DBConsoleApp.csprojResolveAssemblyReference.cache
 F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.DBConsoleApp\obj\Debug\HeBianGu.WCF.Test.LocalConsoleApp.exe
 F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.DBConsoleApp\obj\Debug\HeBianGu.WCF.Test.LocalConsoleApp.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.WCF.Test.LocalConsoleApp.exe.config
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.WCF.Test.LocalConsoleApp.exe
+F:\GitHub\MedicalHealth\WCF-WindowService\Product\Debug\HeBianGu.WCF.Test.LocalConsoleApp.pdb
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\UnitTester\HeBianGu.Test.WCF.DBConsoleApp\obj\Debug\HeBianGu.Test.WCF.DBConsoleApp.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\UnitTester\HeBianGu.Test.WCF.DBConsoleApp\obj\Debug\HeBianGu.WCF.Test.LocalConsoleApp.exe
+F:\GitHub\MedicalHealth\WCF-WindowService\Source\UnitTester\HeBianGu.Test.WCF.DBConsoleApp\obj\Debug\HeBianGu.WCF.Test.LocalConsoleApp.pdb
