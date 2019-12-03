@@ -1,0 +1,9 @@
+c:\users\guoshaoyue\documents\visual studio 2015\Projects\GetIPAddr\GetIPAddr\bin\Debug\GetIPAddr.exe.config
+c:\users\guoshaoyue\documents\visual studio 2015\Projects\GetIPAddr\GetIPAddr\bin\Debug\GetIPAddr.exe
+c:\users\guoshaoyue\documents\visual studio 2015\Projects\GetIPAddr\GetIPAddr\bin\Debug\GetIPAddr.pdb
+c:\users\guoshaoyue\documents\visual studio 2015\Projects\GetIPAddr\GetIPAddr\obj\Debug\GetIPAddr.csprojResolveAssemblyReference.cache
+c:\users\guoshaoyue\documents\visual studio 2015\Projects\GetIPAddr\GetIPAddr\obj\Debug\GetIPAddr.exe
+c:\users\guoshaoyue\documents\visual studio 2015\Projects\GetIPAddr\GetIPAddr\obj\Debug\GetIPAddr.pdb
+E:\VSTS\VS2015\GetIPAddr\GetIPAddr\bin\Debug\GetIPAddr.exe.config
+E:\VSTS\VS2015\GetIPAddr\GetIPAddr\obj\Debug\GetIPAddr.exe
+E:\VSTS\VS2015\GetIPAddr\GetIPAddr\obj\Debug\GetIPAddr.pdb
