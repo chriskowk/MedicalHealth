@@ -1,0 +1,15 @@
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\UnitTestProject.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\UnitTestProject.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\obj\Debug\HeBianGu.Test.WCF.UnitTestApp.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\obj\Debug\UnitTestProject.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.UnitTestApp\obj\Debug\UnitTestProject.pdb

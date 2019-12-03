@@ -1,0 +1,6 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Service.WCF.WebService.dll.config
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Service.WCF.WebService.dll
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Service.WCF.WebService.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\Service\HeBianGu.Service.WCF.WebService\obj\Debug\HeBianGu.Service.WCF.WebService.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\Service\HeBianGu.Service.WCF.WebService\obj\Debug\HeBianGu.Service.WCF.WebService.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\Service\HeBianGu.Service.WCF.WebService\obj\Debug\HeBianGu.Service.WCF.WebService.pdb

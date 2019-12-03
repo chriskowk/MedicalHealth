@@ -1,0 +1,5 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.BaseLayer.WCF.Model.dll
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.BaseLayer.WCF.Model.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Model\obj\Debug\HeBianGu.BaseLayer.WCF.Model.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Model\obj\Debug\HeBianGu.BaseLayer.WCF.Model.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\BaseLayer\HeBianGu.BaseLayer.WCF.Model\obj\Debug\HeBianGu.BaseLayer.WCF.Model.pdb

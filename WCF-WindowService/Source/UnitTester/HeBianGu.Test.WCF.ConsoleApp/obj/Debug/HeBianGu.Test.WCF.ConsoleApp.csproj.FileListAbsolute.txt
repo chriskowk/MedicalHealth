@@ -1,0 +1,5 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\Test.ConsoleApp.exe.config
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\Test.ConsoleApp.exe
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\Test.ConsoleApp.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.ConsoleApp\obj\Debug\Test.ConsoleApp.exe
+F:\Chris\VS2015\WCF-WindowService-master\Source\UnitTester\HeBianGu.Test.WCF.ConsoleApp\obj\Debug\Test.ConsoleApp.pdb

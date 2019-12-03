@@ -1,0 +1,5 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Domain.WCF.DataManager.dll
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.Domain.WCF.DataManager.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\DomainLayer\HeBianGu.Domain.WCF.DataManager\obj\Debug\HeBianGu.Domain.WCF.DataManager.pdb

@@ -1,0 +1,6 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.Oracle.Console.exe.config
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.Oracle.Console.exe
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.Oracle.Console.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.Console\obj\Debug\HeBianGu.WCF.HostApp.Oracle.Console.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.Console\obj\Debug\HeBianGu.WCF.HostApp.Oracle.Console.exe
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.Console\obj\Debug\HeBianGu.WCF.HostApp.Oracle.Console.pdb

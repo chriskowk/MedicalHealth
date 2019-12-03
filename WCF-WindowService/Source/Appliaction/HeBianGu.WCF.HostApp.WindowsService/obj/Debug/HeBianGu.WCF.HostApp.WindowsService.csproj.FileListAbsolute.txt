@@ -1,0 +1,8 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.WindowsService.exe.config
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.WindowsService.exe
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.WindowsService.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.ProjectInstaller.resources
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.csproj.GenerateResource.Cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.exe
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.WindowsService\obj\Debug\HeBianGu.WCF.HostApp.WindowsService.pdb

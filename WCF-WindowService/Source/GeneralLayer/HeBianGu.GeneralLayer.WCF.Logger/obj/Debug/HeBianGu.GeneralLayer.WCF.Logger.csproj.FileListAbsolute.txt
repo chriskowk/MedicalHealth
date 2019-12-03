@@ -1,0 +1,5 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.GeneralLayer.WCF.Logger.dll
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.GeneralLayer.WCF.Logger.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\GeneralLayer\HeBianGu.GeneralLayer.WCF.Logger\obj\Debug\HeBianGu.GeneralLayer.WCF.Logger.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\GeneralLayer\HeBianGu.GeneralLayer.WCF.Logger\obj\Debug\HeBianGu.GeneralLayer.WCF.Logger.dll
+F:\Chris\VS2015\WCF-WindowService-master\Source\GeneralLayer\HeBianGu.GeneralLayer.WCF.Logger\obj\Debug\HeBianGu.GeneralLayer.WCF.Logger.pdb

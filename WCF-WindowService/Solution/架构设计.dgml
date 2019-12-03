@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Cleanup.bat" Category="Comment" Bounds="406.701666666667,0,88.77,25.24" Label="Cleanup.bat" />
+    <Node Id="Domain领域层" Bounds="306.205,516.5025,289.763333333333,140.48" Group="Expanded" />
+    <Node Id="HeBianGu.Domain.WCF.DataManager" Category="Category2" Bounds="326.205,556.5025,236,25.24" Label="HeBianGu.Domain.WCF.DataManager" />
+    <Node Id="HeBianGu.Domain.WCF.ServiceManager" Category="Category2" Bounds="326.205,611.7425,249.763333333333,25.24" Label="HeBianGu.Domain.WCF.ServiceManager" />
+    <Node Id="HeBianGu.GeneralLayer.WCF.WebService" Category="Category1" Bounds="337.576633554084,780.084785430463,220.4,25.24" Label="HeBianGu.Service.WCF.WebService" />
+    <Node Id="HeBianGu.Module.WCF.DataBase.Oracle" Category="Category5" Bounds="-77.645976821192,718.333936507916,250.173333333333,25.24">
+      <Category Ref="Category3" />
+      <Category Ref="Category9" />
+    </Node>
+    <Node Id="HeBianGu.Module.WCF.SqliteDBDemoModule" Category="Category5" Bounds="-77.6459650210618,663.093946273541,245.426666666667,25.24" Label="HeBianGu.Module.WCF.DataBase.Sqlite">
+      <Category Ref="Category3" />
+      <Category Ref="Category9" />
+    </Node>
+    <Node Id="HeBianGu.Test.WCF.OracleConsoleApp" Bounds="787.071556291391,757.023855189806,243.173333333333,25.24" Label="HeBianGu.Test.WCF.OracleConsoleApp" />
+    <Node Id="HeBianGu.WCF.HostApp.Console" Bounds="305.455,193.855,209.376666666667,25.24" Label="HeBianGu.WCF.HostApp.Console" />
+    <Node Id="HeBianGu.WCF.HostApp.Oracle.Console" Bounds="305.455,364.335,249.283333333333,25.24" />
+    <Node Id="HeBianGu.WCF.HostApp.Oracle.WindowService" Bounds="305.455,419.575,291.263333333333,25.24" />
+    <Node Id="HeBianGu.WCF.HostApp.WindowService" Bounds="305.455,249.095,251.356666666667,25.24" Label="HeBianGu.WCF.HostApp.WindowService" />
+    <Node Id="HeBianGu.WCF.Test.LocalConsoleApp" Bounds="787.07161081613,701.783864955431,222.826666666667,25.24" Label="HeBianGu.Test.WCF.DBConsoleApp" />
+    <Node Id="Host" Bounds="265.455,113.855,371.263333333333,370.96" Group="Expanded" />
+    <Node Id="Oracle宿主" Category="Category1" Bounds="285.455,324.335,331.263333333333,140.48" Group="Expanded" />
+    <Node Id="ServiceModule" Bounds="-97.645976821192,623.093791390728,290.173333333333,140.48" Group="Expanded" UseManualLocation="True" />
+    <Node Id="Setup.bat" Category="Comment" Bounds="301.626666666667,0,74.9200000000001,25.24" Label="Setup.bat" />
+    <Node Id="Sqlite宿主" Category="Category1" Bounds="285.455,153.855,291.356666666667,140.48" Group="Expanded" />
+    <Node Id="Test.ConsoleApp" Bounds="787.07164987863,591.303762416368,206.156666666667,25.24" Label="HeBianGu.Test.WCF.ConsoleApp" />
+    <Node Id="单元测试" Bounds="767.071556291391,551.303625827814,283.173333333333,250.96" Group="Expanded" UseManualLocation="True" />
+    <Node Id="单元测试:UnitTestProject" Bounds="787.07162627837,646.543813685899,207.65,25.24" Label="HeBianGu.Test.WCF.UnitTestApp" />
+    <Node Id="安装和卸载Window服务" Bounds="375.298333333333,56.9274999999998,151.576666666667,25.24" Label="安装和卸载Window服务" />
+    <Node Id="宿主" Category="Comment" Bounds="295.086666666667,56.9274999999998,50,25.24" />
+    <Node Id="服务层" Bounds="317.576633554084,740.084685430463,260.4,85.24" Group="Expanded" Label="WCF服务层" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="Cleanup.bat" Target="安装和卸载Window服务" Bounds="451.086669921875,25.2399997711182,0,22.6875019073486" />
+    <Link Source="Domain领域层" Target="HeBianGu.Domain.WCF.DataManager" Category="Contains" />
+    <Link Source="Domain领域层" Target="HeBianGu.Domain.WCF.ServiceManager" Category="Contains" />
+    <Link Source="Domain领域层" Target="ServiceModule" Bounds="201.229068153459,625.001580569709,104.975931846541,27.7211239130589" />
+    <Link Source="Domain领域层" Target="单元测试" Bounds="61.4127349853516,203.898590087891,181.077667236328,56.7165222167969" />
+    <Link Source="Domain领域层" Target="服务层" Bounds="448.648534732568,656.9825,1.25169524828084,74.1034690600604" />
+    <Link Source="HeBianGu.Domain.WCF.DataManager" Target="HeBianGu.Test.WCF.OracleConsoleApp" Bounds="229.612856140843,279.834967873502,181.665689777182,358.17422968024" />
+    <Link Source="HeBianGu.Domain.WCF.DataManager" Target="HeBianGu.WCF.Test.LocalConsoleApp" Bounds="92.8019829286244,266.430083761401,276.590498480302,141.149382727471" />
+    <Link Source="Host" Target="Domain领域层" Bounds="554.618960121929,230.573982706986,10.3126498149084,21.8603808141157" />
+    <Link Source="Host" Target="HeBianGu.Domain.WCF.ServiceManager" Bounds="423.658832229243,183.715616200765,0.27060997275214,126.075262685419" />
+    <Link Source="Host" Target="Oracle宿主" Category="Contains" />
+    <Link Source="Host" Target="Sqlite宿主" Category="Contains" />
+    <Link Source="Oracle宿主" Target="HeBianGu.WCF.HostApp.Oracle.Console" Category="Contains" />
+    <Link Source="Oracle宿主" Target="HeBianGu.WCF.HostApp.Oracle.WindowService" Category="Contains" Bounds="416.6131673872,158.001912602613,5.63061345315327,41.0835531152991" />
+    <Link Source="ServiceModule" Target="HeBianGu.Module.WCF.DataBase.Oracle" Category="Contains" />
+    <Link Source="ServiceModule" Target="HeBianGu.Module.WCF.SqliteDBDemoModule" Category="Contains" />
+    <Link Source="Setup.bat" Target="安装和卸载Window服务" Bounds="363.915435791016,25.2399997711182,54.3193664550781,27.6095142364502" />
+    <Link Source="Sqlite宿主" Target="HeBianGu.WCF.HostApp.Console" Category="Contains" />
+    <Link Source="Sqlite宿主" Target="HeBianGu.WCF.HostApp.WindowService" Category="Contains" />
+    <Link Source="单元测试" Target="HeBianGu.Test.WCF.OracleConsoleApp" Category="Contains" />
+    <Link Source="单元测试" Target="HeBianGu.WCF.Test.LocalConsoleApp" Category="Contains" />
+    <Link Source="单元测试" Target="Test.ConsoleApp" Category="Contains" />
+    <Link Source="单元测试" Target="单元测试:UnitTestProject" Category="Contains" />
+    <Link Source="安装和卸载Window服务" Target="Host" Bounds="451.086669921875,82.1675033569336,0,22.6875" />
+    <Link Source="宿主" Target="Host" Bounds="327.281219482422,82.1675033569336,13.607421875,23.8688125610352" />
+    <Link Source="服务层" Target="Domain领域层" Bounds="448.496535768628,665.981216370403,1.25169524828084,74.1034690600604" />
+    <Link Source="服务层" Target="HeBianGu.GeneralLayer.WCF.WebService" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="Category1" Label="类别 1" Background="#FFE51400" IsTag="True" />
+    <Category Id="Category2" Label="类别 2" Background="#FF339933" IsTag="True" />
+    <Category Id="Category3" Label="类别 3" Background="#FF3EBCED" IsTag="True" />
+    <Category Id="Category5" Label="类别 5" Background="#FF9B4F96" IsTag="True" />
+    <Category Id="Category9" Label="类别 9" Background="#FF00539C" IsTag="True" />
+    <Category Id="Comment" Label="注释" Description="表示在图表中用户定义的注释" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="注释" />
+    <Category Id="Contains" Label="包含" Description="链接的源是否包含目标对象" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="包含者" IsContainment="True" OutgoingActionLabel="包含" />
+  </Categories>
+  <Properties>
+    <Property Id="Background" Label="背景" Description="背景色" DataType="System.Windows.Media.Brush" />
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="Group" Label="组" Description="将节点显示为组" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="IsTag" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="类别 9" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Category9')" />
+      <Setter Property="Background" Value="#FF00539C" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="类别 3" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Category3')" />
+      <Setter Property="Background" Value="#FF3EBCED" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="类别 5" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Category5')" />
+      <Setter Property="Background" Value="#FF9B4F96" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="类别 2" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Category2')" />
+      <Setter Property="Background" Value="#FF339933" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="类别 1" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Category1')" />
+      <Setter Property="Background" Value="#FFE51400" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="注释" ValueLabel="包含注释">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+</DirectedGraph>

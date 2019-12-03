@@ -1,0 +1,8 @@
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.exe.config
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.exe
+F:\Chris\VS2015\WCF-WindowService-master\Product\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.pdb
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.WindowService\obj\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.csprojResolveAssemblyReference.cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.WindowService\obj\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.ProjectInstaller.resources
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.WindowService\obj\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.csproj.GenerateResource.Cache
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.WindowService\obj\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.exe
+F:\Chris\VS2015\WCF-WindowService-master\Source\Appliaction\HeBianGu.WCF.HostApp.Oracle.WindowService\obj\Debug\HeBianGu.WCF.HostApp.Oracle.WindowService.pdb
