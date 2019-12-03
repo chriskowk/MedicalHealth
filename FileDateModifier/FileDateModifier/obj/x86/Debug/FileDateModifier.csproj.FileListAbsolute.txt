@@ -33,3 +33,14 @@ F:\Chris\VS2015\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier
 D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe.config
 D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.exe
 D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.pdb
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.csprojResolveAssemblyReference.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\MainWindow.baml
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\MainWindow.g.cs
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\App.g.cs
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier_MarkupCompile.cache
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.g.resources
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.Properties.Resources.resources
+D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.csproj.GenerateResource.Cache
