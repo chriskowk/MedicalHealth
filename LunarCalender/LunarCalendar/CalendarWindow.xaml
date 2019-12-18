@@ -27,8 +27,7 @@
                     <UniformGrid Name="CalendarDisplayUniformGrid" 
                         Columns="7" Rows="6" 
                         HorizontalAlignment="Stretch"
-                                 
-                        IsItemsHost="True" Width="345" Height="255" VerticalAlignment="Stretch">
+                        IsItemsHost="True" Width="355" Height="255" VerticalAlignment="Stretch">
                     </UniformGrid>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
