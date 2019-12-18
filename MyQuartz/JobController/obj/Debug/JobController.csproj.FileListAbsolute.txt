@@ -410,3 +410,6 @@ D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobContr
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.Form1.resources
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.Properties.Resources.resources
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.GenerateResource.Cache
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\JobController.exe.config
+F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.exe
+F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.pdb

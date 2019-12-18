@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Chris\VS2015\LunarCalender\LunarCalendar\obj\Debug\
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\
 LunarCalendar
 none
 false
 DEBUG;TRACE
-F:\Chris\VS2015\LunarCalender\LunarCalendar\App.xaml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\App.xaml
 3719605882
 11439792830
 15-1584093948
 13782171655
 CalendarWindow.xaml;FancyToolTip.xaml;MonthDiarys.xaml;
 
-False
+True
 
