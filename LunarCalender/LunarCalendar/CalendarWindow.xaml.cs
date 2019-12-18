@@ -258,7 +258,7 @@ namespace LunarCalendar
                     FancyToolTip toolTip = new FancyToolTip();
                     toolTip.Title = diary.Title;
                     toolTip.InfoText = diary.Content;
-                    toolTip.Footer = string.Format("{0:yyyy-MM-dd hh:MM}", diary.RecordDate);
+                    toolTip.Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RecordDate);
                     tt.Content = toolTip;
                 }
 
