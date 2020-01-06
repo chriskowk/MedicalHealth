@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-E:\VSTS\VS2015\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\
+F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\
 OracleSqlProfiler
 none
 false
@@ -13,8 +13,8 @@ DEBUG;TRACE
 11648492074
 11088617577
 1122983581
-27-2133031792
+27656844047
 ProfilerWindow.xaml;
 
-True
+False
 

@@ -65,7 +65,7 @@
             </StackPanel>
         </Grid>
 
-        <TextBlock Grid.Row="10" Grid.ColumnSpan="5">shows only 100 lines order by elapsed_time desc,  see more to save data to table.</TextBlock>
+        <TextBlock Grid.Row="10" Grid.ColumnSpan="5">shows only 500 lines order by LAST_ACTIVE_TIME desc,  see more to save data to table...</TextBlock>
         <DataGrid Name="dg_SQLlines" ItemsSource="{Binding}" Grid.Row="12" Grid.ColumnSpan="5" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="_dgSQLlines_SelectionChanged">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
@@ -73,6 +73,7 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
+                <DataGridTextColumn Width="50" Header="ROW#" Binding="{Binding ROWNUM}" />
                 <DataGridTextColumn Width="70" Header="SCHEMA" Binding="{Binding SCHEMA}" />
                 <DataGridTextColumn Width="70" Header="MODULE" Binding="{Binding MODULE}" />
                 <DataGridTextColumn Width="*" MinWidth="120" Header="SQL TEXT" Binding="{Binding SQL_TEXT}" />
@@ -81,8 +82,10 @@
                 <DataGridTextColumn Width="80" Header="DISK READS" Binding="{Binding DISK_READS}" />
                 <DataGridTextColumn Width="90" Header="EXECUTIONS" Binding="{Binding EXECUTIONS}" />
                 <DataGridTextColumn Width="80" Header="CPU TIME" Binding="{Binding CPU_TIME}" />
-                <DataGridTextColumn Width="120" Header="CPU TIME PER EXE" Binding="{Binding CPU_TIME_PER_EXE}" />
-                <DataGridTextColumn Width="150" Header="ELAPSED TIME PER EXE" Binding="{Binding ELAPSED_TIME_PER_EXE}" />
+                <DataGridTextColumn Width="100" Header="CPU TIME PER" Binding="{Binding CPU_TIME_PER_EXE}" />
+                <DataGridTextColumn Width="80" Header="ELAPSED PER" Binding="{Binding ELAPSED_TIME_PER_EXE}" />
+                <DataGridTextColumn Width="125" Header="LAST LOAD TIME" Binding="{Binding LAST_LOAD_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
+                <DataGridTextColumn Width="125" Header="LAST ACTIVE TIME" Binding="{Binding LAST_ACTIVE_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="14" Grid.ColumnSpan="5" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" />
