@@ -1,4 +1,4 @@
-﻿OracleSqlProfiler1
+﻿OracleSqlProfiler
 
 
 winexe
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 22016554190
 11088617577
-13-1018859388
+91617645882
 27656844047
 App.xaml;ProfilerWindow.xaml;
 
-False
+True
 
