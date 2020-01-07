@@ -186,7 +186,7 @@
     <Resource Include="Images\1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\favicon.ico" />
+    <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\compare.png" />
