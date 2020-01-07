@@ -47,3 +47,6 @@ F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlP
 F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlProfiler.Form1.resources
 F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlProfiler.Properties.Resources.resources
 F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlProfiler.csproj.GenerateResource.Cache
+F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\App.baml
+F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\App.g.cs
+F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\bin\Debug\OracleSqlProfiler1.exe.config

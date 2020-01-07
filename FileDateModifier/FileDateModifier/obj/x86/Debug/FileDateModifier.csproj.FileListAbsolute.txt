@@ -44,3 +44,6 @@ D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86
 D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.g.resources
 D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.Properties.Resources.resources
 D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.csproj.GenerateResource.Cache
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe.config
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.exe
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.pdb
