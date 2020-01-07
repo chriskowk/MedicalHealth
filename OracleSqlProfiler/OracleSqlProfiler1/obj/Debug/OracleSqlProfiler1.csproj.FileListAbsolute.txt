@@ -1,1 +1,0 @@
-F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler1\bin\Debug\OracleSqlProfiler1.exe.config

@@ -23,3 +23,4 @@ F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlP
 F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlProfiler.exe
 F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlProfiler.pdb
 F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\bin\Debug\1.ico
+F:\GitHub\MedicalHealth\OracleSqlProfiler\OracleSqlProfiler\obj\Debug\OracleSqlProfiler.csprojResolveAssemblyReference.cache
