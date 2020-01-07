@@ -18,11 +18,25 @@ namespace CheckVersion
         //根据excle的路径把第一个sheel中的内容放入datatable
         public static DataTable ReadExcelToTable(string path)//excel存放的路径
         {
+            DataTable ret;
             // HDR=YES 有两个值:YES/NO,表示第一行是否字段名,默认是YES,第一行是字段名
             // IMEX=1 表示是否强制转换为文本,解决数字与字符混合时,识别不正常的情况.
             // PS:IMEX=0---输出模式;IMEX=1---输入模式;IMEX=2----链接模式(完全更新能力)
-            //string connstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties='Excel 8.0;HDR=NO;IMEX=1';"; // Office 7及以上版本 不能出现多余的空格 而且分号注意
-            string connstring = "Provider=Microsoft.JET.OLEDB.4.0;Data Source=" + path + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1';"; //Office 7以下版本 
+            string connstring1 = "Provider=Microsoft.JET.OLEDB.4.0;Data Source=" + path + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1';";  //Office 7以下版本 
+            string connstring2 = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + path + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1';"; // Office 7及以上版本 不能出现多余的空格 而且分号注意
+            try
+            {
+                ret = LoadExcelData(connstring1);
+            }
+            catch (Exception)
+            {
+                ret = LoadExcelData(connstring2);
+            }
+            return ret;
+        }
+
+        private static DataTable LoadExcelData(string connstring)
+        {
             using (OleDbConnection conn = new OleDbConnection(connstring))
             {
                 conn.Open();

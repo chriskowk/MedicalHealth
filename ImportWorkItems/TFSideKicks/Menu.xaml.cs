@@ -35,19 +35,28 @@ namespace TFSideKicks
                 return;
             }
 
-            // Create an instance of the window named
-            // by the current button.
-            Type type = this.GetType();
-            Assembly assembly = type.Assembly;
+            if (string.Equals(button.Tag.ToString(), "Desktop", StringComparison.OrdinalIgnoreCase))
+            {
+                Desktop desktop = new Desktop();
+                desktop.DevelopMode = true;
+                desktop.Show();
+            }
+            else
+            {
+                // Create an instance of the window named
+                // by the current button.
+                Type type = this.GetType();
+                Assembly assembly = type.Assembly;
 
-            Window win = (Window)assembly.CreateInstance(type.Namespace + "." + (string)button.Tag);
-            win.Loaded -= Win_Loaded;
-            win.Loaded += Win_Loaded;
-            win.Unloaded -= Win_Unloaded;
-            win.Unloaded += Win_Unloaded;
+                Window win = (Window)assembly.CreateInstance(type.Namespace + "." + (string)button.Tag);
+                win.Loaded -= Win_Loaded;
+                win.Loaded += Win_Loaded;
+                win.Unloaded -= Win_Unloaded;
+                win.Unloaded += Win_Unloaded;
 
-            // Show the window.
-            win.Show();
+                // Show the window.
+                win.Show();
+            }
         }
 
         private void Win_Loaded(object sender, RoutedEventArgs e)

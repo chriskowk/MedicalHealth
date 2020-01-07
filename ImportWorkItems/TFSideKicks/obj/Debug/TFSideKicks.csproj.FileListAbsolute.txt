@@ -564,3 +564,5 @@ F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ProfilerWindow.bam
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.g.resources
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.Properties.Resources.resources
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj.GenerateResource.Cache
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\SharpCompress.dll
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.Desktop.resources

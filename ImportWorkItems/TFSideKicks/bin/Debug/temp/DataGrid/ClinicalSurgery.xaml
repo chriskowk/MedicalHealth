@@ -1,0 +1,85 @@
+﻿<DataGrid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:js="http://schemas.jetsun.com.cn/his/2009/presentation" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:adtParameter="clr-namespace:JetSun.PatientAdministration;assembly=PatientAdministration"
+    >
+
+    <DataGrid.Columns>
+        <!--<DataGridTextColumn Header="切口" Binding="{Binding IncisionNo}" Width="40"  />-->
+        <!--<DataGridTemplateColumn Header="切口类型"
+                                   Width="60"
+                                   js:GridDecorator.EditorKind="EntityPicker"
+                                   js:GridDecorator.Binding="{Binding IncisionCode.Name}"
+                                                                                      
+                                >
+        </DataGridTemplateColumn>-->
+        <DataGridTextColumn Header="术次" Binding="{Binding SurgerySeqNo}" Width="40"  />
+        <!--<DataGridTemplateColumn Header="眼别"  Visibility="Collapsed"
+                                   Width="65"
+                                   js:GridDecorator.EditorKind="EntityPicker"
+                                   js:GridDecorator.Binding="{Binding EyeKind.Name}"                                                                                    
+                                >
+        </DataGridTemplateColumn>-->
+        <DataGridTemplateColumn Header="手术名称"
+                                   Width="240"
+                                   js:GridDecorator.EditorKind="EntityPicker"
+                                   js:GridDecorator.Binding="{Binding Substance.Name}"                                                                                
+                                >
+
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="手术级别"
+                                   Width="80" IsReadOnly="True"
+                                   js:GridDecorator.Binding="{Binding SurgeryLevelCode}"                                                                                
+                                >
+
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="手术描述"  js:GridDecorator.Binding="{Binding Note}"  MaxWidth="400" MinWidth="360">
+            <DataGridTemplateColumn.CellEditingTemplate >
+                <DataTemplate>
+                    <TextBox Text="{Binding Note,Mode=TwoWay}" BorderThickness="0" MaxLength="100"/>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellEditingTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Note}" Background="Transparent"/>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Width="140" js:GridDecorator.Binding="{Binding ApproachSiteDesc,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" js:GridDecorator.MaxLength="500">
+            <DataGridTemplateColumn.Header>
+                <TextBlock><Run Foreground="Red">*</Run> <Run>手术操作部位</Run></TextBlock>
+            </DataGridTemplateColumn.Header>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn
+                                   Width="80"
+                                   js:GridDecorator.EditorKind="EntityPicker"
+                                   js:GridDecorator.Binding="{Binding LeftRightPositionKind.Name}"                                                                                    
+                                >
+            <DataGridTemplateColumn.Header>
+                <TextBlock><Run Foreground="Red">*</Run> <Run>部位左右侧</Run></TextBlock>
+            </DataGridTemplateColumn.Header>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn 
+                                   Width="170"
+                                   js:GridDecorator.EditorKind="EntityPicker"
+                                   js:GridDecorator.Binding="{Binding IncisionKind.Name}"
+                                Visibility="{x:Static adtParameter:PatientAdministrationParameter.EyeKindEnabledCollapsed}"
+                                >
+            <DataGridTemplateColumn.Header>
+                <TextBlock><Run Foreground="Red">*</Run> <Run>手术切口类别</Run></TextBlock>
+            </DataGridTemplateColumn.Header>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn
+                                   Width="70"
+                                   js:GridDecorator.EditorKind="EntityPicker"
+                                   js:GridDecorator.Binding="{Binding Executor.Name}" >
+            <DataGridTemplateColumn.Header>
+                <TextBlock><Run Foreground="Red">*</Run> <Run>主刀</Run></TextBlock>
+            </DataGridTemplateColumn.Header>
+        </DataGridTemplateColumn>
+        <!--<DataGridTextColumn Header="金额"  js:GridDecorator.MemberPath="UnitPrice"  Binding="{Binding UnitPrice,StringFormat='0.00'}" Width="60"  IsReadOnly="True" />-->
+        <!--<DataGridTextColumn Header="总金额" js:GridDecorator.MemberPath="Amount" Binding="{Binding Amount,StringFormat='0.00'}" Width="60"  IsReadOnly="True" />-->
+    </DataGrid.Columns>
+</DataGrid>

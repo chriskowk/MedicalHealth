@@ -28,12 +28,12 @@ namespace TFSideKicks
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RegistryKey rk = RegistryHelper.GetRegistryKey(_tfsUrisKeyPath);
+            RegistryKey rk = RegistryHelper.GetRegistryKeyEx(_tfsUrisKeyPath);
             if (rk != null)
             {
                 foreach (string name in rk.GetValueNames())
                 {
-                    object obj = RegistryHelper.GetRegistryValue(_tfsUrisKeyPath, name);
+                    object obj = RegistryHelper.GetRegistryValueEx(_tfsUrisKeyPath, name);
                     _cboTfsUris.Items.Add(new TfsTeamProjectCollectionUri(name, obj == null ? string.Empty : obj.ToString()));
                 }
                 rk.Close();

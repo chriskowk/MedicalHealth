@@ -18,3 +18,13 @@ D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVers
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csproj.GenerateResource.Cache
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.exe
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.pdb
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\CheckVersion.exe.config
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\CheckVersion.exe
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\CheckVersion.pdb
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\bin\Debug\SharpCompress.dll
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Desktop.resources
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.Properties.Resources.resources
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.csproj.GenerateResource.Cache
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.exe
+F:\GitHub\MedicalHealth\MyQuartz\CheckVersion\obj\Debug\CheckVersion.pdb

@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>application.ico</ApplicationIcon>
+    <ApplicationIcon>Images\application.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetSkin">
@@ -82,10 +82,16 @@
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
     </Reference>
+    <Reference Include="SharpCompress">
+      <HintPath>Lib\SharpCompress.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -104,14 +110,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Component.cs" />
+    <Compile Include="Desktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desktop.Designer.cs">
+      <DependentUpon>Desktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyXls.cs" />
     <Compile Include="ProfilerWindow.xaml.cs">
       <DependentUpon>ProfilerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistryHelper.cs" />
-    <Compile Include="SqlDbHelper.cs" />
+    <Compile Include="Helpers\RegistryHelper.cs" />
+    <Compile Include="Runtimes.cs" />
+    <Compile Include="Helpers\SqlDbHelper.cs" />
+    <Compile Include="Helpers\Utility.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +163,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Desktop.resx">
+      <DependentUpon>Desktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -161,13 +180,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="application.ico" />
+    <Resource Include="Images\application.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="1.ico" />
+    <Resource Include="Images\1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
+    <Resource Include="Images\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\compare.png" />
+    <Resource Include="Images\compare32.ico" />
+    <Resource Include="Images\compare32.png" />
+    <Resource Include="Images\compfile.png" />
+    <Resource Include="Images\excel.png" />
+    <Resource Include="Images\exit.png" />
+    <Resource Include="Images\logo.ico" />
+    <Resource Include="Images\omit.png" />
+    <Resource Include="Images\rar.png" />
+    <Resource Include="Images\service.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
