@@ -44,7 +44,7 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" >Source</Label>
         <TextBox Name="tb_source" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="172.18.99.243:1521/orclbak" ToolTip="like xx.xx.xx.xx:1521/orcl" />
-        <TextBox Name="tb_log" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
+        <TextBox Name="tb_log" Foreground="DarkGray" IsReadOnly="True" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
         <Label Grid.Row="2" >User ID</Label>
         <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="apps"/>
         <Label Grid.Row="2" Grid.Column="2">Password</Label>
@@ -84,8 +84,8 @@
                 <DataGridTextColumn Width="80" Header="CPU TIME" Binding="{Binding CPU_TIME}" />
                 <DataGridTextColumn Width="100" Header="CPU TIME PER" Binding="{Binding CPU_TIME_PER_EXE}" />
                 <DataGridTextColumn Width="80" Header="ELAPSED PER" Binding="{Binding ELAPSED_TIME_PER_EXE}" />
-                <DataGridTextColumn Width="125" Header="LAST LOAD TIME" Binding="{Binding LAST_LOAD_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
-                <DataGridTextColumn Width="125" Header="LAST ACTIVE TIME" Binding="{Binding LAST_ACTIVE_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
+                <DataGridTextColumn MinWidth="125" Header="LAST LOAD TIME" Binding="{Binding LAST_LOAD_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
+                <DataGridTextColumn MinWidth="125" Header="LAST ACTIVE TIME" Binding="{Binding LAST_ACTIVE_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="14" Grid.ColumnSpan="5" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" />

@@ -180,10 +180,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\application.ico" />
+    <Resource Include="application.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1.ico" />
+    <Resource Include="1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon.ico" />

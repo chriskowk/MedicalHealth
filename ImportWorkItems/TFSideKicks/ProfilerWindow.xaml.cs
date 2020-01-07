@@ -74,8 +74,8 @@ namespace TFSideKicks
             this.dg_SQLlines.DataContext = null;
 
             this.tb_log.AppendText("-----------------------------------------------\r\n");
-            this.tb_log.AppendText("Getting ready...\r\n");
-            this.tb_log.AppendText("Clearing data...\r\n");
+            this.tb_log.AppendText("Getting ready ...\r\n");
+            this.tb_log.AppendText("Clearing data ...\r\n");
 
             string source = tb_source.Text;
             string userid = tb_user.Text;
@@ -83,11 +83,11 @@ namespace TFSideKicks
             await Task.Run(() => DropTables(source, userid, password));
             this.tb_log.AppendText("Clear data succeed.\r\n");
 
-            this.tb_log.AppendText("Creating data table...\r\n");
+            this.tb_log.AppendText("Creating data table ...\r\n");
             bool onlycurruser = this.cb_curruser.IsChecked.Value;
             await Task.Run(() => CreateTables(onlycurruser));
             this.tb_log.AppendText("Success!\r\n");
-            this.tb_log.AppendText("-----------------------------------------------\r\n\r\n");
+            this.tb_log.AppendText("-----------------------------------------------\r\n");
             this.button2.IsEnabled = true;
         }
 
@@ -124,7 +124,7 @@ namespace TFSideKicks
         {
             this.button1.IsEnabled = false;
             this.button2.IsEnabled = false;
-            this.tb_log.AppendText("Processing data...\r\n");
+            this.tb_log.AppendText("Processing data ...\r\n");
             string tablename = tb_oraname.Text.ToUpper();
             string module = tb_module.Text.ToUpper();
             string sql = "";
@@ -138,7 +138,7 @@ namespace TFSideKicks
             if (ds_result != null)
                 this.dg_SQLlines.DataContext = ds_result.Tables[0];
 
-            this.tb_log.AppendText("Success!\r\n");
+            this.tb_log.AppendText("Success!");
             this.button1.IsEnabled = true;
         }
 
@@ -168,15 +168,15 @@ namespace TFSideKicks
             sqlbase = sqlbase.Replace("<CRITERIA>", criteria);
             if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
             {
-                this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Checking table:" + tablename + "...\r\n")));
+                this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Checking table:" + tablename + " ...\r\n")));
                 string sql1 = "SELECT table_name FROM user_tables WHERE table_name='" + tablename + "'";
                 DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
                 if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
                 {
-                    this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + "...\r\n")));
+                    this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + " ...\r\n")));
                     Context.DB.ExecSqlStatement("DROP TABLE " + tablename + " PURGE");
                 }
-                this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Creating table:" + tablename + "...\r\n")));
+                this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Creating table:" + tablename + " ...\r\n")));
                 string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
                 Context.DB.ExecSqlStatement(createTable);
             }
