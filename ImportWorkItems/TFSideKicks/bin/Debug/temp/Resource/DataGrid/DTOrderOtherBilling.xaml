@@ -1,0 +1,78 @@
+﻿<DataGrid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:js="http://schemas.jetsun.com.cn/his/2009/presentation"
+    xmlns:op="clr-namespace:JetSun.OPClinicalManagement.Layout;assembly=OPClinicalManagement.Layout"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"    >
+    <DataGrid.Resources >
+        <op:DTModelGroupNoConverter x:Key="DTModelGroupNoConverter"/>
+        <op:DTModelOrderDoseConverter x:Key="DTModelOrderDoseConverter" />
+        <op:DTModelOrderNoteMaxLengthConverter x:Key="DTModelOrderNoteMaxLengthConverter"/>
+        <sys:String x:Key="SubOrdinalCellHiddenExpr">
+            <![CDATA[ !IsParent ]]>
+        </sys:String>        
+        <sys:String x:Key="NameCellLockedExpr">
+            <![CDATA[false]]>
+        </sys:String>
+        <sys:String x:Key="IsObservationStiteHiddenExpr">
+            <![CDATA[  IsDeleted ]]>
+        </sys:String>
+        <sys:String x:Key="IsObservationStiteLockedExpr">
+            <![CDATA[ IsDeleted ]]>
+        </sys:String>
+        <sys:String x:Key="CellHiddenExpr">
+            <![CDATA[false]]>
+        </sys:String>
+        <sys:String x:Key="CanSplitExpr">
+            <![CDATA[false]]>
+        </sys:String>
+        <sys:String x:Key="IsEyeKindLockedExpr">
+            <![CDATA[ IsDeleted ||!IsParent ]]>
+        </sys:String>
+        <sys:String x:Key="IsEyeKindHiddenExpr">
+            <![CDATA[!IsParent ]]>
+        </sys:String>
+        <Style x:Key="AlignmentRightStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+       
+    </DataGrid.Resources>
+    <DataGrid.RowStyle>
+        <Style TargetType="{x:Type DataGridRow}" js:MarkupHelper.BaseOnKey="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=IsDeleted}" Value="True">
+                    <Setter Property="Background" Value="{x:Static js:Markup.DeletedEntityBackground}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Substance.IsDeleted}" Value="True">
+                    <Setter Property="Background" Value="DarkGray" />
+                    <Setter Property="Foreground" Value="Red" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Substance.IPCanUsing}" Value="false">
+                    <Setter Property="Foreground" Value="Red" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=HasCharged}" Value="True">
+                    <Setter Property="Foreground" Value="Red" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </DataGrid.RowStyle>    
+    <DataGrid.Columns>       
+        <DataGridTemplateColumn Header="项目" Width="150" ClipboardContentBinding="{Binding Substance.Name}"
+        js:GridDecorator.EditorKind="EntityPicker"
+        js:GridDecorator.Binding="{Binding Substance.Name}"
+        js:GridDecorator.CellLockedCondition="{StaticResource NameCellLockedExpr}">
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="单位" CanUserSort="False" Width="40"                            
+                                js:GridDecorator.CellLockedCondition="true"
+                           js:GridDecorator.Binding="{Binding Substance.Uom.Name}"  MinWidth="50"/>
+        <DataGridTextColumn Header="数量" Width="40"
+            Binding="{Binding Dose, StringFormat=0.##,UpdateSourceTrigger=LostFocus, Converter={StaticResource DTModelOrderDoseConverter}}"
+            js:GridDecorator.CellLockedCondition="{StaticResource NameCellLockedExpr}">
+        </DataGridTextColumn>
+        <DataGridTemplateColumn Header="执行科室" Width="80"  ClipboardContentBinding="{Binding ExecuteOrganization.Name}" 
+                js:GridDecorator.EditorKind="EntityPicker" 
+                js:GridDecorator.Binding="{Binding ExecuteOrganization.Name}"                                 
+                js:GridDecorator.CellHiddenCondition="{StaticResource CellHiddenExpr}">
+        </DataGridTemplateColumn>                      
+    </DataGrid.Columns>
+</DataGrid>

@@ -90,8 +90,8 @@ namespace TFSideKicks
             {
                 if (int.TryParse(txtVersionID.Text, out versionId))
                 {
-                    LoadDBScripts(GetDBScriptDataTable(versionId));
-                    return LoadComponents(GetComponentDataTable(versionId));
+                    LoadDBScripts(GetDBScriptDataTable(versionId), true);
+                    return LoadComponents(GetComponentDataTable(versionId), true);
                 }
                 else
                     MessageBox.Show("请输入正确的版本号！", "版本比较", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -123,40 +123,58 @@ namespace TFSideKicks
             return ds.Tables[0];
         }
 
-        private bool LoadComponents(DataTable dt)
+        private bool LoadComponents(DataTable dt, bool isFromDB = false)
         {
-            _components.Clear();
-            foreach (DataRowView row in dt.DefaultView)
+            try
             {
-                string path = row["SourcePath"].ToString();
-                string extension = Path.GetExtension(path);
-                if (extension.Equals(".dll", StringComparison.OrdinalIgnoreCase) || extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                _components.Clear();
+                foreach (DataRowView row in dt.DefaultView)
                 {
-                    int id = int.Parse(row["ComponentID"].ToString());
-                    string filename = Path.GetFileName(path);
-                    int filesize = int.Parse(row["FileSize"].ToString());
-                    DateTime compiledatetime = DateTime.Parse(row["CompileDateTime"].ToString());
-                    _components.Add(new Component() { ComponentID = id, FileName = filename, FileSize = filesize, CompileDateTime = compiledatetime });
+                    string path = row["SourcePath"].ToString();
+                    string extension = Path.GetExtension(path);
+                    if (extension.Equals(".dll", StringComparison.OrdinalIgnoreCase) || extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                    {
+                        int id = int.Parse(row["ComponentID"].ToString());
+                        string filename = Path.GetFileName(path);
+                        int filesize = int.Parse(row["FileSize"].ToString());
+                        DateTime compiledatetime = DateTime.Parse(row["CompileDateTime"].ToString());
+                        _components.Add(new Component() { ComponentID = id, FileName = filename, FileSize = filesize, CompileDateTime = compiledatetime });
+                    }
                 }
+                return true;
             }
-            return true;
+            catch (Exception ex)
+            {
+                string sourcetips = isFromDB ? "访问平台数据库失败！" : string.Format("读取{0}文件Sheet1数据失败！\r\n调整工作表标题行的高度保存后再试！", DBSCRIPT_FILENAME);
+                MessageBox.Show(string.Format("{0}\r\n{1}", sourcetips, ex.Message), "LoadDBScripts", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
-        private bool LoadDBScripts(DataTable dt)
+        private bool LoadDBScripts(DataTable dt, bool isFromDB = false)
         {
-            _dbscripts.Clear();
-            foreach (DataRowView row in dt.DefaultView)
+            try
             {
-                int id = int.Parse(row["DBScriptID"].ToString());
-                DateTime lastedmodifiedon = DateTime.Parse(row["LastedModifyDateTime"].ToString());
-                _dbscripts.Add(new DBScript() { DBScriptID = id, CreateEmployeeName = row["FullName"].ToString(), Description = row["Description"].ToString(), Note = row["Note"].ToString(), BranchVersion = row["BranchVersion"].ToString(), LastedModifyDateTime = lastedmodifiedon });
+                _dbscripts.Clear();
+                foreach (DataRowView row in dt.DefaultView)
+                {
+                    int id = int.Parse(row["DBScriptID"].ToString());
+                    DateTime lastedmodifiedon = DateTime.Parse(row["LastedModifyDateTime"].ToString());
+                    _dbscripts.Add(new DBScript() { DBScriptID = id, CreateEmployeeName = row["FullName"].ToString(), Description = row["Description"].ToString(), Note = row["Note"].ToString(), BranchVersion = row["BranchVersion"].ToString(), LastedModifyDateTime = lastedmodifiedon });
+                }
+                lvwDBScript.Items.Clear();
+                foreach (var item in _dbscripts.OrderBy(a => a.DBScriptID))
+                {
+                    lvwDBScript.Items.Add(new ListViewItem(new string[] { item.DBScriptID.ToString(), item.CreateEmployeeName, item.Description, item.Note, item.BranchVersion, item.LastedModifyDateTime.ToString("yyyy-MM-dd HH:mm:ss") }));
+                }
+                return true;
             }
-            lvwDBScript.Items.Clear();
-            foreach (var item in _dbscripts.OrderBy(a => a.DBScriptID))
+            catch (Exception ex)
             {
-                lvwDBScript.Items.Add(new ListViewItem(new string[] { item.DBScriptID.ToString(), item.CreateEmployeeName, item.Description, item.Note, item.BranchVersion, item.LastedModifyDateTime.ToString("yyyy-MM-dd HH:mm:ss") }));
+                string sourcetips = isFromDB ? "访问平台数据库失败！" : string.Format("读取{0}文件Sheet1数据失败！\r\n调整工作表标题行的高度保存后再试！", COMPONENT_FILENAME);
+                MessageBox.Show(string.Format("{0}\r\n{1}", sourcetips, ex.Message), "LoadDBScripts", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            return true;
         }
 
         private void CheckFileVersion()
@@ -326,6 +344,7 @@ namespace TFSideKicks
             {
                 int pos = item.FullName.LastIndexOf(TEMP_PATH, StringComparison.OrdinalIgnoreCase);
                 string sourcefile = item.FullName.Substring(pos + TEMP_PATH.Length);
+                sourcefile = sourcefile.Replace("\\Resource\\", "\\Resources\\");
                 FileInfo fi = fileInfos.FirstOrDefault(a => a.FullName.EndsWith(sourcefile, StringComparison.OrdinalIgnoreCase));
                 if (fi == null)
                 {
