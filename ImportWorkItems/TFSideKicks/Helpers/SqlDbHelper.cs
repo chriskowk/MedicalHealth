@@ -696,7 +696,7 @@ namespace TFSideKicks
         private static GSPDbConfigData _configData = null;
         private static GSPDbConfigData GetConfigData(string source, string userid, string password)
         {
-            if (_configData == null)
+            if (_configData == null || _configData.Source != source || _configData.UserId != userid || _configData.Password != password)
             {
                 _configData = new GSPDbConfigData();
                 _configData.DbType = GSPDbType.Oracle;
