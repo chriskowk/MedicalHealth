@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace TFSideKicks
 {
-    public partial class Desktop : Form
+    public partial class CompareVersion : Form
     {
         private const string COMPONENT_FILENAME = "component.xls";
         private const string RESOURCE_FILENAME = "resource.rar";
@@ -28,7 +28,7 @@ namespace TFSideKicks
         IList<DBScript> _dbscripts = new List<DBScript>();
         IList<string> _resources = new List<string>();
         public bool DevelopMode = false;
-        public Desktop()
+        public CompareVersion()
         {
             InitializeComponent();
             txtExecutePath.Text = RegistryHelper.GetExecutablePath();

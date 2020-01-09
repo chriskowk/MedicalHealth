@@ -22,14 +22,14 @@ using System.Windows.Threading;
 namespace TFSideKicks
 {
     /// <summary>
-    /// ProfilerWindow.xaml 的交互逻辑
+    /// OracleProfiler.xaml 的交互逻辑
     /// </summary>
-    public partial class ProfilerWindow : Window
+    public partial class OracleProfiler : Window
     {
         private string Sysdate;
         private bool IsCurrUser;
         private bool IsSaveOracle;
-        public ProfilerWindow()
+        public OracleProfiler()
         {
             InitializeComponent();
 

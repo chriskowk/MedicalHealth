@@ -111,24 +111,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Component.cs" />
-    <Compile Include="Desktop.cs">
+    <Compile Include="CompareVersion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Desktop.Designer.cs">
-      <DependentUpon>Desktop.cs</DependentUpon>
+    <Compile Include="CompareVersion.Designer.cs">
+      <DependentUpon>CompareVersion.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyXls.cs" />
-    <Compile Include="ProfilerWindow.xaml.cs">
-      <DependentUpon>ProfilerWindow.xaml</DependentUpon>
+    <Compile Include="Helpers\MyXls.cs" />
+    <Compile Include="OracleProfiler.xaml.cs">
+      <DependentUpon>OracleProfiler.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\RegistryHelper.cs" />
     <Compile Include="Runtimes.cs" />
     <Compile Include="Helpers\SqlDbHelper.cs" />
     <Compile Include="Helpers\Utility.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="ImportWorkItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -136,15 +136,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="ImportWorkItem.xaml.cs">
+      <DependentUpon>ImportWorkItem.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProfilerWindow.xaml">
+    <Page Include="OracleProfiler.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -163,8 +163,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Desktop.resx">
-      <DependentUpon>Desktop.cs</DependentUpon>
+    <EmbeddedResource Include="CompareVersion.resx">
+      <DependentUpon>CompareVersion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

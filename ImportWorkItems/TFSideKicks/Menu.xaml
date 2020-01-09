@@ -20,9 +20,9 @@
         <StackPanel Margin="5" Button.Click="Button_Click">
             <GroupBox Header="">
                 <StackPanel>
-                    <Button Content="Import WorkItems to TFS" Tag="MainWindow"></Button>
-                    <Button Content="Oracle SqlProfiler" Tag="ProfilerWindow"></Button>
-                    <Button Content="Check Version" Tag="Desktop"></Button>
+                    <Button Content="Import WorkItems to TFS" Tag="ImportWorkItem"></Button>
+                    <Button Content="Oracle SqlProfiler" Tag="OracleProfiler"></Button>
+                    <Button Content="Check Version" Tag="CompareVersion"></Button>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="">

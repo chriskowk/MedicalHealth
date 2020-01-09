@@ -35,9 +35,9 @@ namespace TFSideKicks
                 return;
             }
 
-            if (string.Equals(button.Tag.ToString(), "Desktop", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(button.Tag.ToString(), "CompareVersion", StringComparison.OrdinalIgnoreCase))
             {
-                Desktop desktop = new Desktop();
+                CompareVersion desktop = new CompareVersion();
                 desktop.DevelopMode = true;
                 desktop.Show();
             }
