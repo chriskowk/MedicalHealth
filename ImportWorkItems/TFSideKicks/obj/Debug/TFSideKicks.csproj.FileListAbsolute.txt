@@ -566,3 +566,6 @@ F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ImportWorkItem.g.c
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\OracleProfiler.g.cs
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ImportWorkItem.baml
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\OracleProfiler.baml
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Xceed.Wpf.Toolkit.dll
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\FileDateModifier.baml
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\FileDateModifier.g.cs

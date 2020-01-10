@@ -104,6 +104,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>Lib\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -117,6 +120,9 @@
     <Compile Include="CompareVersion.Designer.cs">
       <DependentUpon>CompareVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileDateModifier.xaml.cs">
+      <DependentUpon>FileDateModifier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -128,6 +134,12 @@
     <Compile Include="Runtimes.cs" />
     <Compile Include="Helpers\SqlDbHelper.cs" />
     <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="ViewModel\FileDateModifierViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Page Include="FileDateModifier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ImportWorkItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -199,6 +211,9 @@
     <Resource Include="Images\omit.png" />
     <Resource Include="Images\rar.png" />
     <Resource Include="Images\service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="schedule.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

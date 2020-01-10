@@ -8,15 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/compare.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/compare32.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/compare32.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/compfile.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/excel.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/exit.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/logo.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/omit.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/rar.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/service.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("schedule.ico")]
 
 

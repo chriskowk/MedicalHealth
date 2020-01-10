@@ -1,0 +1,54 @@
+﻿<Window x:Class="TFSideKicks.FileDateModifier"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Date Modifier" WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        Background="Azure"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Icon="schedule.ico" Activated="Window_Activated">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1">
+            <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="Auto" Margin="6,0" Width="405" Height="Auto">
+                <TextBox HorizontalAlignment="Left" Text="{Binding SelectedPath, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="auto" MinWidth="405" Name="_txtSelectedPath" />
+            </ScrollViewer>
+            <Button Content="Browse..." Height="25" VerticalAlignment="Top"  Width="75" Command="{Binding BrowseCommand}" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="66,3,65,0" Grid.Row="4">
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Height="50" Margin="5">
+                <Label Width="75" Content="Created:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <xctk:DateTimePicker Width="250" Value="{Binding CreatedDateTime}" IsEnabled="{Binding ElementName=createdCheckBox, Path=IsChecked}" CultureInfo="{Binding CultureInfo}" />
+                <CheckBox Name="createdCheckBox"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="15" Margin="10" IsChecked="{Binding CreatedChecked}"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Height="50" Margin="5">
+                <Label Width="75" Content="Modified:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <xctk:DateTimePicker Width="250" Value="{Binding ModifiedDateTime}" IsEnabled="{Binding ElementName=modifiedCheckBox, Path=IsChecked}" CultureInfo="{Binding CultureInfo}" />
+                <CheckBox Name="modifiedCheckBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="15" Margin="10" IsChecked="{Binding ModifiedChecked}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Height="50" Margin="5">
+                <Label Width="75" Content="Accessed:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <xctk:DateTimePicker Width="250" Value="{Binding AccessedDateTime}" IsEnabled="{Binding ElementName=accessedCheckBox, Path=IsChecked}" CultureInfo="{Binding CultureInfo}" />
+                <CheckBox Name="accessedCheckBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="15" Margin="10" IsChecked="{Binding AccessedChecked}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="4" Height="50" Margin="5">
+                <Button Content="UPDATE" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Margin="5,5,10,5" Command="{Binding UpdateDateCommand}"/>
+                <Button Content="CLOSE" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Margin="10,5,5,5" Name="_btnClose" Click="_btnClose_Click" />
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Text="Select Path:" Height="29" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBox1" VerticalAlignment="Top" Width="142" FontWeight="SemiBold" FontSize="15" Grid.Row="0"/>
+        <TextBlock FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="142" Grid.Row="3" />
+        <RadioButton Content="File" GroupName="pathType" Height="16" HorizontalAlignment="Left" IsChecked="{Binding FilePathSelected}" Margin="75,6,0,0" Name="radioButton1" VerticalAlignment="Top" Grid.Row="2" />
+        <RadioButton Content="Directory" GroupName="pathType" Height="16" HorizontalAlignment="Left" IsChecked="{Binding DirPathSelected}" Margin="123,6,0,0" Name="radioButton2" VerticalAlignment="Top" Width="82" Grid.Row="2" />
+        <Label Content="Path Type:" Height="28" HorizontalAlignment="Left" Margin="4,0,0,0" Name="label1" VerticalAlignment="Top" Grid.Row="2" />
+        <Rectangle Grid.Row="4" Height="254" Margin="12,0,11,0" Name="rectangle1" Stroke="Black" />
+    </Grid>
+</Window>

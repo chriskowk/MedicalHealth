@@ -49,6 +49,7 @@ namespace TFSideKicks
         private void Window_Activated(object sender, EventArgs e)
         {
             if (_cboTfsUris.Items.Count > 0) { _cboTfsUris.SelectedIndex = 0; }
+            _txtWorkItemIDs.Focus();
         }
 
         private void RefreshProjectComboItems(TfsTeamProjectCollectionUri item)

@@ -22,7 +22,8 @@
                 <StackPanel>
                     <Button Content="Import WorkItems to TFS" Tag="ImportWorkItem"></Button>
                     <Button Content="Oracle SqlProfiler" Tag="OracleProfiler"></Button>
-                    <Button Content="Check Version" Tag="CompareVersion"></Button>
+                    <Button Content="Version Comparer" Tag="CompareVersion"></Button>
+                    <Button Content="Files Date Modifier" Tag="FileDateModifier"></Button>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="">
