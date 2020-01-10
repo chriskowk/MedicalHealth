@@ -37,9 +37,14 @@ namespace TFSideKicks
 
             if (string.Equals(button.Tag.ToString(), "CompareVersion", StringComparison.OrdinalIgnoreCase))
             {
-                CompareVersion desktop = new CompareVersion();
-                desktop.DevelopMode = true;
-                desktop.Show();
+                CompareVersion form = new CompareVersion();
+                form.DevelopMode = true;
+                form.Activated -= Win_Activated;
+                form.Activated += Win_Activated;
+                form.FormClosed += Win_FormClosed;
+                form.FormClosed += Win_FormClosed;
+
+                form.Show();
             }
             else
             {
@@ -49,8 +54,8 @@ namespace TFSideKicks
                 Assembly assembly = type.Assembly;
 
                 Window win = (Window)assembly.CreateInstance(type.Namespace + "." + (string)button.Tag);
-                win.Loaded -= Win_Loaded;
-                win.Loaded += Win_Loaded;
+                win.Activated -= Win_Activated;
+                win.Activated += Win_Activated;
                 win.Unloaded -= Win_Unloaded;
                 win.Unloaded += Win_Unloaded;
 
@@ -59,12 +64,17 @@ namespace TFSideKicks
             }
         }
 
-        private void Win_Loaded(object sender, RoutedEventArgs e)
+        private void Win_Activated(object sender, EventArgs e)
         {
             this.Hide();
         }
 
         private void Win_Unloaded(object sender, RoutedEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void Win_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             this.Show();
         }
