@@ -25,7 +25,12 @@ namespace FileDateModifier
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel() { CreatedChecked = true, AccessedChecked = true, ModifiedChecked = true };          
+            this.DataContext = new MainViewModel() { CreatedChecked = true, AccessedChecked = true, ModifiedChecked = true };
+        }
+
+        private void _btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

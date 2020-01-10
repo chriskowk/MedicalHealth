@@ -47,3 +47,13 @@ D:\CHRIS的文档\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86
 F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe.config
 F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.exe
 F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.pdb
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.exe
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\FileDateModifier.pdb
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\bin\Debug\Xceed.Wpf.Toolkit.dll
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\MainWindow.baml
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\MainWindow.g.cs
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\App.g.cs
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier_MarkupCompile.cache
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.g.resources
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.Properties.Resources.resources
+F:\GitHub\MedicalHealth\FileDateModifier\FileDateModifier\obj\x86\Debug\FileDateModifier.csproj.GenerateResource.Cache

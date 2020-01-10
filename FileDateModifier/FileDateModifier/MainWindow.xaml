@@ -39,7 +39,10 @@
                 <xctk:DateTimePicker Width="250" Value="{Binding AccessedDateTime}" IsEnabled="{Binding ElementName=accessedCheckBox, Path=IsChecked}" CultureInfo="{Binding CultureInfo}" />
                 <CheckBox Name="accessedCheckBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="15" Margin="10" IsChecked="{Binding AccessedChecked}" />
             </StackPanel>
-            <Button Content="UPDATE" Grid.Row="4" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Width="189" Margin="10" Command="{Binding UpdateDateCommand}"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="4" Height="50" Margin="5">
+                <Button Content="UPDATE" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Margin="5,5,10,5" Command="{Binding UpdateDateCommand}"/>
+                <Button Content="CLOSE" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Margin="10,5,5,5" Name="_btnClose" Click="_btnClose_Click" />
+            </StackPanel>
         </StackPanel>
         <TextBlock Text="Select Path:" Height="29" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBox1" VerticalAlignment="Top" Width="142" FontWeight="SemiBold" FontSize="15" Grid.Row="0"/>
         <TextBlock FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="142" Grid.Row="3" />
