@@ -6470,11 +6470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BaiduNetdiskDownload\\.NET Core微服务专题[第二轮][2020年1月13日]\\Ruanmou.MicroService02\\MyServiceA\\MyServiceA.csproj",
+      "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\MyServiceA\\MyServiceA.csproj",
       "projectName": "MyServiceA",
-      "projectPath": "D:\\BaiduNetdiskDownload\\.NET Core微服务专题[第二轮][2020年1月13日]\\Ruanmou.MicroService02\\MyServiceA\\MyServiceA.csproj",
+      "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\MyServiceA\\MyServiceA.csproj",
       "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-      "outputPath": "D:\\BaiduNetdiskDownload\\.NET Core微服务专题[第二轮][2020年1月13日]\\Ruanmou.MicroService02\\MyServiceA\\obj\\",
+      "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\MyServiceA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6490,8 +6490,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\BaiduNetdiskDownload\\.NET Core微服务专题[第二轮][2020年1月13日]\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {
-              "projectPath": "D:\\BaiduNetdiskDownload\\.NET Core微服务专题[第二轮][2020年1月13日]\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj"
+            "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {
+              "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj"
             }
           }
         }

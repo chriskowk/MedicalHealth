@@ -1,4 +1,5 @@
-﻿-------启动CMD窗口---------
+﻿Consul下载地址：https://www.consul.io/downloads.html （Win64位版本）
+-------启动CMD窗口---------
 启动Consul（开发模式）：
 D:\(consul.exe所在路径)> consul agent -del
 注册两个MyServiceA服务：
