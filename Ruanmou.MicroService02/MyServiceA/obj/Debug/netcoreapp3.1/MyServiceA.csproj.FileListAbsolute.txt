@@ -1,0 +1,104 @@
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.exe
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.deps.json
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.json
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.dev.json
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csprojAssemblyReference.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.Manifest.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.xml
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfoInputs.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfo.cs
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.RazorTargetAssemblyInfo.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\Consul.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csproj.CopyComplete
+C:\Users\buker\source\repos\Ruanmou.MicroService\MyServiceA\bin\Debug\netcoreapp3.1\service.config.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.exe
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\service.config.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.deps.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.dev.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Consul.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csprojAssemblyReference.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.Manifest.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.xml
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfoInputs.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfo.cs
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.RazorTargetAssemblyInfo.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csproj.CopyComplete
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.pdb
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.exe
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\service.config.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.deps.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.dev.json
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.pdb
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Consul.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csprojAssemblyReference.cache
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.Manifest.cache
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.xml
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfoInputs.cache
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfo.cs
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.RazorTargetAssemblyInfo.cache
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csproj.CopyComplete
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.dll
+D:\Projects\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\appsettings.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.exe
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\service.config.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.deps.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.runtimeconfig.dev.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\MyServiceA.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Consul.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csprojAssemblyReference.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.Manifest.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\staticwebassets\MyServiceA.StaticWebAssets.xml
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.MvcApplicationPartsAssemblyInfo.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfoInputs.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.AssemblyInfo.cs
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.RazorTargetAssemblyInfo.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.csproj.CopyComplete
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\MyServiceA\obj\Debug\netcoreapp3.1\MyServiceA.pdb
