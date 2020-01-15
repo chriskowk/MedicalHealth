@@ -1,0 +1,8 @@
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\bin\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.deps.json
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\bin\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\bin\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\obj\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.csprojAssemblyReference.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\obj\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.AssemblyInfoInputs.cache
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\obj\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.AssemblyInfo.cs
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\obj\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
+C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ServiceDiscovery\obj\Release\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb

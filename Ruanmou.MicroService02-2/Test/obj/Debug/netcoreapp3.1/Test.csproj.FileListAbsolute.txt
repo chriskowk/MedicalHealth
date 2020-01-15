@@ -1,0 +1,36 @@
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.exe
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.deps.json
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.json
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.dev.json
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.dll
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.pdb
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Consul.dll
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
+D:\Projects\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
+D:\Projects\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.csprojAssemblyReference.cache
+D:\Projects\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfoInputs.cache
+D:\Projects\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfo.cs
+D:\Projects\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.csproj.CopyComplete
+D:\Projects\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.dll
+D:\Projects\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.exe
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.deps.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.dev.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Test.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Consul.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.csprojAssemblyReference.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfoInputs.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfo.cs
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.csproj.CopyComplete
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Test\obj\Debug\netcoreapp3.1\Test.pdb
