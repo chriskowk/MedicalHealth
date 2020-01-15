@@ -1,0 +1,11 @@
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\IntegrationEventLogEF.deps.json
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\IntegrationEventLogEF.dll
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\IntegrationEventLogEF.pdb
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\EventBus.dll
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\EventBus.pdb
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.AssemblyInfoInputs.cache
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.AssemblyInfo.cs
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.csproj.CopyComplete
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.dll
+F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.pdb
