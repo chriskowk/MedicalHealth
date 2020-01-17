@@ -8,8 +8,8 @@ namespace Ruanmou.ServiceDiscovery
     {
         public static IServiceBuilder CreateServiceBuilder(this IServiceProvider serviceProvider, Action<IServiceBuilder> config)
         {
-
-            ServiceBuilder builder = new ServiceBuilder(serviceProvider);
+            
+            var builder = new ServiceBuilder(serviceProvider);
             config(builder);
             return builder;
         } 

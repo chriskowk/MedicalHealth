@@ -19,6 +19,7 @@
     },
     "MyServiceA": {
       "commandName": "Project",
+      "commandLineArgs": "--address \"http://127.0.0.1:8080\"",
       "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

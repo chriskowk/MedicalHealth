@@ -33,6 +33,8 @@ namespace Ruanmou.ConsulServiceRegistration
             // 获取服务配置项
             var serviceOptions = app.ApplicationServices.GetRequiredService<IOptions<ConsulServiceOptions>>().Value;
 
+            var config =  app.ApplicationServices.GetRequiredService<IConfiguration>();
+
             // 服务ID必须保证唯一
             serviceOptions.ServiceId = Guid.NewGuid().ToString();
 
@@ -42,11 +44,16 @@ namespace Ruanmou.ConsulServiceRegistration
                 configuration.Address = new Uri(serviceOptions.ConsulAddress);
             });
 
-            // 获取当前服务地址和端口
-            var features = app.Properties["server.Features"] as FeatureCollection;
-            var address = features?.Get<IServerAddressesFeature>().Addresses.First();
+            // 使用参数配置服务注册地址
+            var address = config["address"];
+            if (string.IsNullOrEmpty(address))
+            {
+                // 获取当前服务地址和端口
+                var features = app.Properties["server.Features"] as FeatureCollection;
+                address = features?.Get<IServerAddressesFeature>().Addresses.First();
+            }
             var uri = new Uri(address);
-        
+
             // 节点服务注册对象
             var registration = new AgentServiceRegistration()
             {

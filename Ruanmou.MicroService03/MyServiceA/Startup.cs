@@ -39,7 +39,9 @@ namespace MyServiceA
             {
                 app.UseDeveloperExceptionPage();
             }
-            // 配置健康检测地址，.NET Core 内置的健康检测地址中间件
+
+            ServiceLocator.ApplicationBuilder = app;
+
             app.UseHealthChecks(serviceOptions.Value.HealthCheck);
             app.UseConsul();
 
@@ -51,7 +53,6 @@ namespace MyServiceA
             {
                 endpoints.MapControllers();
             });
-            
         }
     }
 }

@@ -13,19 +13,27 @@ C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Deb
 C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
 C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
 C:\Users\buker\source\repos\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
-D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+C:\Users\buker\source\repos\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb

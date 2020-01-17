@@ -17,41 +17,22 @@ C:\Users\buker\source\repos\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\net
 C:\Users\buker\source\repos\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.dll
 C:\Users\buker\source\repos\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.pdb
 C:\Users\buker\source\repos\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Polly.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.exe
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.deps.json
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.runtimeconfig.json
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.runtimeconfig.dev.json
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.pdb
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Consul.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Polly.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.csprojAssemblyReference.cache
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.AssemblyInfoInputs.cache
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.AssemblyInfo.cs
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.csproj.CopyComplete
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.dll
-D:\Projects\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.exe
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.deps.json
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.runtimeconfig.json
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.runtimeconfig.dev.json
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Consul.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Polly.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.csprojAssemblyReference.cache
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.AssemblyInfoInputs.cache
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.AssemblyInfo.cs
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.csproj.CopyComplete
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.pdb
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.exe
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.deps.json
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.runtimeconfig.json
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.runtimeconfig.dev.json
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\ServiceCustomer.pdb
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\Consul.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\Polly.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.AssemblyInfoInputs.cache
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.AssemblyInfo.cs
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.csproj.CopyComplete
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.dll
+F:\GitHub\MedicalHealth\Ruanmou.MicroService04\ServiceCustomer\obj\Debug\netcoreapp3.1\ServiceCustomer.pdb

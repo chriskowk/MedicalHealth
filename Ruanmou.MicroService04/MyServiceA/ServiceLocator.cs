@@ -8,6 +8,6 @@ namespace MyServiceA
 {
     public static class ServiceLocator
     {
-        public static IApplicationBuilder ApplicationBuilder { get; set; }
+        public static IApplicationBuilder ApplicationBuilder;
     }
 }

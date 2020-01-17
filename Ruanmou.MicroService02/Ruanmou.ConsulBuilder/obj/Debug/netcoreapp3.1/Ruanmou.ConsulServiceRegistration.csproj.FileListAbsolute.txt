@@ -21,11 +21,11 @@ D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1
 D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
 D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
 D:\Projects\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
-D:\BaiduNetdiskDownload\.NET Core微服务专题[第二轮][2020年1月13日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\bin\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.csprojAssemblyReference.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\BaiduNetdiskDownload\.NET Core微服务专题[第二次][2020年1月14日]\Ruanmou.MicroService02\Ruanmou.ConsulBuilder\obj\Debug\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb

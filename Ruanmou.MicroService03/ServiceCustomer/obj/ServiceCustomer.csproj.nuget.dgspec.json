@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\ServiceCustomer\\ServiceCustomer.csproj": {}
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\ServiceCustomer\\ServiceCustomer.csproj": {}
   },
   "projects": {
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj": {
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
+        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
         "projectName": "Ruanmou.ServiceDiscovery",
-        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
+        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
         "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\obj\\",
+        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -62,14 +62,14 @@
         }
       }
     },
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\ServiceCustomer\\ServiceCustomer.csproj": {
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\ServiceCustomer\\ServiceCustomer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\ServiceCustomer\\ServiceCustomer.csproj",
+        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\ServiceCustomer\\ServiceCustomer.csproj",
         "projectName": "ServiceCustomer",
-        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\ServiceCustomer\\ServiceCustomer.csproj",
+        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\ServiceCustomer\\ServiceCustomer.csproj",
         "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\ServiceCustomer\\obj\\",
+        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\ServiceCustomer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,8 +85,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj": {
-                "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj"
+              "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj": {
+                "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj"
               }
             }
           }

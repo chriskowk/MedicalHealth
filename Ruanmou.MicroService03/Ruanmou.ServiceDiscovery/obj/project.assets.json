@@ -5363,11 +5363,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
+      "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
       "projectName": "Ruanmou.ServiceDiscovery",
-      "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
+      "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\Ruanmou.ServiceDiscovery.csproj",
       "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ServiceDiscovery\\obj\\",
+      "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ServiceDiscovery\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",

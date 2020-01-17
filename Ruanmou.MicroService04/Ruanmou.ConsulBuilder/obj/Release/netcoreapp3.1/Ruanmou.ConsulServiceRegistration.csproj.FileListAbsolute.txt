@@ -1,0 +1,7 @@
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.deps.json
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\bin\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfoInputs.cache
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.AssemblyInfo.cs
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.dll
+D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ConsulBuilder\obj\Release\netcoreapp3.1\Ruanmou.ConsulServiceRegistration.pdb

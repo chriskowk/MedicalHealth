@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {}
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {}
   },
   "projects": {
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj",
+        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj",
         "projectName": "Ruanmou.ConsulServiceRegistration",
-        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj",
+        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj",
         "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\obj\\",
+        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",

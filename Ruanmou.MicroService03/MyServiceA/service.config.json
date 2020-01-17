@@ -3,4 +3,3 @@
   "ServiceName": "MyServiceA",
   "HealthCheck": "/Health"
 }
-

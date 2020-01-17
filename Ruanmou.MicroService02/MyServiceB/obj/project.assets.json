@@ -6470,11 +6470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\MyServiceB\\MyServiceB.csproj",
+      "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\MyServiceB\\MyServiceB.csproj",
       "projectName": "MyServiceB",
-      "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\MyServiceB\\MyServiceB.csproj",
+      "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\MyServiceB\\MyServiceB.csproj",
       "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-      "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\MyServiceB\\obj\\",
+      "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\MyServiceB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6490,8 +6490,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {
-              "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService02\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj"
+            "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj": {
+              "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService03\\Ruanmou.ConsulBuilder\\Ruanmou.ConsulServiceRegistration.csproj"
             }
           }
         }

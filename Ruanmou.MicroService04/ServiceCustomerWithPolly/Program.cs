@@ -24,6 +24,13 @@ namespace ServiceCustomerWithPolly
             var policy = PolicyBuilder.CreatePolly();
 
             // 重试轮询+熔断降级
+
+            // 你去一个商场消费，某个商品卖断货，你可能寻求次级品，（提供的服务，就降级了）
+            // 服务A访问服务B，这个B老是失败，你失败多了，如果是高并发就会引发雪崩，我降级服务，我自己准一套备用的。
+
+            // 返回一个个空数据
+
+            // 源码肯定有，
             for (int i = 0; i < 100; i++)
             {
                 Console.WriteLine($"-------------第{i}次请求-------------");
@@ -35,9 +42,8 @@ namespace ServiceCustomerWithPolly
                         // consul崩了，仍然会被我们的polly接住
                         // 服务和服务间调用也一样
                         // 服务间传消息？直接调用API,MQ
-                        // 每个有服务调用的服务应用，都用POLLY
-                        //var uri = myServiceA.BuildAsync("/api/order").Result; //这个没有实现api/order 可以测试抛出异常
-                        var uri = myServiceA.BuildAsync("/health").Result;
+                        // 每个有服务调用的服务应用，都用POLLY，服务挂了
+                        var uri = myServiceA.BuildAsync("/api/order").Result;
                         Console.WriteLine($"{DateTime.Now} - 正在调用：{uri}");
                         var content = httpClient.GetStringAsync(uri).Result;
                         Console.WriteLine($"调用结果：{content}");

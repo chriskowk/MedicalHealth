@@ -4,23 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Consul;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Ruanmou.ConsulServiceRegistration
 {
 // consul服务注册扩展类
     public static class ConsulRegistrationExtensions
     {
-        public static void AddConsul(this IServiceCollection service)
+        public static void AddConsul(this IServiceCollection services)
         {
             // 读取服务配置文件
             var config = new ConfigurationBuilder().AddJsonFile("service.config.json").Build();
-            service.Configure<ConsulServiceOptions>(config);
+            services.Configure<ConsulServiceOptions>(config);
         }
 
         public static IApplicationBuilder UseConsul(this IApplicationBuilder app)
@@ -39,10 +41,10 @@ namespace Ruanmou.ConsulServiceRegistration
                 //服务注册的地址，集群中任意一个地址
                 configuration.Address = new Uri(serviceOptions.ConsulAddress);
             });
-	   
-            // 获取当前服务地址和端口，配置方式，也可以用自动获取
+
+            // 获取当前服务地址和端口
             var features = app.Properties["server.Features"] as FeatureCollection;
-            var address = features.Get<IServerAddressesFeature>().Addresses.First();
+            var address = features?.Get<IServerAddressesFeature>().Addresses.First();
             var uri = new Uri(address);
         
             // 节点服务注册对象
@@ -51,6 +53,7 @@ namespace Ruanmou.ConsulServiceRegistration
                 ID = serviceOptions.ServiceId, 
                 Name = serviceOptions.ServiceName,// 服务名
                 Address = uri.Host,
+                
                 Port = uri.Port, // 服务端口
                 Check = new AgentServiceCheck
                 {
