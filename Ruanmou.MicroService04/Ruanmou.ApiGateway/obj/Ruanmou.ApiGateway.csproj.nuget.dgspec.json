@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.MicroSerivce04\\Ruanmou.ApiGateway.csproj": {}
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ApiGateway\\Ruanmou.ApiGateway.csproj": {}
   },
   "projects": {
-    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.MicroSerivce04\\Ruanmou.ApiGateway.csproj": {
+    "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ApiGateway\\Ruanmou.ApiGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.MicroSerivce04\\Ruanmou.ApiGateway.csproj",
+        "projectUniqueName": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ApiGateway\\Ruanmou.ApiGateway.csproj",
         "projectName": "Ruanmou.ApiGateway",
-        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.MicroSerivce04\\Ruanmou.ApiGateway.csproj",
+        "projectPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ApiGateway\\Ruanmou.ApiGateway.csproj",
         "packagesPath": "C:\\Users\\guoshaoyue\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.MicroSerivce04\\obj\\",
+        "outputPath": "F:\\GitHub\\MedicalHealth\\Ruanmou.MicroService04\\Ruanmou.ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guoshaoyue\\AppData\\Roaming\\NuGet\\NuGet.Config",

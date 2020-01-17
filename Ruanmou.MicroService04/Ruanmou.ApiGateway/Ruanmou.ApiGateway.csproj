@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Ocelot" Version="13.8.0" />
     <PackageReference Include="Ocelot.Provider.Consul" Version="13.8.0" />
   </ItemGroup>
@@ -17,6 +13,10 @@
     <Content Update="ocelot-consul.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 

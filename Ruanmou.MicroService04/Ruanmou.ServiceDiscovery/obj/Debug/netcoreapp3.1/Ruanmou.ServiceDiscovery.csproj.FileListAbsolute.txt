@@ -24,7 +24,6 @@ D:\Projects\Ruanmou.MicroSerivce04\Ruanmou.ServiceDiscovery\obj\Debug\netcoreapp
 F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.deps.json
 F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
 F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\bin\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.pdb
-F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\obj\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\obj\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.AssemblyInfoInputs.cache
 F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\obj\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.AssemblyInfo.cs
 F:\GitHub\MedicalHealth\Ruanmou.MicroService04\Ruanmou.ServiceDiscovery\obj\Debug\netcoreapp3.1\Ruanmou.ServiceDiscovery.dll
