@@ -77,7 +77,6 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\CalendarDatas.mdb
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\LunarCalendar.exe
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\LunarCalendar.pdb
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\zh-CN\LunarCalendar.resources.dll
-F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojResolveAssemblyReference.cache
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\FancyToolTip.baml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\MonthDiarys.baml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\CalendarWindow.g.cs
@@ -93,3 +92,4 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.Prop
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.Properties.Resources.zh-CN.resources
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csproj.GenerateResource.Cache
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\zh-CN\LunarCalendar.resources.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojResolveAssemblyReference.cache
