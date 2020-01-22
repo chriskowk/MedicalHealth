@@ -1,0 +1,6 @@
+E:\VSTS\VS2015\ConsoleSecurity\ConsoleSecurity\bin\Debug\ConsoleSecurity.exe.config
+E:\VSTS\VS2015\ConsoleSecurity\ConsoleSecurity\bin\Debug\ConsoleSecurity.exe
+E:\VSTS\VS2015\ConsoleSecurity\ConsoleSecurity\bin\Debug\ConsoleSecurity.pdb
+E:\VSTS\VS2015\ConsoleSecurity\ConsoleSecurity\obj\Debug\ConsoleSecurity.csprojResolveAssemblyReference.cache
+E:\VSTS\VS2015\ConsoleSecurity\ConsoleSecurity\obj\Debug\ConsoleSecurity.exe
+E:\VSTS\VS2015\ConsoleSecurity\ConsoleSecurity\obj\Debug\ConsoleSecurity.pdb
