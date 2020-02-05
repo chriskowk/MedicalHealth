@@ -271,18 +271,6 @@ namespace JobController
         }
 
         private string _executePath;
-        private string ExecutePath
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_executePath))
-                {
-                    LoadExecutablePath();
-                }
-                return _executePath;
-            }
-        }
-
         private void LoadExecutablePath()
         {
             object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\", "ExecutablePath", "");
@@ -291,17 +279,17 @@ namespace JobController
 
         private void ResetExecutePath()
         {
-            if (ExecutePath.Contains(@"\MedicalHealth\"))
+            if (_executePath.Contains(@"\MedicalHealth\"))
                 ExecuteReg(Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg"));
-            else if (ExecutePath.Contains(@"\MedicalHealthSY\"))
+            else if (_executePath.Contains(@"\MedicalHealthSY\"))
                 ExecuteReg(Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg"));
-            else if (ExecutePath.Contains(@"\MedicalHealthBasicRC\"))
+            else if (_executePath.Contains(@"\MedicalHealthBasicRC\"))
                 ExecuteReg(Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg"));
-            else if (ExecutePath.Contains(@"\MedicalHealthGH\"))
+            else if (_executePath.Contains(@"\MedicalHealthGH\"))
                 ExecuteReg(Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg"));
-            else if (ExecutePath.Contains(@"\MedicalHealthS1\"))
+            else if (_executePath.Contains(@"\MedicalHealthS1\"))
                 ExecuteReg(Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg"));
-            else if (ExecutePath.Contains(@"\MedicalHealthSGS1\"))
+            else if (_executePath.Contains(@"\MedicalHealthSGS1\"))
                 ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
         }
 
@@ -578,45 +566,35 @@ namespace JobController
             return true;
         }
 
-        private void _btnRegYK_Click(object sender, EventArgs e)
+        private void _btnRegConfig_Click(object sender, EventArgs e)
         {
-            ExecuteReg(Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg"));
-            Execute(Path.Combine(TaskJob.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-            RestartServices();
-        }
-
-        private void _tbnRegSY_Click(object sender, EventArgs e)
-        {
-            ExecuteReg(Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg"));
-            Execute(Path.Combine(TaskJobA.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-            RestartServices();
-        }
-
-        private void _btnRegS12_Click(object sender, EventArgs e)
-        {
-            ExecuteReg(Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg"));
-            Execute(Path.Combine(TaskJobB.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-            RestartServices();
-        }
-
-        private void _btnRegGH_Click(object sender, EventArgs e)
-        {
-            ExecuteReg(Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg"));
-            Execute(Path.Combine(TaskJobC.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-            RestartServices();
-        }
-
-        private void _btnRegS1_Click(object sender, EventArgs e)
-        {
-            ExecuteReg(Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg"));
-            Execute(Path.Combine(TaskJobD.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-            RestartServices();
-        }
-
-        private void _btnRegSGS1_Click(object sender, EventArgs e)
-        {
-            ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
-            Execute(Path.Combine(TaskJobE.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+            switch (this.VersionTag)
+            {
+                case "MyJob.TaskJob":
+                    ExecuteReg(Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg"));
+                    Execute(Path.Combine(TaskJob.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+                    break;
+                case "MyJob.TaskJobA":
+                    ExecuteReg(Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg"));
+                    Execute(Path.Combine(TaskJobA.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+                    break;
+                case "MyJob.TaskJobB":
+                    ExecuteReg(Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg"));
+                    Execute(Path.Combine(TaskJobB.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+                    break;
+                case "MyJob.TaskJobC":
+                    ExecuteReg(Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg"));
+                    Execute(Path.Combine(TaskJobC.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+                    break;
+                case "MyJob.TaskJobD":
+                    ExecuteReg(Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg"));
+                    Execute(Path.Combine(TaskJobD.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+                    break;
+                case "MyJob.TaskJobE":
+                    ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
+                    Execute(Path.Combine(TaskJobE.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
+                    break;
+            }
             RestartServices();
         }
 

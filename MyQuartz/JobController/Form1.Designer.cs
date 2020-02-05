@@ -48,16 +48,11 @@
             this._btnResetJobConfig = new System.Windows.Forms.Button();
             this._rbZSYK = new System.Windows.Forms.RadioButton();
             this._rbSY = new System.Windows.Forms.RadioButton();
-            this._btnRegYK = new System.Windows.Forms.Button();
-            this._btnRegSY = new System.Windows.Forms.Button();
             this._btnStartServices = new System.Windows.Forms.Button();
             this._rbS12 = new System.Windows.Forms.RadioButton();
-            this._btnRegS12 = new System.Windows.Forms.Button();
-            this._btnRegGH = new System.Windows.Forms.Button();
             this._rbGH = new System.Windows.Forms.RadioButton();
-            this._btnRegS1 = new System.Windows.Forms.Button();
             this._rbS1 = new System.Windows.Forms.RadioButton();
-            this._btnRegSGS1 = new System.Windows.Forms.Button();
+            this._btnRegConfig = new System.Windows.Forms.Button();
             this._rbSGS1 = new System.Windows.Forms.RadioButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +76,7 @@
             this.tscbStart,
             this.tscbStop,
             this.tscbExit});
-            this.toolStrip1.Location = new System.Drawing.Point(472, 193);
+            this.toolStrip1.Location = new System.Drawing.Point(421, 194);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(159, 25);
             this.toolStrip1.TabIndex = 7;
@@ -152,7 +147,7 @@
             this._txtWorkItemIDs.Location = new System.Drawing.Point(12, 76);
             this._txtWorkItemIDs.Multiline = true;
             this._txtWorkItemIDs.Name = "_txtWorkItemIDs";
-            this._txtWorkItemIDs.Size = new System.Drawing.Size(614, 91);
+            this._txtWorkItemIDs.Size = new System.Drawing.Size(570, 91);
             this._txtWorkItemIDs.TabIndex = 10;
             // 
             // label2
@@ -167,7 +162,7 @@
             // 
             // _btnBuild
             // 
-            this._btnBuild.Location = new System.Drawing.Point(477, 42);
+            this._btnBuild.Location = new System.Drawing.Point(433, 41);
             this._btnBuild.Name = "_btnBuild";
             this._btnBuild.Size = new System.Drawing.Size(149, 29);
             this._btnBuild.TabIndex = 12;
@@ -182,7 +177,7 @@
             this._txtStatus.Name = "_txtStatus";
             this._txtStatus.ReadOnly = true;
             this._txtStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._txtStatus.Size = new System.Drawing.Size(614, 63);
+            this._txtStatus.Size = new System.Drawing.Size(570, 63);
             this._txtStatus.TabIndex = 13;
             // 
             // label3
@@ -201,7 +196,7 @@
             this._cboProjects.FormattingEnabled = true;
             this._cboProjects.Location = new System.Drawing.Point(77, 16);
             this._cboProjects.Name = "_cboProjects";
-            this._cboProjects.Size = new System.Drawing.Size(549, 20);
+            this._cboProjects.Size = new System.Drawing.Size(505, 20);
             this._cboProjects.TabIndex = 15;
             // 
             // _dtpRestart
@@ -214,7 +209,7 @@
             // 
             // _btnResetJobConfig
             // 
-            this._btnResetJobConfig.Location = new System.Drawing.Point(552, 230);
+            this._btnResetJobConfig.Location = new System.Drawing.Point(421, 229);
             this._btnResetJobConfig.Name = "_btnResetJobConfig";
             this._btnResetJobConfig.Size = new System.Drawing.Size(74, 24);
             this._btnResetJobConfig.TabIndex = 17;
@@ -238,7 +233,7 @@
             // _rbSY
             // 
             this._rbSY.AutoSize = true;
-            this._rbSY.Location = new System.Drawing.Point(101, 238);
+            this._rbSY.Location = new System.Drawing.Point(80, 238);
             this._rbSY.Name = "_rbSY";
             this._rbSY.Size = new System.Drawing.Size(47, 16);
             this._rbSY.TabIndex = 19;
@@ -248,29 +243,9 @@
             this._rbSY.UseVisualStyleBackColor = true;
             this._rbSY.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
             // 
-            // _btnRegYK
-            // 
-            this._btnRegYK.Location = new System.Drawing.Point(14, 261);
-            this._btnRegYK.Name = "_btnRegYK";
-            this._btnRegYK.Size = new System.Drawing.Size(74, 24);
-            this._btnRegYK.TabIndex = 20;
-            this._btnRegYK.Text = "眼科配置";
-            this._btnRegYK.UseVisualStyleBackColor = true;
-            this._btnRegYK.Click += new System.EventHandler(this._btnRegYK_Click);
-            // 
-            // _btnRegSY
-            // 
-            this._btnRegSY.Location = new System.Drawing.Point(101, 261);
-            this._btnRegSY.Name = "_btnRegSY";
-            this._btnRegSY.Size = new System.Drawing.Size(74, 24);
-            this._btnRegSY.TabIndex = 21;
-            this._btnRegSY.Text = "省医配置";
-            this._btnRegSY.UseVisualStyleBackColor = true;
-            this._btnRegSY.Click += new System.EventHandler(this._tbnRegSY_Click);
-            // 
             // _btnStartServices
             // 
-            this._btnStartServices.Location = new System.Drawing.Point(552, 260);
+            this._btnStartServices.Location = new System.Drawing.Point(506, 229);
             this._btnStartServices.Name = "_btnStartServices";
             this._btnStartServices.Size = new System.Drawing.Size(74, 24);
             this._btnStartServices.TabIndex = 22;
@@ -281,7 +256,7 @@
             // _rbS12
             // 
             this._rbS12.AutoSize = true;
-            this._rbS12.Location = new System.Drawing.Point(188, 239);
+            this._rbS12.Location = new System.Drawing.Point(146, 237);
             this._rbS12.Name = "_rbS12";
             this._rbS12.Size = new System.Drawing.Size(59, 16);
             this._rbS12.TabIndex = 23;
@@ -291,30 +266,10 @@
             this._rbS12.UseVisualStyleBackColor = true;
             this._rbS12.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
             // 
-            // _btnRegS12
-            // 
-            this._btnRegS12.Location = new System.Drawing.Point(188, 261);
-            this._btnRegS12.Name = "_btnRegS12";
-            this._btnRegS12.Size = new System.Drawing.Size(74, 24);
-            this._btnRegS12.TabIndex = 24;
-            this._btnRegS12.Text = "市十二配置";
-            this._btnRegS12.UseVisualStyleBackColor = true;
-            this._btnRegS12.Click += new System.EventHandler(this._btnRegS12_Click);
-            // 
-            // _btnRegGH
-            // 
-            this._btnRegGH.Location = new System.Drawing.Point(275, 261);
-            this._btnRegGH.Name = "_btnRegGH";
-            this._btnRegGH.Size = new System.Drawing.Size(74, 24);
-            this._btnRegGH.TabIndex = 26;
-            this._btnRegGH.Text = "光华配置";
-            this._btnRegGH.UseVisualStyleBackColor = true;
-            this._btnRegGH.Click += new System.EventHandler(this._btnRegGH_Click);
-            // 
             // _rbGH
             // 
             this._rbGH.AutoSize = true;
-            this._rbGH.Location = new System.Drawing.Point(275, 238);
+            this._rbGH.Location = new System.Drawing.Point(224, 237);
             this._rbGH.Name = "_rbGH";
             this._rbGH.Size = new System.Drawing.Size(71, 16);
             this._rbGH.TabIndex = 25;
@@ -324,20 +279,10 @@
             this._rbGH.UseVisualStyleBackColor = true;
             this._rbGH.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
             // 
-            // _btnRegS1
-            // 
-            this._btnRegS1.Location = new System.Drawing.Point(362, 260);
-            this._btnRegS1.Name = "_btnRegS1";
-            this._btnRegS1.Size = new System.Drawing.Size(74, 24);
-            this._btnRegS1.TabIndex = 28;
-            this._btnRegS1.Text = "市一配置";
-            this._btnRegS1.UseVisualStyleBackColor = true;
-            this._btnRegS1.Click += new System.EventHandler(this._btnRegS1_Click);
-            // 
             // _rbS1
             // 
             this._rbS1.AutoSize = true;
-            this._rbS1.Location = new System.Drawing.Point(362, 239);
+            this._rbS1.Location = new System.Drawing.Point(314, 238);
             this._rbS1.Name = "_rbS1";
             this._rbS1.Size = new System.Drawing.Size(47, 16);
             this._rbS1.TabIndex = 27;
@@ -347,20 +292,20 @@
             this._rbS1.UseVisualStyleBackColor = true;
             this._rbS1.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
             // 
-            // _btnRegSGS1
+            // _btnRegConfig
             // 
-            this._btnRegSGS1.Location = new System.Drawing.Point(451, 259);
-            this._btnRegSGS1.Name = "_btnRegSGS1";
-            this._btnRegSGS1.Size = new System.Drawing.Size(74, 24);
-            this._btnRegSGS1.TabIndex = 30;
-            this._btnRegSGS1.Text = "韶关配置";
-            this._btnRegSGS1.UseVisualStyleBackColor = true;
-            this._btnRegSGS1.Click += new System.EventHandler(this._btnRegSGS1_Click);
+            this._btnRegConfig.Location = new System.Drawing.Point(506, 259);
+            this._btnRegConfig.Name = "_btnRegConfig";
+            this._btnRegConfig.Size = new System.Drawing.Size(74, 24);
+            this._btnRegConfig.TabIndex = 30;
+            this._btnRegConfig.Text = "重设配置";
+            this._btnRegConfig.UseVisualStyleBackColor = true;
+            this._btnRegConfig.Click += new System.EventHandler(this._btnRegConfig_Click);
             // 
             // _rbSGS1
             // 
             this._rbSGS1.AutoSize = true;
-            this._rbSGS1.Location = new System.Drawing.Point(451, 238);
+            this._rbSGS1.Location = new System.Drawing.Point(14, 263);
             this._rbSGS1.Name = "_rbSGS1";
             this._rbSGS1.Size = new System.Drawing.Size(71, 16);
             this._rbSGS1.TabIndex = 29;
@@ -374,18 +319,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 366);
-            this.Controls.Add(this._btnRegSGS1);
+            this.ClientSize = new System.Drawing.Size(591, 366);
+            this.Controls.Add(this._btnRegConfig);
             this.Controls.Add(this._rbSGS1);
-            this.Controls.Add(this._btnRegS1);
             this.Controls.Add(this._rbS1);
-            this.Controls.Add(this._btnRegGH);
             this.Controls.Add(this._rbGH);
-            this.Controls.Add(this._btnRegS12);
             this.Controls.Add(this._rbS12);
             this.Controls.Add(this._btnStartServices);
-            this.Controls.Add(this._btnRegSY);
-            this.Controls.Add(this._btnRegYK);
             this.Controls.Add(this._rbSY);
             this.Controls.Add(this._rbZSYK);
             this.Controls.Add(this._btnResetJobConfig);
@@ -439,16 +379,11 @@
         private System.Windows.Forms.Button _btnResetJobConfig;
         private System.Windows.Forms.RadioButton _rbZSYK;
         private System.Windows.Forms.RadioButton _rbSY;
-        private System.Windows.Forms.Button _btnRegYK;
-        private System.Windows.Forms.Button _btnRegSY;
         private System.Windows.Forms.Button _btnStartServices;
         private System.Windows.Forms.RadioButton _rbS12;
-        private System.Windows.Forms.Button _btnRegS12;
-        private System.Windows.Forms.Button _btnRegGH;
         private System.Windows.Forms.RadioButton _rbGH;
-        private System.Windows.Forms.Button _btnRegS1;
         private System.Windows.Forms.RadioButton _rbS1;
-        private System.Windows.Forms.Button _btnRegSGS1;
+        private System.Windows.Forms.Button _btnRegConfig;
         private System.Windows.Forms.RadioButton _rbSGS1;
     }
 }
