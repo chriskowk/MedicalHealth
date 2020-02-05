@@ -160,6 +160,7 @@ namespace JobController
             }
 
             LoadResources();
+            LoadExecutablePath();
 
             _timer = new System.Threading.Timer(new TimerCallback(ResetTrayIcon));
             _timer.Change(0, 1000);
@@ -269,6 +270,41 @@ namespace JobController
             CheckJobExecuteState(typeof(TaskJobE).ToString());
         }
 
+        private string _executePath;
+        private string ExecutePath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_executePath))
+                {
+                    LoadExecutablePath();
+                }
+                return _executePath;
+            }
+        }
+
+        private void LoadExecutablePath()
+        {
+            object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\", "ExecutablePath", "");
+            _executePath = path == null ? "" : path.ToString();
+        }
+
+        private void ResetExecutePath()
+        {
+            if (ExecutePath.Contains(@"\MedicalHealth\"))
+                ExecuteReg(Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg"));
+            else if (ExecutePath.Contains(@"\MedicalHealthSY\"))
+                ExecuteReg(Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg"));
+            else if (ExecutePath.Contains(@"\MedicalHealthBasicRC\"))
+                ExecuteReg(Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg"));
+            else if (ExecutePath.Contains(@"\MedicalHealthGH\"))
+                ExecuteReg(Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg"));
+            else if (ExecutePath.Contains(@"\MedicalHealthS1\"))
+                ExecuteReg(Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg"));
+            else if (ExecutePath.Contains(@"\MedicalHealthSGS1\"))
+                ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
+        }
+
         private void CheckJobExecuteState(string jobType)
         {
             string temp = GetJobExecuteState(jobType);
@@ -276,6 +312,7 @@ namespace JobController
             _states[jobType] = temp;
             if (askuser)
             {
+                ResetExecutePath();
                 System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
             }
         }
@@ -594,7 +631,9 @@ namespace JobController
                 //如果注册表路径含有空格，则需要使用双引号引起来，不然会报错。 /s：指示不弹出导入注册表对话框
                 regFile = @"""" + regFile + @"""";
                 Process.Start("regedit", string.Format(" /s {0}", regFile));
-                _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 注册表导入成功：{1}。", DateTime.Now, regFile);
+                this.Invoke(new Action(() => { _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 注册表导入成功：{1}。", DateTime.Now, regFile); }));
+
+                LoadExecutablePath();
             }
         }
 
