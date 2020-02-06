@@ -20,7 +20,7 @@
             <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
             <!--每天21点触发-->
             <!--<cron-expression>0 0 21 ? * *</cron-expression>-->
-            <cron-expression>0 30 20 ? * *</cron-expression>
+            <cron-expression>0 50 14 ? * *</cron-expression>
           </cron>
       </trigger>
     </job>

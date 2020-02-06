@@ -275,6 +275,7 @@ namespace JobController
         {
             object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\", "ExecutablePath", "");
             _executePath = path == null ? "" : path.ToString();
+            _txtStatus.Text = string.Format("{0}注册表项 ExecutablePath: {1}", string.IsNullOrEmpty(_txtStatus.Text) ? string.Empty : _txtStatus.Text + "\r\n", _executePath);
         }
 
         private void ResetExecutePath()
@@ -525,7 +526,7 @@ namespace JobController
             ids = ids.Replace(";", ",");
             if (SaveWorkItem(ids, _cboProjects.SelectedItem.ToString(), out builtWorkItemIDs))
             {
-                _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 工作项（{1}）导入成功：{2}。", DateTime.Now, ids, builtWorkItemIDs);
+                _txtStatus.Text = string.Format("{0:HH:mm:ss}: 工作项（{1}）导入成功：{2}。", DateTime.Now, ids, builtWorkItemIDs);
             }
         }
 
@@ -595,6 +596,7 @@ namespace JobController
                     Execute(Path.Combine(TaskJobE.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
                     break;
             }
+            LoadExecutablePath();
             RestartServices();
         }
 
@@ -609,9 +611,7 @@ namespace JobController
                 //如果注册表路径含有空格，则需要使用双引号引起来，不然会报错。 /s：指示不弹出导入注册表对话框
                 regFile = @"""" + regFile + @"""";
                 Process.Start("regedit", string.Format(" /s {0}", regFile));
-                this.Invoke(new Action(() => { _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 注册表导入成功：{1}。", DateTime.Now, regFile); }));
-
-                LoadExecutablePath();
+                this.Invoke(new Action(() => { _txtStatus.Text = string.Format("{0:HH:mm:ss}: 注册表导入成功：{1}。", DateTime.Now, regFile); }));
             }
         }
 
