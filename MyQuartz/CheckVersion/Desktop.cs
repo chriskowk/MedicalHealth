@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Linq;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -185,7 +186,7 @@ namespace CheckVersion
 
             foreach (Component item in components.OrderBy(a => a.FileName))
             {
-                FileInfo fi = fileInfos.FirstOrDefault(a => a.Name == item.FileName);
+                FileInfo fi = fileInfos.FirstOrDefault(a => a.Name.Equals(item.FileName, StringComparison.OrdinalIgnoreCase));
                 if (fi == null)
                 {
                     ListViewItem lvi = new ListViewItem(new string[] { item.FileName, "本地缺失！" });
