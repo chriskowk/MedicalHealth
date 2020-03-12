@@ -1,8 +1,0 @@
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\bin\Debug\netstandard2.1\EventBus.deps.json
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\bin\Debug\netstandard2.1\EventBus.dll
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\bin\Debug\netstandard2.1\EventBus.pdb
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.csprojAssemblyReference.cache
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.AssemblyInfoInputs.cache
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.AssemblyInfo.cs
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.dll
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.pdb

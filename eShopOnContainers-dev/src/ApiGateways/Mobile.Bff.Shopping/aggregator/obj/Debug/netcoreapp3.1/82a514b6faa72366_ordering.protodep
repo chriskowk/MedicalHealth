@@ -1,2 +1,0 @@
-obj\Debug\netcoreapp3.1/Ordering.cs \
-obj\Debug\netcoreapp3.1/OrderingGrpc.cs: ../../../Services/Ordering/Ordering.API/Proto/ordering.proto

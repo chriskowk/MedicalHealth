@@ -1,8 +1,0 @@
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\bin\Debug\netstandard2.0\Devspaces.Support.deps.json
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\bin\Debug\netstandard2.0\Devspaces.Support.dll
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\bin\Debug\netstandard2.0\Devspaces.Support.pdb
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\obj\Debug\netstandard2.0\Devspaces.Support.csprojAssemblyReference.cache
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\obj\Debug\netstandard2.0\Devspaces.Support.AssemblyInfoInputs.cache
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\obj\Debug\netstandard2.0\Devspaces.Support.AssemblyInfo.cs
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\obj\Debug\netstandard2.0\Devspaces.Support.dll
-F:\GitHub\MedicalHealth\eShopOnContainers-dev\src\BuildingBlocks\Devspaces.Support\obj\Debug\netstandard2.0\Devspaces.Support.pdb
