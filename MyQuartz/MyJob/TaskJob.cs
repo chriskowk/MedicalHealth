@@ -6,6 +6,7 @@ using Quartz;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
+using RabbitMQ.Client;
 
 namespace MyJob
 {
@@ -32,13 +33,39 @@ namespace MyJob
             Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
             if (JobStarting != null) JobStarting(this, new EventArgs());
 
-            //todo:此处为执行的任务
+            // 此处为执行的任务
             TFGetLatestVersion();
             BuildAll();
             RebuildDataModels();
 
             if (JobFinished != null) JobFinished(this, new EventArgs());
             Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
+            //SendMessageQueue();
+        }
+
+        private void SendMessageQueue()
+        {
+            var factory = new ConnectionFactory();
+            factory.HostName = "localhost";//RabbitMQ服务在本地运行
+            factory.UserName = "guest";//用户名
+            factory.Password = "guest";//密码 
+            using (var connection = factory.CreateConnection())
+            {
+                using (IModel channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: "TaskFinishedMessage", durable: true, exclusive: false, autoDelete: false, arguments: null);
+                    channel.ExchangeDeclare(exchange: "TaskFinishedMessageExchange", type: ExchangeType.Direct, durable: true, autoDelete: false, arguments: null);
+                    channel.QueueBind(queue: "TaskFinishedMessage", exchange: "TaskFinishedMessageExchange", routingKey: string.Empty, arguments: null);
+
+                    //string message = string.Format("STATE_COMPLETE ON {0:yyyy-MM-dd HH:mm:ss.fff}", DateTime.Now);
+                    string message = this.GetType().ToString();
+                    byte[] body = Encoding.UTF8.GetBytes(message);
+                    channel.BasicPublish(exchange: "TaskFinishedMessageExchange",
+                                    routingKey: string.Empty,
+                                    basicProperties: null,
+                                    body: body);
+                }
+            }
         }
 
         private void TFGetLatestVersion()

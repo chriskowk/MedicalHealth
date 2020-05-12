@@ -26,6 +26,8 @@ using static System.Management.PropertyDataCollection;
 using MyJob;
 using System.Configuration;
 using Microsoft.Win32;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace JobController
 {
@@ -161,9 +163,37 @@ namespace JobController
 
             LoadResources();
             LoadExecutablePath();
+            //OnReceivedTaskFinishedMessage();
 
             _timer = new System.Threading.Timer(new TimerCallback(ResetTrayIcon));
             _timer.Change(0, 1000);
+        }
+
+        private void OnReceivedTaskFinishedMessage()
+        {
+            var factory = new ConnectionFactory();
+            factory.HostName = "localhost";//RabbitMQ服务在本地运行
+            factory.UserName = "guest";//用户名
+            factory.Password = "guest";//密码 
+            using (var connection = factory.CreateConnection())
+            {
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: "TaskFinishedMessage", durable: true, exclusive: false, autoDelete: false, arguments: null);
+                    channel.ExchangeDeclare(exchange: "TaskFinishedMessageExchange", type: ExchangeType.Direct, durable: true, autoDelete: false, arguments: null);
+                    channel.QueueBind(queue: "TaskFinishedMessage", exchange: "TaskFinishedMessageExchange", routingKey: string.Empty, arguments: null);
+                    var consumer = new EventingBasicConsumer(channel);
+                    consumer.Received += (model, ea) =>
+                    {
+                        var body = ea.Body;
+                        var message = Encoding.UTF8.GetString(body.ToArray());
+                        ShowTaskFinishedMessage(message);
+                    };
+                    channel.BasicConsume(queue: "TaskFinishedMessage",
+                                 autoAck: true,
+                                 consumer: consumer);
+                }
+            }
         }
 
         private bool SaveWorkItem(string workItemIds, string projectName, out string builtWorkItemIDs)
@@ -299,11 +329,13 @@ namespace JobController
             string temp = GetJobExecuteState(jobType);
             bool askuser = _states.ContainsKey(jobType) && _states[jobType] != temp && temp == "STATE_COMPLETE";
             _states[jobType] = temp;
-            if (askuser)
-            {
-                ResetExecutePath();
-                System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
-            }
+            if (askuser) ShowTaskFinishedMessage(jobType);
+        }
+
+        private void ShowTaskFinishedMessage(string jobType)
+        {
+            ResetExecutePath();
+            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
         }
 
         private string GetJobExecuteState(string jobType)
