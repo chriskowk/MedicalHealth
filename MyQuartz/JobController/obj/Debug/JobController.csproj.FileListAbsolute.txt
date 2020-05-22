@@ -589,8 +589,6 @@ F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\zh-Hant\Microsoft.TeamF
 F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.Form1.resources
 F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.Properties.Resources.resources
 F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.GenerateResource.Cache
-F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csprojAssemblyReference.cache
-F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.CopyComplete
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\RabbitMQ.Client.dll
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\RabbitMQ.Client.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\System.Buffers.dll
@@ -602,3 +600,4 @@ F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\System.Buffers.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\System.Memory.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\System.Numerics.Vectors.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csprojResolveAssemblyReference.cache

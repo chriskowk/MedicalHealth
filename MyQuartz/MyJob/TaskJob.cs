@@ -75,7 +75,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.ExecBatch(path, true, true, 60000, ref errMsg);
+            string output = JobHelper.Execute(path, 60, true, true, ref errMsg);
 
             FileStream fs = new FileStream(string.Format(@"{0}\Log\TFGetLog{1}.txt", BatchFilesPath, DateTime.Now.ToString("yyyyMMddHHmmss")), FileMode.Append);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
@@ -91,7 +91,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.ExecBatch(path, false, false, ref errMsg);
+            string output = JobHelper.Execute(path, false, false, ref errMsg);
         }
 
         public virtual void RebuildDataModels()
@@ -136,7 +136,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.ExecBatch(path, false, false, ref errMsg);
+            string output = JobHelper.Execute(path, false, false, ref errMsg);
         }
     }
 
@@ -278,32 +278,54 @@ namespace MyJob
 
     public static class JobHelper
     {
-        public static string ExecBatch(string batPath, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
+        public static string Execute(string filefullname, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
         {
-            return ExecBatch(batPath, redirectStandardOutput, redirectStandardError, 0, ref errMsg);
+            return Execute(filefullname, 0, redirectStandardOutput, redirectStandardError, ref errMsg);
         }
 
-        public static string ExecBatch(string batPath, bool redirectStandardOutput, bool redirectStandardError, int milliseconds, ref string errMsg)
+        public static string Execute(string filefullname, int seconds, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
         {
-            string outputString = string.Empty;
-            using (Process pro = new Process())
+            string output = ""; //输出字符串  
+            if (filefullname != null && !filefullname.Equals(""))
             {
-                FileInfo file = new FileInfo(batPath);
-                pro.StartInfo.WorkingDirectory = file.Directory.FullName;
-                pro.StartInfo.FileName = batPath;
-                pro.StartInfo.CreateNoWindow = false;
-                pro.StartInfo.RedirectStandardOutput = redirectStandardOutput;
-                pro.StartInfo.RedirectStandardError = redirectStandardError;
-                pro.StartInfo.UseShellExecute = false;
-
-                pro.Start();
-                milliseconds = (milliseconds <= 0) ? int.MaxValue : milliseconds;
-                pro.WaitForExit(milliseconds);
-
-                outputString = pro.StartInfo.RedirectStandardOutput ? pro.StandardOutput.ReadToEnd() : string.Empty;
-                errMsg = pro.StartInfo.RedirectStandardError ? pro.StandardError.ReadToEnd() : string.Empty;
+                FileInfo file = new FileInfo(filefullname);
+                Process process = new Process();//创建进程对象  
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = "cmd.exe";//设定需要执行的命令  
+                startInfo.WorkingDirectory = file.Directory.FullName;
+                startInfo.Arguments = "/C " + filefullname;//“/C”表示执行完命令后马上退出  
+                startInfo.UseShellExecute = true;//使用系统外壳程序启动  
+                startInfo.RedirectStandardInput = false;//不重定向输入  
+                startInfo.RedirectStandardOutput = redirectStandardOutput; //重定向输出  
+                startInfo.RedirectStandardError = redirectStandardError;
+                startInfo.CreateNoWindow = false;//创建窗口  
+                process.StartInfo = startInfo;
+                try
+                {
+                    if (process.Start())//开始进程  
+                    {
+                        if (seconds == 0)
+                        {
+                            process.WaitForExit();//这里无限等待进程结束  
+                        }
+                        else
+                        {
+                            process.WaitForExit(seconds * 1000); //等待进程结束，等待时间为指定的毫秒  
+                        }
+                        output = process.StartInfo.RedirectStandardOutput ? process.StandardOutput.ReadToEnd() : string.Empty;
+                        errMsg = process.StartInfo.RedirectStandardError ? process.StandardError.ReadToEnd() : string.Empty;
+                    }
+                }
+                catch
+                {
+                }
+                finally
+                {
+                    if (process != null)
+                        process.Close();
+                }
             }
-            return outputString;
+            return output;
         }
     }
 }
