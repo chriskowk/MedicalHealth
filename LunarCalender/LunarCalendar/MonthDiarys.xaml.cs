@@ -51,10 +51,10 @@ namespace LunarCalendar
         private void CheckNewDiary()
         {
             DateTime recordedOn = new DateTime(_year, _month, _day);
-            _current = _diaries.FirstOrDefault(a => a.RecordDate >= recordedOn.Date && a.RecordDate < recordedOn.Date.AddDays(1));
+            _current = _diaries.FirstOrDefault(a => a.RecordOn >= recordedOn.Date && a.RecordOn < recordedOn.Date.AddDays(1));
             if (_current == null)
             {
-                _current = new Diary() { ID = -1, Title = "<新日记>", Keywords = "", Content = "", RemindFlag = 0, RemindTime = new DateTime(1900, 1, 1), RecordDate = new DateTime(_year, _month, _day) };
+                _current = new Diary() { ID = -1, Title = "<新日记>", Keywords = "", Content = "", RemindFlag = 0, RemindOn = new DateTime(1900, 1, 1), RecordOn = new DateTime(_year, _month, _day) };
                 _diaries.Add(_current);
             }
 
@@ -80,7 +80,7 @@ namespace LunarCalendar
             DateTime end = GetNextMonthFirstDate(recordedOn);
 
             if (_mdbDiarys == null) _mdbDiarys = new DiaryMDB();
-            _mdbDiarys.GetLists(a => a.RecordDate >= start && a.RecordDate < end);
+            _mdbDiarys.GetLists(a => a.RecordOn >= start && a.RecordOn < end);
             _diaries = _mdbDiarys.Diaries;
 
             this.DataContext = null;

@@ -173,7 +173,7 @@ namespace LunarCalendar
             DateTime dt = new DateTime(year, month, 1);
             _calendarDisplayUniformGrid.FirstColumn = (int)(dt.DayOfWeek);
 
-            _database.GetLists(a => a.RecordDate >= dt && a.RecordDate < dt.AddMonths(1));
+            _database.GetLists(a => a.RecordOn >= dt && a.RecordOn < dt.AddMonths(1));
             _diaries = _database.Diaries;
             for (int i = 0; i < dayNum; i++)
             {
@@ -245,7 +245,7 @@ namespace LunarCalendar
                     stackPanel.Children.Add(subsidiary);
                 }
 
-                Diary diary = _diaries.FirstOrDefault(a => a.RecordDate >= dt.Date && a.RecordDate < dt.Date.AddDays(1));
+                Diary diary = _diaries.FirstOrDefault(a => a.RecordOn >= dt.Date && a.RecordOn < dt.Date.AddDays(1));
                 if (diary != null)    //See if having a diary or note
                 {
                     mainDateLabel.TextDecorations = GetUnderlineDecoration();
@@ -258,7 +258,7 @@ namespace LunarCalendar
                     FancyToolTip toolTip = new FancyToolTip();
                     toolTip.Title = diary.Title;
                     toolTip.InfoText = diary.Content;
-                    toolTip.Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RecordDate);
+                    toolTip.Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RecordOn);
                     tt.Content = toolTip;
                 }
 

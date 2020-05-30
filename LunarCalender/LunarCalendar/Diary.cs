@@ -9,6 +9,7 @@ using System.Data.Linq;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows;
+using System.Data.SQLite;
 
 namespace LunarCalendar
 {
@@ -30,24 +31,24 @@ namespace LunarCalendar
         public string Content { get; set; }
 
         [Column]
-        public DateTime RecordDate { get; set; }
+        public DateTime RecordOn { get; set; }
 
         [Column]
         public int RemindFlag { get; set; }
 
         [Column]
-        public DateTime RemindTime { get; set; }
+        public DateTime RemindOn { get; set; }
     }
 
     public abstract class DiaryBase
     {
         public abstract int ID { get; }
-        public abstract DateTime RecordDate { get; }
+        public abstract DateTime RecordOn { get; }
         public abstract string Content { get; }
         public abstract string Title { get; }
         public abstract string Keywords { get; }
         public abstract int RemindFlag { get; }
-        public abstract DateTime RemindTime { get; }
+        public abstract DateTime RemindOn { get; }
         public abstract int RecordCount { get; }
         public abstract DateTime RecordDateFrom { get; }
         public abstract DateTime RecordDateTo { get; }
@@ -57,11 +58,11 @@ namespace LunarCalendar
         public abstract bool MoveLast();
         public abstract bool MoveNext();
         public abstract bool Save(Diary diary);
-        public abstract bool Save(DateTime RecordDate, string Title, string Keywords, string Content, int RemindFlag, DateTime RemindTime);
-        public abstract bool Delete(DateTime RecordDate);
+        public abstract bool Save(DateTime RecordOn, string Title, string Keywords, string Content, int RemindFlag, DateTime RemindOn);
+        public abstract bool Delete(DateTime RecordOn);
         public abstract bool Delete(int ID);
-        public abstract bool EraseOnceRemind(DateTime RecordDate, DateTime RemindTime);
-        public abstract bool EraseExpiredOnceRemind(DateTime RecordDate, DateTime RemindTime, bool Deleted);
+        public abstract bool EraseOnceRemind(DateTime RecordOn, DateTime RemindOn);
+        public abstract bool EraseExpiredOnceRemind(DateTime RecordOn, DateTime RemindOn, bool Deleted);
 
         public override string ToString()
         {
@@ -96,7 +97,8 @@ namespace LunarCalendar
 
         public override bool GetLists(Expression<Func<Diary, bool>> expr)
         {
-            _diaries = _ctx.GetTable<Diary>().Where(expr.Compile()).OrderBy(a => a.RecordDate).ToArray();
+            _diaries = _ctx.GetTable<Diary>().Where(expr.Compile()).OrderBy(a => a.RecordOn).ToArray();
+            //var dt = SQLiteHelper.Query("SELECT * FROM Diary");
             FillProperties();
 
             return true;
@@ -108,8 +110,8 @@ namespace LunarCalendar
             _rowIndex = 0;
             if (_recordCount > 0)
             {
-                _recordDateTo = _diaries.Max(a => a.RecordDate);
-                _recordDateFrom = _diaries.Min(a => a.RecordDate);
+                _recordDateTo = _diaries.Max(a => a.RecordOn);
+                _recordDateFrom = _diaries.Min(a => a.RecordOn);
             }
         }
 
@@ -173,12 +175,12 @@ namespace LunarCalendar
             }
         }
 
-        public override DateTime RecordDate
+        public override DateTime RecordOn
         {
             get
             {
                 if (_recordCount > 0 && _rowIndex >= 0)
-                    return _diaries[_rowIndex].RecordDate;
+                    return _diaries[_rowIndex].RecordOn;
                 else
                     return DateTime.Parse("1900-1-1");
             }
@@ -217,12 +219,12 @@ namespace LunarCalendar
             }
         }
 
-        public override DateTime RemindTime
+        public override DateTime RemindOn
         {
             get
             {
                 if (_recordCount > 0 && _rowIndex >= 0)
-                    return _diaries[_rowIndex].RemindTime;
+                    return _diaries[_rowIndex].RemindOn;
                 else
                     return DateTime.Parse("00:00");
             }
@@ -240,42 +242,42 @@ namespace LunarCalendar
 
         public override bool Save(Diary diary)
         {
-            return Save(diary.RecordDate, diary.Title, diary.Keywords, diary.Content, diary.RemindFlag, diary.RemindTime);
+            return Save(diary.RecordOn, diary.Title, diary.Keywords, diary.Content, diary.RemindFlag, diary.RemindOn);
         }
 
-        public override bool Save(DateTime RecordDate, string Title, string Keywords, string Content, int RemindFlag, DateTime RemindTime)
+        public override bool Save(DateTime RecordOn, string Title, string Keywords, string Content, int RemindFlag, DateTime RemindOn)
         {
             string sql;
 
             //IList<Diary> dtos = (from a in _ctx.GetTable<Diary>()
-            //                     where a.RecordDate == RecordDate.Date
+            //                     where a.RecordOn == RecordOn.Date
             //                     select a).ToList();
-            IList<Diary> dtos = _ctx.ExecuteQuery<Diary>("SELECT * FROM Diary WHERE RecordDate = {0}", RecordDate.Date).ToList();
+            IList<Diary> dtos = _ctx.ExecuteQuery<Diary>("SELECT * FROM Diary WHERE RecordOn = {0}", RecordOn.Date).ToList();
             if (dtos.Count > 0)
             {
-                sql = "UPDATE Diary SET [Title] = {0}, [Keywords] = {1}, [Content] = {2}, [RemindFlag] = {3}, [RemindTime] = {4}"
-                    + "  WHERE RecordDate = {5}";
-                _ctx.ExecuteCommand(sql, Title, Keywords, Content, RemindFlag, GlobalParams.OriginalDate.AddHours(RemindTime.Hour).AddMinutes(RemindTime.Minute), RecordDate.Date);
+                sql = "UPDATE Diary SET [Title] = {0}, [Keywords] = {1}, [Content] = {2}, [RemindFlag] = {3}, [RemindOn] = {4}"
+                    + "  WHERE RecordOn = {5}";
+                _ctx.ExecuteCommand(sql, Title, Keywords, Content, RemindFlag, GlobalParams.OriginalDate.AddHours(RemindOn.Hour).AddMinutes(RemindOn.Minute), RecordOn.Date);
             }
             else
             {
-                sql = "INSERT INTO Diary([RecordDate], [Title], [Keywords], [Content], [RemindFlag], [RemindTime] ) VALUES( {0}, {1}, {2}, {3}, {4}, {5})";
-                _ctx.ExecuteCommand(sql, RecordDate.Date, Title, Keywords, Content, RemindFlag, GlobalParams.OriginalDate.AddHours(RemindTime.Hour).AddMinutes(RemindTime.Minute));
+                sql = "INSERT INTO Diary([RecordOn], [Title], [Keywords], [Content], [RemindFlag], [RemindOn] ) VALUES( {0}, {1}, {2}, {3}, {4}, {5})";
+                _ctx.ExecuteCommand(sql, RecordOn.Date, Title, Keywords, Content, RemindFlag, GlobalParams.OriginalDate.AddHours(RemindOn.Hour).AddMinutes(RemindOn.Minute));
             }
 
             GlobalParams.IsDiaryUpdated = true;
             return true;
         }
 
-        public override bool Delete(DateTime RecordDate)
+        public override bool Delete(DateTime RecordOn)
         {
             string sql;
 
-            IList<Diary> dtos = _ctx.ExecuteQuery<Diary>("SELECT * FROM Diary WHERE RecordDate = {0}", RecordDate.Date).ToList();
+            IList<Diary> dtos = _ctx.ExecuteQuery<Diary>("SELECT * FROM Diary WHERE RecordOn = {0}", RecordOn.Date).ToList();
             if (dtos.Count > 0)
             {
-                sql = "DELETE Diary WHERE RecordDate = {0}";
-                _ctx.ExecuteCommand(sql, RecordDate.Date);
+                sql = "DELETE Diary WHERE RecordOn = {0}";
+                _ctx.ExecuteCommand(sql, RecordOn.Date);
             }
             GlobalParams.IsDiaryUpdated = true;
             return true;
@@ -295,17 +297,17 @@ namespace LunarCalendar
             return true;
         }
 
-        public override bool EraseOnceRemind(DateTime RecordDate, DateTime RemindTime)
+        public override bool EraseOnceRemind(DateTime RecordOn, DateTime RemindOn)
         {
             string sql;
 
-            sql = "UPDATE Diary SET RemindFlag = 0 WHERE RemindFlag = 1 AND RecordDate = {0} AND RemindTime = {1}";
-            _ctx.ExecuteCommand(sql, RecordDate.Date, GlobalParams.OriginalDate.AddHours(RemindTime.Hour).AddMinutes(RemindTime.Minute));
+            sql = "UPDATE Diary SET RemindFlag = 0 WHERE RemindFlag = 1 AND RecordOn = {0} AND RemindOn = {1}";
+            _ctx.ExecuteCommand(sql, RecordOn.Date, GlobalParams.OriginalDate.AddHours(RemindOn.Hour).AddMinutes(RemindOn.Minute));
             GlobalParams.IsDiaryUpdated = true;
             return true;
         }
 
-        public override bool EraseExpiredOnceRemind(DateTime RecordDate, DateTime RemindTime, bool Deleted)
+        public override bool EraseExpiredOnceRemind(DateTime RecordOn, DateTime RemindOn, bool Deleted)
         {
             string sql;
 
@@ -314,9 +316,9 @@ namespace LunarCalendar
             else
                 sql = "UPDATE Diary SET RemindFlag = 0";
 
-            sql = sql + " WHERE RemindFlag = 1 AND (RecordDate < {0} OR (RecordDate = {0} AND RemindTime < {1}))";
+            sql = sql + " WHERE RemindFlag = 1 AND (RecordOn < {0} OR (RecordOn = {0} AND RemindOn < {1}))";
 
-            _ctx.ExecuteCommand(sql, RecordDate.Date, GlobalParams.OriginalDate.AddHours(RemindTime.Hour).AddMinutes(RemindTime.Minute));
+            _ctx.ExecuteCommand(sql, RecordOn.Date, GlobalParams.OriginalDate.AddHours(RemindOn.Hour).AddMinutes(RemindOn.Minute));
             GlobalParams.IsDiaryUpdated = true;
             return true;
         }
@@ -339,13 +341,13 @@ namespace LunarCalendar
     {
         private static string connectstring;
         private static DataContext _ctx = null;
-        private static OleDbConnection _cn = null;
+        private static SQLiteConnection _cn = null;
         private static Connection _instance = null;
 
         //不允许外部调用NEW创建实例
         private Connection() { }
 
-        public OleDbConnection cn
+        public SQLiteConnection cn
         {
             get
             {
@@ -383,10 +385,11 @@ namespace LunarCalendar
                     return null;
                 }
 
-                connectstring = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strDBFileName + ";User ID=Admin;Jet OLEDB:Database Password=721123;Mode=ReadWrite|Share Deny None;Persist Security Info=False";
+                //connectstring = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + strDBFileName + ";User ID=Admin;Jet OLEDB:Database Password=721123;Mode=ReadWrite|Share Deny None;Persist Security Info=False";
+                connectstring = SQLiteHelper.ConnectionString;
                 try
                 {
-                    _cn = new OleDbConnection(connectstring);
+                    _cn = new SQLiteConnection(connectstring);
                 }
                 catch (Exception ex)
                 {

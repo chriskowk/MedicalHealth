@@ -14,7 +14,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="16" />
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding RecordDate, StringFormat=yyyy/MM/dd}" Grid.Column="0" />
+                    <TextBlock Text="{Binding RecordOn, StringFormat=yyyy/MM/dd}" Grid.Column="0" />
                     <TextBlock Text="{Binding Title}" Grid.Column="1" />
                     <TextBlock Text="{Binding Keywords}" Grid.Column="2" />
                 </Grid>
@@ -29,7 +29,7 @@
         <ListView Grid.Column="0" Name="_lvwDiarys" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Dairy Information">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=RecordDate, StringFormat=yyyy/MM/dd}" Width="80">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=RecordOn, StringFormat=yyyy/MM/dd}" Width="80">
                         <GridViewColumnHeader>日期
                             <GridViewColumnHeader.ContextMenu>
                                 <ContextMenu  MenuItem.Click="_recordTime_Click" Name="_recordTime">
@@ -57,7 +57,7 @@
                 <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">日期:</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="1" Text="{Binding RecordDate, StringFormat=yyyy年MM月dd日}" IsReadOnly="True" Background="WhiteSmoke" />
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="1" Text="{Binding RecordOn, StringFormat=yyyy年MM月dd日}" IsReadOnly="True" Background="WhiteSmoke" />
             <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">标题:</Label>
             <TextBox Grid.Row="1" Grid.Column="1" Margin="1" Text="{Binding Title}" Name="_txtTitle" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"/>
             <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">关键字:</Label>
