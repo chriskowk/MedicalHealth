@@ -12,6 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.OleDb;
+using LunarCalendar.Entities;
+using LunarCalendar.SqlContext;
+using LunarCalendar.DAL;
 
 namespace LunarCalendar
 {
@@ -20,7 +23,7 @@ namespace LunarCalendar
     /// </summary>
     public partial class MonthDiarys : Window, IDisposable
     {
-        private DiaryBase _mdbDiarys;
+        //private DiaryBase _mdbDiarys;
         private IList<Diary> _diaries = new List<Diary>();
         public IList<Diary> Diaries
         {
@@ -79,9 +82,9 @@ namespace LunarCalendar
             DateTime start = new DateTime(recordedOn.Year, recordedOn.Month, 1);
             DateTime end = GetNextMonthFirstDate(recordedOn);
 
-            if (_mdbDiarys == null) _mdbDiarys = new DiaryMDB();
-            _mdbDiarys.GetLists(a => a.RecordOn >= start && a.RecordOn < end);
-            _diaries = _mdbDiarys.Diaries;
+            //if (_mdbDiarys == null) _mdbDiarys = new DiaryMDB();
+            //_mdbDiarys.GetLists(a => a.RecordOn >= start && a.RecordOn < end);
+            _diaries = new DiaryDAL().GetDiaries();
 
             this.DataContext = null;
             this.DataContext = _diaries;
@@ -104,23 +107,23 @@ namespace LunarCalendar
 
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
-            _mdbDiarys.MoveNext();
+            //_mdbDiarys.MoveNext();
         }
 
         private void previousButton_Click(object sender, RoutedEventArgs e)
         {
-            _mdbDiarys.MoveLast();
+            //_mdbDiarys.MoveLast();
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SaveDiary()) LoadDiarys(new DateTime(_year, _month, _day));
+            //if (SaveDiary()) LoadDiarys(new DateTime(_year, _month, _day));
         }
 
-        private bool SaveDiary()
-        {
-            return _mdbDiarys.Save(_current);
-        }
+        //private bool SaveDiary()
+        //{
+        //    return _mdbDiarys.Save(_current);
+        //}
 
         private void addNewButton_Click(object sender, RoutedEventArgs e)
         {
@@ -134,7 +137,7 @@ namespace LunarCalendar
             string message = "确认要删除该日记 “" + title + "” 吗?";
             if (MessageBox.Show(message, "删除日记", MessageBoxButton.YesNoCancel, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
-                _mdbDiarys.Delete(selectedRow.ID);
+                //_mdbDiarys.Delete(selectedRow.ID);
                 LoadDiarys(new DateTime(_year, _month, _day));
             }
         }
@@ -149,7 +152,7 @@ namespace LunarCalendar
 
         private void saveCloseButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveDiary();
+            //SaveDiary();
             this.Close();
         }
 

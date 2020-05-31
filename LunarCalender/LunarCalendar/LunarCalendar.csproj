@@ -10,12 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LunarCalendar</RootNamespace>
     <AssemblyName>LunarCalendar</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <SignManifests>true</SignManifests>
-    <SignAssembly>true</SignAssembly>
+    <SignManifests>false</SignManifests>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>CalendarKey.snk</AssemblyOriginatorKeyFile>
     <ApplicationIcon>images\cal.ico</ApplicationIcon>
     <FileUpgradeFlags>
@@ -63,6 +63,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.2.0.35\lib\net461\Dapper.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -131,10 +138,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\DiaryDAL.cs" />
     <Compile Include="Diary.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Diary.cs" />
     <Compile Include="FancyToolTip.xaml.cs">
       <DependentUpon>FancyToolTip.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConnectionOption.cs" />
+    <Compile Include="Helpers\DapperExHelper.cs" />
+    <Compile Include="Helpers\DapperHelper.cs" />
+    <Compile Include="Helpers\GlobalParams.cs" />
     <Compile Include="Helpers\SQLiteHelper.cs" />
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="MonthDiarys.xaml.cs">
@@ -173,6 +187,7 @@
     <None Include="calendar.db" />
     <None Include="CalendarKey.snk" />
     <None Include="LunarCalendarKeyFile.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -209,6 +224,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

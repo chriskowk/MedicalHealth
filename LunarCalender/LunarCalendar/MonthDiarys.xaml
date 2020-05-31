@@ -40,7 +40,7 @@
                         </GridViewColumnHeader>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Header="标题" Width="120"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=EmployeeNumber}" Header="关键字" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Keywords}" Header="关键字" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

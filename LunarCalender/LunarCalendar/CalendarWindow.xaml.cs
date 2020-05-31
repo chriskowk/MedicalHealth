@@ -11,6 +11,9 @@ using System.Linq;
 using System.Data.Linq;
 using System.Diagnostics;
 using System.Data.OleDb;
+using LunarCalendar.Entities;
+using LunarCalendar.SqlContext;
+using LunarCalendar.DAL;
 
 namespace LunarCalendar
 {
@@ -48,7 +51,7 @@ namespace LunarCalendar
             LunarCalendar.Properties.Resources.Saturday
         };
 
-        private DiaryBase _database = new DiaryMDB();
+        //private DiaryBase _database = new DiaryMDB();
         private IList<Diary> _diaries = new List<Diary>();
 
         public CalendarWindow()
@@ -56,6 +59,7 @@ namespace LunarCalendar
             try
             {
                 //OleDbConnection cn = new OleDbConnection("connectstring");
+                ConnectionOption.ConnectionString = SQLiteHelper.ConnectionString;
 
                 InitializeComponent();
 
@@ -102,7 +106,7 @@ namespace LunarCalendar
 
         void WindowOnLoad(Object sender, EventArgs e)
         {
-            _database = new DiaryMDB();
+            //_database = new DiaryMDB();
             DisplayCalendar(_year, _month, _day);
         }
 
@@ -173,8 +177,8 @@ namespace LunarCalendar
             DateTime dt = new DateTime(year, month, 1);
             _calendarDisplayUniformGrid.FirstColumn = (int)(dt.DayOfWeek);
 
-            _database.GetLists(a => a.RecordOn >= dt && a.RecordOn < dt.AddMonths(1));
-            _diaries = _database.Diaries;
+            //_database.GetLists(a => a.RecordOn >= dt && a.RecordOn < dt.AddMonths(1));
+            _diaries = new DiaryDAL().GetDiaries();
             for (int i = 0; i < dayNum; i++)
             {
                 TextBlock mainDateLabel = new TextBlock();
