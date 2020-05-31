@@ -7,29 +7,33 @@ using System.Threading.Tasks;
 
 namespace LunarCalendar.SqlContext
 {
-    public class DapperExHelper<T> where T : BaseEntity
+    public static class DapperExHelper<T> where T : BaseEntity
     {
-        public T Get(int id)
+        public static T Get(int id)
         {
             return ConnectionOption.DbConnection.Get<T>(id);
         }
-        public IEnumerable<T> GetAll()
+        public static IEnumerable<T> GetAll()
         {
             return ConnectionOption.DbConnection.GetAll<T>();
         }
-        public long Insert(T t)
+        public static IEnumerable<T> Query(string sql)
+        {
+            return DapperHelper.Query<T>(sql);
+        }
+        public static long Insert(T t)
         {
             return ConnectionOption.DbConnection.Insert(t);
         }
-        public bool Update(T t)
+        public static bool Update(T t)
         {
             return ConnectionOption.DbConnection.Update(t);
         }
-        public bool Delete(T t)
+        public static bool Delete(T t)
         {
             return ConnectionOption.DbConnection.Delete(t);
         }
-        public bool DeleteAll()
+        public static bool DeleteAll()
         {
             return ConnectionOption.DbConnection.DeleteAll<T>();
         }

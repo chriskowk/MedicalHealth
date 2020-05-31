@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LunarCalendar.SqlContext
 {
-    public class DapperHelper
+    public static class DapperHelper
     {
         //}
         /// <summary>
@@ -21,7 +21,7 @@ namespace LunarCalendar.SqlContext
         /// <param name="commandTimeout">超时时间</param>
         /// <param name="commandType">command类型</param>
         /// <returns></returns>
-        public T QueryFirst<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        public static T QueryFirst<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
             ConnectionOption.DbConnection.Open();
             using (transaction = ConnectionOption.DbConnection.BeginTransaction())
@@ -43,12 +43,12 @@ namespace LunarCalendar.SqlContext
         /// <param name="commandTimeout">超时时间</param>
         /// <param name="commandType">command类型</param>
         /// <returns></returns>
-        public IEnumerable<T> Query<T>(string sql, object param = null, IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
+        public static IEnumerable<T> Query<T>(string sql, object param = null, IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
         {
             return ConnectionOption.DbConnection.Query<T>(sql, param, transaction, buffered, commandTimeout, commandType);
         }
 
-        public int Execute<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        public static int Execute<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
             return ConnectionOption.DbConnection.Execute(sql, param, transaction, commandTimeout, commandType);
         }

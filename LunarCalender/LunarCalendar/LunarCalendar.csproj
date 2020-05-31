@@ -16,7 +16,8 @@
     <WarningLevel>4</WarningLevel>
     <SignManifests>false</SignManifests>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>CalendarKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <ApplicationIcon>images\cal.ico</ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -185,8 +186,6 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="calendar.db" />
-    <None Include="CalendarKey.snk" />
-    <None Include="LunarCalendarKeyFile.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -201,9 +200,6 @@
     <Resource Include="images\min.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CalendarDatas.mdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="images\cal.ico" />
     <Resource Include="images\diary.ico" />
   </ItemGroup>

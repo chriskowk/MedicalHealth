@@ -9,18 +9,17 @@ namespace LunarCalendar.DAL
 {
     public class DiaryDAL
     {
-        DapperExHelper<Diary> dapperExHelper = new DapperExHelper<Diary>();
         public IList<Diary> GetDiaries()
         {
-            return dapperExHelper.GetAll().ToList();
+            return DapperExHelper<Diary>.GetAll().ToList();
+        }
+        public IList<Diary> GetDiaries(string sql)
+        {
+            return DapperExHelper<Diary>.Query(sql).ToList();
         }
         public Diary GetDiary(int id)
         {
-            return dapperExHelper.Get(id);
-        }
-        public long Insert(Diary dto)
-        {
-            return dapperExHelper.Insert(dto);
+            return DapperExHelper<Diary>.Get(id);
         }
     }
 }

@@ -177,8 +177,8 @@ namespace LunarCalendar
             DateTime dt = new DateTime(year, month, 1);
             _calendarDisplayUniformGrid.FirstColumn = (int)(dt.DayOfWeek);
 
-            //_database.GetLists(a => a.RecordOn >= dt && a.RecordOn < dt.AddMonths(1));
-            _diaries = new DiaryDAL().GetDiaries();
+            string sql = $"SELECT * FROM Diary WHERE RecordOn >= '{dt:yyyy-MM-dd}' AND RecordOn < '{dt.AddMonths(1):yyyy-MM-dd}'";
+            _diaries = new DiaryDAL().GetDiaries(sql);
             for (int i = 0; i < dayNum; i++)
             {
                 TextBlock mainDateLabel = new TextBlock();
