@@ -25,16 +25,12 @@ namespace LunarCalendar
     /// </summary>
     public partial class MonthDiarys : Window, IDisposable
     {
-        [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
-        private static extern IntPtr GetSystemMenu(IntPtr hWnd, UInt32 bRevert);
-        [DllImport("USER32.DLL ", CharSet = CharSet.Unicode)]
-        private static extern UInt32 RemoveMenu(IntPtr hMenu, UInt32 nPosition, UInt32 wFlags);
-        private const UInt32 SC_MINIMIZE = 0x0000F020;
-        private const UInt32 SC_MAXIMIZE = 0x0000F030;
-        private const UInt32 SC_CLOSE = 0x0000F060;
-        private const UInt32 MF_BYCOMMAND = 0x00000000;
-        private const UInt32 WM_SYSCOMMAND = 0x00000112;
-        private const UInt32 MF_REMOVE = 0x00001000;
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hwnd, int nIndex);
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLong(IntPtr hMenu, int nIndex, int dwNewLong);
+        [DllImport("user32.dll")]
+        private static extern int SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
 
         public IList<Diary> Diaries { get; private set; } = new List<Diary>();
         public Diary Current
@@ -60,10 +56,31 @@ namespace LunarCalendar
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            IntPtr hwnd = new WindowInteropHelper(this).Handle;
-            IntPtr hMenu = GetSystemMenu(hwnd, 0);
-            //RemoveMenu(hMenu, SC_CLOSE, MF_BYCOMMAND);
-            RemoveMenu(hMenu, SC_MINIMIZE, MF_BYCOMMAND);
+            EnableWindowControlBox(false, WindowStateMessage.WS_MINIMIZEBOX);
+        }
+
+        private static class WindowStateMessage
+        {
+            public static int WS_MINIMIZEBOX = 0x00020000;
+            public static int WS_MAXIMIZEBOX = 0x00010000;
+        }
+
+        private void EnableWindowControlBox(bool enabled, int ws_msg)
+        {
+            int GWL_STYLE = -16;
+            int SWP_NOSIZE = 0x0001;
+            int SWP_NOMOVE = 0x0002;
+            int SWP_FRAMECHANGED = 0x0020;
+
+            IntPtr handle = new WindowInteropHelper(this).Handle;
+            int nStyle = GetWindowLong(handle, GWL_STYLE);
+            if (enabled)
+                nStyle |= ws_msg;
+            else
+                nStyle &= ~(ws_msg);
+
+            SetWindowLong(handle, GWL_STYLE, nStyle);
+            SetWindowPos(handle, IntPtr.Zero, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_FRAMECHANGED);
         }
 
         void MonthDiarys_Closing(object sender, System.ComponentModel.CancelEventArgs e)
