@@ -1,4 +1,4 @@
-﻿<Window x:Class="LunarCalendar.MonthDiarys"
+﻿<Window x:Class="LunarCalendar.MonthDiarys" Loaded="Window_Loaded"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     Title="日记详情" Height="450" Width="600" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Icon="/LunarCalendar;component/images/diary.ico" Topmost="True">
@@ -31,7 +31,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Path=RecordOn, StringFormat=yyyy/MM/dd}" Width="80">
                         <GridViewColumnHeader>日期
                             <GridViewColumnHeader.ContextMenu>
-                                <ContextMenu  MenuItem.Click="_recordTime_Click" Name="_recordTime">
+                                <ContextMenu  MenuItem.Click="MnuRecordTime_Click" Name="_recordTime">
                                     <MenuItem Header="Ascending" />
                                     <MenuItem Header="Descending" />
                                 </ContextMenu>
@@ -73,12 +73,12 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Name="previousButton" Click="previousButton_Click" Height="28" Width="95">上一条(_P)</Button>
-                <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Name="nextButton" Click="nextButton_Click" Height="28" Width="95" >下一条(_N)</Button>
-                <Button Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="refreshButton" Click="refreshButton_Click" Height="28" Width="95" >刷新(_R)</Button>
-                <Button Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Name="deleteButton" Click="deleteButton_Click" Height="28" Width="95">删除(_D)</Button>
-                <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Name="saveButton" Click="saveButton_Click" Height="28" Width="95">保存(_S)</Button>
-                <Button Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="saveCloseButton" Click="saveCloseButton_Click" Height="28" Width="95">保存并关闭(_C)</Button>
+                <Button Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Name="previousButton" Click="PreviousButton_Click" Height="28" Width="95">上一条(_P)</Button>
+                <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Name="nextButton" Click="NextButton_Click" Height="28" Width="95" >下一条(_N)</Button>
+                <Button Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="refreshButton" Click="RefreshButton_Click" Height="28" Width="95" >刷新(_R)</Button>
+                <Button Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Name="deleteButton" Click="DeleteButton_Click" Height="28" Width="95">删除(_D)</Button>
+                <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Name="saveButton" Click="SaveButton_Click" Height="28" Width="95">保存(_S)</Button>
+                <Button Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Name="saveCloseButton" Click="SaveCloseButton_Click" Height="28" Width="95">保存并关闭(_C)</Button>
             </Grid>
         </Grid>
     </Grid>

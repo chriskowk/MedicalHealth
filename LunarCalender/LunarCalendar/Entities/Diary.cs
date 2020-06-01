@@ -15,7 +15,7 @@ namespace LunarCalendar.Entities
         public string Keywords { get; set; }
         public string Content { get; set; }
         public int RemindFlag { get; set; }
-        public DateTime RemindOn { get; set; }
+        public DateTime? RemindOn { get; set; }
         public DateTime RecordOn { get; set; }
         public bool IsDeleted { get; set; }
     }

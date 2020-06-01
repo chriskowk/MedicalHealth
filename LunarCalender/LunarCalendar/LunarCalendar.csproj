@@ -143,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\DiaryDAL.cs" />
-    <Compile Include="Diary%28删除%29.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Diary.cs" />
     <Compile Include="FancyToolTip.xaml.cs">

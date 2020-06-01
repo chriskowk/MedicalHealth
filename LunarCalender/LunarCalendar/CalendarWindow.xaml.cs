@@ -74,7 +74,6 @@ namespace LunarCalendar
                 InitializeComponent();
 
                 this.Loaded += WindowOnLoad;
-                this.MouseLeftButtonDown += WindowOnMove;
                 this.CalendarListBox.SelectionChanged += SelectedDateOnDisplay;
 
                 this.Background = Brushes.Black;
@@ -119,11 +118,6 @@ namespace LunarCalendar
         {
             //_database = new DiaryMDB();
             DisplayCalendar(_year, _month, _day);
-        }
-
-        void WindowOnMove(Object sender, EventArgs e)
-        {
-            this.DragMove();
         }
 
         #endregion
@@ -633,9 +627,10 @@ namespace LunarCalendar
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            if (System.Windows.MessageBox.Show("确定退出吗？", "万年历", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            if (System.Windows.MessageBox.Show("确定要退出本程序吗？", "万年历", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
             {
                 _notifyIcon.Visible = false;
+                
                 //System.Environment.Exit(0);
                 System.Windows.Application.Current.Shutdown();
             }
