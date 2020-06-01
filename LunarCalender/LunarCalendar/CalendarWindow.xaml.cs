@@ -116,8 +116,17 @@ namespace LunarCalendar
 
         void WindowOnLoad(Object sender, EventArgs e)
         {
-            //_database = new DiaryMDB();
             DisplayCalendar(_year, _month, _day);
+        }
+
+        /// <summary>
+        /// 拖拽主窗口移动位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void WindowOnMove(Object sender, EventArgs e)
+        {
+            this.DragMove();
         }
 
         #endregion
@@ -630,7 +639,7 @@ namespace LunarCalendar
             if (System.Windows.MessageBox.Show("确定要退出本程序吗？", "万年历", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
             {
                 _notifyIcon.Visible = false;
-                
+
                 //System.Environment.Exit(0);
                 System.Windows.Application.Current.Shutdown();
             }
