@@ -82,6 +82,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -140,7 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\DiaryDAL.cs" />
-    <Compile Include="Diary.cs" />
+    <Compile Include="Diary%28删除%29.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Diary.cs" />
     <Compile Include="FancyToolTip.xaml.cs">

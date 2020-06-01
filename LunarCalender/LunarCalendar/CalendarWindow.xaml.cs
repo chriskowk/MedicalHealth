@@ -14,6 +14,17 @@ using System.Data.OleDb;
 using LunarCalendar.Entities;
 using LunarCalendar.SqlContext;
 using LunarCalendar.DAL;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.ServiceModel;
+using System.Runtime.InteropServices;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 
 namespace LunarCalendar
 {
@@ -51,9 +62,8 @@ namespace LunarCalendar
             LunarCalendar.Properties.Resources.Saturday
         };
 
-        //private DiaryBase _database = new DiaryMDB();
         private IList<Diary> _diaries = new List<Diary>();
-
+        private System.Windows.Forms.NotifyIcon _notifyIcon = null;
         public CalendarWindow()
         {
             try
@@ -66,7 +76,6 @@ namespace LunarCalendar
                 this.Loaded += WindowOnLoad;
                 this.MouseLeftButtonDown += WindowOnMove;
                 this.CalendarListBox.SelectionChanged += SelectedDateOnDisplay;
-                this.MinButton.Click += WindowOnMin;
 
                 this.Background = Brushes.Black;
                 this.ResizeMode = ResizeMode.CanMinimize;
@@ -85,6 +94,8 @@ namespace LunarCalendar
 
                 WeekdayLabelsConfigure();
                 SubscribeNavigationButtonEvents();
+
+                InitializTrayIcon();
             }
             catch (Exception ex)
             {
@@ -108,11 +119,6 @@ namespace LunarCalendar
         {
             //_database = new DiaryMDB();
             DisplayCalendar(_year, _month, _day);
-        }
-
-        void WindowOnMin(Object sender, EventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
         }
 
         void WindowOnMove(Object sender, EventArgs e)
@@ -555,11 +561,84 @@ namespace LunarCalendar
             return myCollection;
         }
 
+        private void MinButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void InitializTrayIcon()
+        {
+            this.Visibility = Visibility.Hidden;
+            _notifyIcon = new System.Windows.Forms.NotifyIcon();
+            _notifyIcon.BalloonTipText = "万年历程序运行中...";
+            _notifyIcon.Text = "LunarCalendar";
+            _notifyIcon.Visible = true;
+            //重要提示：此处的图标图片在resouces文件夹。可是打包后安装发现无法获取路径，导致程序死机。建议复制一份resouces文件到UI层的bin目录下，确保万无一失。
+            _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("images/cal.ico", UriKind.Relative)).Stream);
+            _notifyIcon.ShowBalloonTip(1000);//托盘气泡显示时间
+            //双击事件
+            _notifyIcon.MouseDoubleClick -= NotifyIcon_MouseClick;
+            _notifyIcon.MouseDoubleClick += NotifyIcon_MouseClick;
+            //鼠标点击事件
+            _notifyIcon.MouseClick -= NotifyIcon_MouseClick;
+            _notifyIcon.MouseClick += NotifyIcon_MouseClick;
+            //右键菜单--显示/退出菜单项
+            System.Windows.Forms.MenuItem muiShow = new System.Windows.Forms.MenuItem("显示");
+            muiShow.Click -= Show_Click;
+            muiShow.Click += Show_Click;
+            System.Windows.Forms.MenuItem muiExit = new System.Windows.Forms.MenuItem("退出");
+            muiExit.Click -= Exit_Click;
+            muiExit.Click += Exit_Click;
+            //关联托盘控件
+            System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { muiShow, new System.Windows.Forms.MenuItem("-"), muiExit };
+            _notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(childen);
         }
 
 
+        // 托盘图标鼠标单击事件
+        private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (this.Visibility == Visibility.Visible)
+                {
+                    this.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    this.Visibility = Visibility.Visible;
+                    this.Activate();
+                }
+            }
+        }
+
+        private void MainWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Minimized)
+            {
+                this.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void Show_Click(object sender, EventArgs e)
+        {
+            this.Visibility = Visibility.Visible;
+            this.Activate();
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            if (System.Windows.MessageBox.Show("确定退出吗？", "万年历", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            {
+                _notifyIcon.Visible = false;
+                //System.Environment.Exit(0);
+                System.Windows.Application.Current.Shutdown();
+            }
+        }
     }
 }
