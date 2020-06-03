@@ -16,6 +16,9 @@ namespace LunarCalendar.Entities
         public string Content { get; set; }
         public DateTime RecordDate { get; set; }
         public bool IsRemindRequired { get; set; }
+        public string JobGroup { get; set; }
+        public string JobName { get; set; }
+        public string JobTypeFullName { get; set; }
         public string CronExpress { get; set; }
         public DateTime? RunningStart { get; set; }
         public DateTime? RunningEnd { get; set; }

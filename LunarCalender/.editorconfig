@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS3002: 返回类型不符合 CLS
+dotnet_diagnostic.CS3002.severity = none
+
+# CS3001: 参数类型不符合 CLS
+dotnet_diagnostic.CS3001.severity = none

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,6 +19,7 @@ namespace LunarCalendar
         public static int WS_MINIMIZEBOX = 0x00020000;
         public static int WS_MAXIMIZEBOX = 0x00010000;
     }
+    
     /// <summary>
     /// 公共类库
     /// </summary>
@@ -27,7 +31,7 @@ namespace LunarCalendar
         public static extern int SetWindowLong(IntPtr hMenu, int nIndex, int dwNewLong);
         [DllImport("user32.dll")]
         private static extern int SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
-
+        public static string REMIND_CONTENT = "RemindContent";
         public static void EnableWindowControlBox(IntPtr handle, bool enabled, int ws_msg)
         {
             int GWL_STYLE = -16;
@@ -45,6 +49,33 @@ namespace LunarCalendar
             SetWindowLong(handle, GWL_STYLE, nStyle);
             SetWindowPos(handle, IntPtr.Zero, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_FRAMECHANGED);
         }
+
+        public static string ExecBatch(string batPath, bool useShellExecute, bool redirectStandardOutput, bool redirectStandardError, string arguments, ref string errMsg)
+        {
+            string outputString = string.Empty;
+
+            using (Process pro = new Process())
+            {
+                FileInfo file = new FileInfo(batPath);
+                ProcessStartInfo psi = new ProcessStartInfo(batPath, arguments)
+                {
+                    WorkingDirectory = file.Directory.FullName,
+                    CreateNoWindow = false,
+                    RedirectStandardOutput = redirectStandardOutput,
+                    RedirectStandardError = redirectStandardError,
+                    UseShellExecute = useShellExecute
+                };
+                pro.StartInfo = psi;
+                pro.Start();
+                pro.WaitForExit();
+
+                outputString = redirectStandardOutput ? pro.StandardOutput.ReadToEnd() : string.Empty;
+                errMsg = redirectStandardError ? pro.StandardError.ReadToEnd() : string.Empty;
+            }
+            return outputString;
+        }
+
+        public static Assembly CurrentAssembly => Assembly.GetExecutingAssembly();
 
         public static bool IsInt(string value)
         {

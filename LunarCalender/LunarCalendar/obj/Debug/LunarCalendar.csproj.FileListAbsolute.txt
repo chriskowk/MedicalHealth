@@ -106,3 +106,5 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.Cor
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.pdb
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.QuartzCronForm.resources
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Newtonsoft.Json.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Newtonsoft.Json.xml

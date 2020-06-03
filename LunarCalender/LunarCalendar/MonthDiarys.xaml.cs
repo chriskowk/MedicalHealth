@@ -17,6 +17,7 @@ using LunarCalendar.SqlContext;
 using LunarCalendar.DAL;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using LunarCalendar.JobScheduler;
 
 namespace LunarCalendar
 {
@@ -50,6 +51,7 @@ namespace LunarCalendar
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Common.EnableWindowControlBox(new WindowInteropHelper(this).Handle, false, WindowStateMessage.WS_MINIMIZEBOX);
+            CheckNewDiary();
         }
 
         void MonthDiarys_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -59,7 +61,7 @@ namespace LunarCalendar
 
         void MonthDiarys_Activated(object sender, EventArgs e)
         {
-            CheckNewDiary();
+
         }
 
         private void CheckNewDiary()
@@ -69,7 +71,21 @@ namespace LunarCalendar
             if (Current == null)
             {
                 _lvwDiarys.SelectedIndex = -1;
-                Current = new Diary() { ID = -1, Title = "<新日记>", Keywords = "", Content = "", IsRemindRequired = false, CronExpress = "", RunningStart = null, RunningEnd = null, RecordDate = new DateTime(_year, _month, _day) };
+                Current = new Diary()
+                {
+                    ID = -1,
+                    Title = "[新日记]",
+                    Keywords = string.Empty,
+                    Content = string.Empty,
+                    IsRemindRequired = false,
+                    JobGroup = "TaskGroup",
+                    JobName = Guid.NewGuid().ToString(),
+                    JobTypeFullName = $"{typeof(RemindJob).FullName},{System.IO.Path.GetFileName(Common.CurrentAssembly.Location)}",
+                    CronExpress = string.Empty,
+                    RunningStart = null,
+                    RunningEnd = null,
+                    RecordDate = new DateTime(_year, _month, _day)
+                };
             }
 
             for (int i = 0; i < _lvwDiarys.Items.Count; i++)
@@ -95,6 +111,10 @@ namespace LunarCalendar
 
             string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
             Diaries = new DiaryDAL().GetDiaries(sql);
+            foreach (var item in Diaries.Where(a => a.IsRemindRequired).ToList())
+            {
+                JobCenter.StartScheduleJobAsync(item).Wait();
+            }
 
             this.DataContext = null;
             this.DataContext = Diaries;
