@@ -25,6 +25,7 @@ using System.Windows.Threading;
 using System.ServiceModel;
 using System.Runtime.InteropServices;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using System.Threading;
 
 namespace LunarCalendar
 {
@@ -63,12 +64,10 @@ namespace LunarCalendar
         };
 
         private IList<Diary> _diaries = new List<Diary>();
-        private System.Windows.Forms.NotifyIcon _notifyIcon = null;
         public CalendarWindow()
         {
             try
             {
-                //OleDbConnection cn = new OleDbConnection("connectstring");
                 ConnectionOption.ConnectionString = SQLiteHelper.ConnectionString;
 
                 InitializeComponent();
@@ -574,16 +573,18 @@ namespace LunarCalendar
             this.Visibility = Visibility.Hidden;
         }
 
+        private System.Windows.Forms.NotifyIcon _notifyIcon = null;
+        private System.Threading.Timer _timer;
         private void InitializTrayIcon()
         {
             this.Visibility = Visibility.Hidden;
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
-            _notifyIcon.BalloonTipText = "万年历程序运行中...";
-            _notifyIcon.Text = "LunarCalendar";
+            //_notifyIcon.BalloonTipText = "万年历程序运行中...";
+            //_notifyIcon.ShowBalloonTip(1000);//托盘气泡显示时间
+            _notifyIcon.Text = GetFullDateDesc(DateTime.Now, true);
             _notifyIcon.Visible = true;
             //重要提示：此处的图标图片在resouces文件夹。可是打包后安装发现无法获取路径，导致程序死机。建议复制一份resouces文件到UI层的bin目录下，确保万无一失。
-            _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("images/cal.ico", UriKind.Relative)).Stream);
-            _notifyIcon.ShowBalloonTip(1000);//托盘气泡显示时间
+            _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream);
             //双击事件
             _notifyIcon.MouseDoubleClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseDoubleClick += NotifyIcon_MouseClick;
@@ -600,6 +601,20 @@ namespace LunarCalendar
             //关联托盘控件
             System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { muiShow, new System.Windows.Forms.MenuItem("-"), muiExit };
             _notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(childen);
+            //时钟按秒
+            _timer = new Timer(new TimerCallback(ResetTrayIcon));
+            _timer.Change(0, 1000);
+        }
+
+        private DateTime _latestRefreshOn = DateTime.Now;
+        private void ResetTrayIcon(object state)
+        {
+            if (_latestRefreshOn.Date != DateTime.Now.Date)
+            {
+                _notifyIcon.Text = GetFullDateDesc(DateTime.Now, true);
+                _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream);
+            }
+            _latestRefreshOn = DateTime.Now;
         }
 
 
@@ -628,6 +643,11 @@ namespace LunarCalendar
             }
         }
 
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            if (_timer != null) _timer.Dispose();
+        }
+
         private void Show_Click(object sender, EventArgs e)
         {
             this.Visibility = Visibility.Visible;
@@ -642,6 +662,14 @@ namespace LunarCalendar
 
                 //System.Environment.Exit(0);
                 System.Windows.Application.Current.Shutdown();
+            }
+        }
+
+        private void _btnRemind_Click(object sender, RoutedEventArgs e)
+        {
+            using (QuartzCronForm form = new QuartzCronForm())
+            {
+                form.ShowDialog();
             }
         }
     }

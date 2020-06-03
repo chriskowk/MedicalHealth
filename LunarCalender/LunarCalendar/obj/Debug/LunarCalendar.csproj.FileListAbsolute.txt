@@ -96,3 +96,13 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.Contrib.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.Core.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.pdb
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.Core.pdb
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.Core.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.pdb
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.QuartzCronForm.resources

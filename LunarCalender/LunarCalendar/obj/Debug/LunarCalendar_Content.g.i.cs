@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("calendardatas.mdb")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/remind.png")]
 
 

@@ -25,13 +25,6 @@ namespace LunarCalendar
     /// </summary>
     public partial class MonthDiarys : Window, IDisposable
     {
-        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
-        public static extern int GetWindowLong(IntPtr hwnd, int nIndex);
-        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-        public static extern int SetWindowLong(IntPtr hMenu, int nIndex, int dwNewLong);
-        [DllImport("user32.dll")]
-        private static extern int SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
-
         public IList<Diary> Diaries { get; private set; } = new List<Diary>();
         public Diary Current
         {
@@ -56,31 +49,7 @@ namespace LunarCalendar
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            EnableWindowControlBox(false, WindowStateMessage.WS_MINIMIZEBOX);
-        }
-
-        private static class WindowStateMessage
-        {
-            public static int WS_MINIMIZEBOX = 0x00020000;
-            public static int WS_MAXIMIZEBOX = 0x00010000;
-        }
-
-        private void EnableWindowControlBox(bool enabled, int ws_msg)
-        {
-            int GWL_STYLE = -16;
-            int SWP_NOSIZE = 0x0001;
-            int SWP_NOMOVE = 0x0002;
-            int SWP_FRAMECHANGED = 0x0020;
-
-            IntPtr handle = new WindowInteropHelper(this).Handle;
-            int nStyle = GetWindowLong(handle, GWL_STYLE);
-            if (enabled)
-                nStyle |= ws_msg;
-            else
-                nStyle &= ~(ws_msg);
-
-            SetWindowLong(handle, GWL_STYLE, nStyle);
-            SetWindowPos(handle, IntPtr.Zero, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_FRAMECHANGED);
+            Common.EnableWindowControlBox(new WindowInteropHelper(this).Handle, false, WindowStateMessage.WS_MINIMIZEBOX);
         }
 
         void MonthDiarys_Closing(object sender, System.ComponentModel.CancelEventArgs e)
