@@ -14,9 +14,12 @@ namespace LunarCalendar.Entities
         public string Title { get; set; }
         public string Keywords { get; set; }
         public string Content { get; set; }
-        public int RemindFlag { get; set; }
-        public DateTime? RemindOn { get; set; }
-        public DateTime RecordOn { get; set; }
+        public DateTime RecordDate { get; set; }
+        public bool IsRemindRequired { get; set; }
+        public string CronExpress { get; set; }
+        public DateTime? RunningStart { get; set; }
+        public DateTime? RunningEnd { get; set; }
+        public DateTime RowVersion { get; set; }
         public bool IsDeleted { get; set; }
     }
 

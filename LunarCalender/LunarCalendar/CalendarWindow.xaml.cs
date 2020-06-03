@@ -185,7 +185,7 @@ namespace LunarCalendar
             DateTime dt = new DateTime(year, month, 1);
             _calendarDisplayUniformGrid.FirstColumn = (int)(dt.DayOfWeek);
 
-            string sql = $"SELECT * FROM Diary WHERE RecordOn >= '{dt:yyyy-MM-dd}' AND RecordOn < '{dt.AddMonths(1):yyyy-MM-dd}'";
+            string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{dt:yyyy-MM-dd}' AND RecordDate < '{dt.AddMonths(1):yyyy-MM-dd}'";
             _diaries = new DiaryDAL().GetDiaries(sql);
             for (int i = 0; i < dayNum; i++)
             {
@@ -257,7 +257,7 @@ namespace LunarCalendar
                     stackPanel.Children.Add(subsidiary);
                 }
 
-                Diary diary = _diaries.FirstOrDefault(a => a.RecordOn >= dt.Date && a.RecordOn < dt.Date.AddDays(1));
+                Diary diary = _diaries.FirstOrDefault(a => a.RecordDate >= dt.Date && a.RecordDate < dt.Date.AddDays(1));
                 if (diary != null)    //See if having a diary or note
                 {
                     mainDateLabel.TextDecorations = GetUnderlineDecoration();
@@ -270,7 +270,7 @@ namespace LunarCalendar
                     FancyToolTip toolTip = new FancyToolTip();
                     toolTip.Title = diary.Title;
                     toolTip.InfoText = diary.Content;
-                    toolTip.Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RecordOn);
+                    toolTip.Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RowVersion);
                     tt.Content = toolTip;
                 }
 
@@ -662,14 +662,6 @@ namespace LunarCalendar
 
                 //System.Environment.Exit(0);
                 System.Windows.Application.Current.Shutdown();
-            }
-        }
-
-        private void _btnRemind_Click(object sender, RoutedEventArgs e)
-        {
-            using (QuartzCronForm form = new QuartzCronForm())
-            {
-                form.ShowDialog();
             }
         }
     }

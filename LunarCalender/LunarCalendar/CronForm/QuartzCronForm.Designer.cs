@@ -2069,8 +2069,10 @@
             this.Controls.Add(this.tab);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuartzCronForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quartz表达式生成器";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.QuartzCronForm_Load);
             this.tab.ResumeLayout(false);
             this.tabSecond.ResumeLayout(false);

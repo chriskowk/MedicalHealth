@@ -14,7 +14,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="16" />
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding RecordOn, StringFormat=yyyy/MM/dd}" Grid.Column="0" />
+                    <TextBlock Text="{Binding RecordDate, StringFormat=yyyy/MM/dd}" Grid.Column="0" />
                     <TextBlock Text="{Binding Title}" Grid.Column="1" />
                     <TextBlock Text="{Binding Keywords}" Grid.Column="2" />
                 </Grid>
@@ -28,7 +28,7 @@
         <ListView Grid.Column="0" Name="_lvwDiarys" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" SelectionChanged="_lvwDiarys_SelectionChanged">
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Dairy Information">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=RecordOn, StringFormat=yyyy/MM/dd}" Width="80">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=RecordDate, StringFormat=yyyy/MM/dd}" Width="80">
                         <GridViewColumnHeader>日期
                             <GridViewColumnHeader.ContextMenu>
                                 <ContextMenu  MenuItem.Click="MnuRecordTime_Click" Name="_recordTime">
@@ -53,17 +53,35 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="25" />
                 <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">日期:</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="1" Text="{Binding RecordOn, StringFormat=yyyy年MM月dd日}" IsReadOnly="True" Background="WhiteSmoke" />
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="1" Text="{Binding RecordDate, StringFormat=yyyy年MM月dd日}" IsReadOnly="True" Background="WhiteSmoke" />
             <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">标题:</Label>
             <TextBox Grid.Row="1" Grid.Column="1" Margin="1" Text="{Binding Title}" Name="_txtTitle" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"/>
             <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">关键字:</Label>
             <TextBox Grid.Row="2" Grid.Column="1" Margin="1" Text="{Binding Keywords}" Name="_txtKeywords" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"/>
             <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">内容:</Label>
             <TextBox Grid.Row="3" Grid.Column="1" Margin="1" Text="{Binding Content}" Name="_txtContent" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"/>
-            <Grid Grid.Row="4" Grid.Column="1" >
+            <Grid Grid.Row="4" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="85" />
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" Content="需要提醒" IsChecked="{Binding IsRemindRequired}" Name="_chkRemindRequired" VerticalAlignment="Center"/>
+                <Label Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">Cron表达式</Label>
+                <TextBox Grid.Column="2" Margin="1" Text="{Binding CronExpress}" Name="_txtCronExpress" />
+                <Button Grid.Column="3" Height="24" HorizontalAlignment="Right" Name="_btnRemind" VerticalAlignment="Center" Width="26" Click="_btnRemind_Click">
+                    <Image Height="22" Width="22" Stretch="Fill" Source="images/remind.png" />
+                </Button>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />

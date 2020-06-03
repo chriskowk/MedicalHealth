@@ -24,9 +24,9 @@ namespace LunarCalendar.DAL
             return DapperExHelper<Diary>.Get(id);
         }
 
-        public bool EraseOnceRemind(DateTime recordOn, DateTime remindOn)
+        public bool EraseOnceRemind(DateTime recordDate, DateTime runningStart)
         {
-            string sql = $"UPDATE Diary SET RemindFlag = 0 WHERE RemindFlag = 1 AND DATE(RecordOn) = '{recordOn:yyyy-MM-dd}' AND STRFTIME('%Y-%m-%d %H:%M', RemindOn, 'localtime') = '{remindOn:yyyy-MM-dd HH:mm}'";
+            string sql = $"UPDATE Diary SET IsRemindRequired = 0 WHERE IsRemindRequired = 1 AND DATE(RecordDate) = '{recordDate:yyyy-MM-dd}' AND STRFTIME('%Y-%m-%d %H:%M', RunningStart, 'localtime') = '{runningStart:yyyy-MM-dd HH:mm}'";
             if (DapperHelper.Execute<Diary>(sql) > 0)
             {
                 GlobalParams.IsDiaryUpdated = true;
@@ -36,10 +36,10 @@ namespace LunarCalendar.DAL
             return false;
         }
 
-        public bool EraseExpiredOnceRemind(DateTime recordOn, DateTime remindOn, bool deleted = false)
+        public bool EraseExpiredOnceRemind(DateTime recordDate, DateTime runningStart, bool deleted = false)
         {
-            string sql = deleted ? "DELETE FROM Diary" : "UPDATE Diary SET RemindFlag = 0";
-            sql += $" WHERE RemindFlag = 1 AND (RecordOn < '{recordOn:yyyy-MM-dd}' OR (RecordOn = '{recordOn:yyyy-MM-dd}' AND RemindOn < '{remindOn:yyyy-MM-dd HH:mm}'))";
+            string sql = deleted ? "DELETE FROM Diary" : "UPDATE Diary SET IsRemindRequired = 0";
+            sql += $" WHERE IsRemindRequired = 1 AND (RecordDate < '{recordDate:yyyy-MM-dd}' OR (RecordDate = '{recordDate:yyyy-MM-dd}' AND RunningStart < '{runningStart:yyyy-MM-dd HH:mm}'))";
 
             if (DapperHelper.Execute<Diary>(sql) > 0)
             {

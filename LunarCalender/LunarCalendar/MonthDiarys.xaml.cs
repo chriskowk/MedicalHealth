@@ -65,11 +65,11 @@ namespace LunarCalendar
         private void CheckNewDiary()
         {
             DateTime recordedOn = new DateTime(_year, _month, _day);
-            Current = Diaries.FirstOrDefault(a => a.RecordOn >= recordedOn.Date && a.RecordOn < recordedOn.Date.AddDays(1));
+            Current = Diaries.FirstOrDefault(a => a.RecordDate >= recordedOn.Date && a.RecordDate < recordedOn.Date.AddDays(1));
             if (Current == null)
             {
                 _lvwDiarys.SelectedIndex = -1;
-                Current = new Diary() { ID = -1, Title = "<新日记>", Keywords = "", Content = "", RemindFlag = 0, RemindOn = null, RecordOn = new DateTime(_year, _month, _day) };
+                Current = new Diary() { ID = -1, Title = "<新日记>", Keywords = "", Content = "", IsRemindRequired = false, CronExpress = "", RunningStart = null, RunningEnd = null, RecordDate = new DateTime(_year, _month, _day) };
             }
 
             for (int i = 0; i < _lvwDiarys.Items.Count; i++)
@@ -93,7 +93,7 @@ namespace LunarCalendar
             DateTime start = new DateTime(recordedOn.Year, recordedOn.Month, 1);
             DateTime end = GetNextMonthFirstDate(recordedOn);
 
-            string sql = $"SELECT * FROM Diary WHERE RecordOn >= '{start:yyyy-MM-dd}' AND RecordOn < '{end:yyyy-MM-dd}'";
+            string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
             Diaries = new DiaryDAL().GetDiaries(sql);
 
             this.DataContext = null;
@@ -183,6 +183,14 @@ namespace LunarCalendar
         private void _lvwDiarys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Current = (Diary)_lvwDiarys.SelectedItem;
+        }
+
+        private void _btnRemind_Click(object sender, RoutedEventArgs e)
+        {
+            using (QuartzCronForm form = new QuartzCronForm())
+            {
+                form.ShowDialog();
+            }
         }
 
 

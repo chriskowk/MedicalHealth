@@ -48,9 +48,6 @@
         <StackPanel VerticalAlignment="Bottom" Margin="300,0,0,0">
             <TextBlock HorizontalAlignment="Left" Name="text8" >TextBlock</TextBlock>
         </StackPanel>
-        <Button Height="24" HorizontalAlignment="Right" Name="_btnRemind" VerticalAlignment="Top" Width="26" Margin="0,0,75,0" Click="_btnRemind_Click">
-            <Image Height="22" Margin="0,0,0,0" Stretch="Fill" Width="22" Source="images/remind.png" />
-        </Button>
         <Button Height="24" HorizontalAlignment="Right" Name="MinButton" VerticalAlignment="Top" Width="24" Margin="0,0,45,0" Background="Black" BorderBrush="Black" Click="MinButton_Click">
             <Image Height="17" Margin="0,0,0,0" Stretch="Fill" Width="18" Source="images/min.bmp" HorizontalAlignment="Right" VerticalAlignment="Top" />
         </Button>
