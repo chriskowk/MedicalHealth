@@ -652,9 +652,8 @@ namespace JobController
         /// <param name="milliseconds">等待命令执行的时间（单位：毫秒），  
         /// 如果设定为0，则无限等待</param>  
         /// <returns>返回DOS命令的输出</returns>  
-        public static string Execute(string command, int seconds)
+        public static void Execute(string command, int seconds)
         {
-            string output = ""; //输出字符串  
             if (command != null && !command.Equals(""))
             {
                 Process process = new Process();//创建进程对象  
@@ -678,7 +677,6 @@ namespace JobController
                         {
                             process.WaitForExit(seconds); //等待进程结束，等待时间为指定的毫秒  
                         }
-                        output = process.StandardOutput.ReadToEnd();//读取进程的输出  
                     }
                 }
                 catch
@@ -690,7 +688,6 @@ namespace JobController
                         process.Close();
                 }
             }
-            return output;
         }
 
         private void _btnStartServices_Click(object sender, EventArgs e)

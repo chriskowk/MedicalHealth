@@ -23,7 +23,7 @@ namespace JobController
 
     public class JobListener : IJobListener
     {
-        readonly ILog _log = LogManager.GetLogger(typeof(TaskJobBase));
+        private static ILog _logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public virtual string Name
         {
             get { return "JobListener"; }
@@ -34,7 +34,7 @@ namespace JobController
             return Task.Run(() =>
             {
                 //执行前执行
-                _log.Info("JobToBeExecuted");
+                _logger.Info("JobToBeExecuted");
             });
         }
 
@@ -43,7 +43,7 @@ namespace JobController
             return Task.Run(() =>
             {
                 //否决时执行
-                _log.Info("JobExecutionVetoed");
+                _logger.Info("JobExecutionVetoed");
             });
         }
 
@@ -51,9 +51,10 @@ namespace JobController
         {
             return Task.Run(() =>
             {
-                JobKey jobKey = context.JobDetail.Key;
+                IJobDetail job = context.JobDetail;
+                JobKey jobKey = job.Key;
                 // 获取传递过来的参数
-                JobDataMap data = context.JobDetail.JobDataMap;
+                JobDataMap data = job.JobDataMap;
                 //获取回传的数据库表条目数
                 int rowCount = data.GetInt(TaskJobBase.RowCount);
                 try
@@ -65,12 +66,12 @@ namespace JobController
                         context.Scheduler.ResumeAll();
 
                     }
-                    _log.Info(rowCount.ToString());
-                    GlobalEventManager.FireJobWasExecutedEvent($"MyJob.{jobKey.Name}", new EventArgs());
+                    _logger.Info(rowCount.ToString());
+                    GlobalEventManager.FireJobWasExecutedEvent(job.JobType.FullName, new EventArgs());
                 }
                 catch (SchedulerException e)
                 {
-                    _log.Error(e.StackTrace);
+                    _logger.Error(e.StackTrace);
                 }
             });
         }
