@@ -167,6 +167,13 @@ namespace JobController
 
             _timer = new System.Threading.Timer(new TimerCallback(ResetTrayIcon));
             _timer.Change(0, 1000);
+
+            GlobalEventManager.JobWasExecuted += GlobalEventManager_JobWasExecuted;
+        }
+
+        private void GlobalEventManager_JobWasExecuted(object sender, EventArgs e)
+        {
+            ShowTaskFinishedMessage(sender.ToString());
         }
 
         private void OnReceivedTaskFinishedMessage()
@@ -279,25 +286,16 @@ namespace JobController
         private DateTime _date;
         private void ResetTrayIcon(object state)
         {
-            Assembly a = Assembly.GetExecutingAssembly();
-            string path = Environment.CurrentDirectory;
             _index = (_index + 1) % 7;
-
             this.notifyIcon1.Icon = _icons[string.Format("{0}.Tray{1}.ico", _trayIconPath, _index)] as Icon;
             RefreshDurationText();
             RewriteConfigAndRestartJob();
-            CheckAllJobExecuteStates();
         }
 
-        private IDictionary<string, string> _states = new Dictionary<string, string>();
-        private void CheckAllJobExecuteStates()
+        private void ShowTaskFinishedMessage(string jobType)
         {
-            CheckJobExecuteState(typeof(TaskJob).ToString());
-            CheckJobExecuteState(typeof(TaskJobA).ToString());
-            CheckJobExecuteState(typeof(TaskJobB).ToString());
-            CheckJobExecuteState(typeof(TaskJobC).ToString());
-            CheckJobExecuteState(typeof(TaskJobD).ToString());
-            CheckJobExecuteState(typeof(TaskJobE).ToString());
+            ResetExecutePath();
+            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
         }
 
         private string _executePath;
@@ -324,20 +322,6 @@ namespace JobController
                 ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
         }
 
-        private void CheckJobExecuteState(string jobType)
-        {
-            string temp = GetJobExecuteState(jobType);
-            bool askuser = _states.ContainsKey(jobType) && _states[jobType] != temp && temp == "STATE_COMPLETE";
-            _states[jobType] = temp;
-            if (askuser) ShowTaskFinishedMessage(jobType);
-        }
-
-        private void ShowTaskFinishedMessage(string jobType)
-        {
-            ResetExecutePath();
-            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
-        }
-
         private string GetJobExecuteState(string jobType)
         {
             object state = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + jobType, "State", "");
@@ -362,9 +346,9 @@ namespace JobController
         private Hashtable _icons = new Hashtable();
         private void LoadResources()
         {
-            Stream imgStream = null;
-            Icon icon = null;
-            int pos = 0;
+            Stream imgStream;
+            Icon icon;
+            int pos;
 
             // get a reference to the current assembly
             Assembly a = Assembly.GetExecutingAssembly();
@@ -522,14 +506,8 @@ namespace JobController
 
         private void RefreshDurationText()
         {
-            try
-            {
-                TimeSpan ts = DateTime.Now.Subtract(_starting);
-                lblDuration.Text = string.Format("{0}:{1}:{2}", ts.Hours.ToString("00"), ts.Minutes.ToString("00"), ts.Seconds.ToString("00"));
-            }
-            catch (Exception)
-            {
-            }
+            TimeSpan ts = DateTime.Now.Subtract(_starting);
+            this.Invoke(new Action(() => { lblDuration.Text = $"{ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}"; }));
         }
 
         private void Form1_Deactivate(object sender, EventArgs e)
@@ -562,41 +540,61 @@ namespace JobController
             }
         }
 
-        private bool WriteJobConfig(string fileName, string postfix, DateTime dt)
+        private void WriteJobConfig(string fileName, string tag, DateTime dt)
         {
             FileStream fs = new FileStream(fileName, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
-            sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf - 8\" ?>");
-            sw.WriteLine("<quartz xmlns=\"http://quartznet.sourceforge.net/JobSchedulingData\"");
-            sw.WriteLine("    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
-            sw.WriteLine("    version=\"1.0\"");
-            sw.WriteLine("    overwrite-existing-jobs=\"true\">");
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            sw.WriteLine("<job-scheduling-data xmlns=\"http://quartznet.sourceforge.net/JobSchedulingData\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"2.0\">");
+            sw.WriteLine("  <processing-directives>");
+            sw.WriteLine("    <overwrite-existing-data>true</overwrite-existing-data>");
+            sw.WriteLine("  </processing-directives>");
+            sw.WriteLine("  <schedule>");
             sw.WriteLine("    <job>");
-            sw.WriteLine("      <job-detail>");
-            sw.WriteLine("          <name>MyJob{0}</name>", postfix);
-            sw.WriteLine("          <group>MyJob{0}</group>", postfix);
-            sw.WriteLine("          <job-type>MyJob.TaskJob{0}, MyJob</job-type>", postfix);
-            sw.WriteLine("      </job-detail>");
-            sw.WriteLine("      <trigger>");
-            sw.WriteLine("          <cron>");
-            sw.WriteLine("            <name>cronMyJob{0}</name>", postfix);
-            sw.WriteLine("            <group>cronMyJob{0}</group>", postfix);
-            sw.WriteLine("            <job-name>MyJob{0}</job-name>", postfix);
-            sw.WriteLine("            <job-group>MyJob{0}</job-group>", postfix);
-            sw.WriteLine("            <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->");
-            sw.WriteLine("            <!--周一到周五每天的8点到20点，每一分钟触发一次-->");
-            sw.WriteLine("            <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->");
-            sw.WriteLine("            <!--每天21点触发-->");
-            sw.WriteLine("            <!--<cron-expression>0 0 21 ? * *</cron-expression>-->");
-            sw.WriteLine("            <cron-expression>0 {0} {1} ? * *</cron-expression>", dt.Minute, dt.Hour);
-            sw.WriteLine("          </cron>");
-            sw.WriteLine("      </trigger>");
+            sw.WriteLine("      <!--name(必填)同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->");
+            sw.WriteLine($"      <name>TaskJob{tag}</name>");
+            sw.WriteLine("      <!--group(选填) 任务所属分组，用于标识任务所属分组-->");
+            sw.WriteLine($"      <group>TaskJob{tag}Group</group>");
+            sw.WriteLine("      <description>省医编译任务</description>");
+            sw.WriteLine("      <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->");
+            sw.WriteLine($"      <job-type>MyJob.TaskJob{tag}, MyJob</job-type>");
+            sw.WriteLine("      <durable>true</durable>");
+            sw.WriteLine("      <recover>false</recover>");
             sw.WriteLine("    </job>");
-            sw.WriteLine("</quartz>");
+            sw.WriteLine("    <trigger>");
+            sw.WriteLine("      <cron>");
+            sw.WriteLine("        <!--name(必填) 触发器名称，同一个分组中的名称必须不同-->");
+            sw.WriteLine($"        <name>TaskJob{tag}Trigger</name>");
+            sw.WriteLine("        <!--group(选填) 触发器组-->");
+            sw.WriteLine($"        <group>TaskJob{tag}TriggerGroup</group>");
+            sw.WriteLine("        <!--job-name(必填) 要调度的任务名称，该job-name必须和对应job节点中的name完全相同-->");
+            sw.WriteLine($"        <job-name>TaskJob{tag}</job-name>");
+            sw.WriteLine("        <!--job-group(选填) 调度任务(job)所属分组，该值必须和job中的group完全相同-->");
+            sw.WriteLine($"        <job-group>TaskJob{tag}Group</job-group>");
+            sw.WriteLine("        <misfire-instruction>DoNothing</misfire-instruction>");
+            sw.WriteLine("        <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->");
+            sw.WriteLine("        <!--周一到周五每天的8点到20点，每一分钟触发一次-->");
+            sw.WriteLine("        <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->");
+            sw.WriteLine("        <!--周一到周五每天的16点45分触发-->");
+            sw.WriteLine("        <!--<cron-expression>0 45 16 ? * MON-FRI</cron-expression>-->");
+            sw.WriteLine("        <!--每天16点45分触发-->");
+            sw.WriteLine("        <!--<cron-expression>0 45 16 ? * *</cron-expression>-->");
+            sw.WriteLine("        <!-- 每隔5秒执行一次：*/5 * * * * ?");
+            sw.WriteLine("        每隔1分钟执行一次：0 */1 * * * ?");
+            sw.WriteLine("        每天23点执行一次：0 0 23 * * ?");
+            sw.WriteLine("        每天凌晨1点执行一次：0 0 1 * * ?");
+            sw.WriteLine("        每月1号凌晨1点执行一次：0 0 1 1 * ?");
+            sw.WriteLine("        每月最后一天23点执行一次：0 0 23 L * ?");
+            sw.WriteLine("        每周星期天凌晨1点实行一次：0 0 1 ? * L");
+            sw.WriteLine("        在26分、29分、33分执行一次：0 26,29,33 * * * ?");
+            sw.WriteLine("        每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ? -->");
+            sw.WriteLine($"        <cron-expression>0 {dt.Minute} {dt.Hour} * * ?</cron-expression>");
+            sw.WriteLine("      </cron>");
+            sw.WriteLine("    </trigger>");
+            sw.WriteLine("  </schedule>");
+            sw.WriteLine("</job-scheduling-data>");
             sw.Close();
             fs.Close();
-
-            return true;
         }
 
         private void _btnRegConfig_Click(object sender, EventArgs e)

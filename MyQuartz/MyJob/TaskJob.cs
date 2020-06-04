@@ -1,46 +1,55 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Common.Logging;
 using Quartz;
+using Quartz.Impl;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
 using RabbitMQ.Client;
+using System.Threading.Tasks;
 
 namespace MyJob
 {
-    public interface IExecWithEvent
+    [PersistJobDataAfterExecution]
+    [DisallowConcurrentExecution]
+    public abstract class TaskJobBase : IJob
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        event EventHandler<EventArgs> JobStarting;
-        /// <summary>
-        /// 
-        /// </summary>
-        event EventHandler<EventArgs> JobFinished;
-    }
-
-    public abstract class TaskJobBase : IJob, IExecWithEvent
-    {
+        // 定义参数常量
+        public const string JobKey = "JobKey";
+        public const string SQL = "SQL";
+        public const string ExecutionCount = "ExecutionCount";
+        public const string RowCount = "RowCount";
+        // Quartz 每次执行时都会重新实例化一个类, 因此Job类中的非静态变量不能存储状态信息
+        private static int _counter = 1;//可以保存状态
         public abstract string BasePath { get; }
         public abstract string BatchFilesPath { get; }
         public abstract string JSSVCFilePath { get; }
 
-        public void Execute(JobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
-            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
-            if (JobStarting != null) JobStarting(this, new EventArgs());
+            return Task.Run(() =>
+            {
+                JobKey jobKey = context.JobDetail.Key;
+                // 获取传递过来的参数            
+                JobDataMap data = context.JobDetail.JobDataMap;
+                string sql = data.GetString(SQL);
+                int count = data.GetInt(ExecutionCount);
 
-            // 此处为执行的任务
-            TFGetLatestVersion();
-            BuildAll();
-            RebuildDataModels();
+                //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
+                // 此处为执行的任务
+                TFGetLatestVersion();
+                BuildAll();
+                RebuildDataModels();
 
-            if (JobFinished != null) JobFinished(this, new EventArgs());
-            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
-            //SendMessageQueue();
+                //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
+                //SendMessageQueue();
+
+                data.Put(RowCount, 5);
+                data.Put(ExecutionCount, ++count);
+                _counter++;
+            });
         }
 
         private void SendMessageQueue()
@@ -70,7 +79,6 @@ namespace MyJob
 
         private void TFGetLatestVersion()
         {
-            //string path = string.Format(@"{0}\TF_GET_MedicalHealth.bat", BatchFilesPath);
             string path = Path.Combine(BatchFilesPath, "TF_GET_MedicalHealth.bat");
             if (!File.Exists(path)) return;
 
@@ -86,21 +94,16 @@ namespace MyJob
 
         private void BuildAll()
         {
-            //string path = string.Format(@"{0}\全编译Upload.bat", BatchFilesPath);
             string path = Path.Combine(BatchFilesPath, "全编译Upload.bat");
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.Execute(path, false, false, ref errMsg);
+            JobHelper.Execute(path, false, false, ref errMsg);
         }
 
         public virtual void RebuildDataModels()
         {
         }
-
-        public event EventHandler<EventArgs> JobStarting;
-
-        public event EventHandler<EventArgs> JobFinished;
     }
 
     public class TaskJob : TaskJobBase
@@ -136,7 +139,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.Execute(path, false, false, ref errMsg);
+            JobHelper.Execute(path, false, false, ref errMsg);
         }
     }
 
@@ -294,7 +297,7 @@ namespace MyJob
                 startInfo.FileName = "cmd.exe";//设定需要执行的命令  
                 startInfo.WorkingDirectory = file.Directory.FullName;
                 startInfo.Arguments = "/C " + filefullname;//“/C”表示执行完命令后马上退出  
-                startInfo.UseShellExecute = true;//使用系统外壳程序启动  
+                startInfo.UseShellExecute = false;//使用系统外壳程序启动  
                 startInfo.RedirectStandardInput = false;//不重定向输入  
                 startInfo.RedirectStandardOutput = redirectStandardOutput; //重定向输出  
                 startInfo.RedirectStandardError = redirectStandardError;

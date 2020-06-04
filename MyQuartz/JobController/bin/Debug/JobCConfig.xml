@@ -1,27 +1,49 @@
-<?xml version="1.0" encoding="utf - 8" ?>
-<quartz xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="1.0"
-    overwrite-existing-jobs="true">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
     <job>
-      <job-detail>
-          <name>MyJobC</name>
-          <group>MyJobC</group>
-          <job-type>MyJob.TaskJobC, MyJob</job-type>
-      </job-detail>
-      <trigger>
-          <cron>
-            <name>cronMyJobC</name>
-            <group>cronMyJobC</group>
-            <job-name>MyJobC</job-name>
-            <job-group>MyJobC</job-group>
-            <!--�� �� Сʱ �������� �� �������� �꣨��ѡ�ֶΣ�-->
-            <!--��һ������ÿ���8�㵽20�㣬ÿһ���Ӵ���һ��-->
-            <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
-            <!--ÿ��21�㴥��-->
-            <!--<cron-expression>0 0 21 ? * *</cron-expression>-->
-            <cron-expression>0 31 14 ? * *</cron-expression>
-          </cron>
-      </trigger>
+      <!--name(必填)同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->
+      <name>TaskJobC</name>
+      <!--group(选填) 任务所属分组，用于标识任务所属分组-->
+      <group>TaskJobCGroup</group>
+      <description>光华口腔编译任务</description>
+      <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->
+      <job-type>MyJob.TaskJobC, MyJob</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
     </job>
-</quartz>
+    <trigger>
+      <cron>
+        <!--name(必填) 触发器名称，同一个分组中的名称必须不同-->
+        <name>TaskJobCTrigger</name>
+        <!--group(选填) 触发器组-->
+        <group>TaskJobCTriggerGroup</group>
+        <!--job-name(必填) 要调度的任务名称，该job-name必须和对应job节点中的name完全相同-->
+        <job-name>TaskJobC</job-name>
+        <!--job-group(选填) 调度任务(job)所属分组，该值必须和job中的group完全相同-->
+        <job-group>TaskJobCGroup</job-group>
+        <misfire-instruction>DoNothing</misfire-instruction>
+        <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->
+        <!--周一到周五每天的8点到20点，每一分钟触发一次-->
+        <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
+        <!--周一到周五每天的16点45分触发-->
+        <!--<cron-expression>0 45 16 ? * MON-FRI</cron-expression>-->
+        <!--每天16点45分触发-->
+        <!--<cron-expression>0 45 16 ? * *</cron-expression>-->
+        <!-- 每隔5秒执行一次：*/5 * * * * ?
+        每隔1分钟执行一次：0 */1 * * * ?
+        每天23点执行一次：0 0 23 * * ?
+        每天凌晨1点执行一次：0 0 1 * * ?
+        每月1号凌晨1点执行一次：0 0 1 1 * ?
+        每月最后一天23点执行一次：0 0 23 L * ?
+        每周星期天凌晨1点实行一次：0 0 1 ? * L
+        在26分、29分、33分执行一次：0 26,29,33 * * * ?
+        每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ? -->
+        <cron-expression>0 51 13 * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+</job-scheduling-data>

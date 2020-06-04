@@ -1,26 +1,49 @@
-Ôªø<?xml version="1.0" encoding="utf-8" ?>
-<quartz xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- 				version="1.0"
-				overwrite-existing-jobs="true">
-  <job>
-    <job-detail>
-      <name>MyJobA</name>
-      <group>MyGroupA</group>
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <!--name(±ÿÃÓ)Õ¨“ª∏ˆgroup÷–∂‡∏ˆjobµƒname≤ªƒ‹œ‡Õ¨£¨»ÙŒ¥…Ë÷√group‘ÚÀ˘”–Œ¥…Ë÷√groupµƒjobŒ™Õ¨“ª∏ˆ∑÷◊È-->
+      <name>TaskJobA</name>
+      <!--group(—°ÃÓ) »ŒŒÒÀ˘ Ù∑÷◊È£¨”√”⁄±Í ∂»ŒŒÒÀ˘ Ù∑÷◊È-->
+      <group>TaskJobAGroup</group>
+      <description> °“Ω±‡“Î»ŒŒÒ</description>
+      <!--job-type(±ÿÃÓ)»ŒŒÒµƒæﬂÃÂ¿‡–Õº∞À˘ Ù≥Ã–ÚºØ£¨∏Ò Ω£∫ µœ÷¡ÀIJobΩ”ø⁄µƒ∞¸∫¨ÕÍ’˚√¸√˚ø’º‰µƒ¿‡√˚,≥Ã–ÚºØ√˚≥∆-->
       <job-type>MyJob.TaskJobA, MyJob</job-type>
-    </job-detail>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
     <trigger>
       <cron>
-        <name>cronMyJobA</name>
-        <group>cronMyJobA</group>
-        <job-name>MyJobA</job-name>
-        <job-group>MyJobA</job-group>
-        <!--Áßí ÂàÜ Â∞èÊó∂ ÊúàÂÜÖÊó•Êúü Êúà Âë®ÂÜÖÊó•Êúü Âπ¥ÔºàÂèØÈÄâÂ≠óÊÆµÔºâ-->
-        <!--Âë®‰∏ÄÂà∞Âë®‰∫îÊØèÂ§©ÁöÑ8ÁÇπÂà∞20ÁÇπÔºåÊØè‰∏ÄÂàÜÈíüËß¶Âèë‰∏ÄÊ¨°-->
+        <!--name(±ÿÃÓ) ¥•∑¢∆˜√˚≥∆£¨Õ¨“ª∏ˆ∑÷◊È÷–µƒ√˚≥∆±ÿ–Î≤ªÕ¨-->
+        <name>TaskJobATrigger</name>
+        <!--group(—°ÃÓ) ¥•∑¢∆˜◊È-->
+        <group>TaskJobATriggerGroup</group>
+        <!--job-name(±ÿÃÓ) “™µ˜∂»µƒ»ŒŒÒ√˚≥∆£¨∏√job-name±ÿ–Î∫Õ∂‘”¶jobΩ⁄µ„÷–µƒnameÕÍ»´œ‡Õ¨-->
+        <job-name>TaskJobA</job-name>
+        <!--job-group(—°ÃÓ) µ˜∂»»ŒŒÒ(job)À˘ Ù∑÷◊È£¨∏√÷µ±ÿ–Î∫Õjob÷–µƒgroupÕÍ»´œ‡Õ¨-->
+        <job-group>TaskJobAGroup</job-group>
+        <misfire-instruction>DoNothing</misfire-instruction>
+        <!--√Î ∑÷ –° ± ‘¬ƒ⁄»’∆⁄ ‘¬ ÷‹ƒ⁄»’∆⁄ ƒÍ£®ø…—°◊÷∂Œ£©-->
+        <!--÷‹“ªµΩ÷‹ŒÂ√øÃÏµƒ8µ„µΩ20µ„£¨√ø“ª∑÷÷”¥•∑¢“ª¥Œ-->
         <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->
-        <!--ÊØèÂ§©21ÁÇπ40ÂàÜËß¶Âèë-->
-        <cron-expression>0 50 16 ? * *</cron-expression>
+        <!--÷‹“ªµΩ÷‹ŒÂ√øÃÏµƒ16µ„45∑÷¥•∑¢-->
+        <!--<cron-expression>0 45 16 ? * MON-FRI</cron-expression>-->
+        <!--√øÃÏ16µ„45∑÷¥•∑¢-->
+        <!--<cron-expression>0 45 16 ? * *</cron-expression>-->
+        <!-- √ø∏Ù5√Î÷¥––“ª¥Œ£∫*/5 * * * * ?
+        √ø∏Ù1∑÷÷”÷¥––“ª¥Œ£∫0 */1 * * * ?
+        √øÃÏ23µ„÷¥––“ª¥Œ£∫0 0 23 * * ?
+        √øÃÏ¡Ë≥ø1µ„÷¥––“ª¥Œ£∫0 0 1 * * ?
+        √ø‘¬1∫≈¡Ë≥ø1µ„÷¥––“ª¥Œ£∫0 0 1 1 * ?
+        √ø‘¬◊Ó∫Û“ªÃÏ23µ„÷¥––“ª¥Œ£∫0 0 23 L * ?
+        √ø÷‹–«∆⁄ÃÏ¡Ë≥ø1µ„ µ––“ª¥Œ£∫0 0 1 ? * L
+        ‘⁄26∑÷°¢29∑÷°¢33∑÷÷¥––“ª¥Œ£∫0 26,29,33 * * * ?
+        √øÃÏµƒ0µ„°¢13µ„°¢18µ„°¢21µ„∂º÷¥––“ª¥Œ£∫0 0 0,13,18,21 * * ? -->
+        <cron-expression>0 34 17 * * ?</cron-expression>
       </cron>
     </trigger>
-  </job>
-</quartz>
+  </schedule>
+</job-scheduling-data>
