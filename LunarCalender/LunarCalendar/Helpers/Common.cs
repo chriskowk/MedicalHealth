@@ -19,7 +19,7 @@ namespace LunarCalendar
         public static int WS_MINIMIZEBOX = 0x00020000;
         public static int WS_MAXIMIZEBOX = 0x00010000;
     }
-    
+
     /// <summary>
     /// 公共类库
     /// </summary>
@@ -73,6 +73,79 @@ namespace LunarCalendar
                 errMsg = redirectStandardError ? pro.StandardError.ReadToEnd() : string.Empty;
             }
             return outputString;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string GetWeekDayText(int value)
+        {
+            string ret = string.Empty;
+            switch (value)
+            {
+                case 1:
+                    ret = "星期一";
+                    break;
+                case 2:
+                    ret = "星期二";
+                    break;
+                case 3:
+                    ret = "星期三";
+                    break;
+                case 4:
+                    ret = "星期四";
+                    break;
+                case 5:
+                    ret = "星期五";
+                    break;
+                case 6:
+                    ret = "星期六";
+                    break;
+                case 7:
+                    ret = "星期日";
+                    break;
+                default:
+                    break;
+            }
+            return ret;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static int GetWeekValue(string text)
+        {
+            int ret;
+            switch (text)
+            {
+                case "星期一":
+                    ret = 1;
+                    break;
+                case "星期二":
+                    ret = 2;
+                    break;
+                case "星期三":
+                    ret = 3;
+                    break;
+                case "星期四":
+                    ret = 4;
+                    break;
+                case "星期五":
+                    ret = 5;
+                    break;
+                case "星期六":
+                    ret = 6;
+                    break;
+                case "星期日":
+                    ret = 7;
+                    break;
+                default:
+                    int.TryParse(text, out ret);
+                    break;
+            }
+            return ret;
         }
 
         public static Assembly CurrentAssembly => Assembly.GetExecutingAssembly();

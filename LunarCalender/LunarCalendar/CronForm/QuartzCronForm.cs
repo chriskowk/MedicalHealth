@@ -59,10 +59,10 @@ namespace LunarCalendar
         private void CreateSecondControls()
         {
             var xStep = 0;
-            var yStep = 0;
+            var yStep = -25;
             for (var i = 0; i < 60; i++)
             {
-                if ((i + 1) % 11 == 0)
+                if (i % 10 == 0)
                 {
                     xStep = 0;
                     yStep += 25;
@@ -82,10 +82,10 @@ namespace LunarCalendar
         private void CreateMinuteControls()
         {
             var xStep = 0;
-            var yStep = 0;
+            var yStep = -25;
             for (var i = 0; i < 60; i++)
             {
-                if ((i + 1) % 11 == 0)
+                if (i % 10 == 0)
                 {
                     xStep = 0;
                     yStep += 25;
@@ -105,10 +105,10 @@ namespace LunarCalendar
         private void CreateHourControls()
         {
             var xStep = 0;
-            var yStep = 0;
+            var yStep = -20;
             for (var i = 0; i < 24; i++)
             {
-                if ((i + 1) % 11 == 0)
+                if (i % 10 == 0)
                 {
                     xStep = 0;
                     yStep += 25;
@@ -128,10 +128,10 @@ namespace LunarCalendar
         private void CreateDayControls()
         {
             var xStep = 0;
-            var yStep = 60;
+            var yStep = 40;
             for (var i = 0; i < 31; i++)
             {
-                if ((i + 1) % 11 == 0)
+                if (i % 10 == 0)
                 {
                     xStep = 0;
                     yStep += 25;
@@ -151,10 +151,10 @@ namespace LunarCalendar
         private void CreateMonthControls()
         {
             var xStep = 0;
-            var yStep = 0;
+            var yStep = -20;
             for (var i = 0; i < 12; i++)
             {
-                if ((i + 1) % 11 == 0)
+                if (i % 10 == 0)
                 {
                     xStep = 0;
                     yStep += 25;
@@ -174,20 +174,20 @@ namespace LunarCalendar
         private void CreateWeekControls()
         {
             var xStep = 0;
-            var yStep = 70;
+            var yStep = 50;
             for (var i = 0; i < 7; i++)
             {
-                if ((i + 1) % 11 == 0)
+                if (i % 4 == 0)
                 {
                     xStep = 0;
                     yStep += 25;
                 }
                 var chkTime = new CheckBox
                 {
-                    Text = (i + 1).ToString(),
+                    Text = Common.GetWeekDayText(i + 1),
                     Name = "chkWeek" + i,
-                    Size = new Size(controlWidth, 20),
-                    Location = new Point(controlWidth * xStep + pointX, pointY + yStep)
+                    Size = new Size(controlWidth * 2, 20),
+                    Location = new Point(controlWidth * 2 * xStep + pointX, pointY + yStep)
                 };
                 tabWeek.Controls.Add(chkTime);
                 xStep++;
@@ -531,10 +531,12 @@ namespace LunarCalendar
             foreach (Control control in currentTab.Controls)
             {
                 if (!control.Name.Contains("chk")) continue;
+
                 var chk = (CheckBox)control;
                 if (chk.Checked)
                 {
-                    strCron += chk.Text + ",";
+                    string text = chk.Text.StartsWith("星期") ? Common.GetWeekValue(chk.Text).ToString() : chk.Text;
+                    strCron += text + ",";
                 }
             }
             strCron = string.IsNullOrEmpty(strCron) ? "?" : strCron.Substring(0, strCron.Length - 1);
@@ -897,6 +899,11 @@ namespace LunarCalendar
             {
                 Clipboard.SetDataObject(txtExpression.Text);
             }
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
