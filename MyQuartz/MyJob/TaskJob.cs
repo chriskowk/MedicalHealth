@@ -39,9 +39,9 @@ namespace MyJob
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
                 // 此处为执行的任务
-                TFGetLatestVersion();
-                BuildAll();
-                RebuildDataModels();
+                //TFGetLatestVersion();
+                //BuildAll();
+                //RebuildDataModels();
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
                 //SendMessageQueue();
