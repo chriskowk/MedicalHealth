@@ -619,3 +619,9 @@ F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.Co
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\JobBConfig.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\JobCConfig.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.MainForm.resources
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Log4Net1211.dll
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\log4net.dll
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Log4Net1211.pdb
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Log4Net1211.xml
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\log4net.xml
+F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\log4net.config
