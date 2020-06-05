@@ -31,7 +31,7 @@ using RabbitMQ.Client.Events;
 
 namespace JobController
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private HandleMask _batch;
         private bool _isExiting = false;
@@ -57,7 +57,7 @@ namespace JobController
             return null;
         }
 
-        public Form1()
+        public MainForm()
         {
             try
             {
@@ -469,7 +469,7 @@ namespace JobController
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isExiting)
             {
@@ -481,7 +481,7 @@ namespace JobController
             if (_timer != null) _timer.Dispose();
         }
 
-        private void Form1_Activated(object sender, EventArgs e)
+        private void MainForm_Activated(object sender, EventArgs e)
         {
             RefreshDurationText();
 
@@ -510,7 +510,7 @@ namespace JobController
             this.Invoke(new Action(() => { lblDuration.Text = $"{ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}"; }));
         }
 
-        private void Form1_Deactivate(object sender, EventArgs e)
+        private void MainForm_Deactivate(object sender, EventArgs e)
         {
             if (!_isExiting) NormalToMinimized();
         }
