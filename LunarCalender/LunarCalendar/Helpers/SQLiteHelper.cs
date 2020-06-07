@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace LunarCalendar
 {
     public class SQLiteHelper
     {
-        public static string ConnectionString = @"Data Source=F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\calendar.db; Initial Catalog=sqlite; Integrated Security=True; Max Pool Size=10";
+        public static string ConnectionString = $"Data Source={Path.Combine(Path.GetDirectoryName(Common.CurrentAssembly.Location), "calendar.db")}; Initial Catalog=sqlite; Integrated Security=True; Max Pool Size=10";
 
         /// <summary> 
         /// 执行SQL语句，返回影响的记录数 
