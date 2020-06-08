@@ -59,20 +59,23 @@ namespace LunarCalendar
         {
             var xStep = 0;
             var yStep = 0;
+            int width = rdoAppointSecond.Width + lblAppointSecond.Width;
+            int height = lblAppointSecond.Height;
+            int px = lblAppointSecond.Left + 5;
             int py = rdoAppointSecond.Top;
             for (var i = 0; i < 60; i++)
             {
                 if (i % 10 == 0)
                 {
                     xStep = 0;
-                    yStep += rdoAppointSecond.Height + 20;
+                    yStep += rdoAppointSecond.Height * 2;
                 }
                 var chkTime = new CheckBox
                 {
                     Text = i.ToString(),
                     Name = "chkSecond" + i,
-                    Size = new Size(_controlWidth, _controlHeight),
-                    Location = new Point(lblAppointSecond.Left + 5 + _controlWidth * xStep, py + yStep)
+                    Size = new Size(width, height),
+                    Location = new Point(px + width * xStep, py + yStep)
                 };
                 tabSecond.Controls.Add(chkTime);
                 xStep++;
@@ -83,20 +86,23 @@ namespace LunarCalendar
         {
             var xStep = 0;
             var yStep = 0;
+            int width = rdoAppointMinute.Width + lblAppointMinute.Width;
+            int height = lblAppointMinute.Height;
+            int px = lblAppointMinute.Left + 5;
             int py = rdoAppointMinute.Top;
             for (var i = 0; i < 60; i++)
             {
                 if (i % 10 == 0)
                 {
                     xStep = 0;
-                    yStep += rdoAppointMinute.Height + 20;
+                    yStep += rdoAppointMinute.Height * 2;
                 }
                 var chkTime = new CheckBox
                 {
                     Text = i.ToString(),
                     Name = "chkMinute" + i,
-                    Size = new Size(_controlWidth, _controlHeight),
-                    Location = new Point(lblAppointMinute.Left + 5 + _controlWidth * xStep, py + yStep)
+                    Size = new Size(width, height),
+                    Location = new Point(px + width * xStep, py + yStep)
                 };
                 tabMinute.Controls.Add(chkTime);
                 xStep++;
@@ -107,20 +113,23 @@ namespace LunarCalendar
         {
             var xStep = 0;
             var yStep = 0;
+            int width = rdoAppointHour.Width + lblAppointHour.Width;
+            int height = lblAppointHour.Height;
+            int px = lblAppointHour.Left + 5;
             var py = rdoAppointHour.Top;
             for (var i = 0; i < 24; i++)
             {
                 if (i % 10 == 0)
                 {
                     xStep = 0;
-                    yStep += rdoAppointHour.Height + 20;
+                    yStep += rdoAppointHour.Height * 2;
                 }
                 var chkTime = new CheckBox
                 {
                     Text = i.ToString(),
                     Name = "chkHour" + i,
-                    Size = new Size(_controlWidth, _controlHeight),
-                    Location = new Point(lblAppointHour.Left + 5 + _controlWidth * xStep, py + yStep)
+                    Size = new Size(width, height),
+                    Location = new Point(px + width * xStep, py + yStep)
                 };
                 tabHour.Controls.Add(chkTime);
                 xStep++;
@@ -131,20 +140,23 @@ namespace LunarCalendar
         {
             var xStep = 0;
             var yStep = 0;
+            int width = rdoAppointDay.Width + lblAppointDay.Width;
+            int height = lblAppointDay.Height;
+            int px = lblAppointDay.Left + 5;
             var py = rdoAppointDay.Top;
             for (var i = 0; i < 31; i++)
             {
                 if (i % 10 == 0)
                 {
                     xStep = 0;
-                    yStep += rdoAppointDay.Height + 20;
+                    yStep += rdoAppointDay.Height * 2;
                 }
                 var chkTime = new CheckBox
                 {
                     Text = (i + 1).ToString(),
                     Name = "chkDay" + i,
-                    Size = new Size(_controlWidth, _controlHeight),
-                    Location = new Point(lblAppointDay.Left + 5 + _controlWidth * xStep, py + yStep)
+                    Size = new Size(width, height),
+                    Location = new Point(px + width * xStep, py + yStep)
                 };
                 tabDay.Controls.Add(chkTime);
                 xStep++;
@@ -155,20 +167,23 @@ namespace LunarCalendar
         {
             var xStep = 0;
             var yStep = 0;
+            int width = rdoAppointMonth.Width + lblAppointMonth.Width;
+            int height = lblAppointMonth.Height;
+            int px = lblAppointMonth.Left + 5;
             var py = rdoAppointMonth.Top;
             for (var i = 0; i < 12; i++)
             {
                 if (i % 10 == 0)
                 {
                     xStep = 0;
-                    yStep += rdoAppointMonth.Height + 20;
+                    yStep += rdoAppointMonth.Height * 2;
                 }
                 var chkTime = new CheckBox
                 {
                     Text = (i + 1).ToString(),
                     Name = "chkMonth" + i,
-                    Size = new Size(_controlWidth, _controlHeight),
-                    Location = new Point(lblAppointMonth.Left + 5 + _controlWidth * xStep, py + yStep)
+                    Size = new Size(width, height),
+                    Location = new Point(px + width * xStep, py + yStep)
                 };
                 tabMonth.Controls.Add(chkTime);
                 xStep++;
@@ -179,20 +194,23 @@ namespace LunarCalendar
         {
             var xStep = 0;
             var yStep = 0;
+            int width = (rdoAppointWeek.Width + lblAppointWeek.Width) * 2;
+            int height = lblAppointWeek.Height;
+            int px = lblAppointWeek.Left + 5;
             var py = rdoAppointWeek.Top;
             for (var i = 0; i < 7; i++)
             {
                 if (i % 4 == 0)
                 {
                     xStep = 0;
-                    yStep += rdoAppointWeek.Height + 20;
+                    yStep += rdoAppointWeek.Height * 2;
                 }
                 var chkTime = new CheckBox
                 {
                     Text = Common.GetWeekDayText(i + 1),
                     Name = "chkWeek" + i,
-                    Size = new Size(_controlWidth * 2, _controlHeight),
-                    Location = new Point(lblAppointWeek.Left + 5 + _controlWidth * 2 * xStep, py + yStep)
+                    Size = new Size(width, height),
+                    Location = new Point(px + width * xStep, py + yStep)
                 };
                 tabWeek.Controls.Add(chkTime);
                 xStep++;
