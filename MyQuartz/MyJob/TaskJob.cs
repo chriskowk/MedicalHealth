@@ -17,7 +17,6 @@ namespace MyJob
     public abstract class TaskJobBase : IJob
     {
         // 定义参数常量
-        public const string JobKey = "JobKey";
         public const string RegisterFilePath = "RegisterFilePath";
         public const string SQL = "SQL";
         public const string ExecutionCount = "ExecutionCount";
@@ -117,7 +116,7 @@ namespace MyJob
         }
         public static string GetBatchFilePath()
         {
-            return Path.Combine(BASE_PATH, "BatchFiles"); ;
+            return Path.Combine(BASE_PATH, "BatchFiles"); 
         }
         public static string GetJSSVCFilePath()
         {
@@ -154,7 +153,7 @@ namespace MyJob
         }
         public static string GetBatchFilePath()
         {
-            return Path.Combine(BASE_PATH, "BatchFiles"); ;
+            return Path.Combine(BASE_PATH, "BatchFiles"); 
         }
         public static string GetJSSVCFilePath()
         {

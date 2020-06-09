@@ -28,6 +28,8 @@ using System.Configuration;
 using Microsoft.Win32;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using JobController.Configuration;
+using System.Data.SqlTypes;
 
 namespace JobController
 {
@@ -46,7 +48,7 @@ namespace JobController
         public static string GetAppConfig(string strKey)
         {
             string file = System.Windows.Forms.Application.ExecutablePath;
-            Configuration config = ConfigurationManager.OpenExeConfiguration(file);
+            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(file);
             foreach (string key in config.AppSettings.Settings.AllKeys)
             {
                 if (key == strKey)
@@ -79,12 +81,12 @@ namespace JobController
                 this.Top = (int)(SystemParameters.WorkArea.Height - this.Height - 105);
                 this.Left = (int)(SystemParameters.WorkArea.Width - this.Width - 360);
 
-                TaskJob.BASE_PATH = GetAppConfig("TaskJob");
-                TaskJobA.BASE_PATH = GetAppConfig("TaskJobA");
-                TaskJobB.BASE_PATH = GetAppConfig("TaskJobB");
-                TaskJobC.BASE_PATH = GetAppConfig("TaskJobC");
-                TaskJobD.BASE_PATH = GetAppConfig("TaskJobD");
-                TaskJobE.BASE_PATH = GetAppConfig("TaskJobE");
+                TaskJob.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJob).Name); // GetAppConfig("TaskJob");
+                TaskJobA.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobA).Name); // GetAppConfig("TaskJobA");
+                TaskJobB.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobB).Name); // GetAppConfig("TaskJobB");
+                TaskJobC.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobC).Name); // GetAppConfig("TaskJobC");
+                TaskJobD.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobD).Name); // GetAppConfig("TaskJobD");
+                TaskJobE.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobE).Name); // GetAppConfig("TaskJobE");
 
                 SetFilesWritable(Path.Combine(TaskJob.BASE_PATH, @"bin\Resources"));
                 SetFilesWritable(Path.Combine(TaskJobA.BASE_PATH, @"bin\Resources"));
@@ -162,7 +164,7 @@ namespace JobController
             }
 
             LoadResources();
-            
+
             //OnReceivedTaskFinishedMessage();
 
             _timer = new System.Threading.Timer(new TimerCallback(ResetTrayIcon));
@@ -294,13 +296,8 @@ namespace JobController
 
         private void ShowTaskFinishedMessage(string jobType)
         {
-            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
-        }
-
-        private string GetJobExecuteState(string jobType)
-        {
-            object state = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + jobType, "State", "");
-            return state == null ? "" : state.ToString();
+            //System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
+            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", ConfigHelper.GetCustomerName(jobType, true)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
         }
 
         private void RewriteConfigAndRestartJob()
@@ -355,12 +352,12 @@ namespace JobController
         private void _btnResetJobConfig_Click(object sender, EventArgs e)
         {
             _starting = DateTime.Now;
-            WriteJobConfig("JobConfig.xml", "", DateTime.Now.Date.AddHours(21.5));
-            WriteJobConfig("JobAConfig.xml", "A", DateTime.Now.Date.AddHours(21));
-            WriteJobConfig("JobBConfig.xml", "B", DateTime.Now.Date.AddHours(20.5));
-            WriteJobConfig("JobCConfig.xml", "C", DateTime.Now.Date.AddHours(20));
-            WriteJobConfig("JobDConfig.xml", "D", DateTime.Now.Date.AddHours(19.5));
-            WriteJobConfig("JobEConfig.xml", "E", DateTime.Now.Date.AddHours(19.5));
+            int i = 19;
+            foreach (JobTypeElement item in ConfigHelper.SchedulerCollection)
+            {
+                i++;
+                WriteJobConfig(item.SchedulerFile, item.Name, DateTime.Now.Date.AddHours(i));
+            }
             _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 作业调度计划已重置。", DateTime.Now);
 
             Restart();
@@ -371,10 +368,9 @@ namespace JobController
         {
             _starting = DateTime.Now;
             _dtpRestart.Value = _starting.AddMinutes(1);
-
-            string vt = this.VersionTag.Replace("MyJob.TaskJob", string.Empty);
-            string filename = string.Format("Job{0}Config.xml", vt);
-            WriteJobConfig(filename, vt, _dtpRestart.Value);
+            string filename = ConfigHelper.GetSchedulerFile(this.VersionTag, true);
+            string typename = ConfigHelper.GetName(this.VersionTag);
+            WriteJobConfig(filename, typename, _dtpRestart.Value);
 
             Restart();
         }
@@ -478,8 +474,14 @@ namespace JobController
 
         private void RefreshDurationText()
         {
-            TimeSpan ts = DateTime.Now.Subtract(_starting);
-            this.Invoke(new Action(() => { lblDuration.Text = $"{ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}"; }));
+            try
+            {
+                TimeSpan ts = DateTime.Now.Subtract(_starting);
+                this.Invoke(new Action(() => { lblDuration.Text = $"{ts.Hours:00}:{ts.Minutes:00}:{ts.Seconds:00}"; }));
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void MainForm_Deactivate(object sender, EventArgs e)
@@ -512,7 +514,7 @@ namespace JobController
             }
         }
 
-        private void WriteJobConfig(string fileName, string tag, DateTime dt)
+        private void WriteJobConfig(string fileName, string typename, DateTime dt)
         {
             FileStream fs = new FileStream(fileName, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
@@ -524,25 +526,25 @@ namespace JobController
             sw.WriteLine("  <schedule>");
             sw.WriteLine("    <job>");
             sw.WriteLine("      <!--name(必填)同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->");
-            sw.WriteLine($"      <name>TaskJob{tag}</name>");
+            sw.WriteLine($"      <name>{typename}</name>");
             sw.WriteLine("      <!--group(选填) 任务所属分组，用于标识任务所属分组-->");
-            sw.WriteLine($"      <group>TaskJob{tag}Group</group>");
+            sw.WriteLine($"      <group>{typename}Group</group>");
             sw.WriteLine("      <description>省医编译任务</description>");
             sw.WriteLine("      <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->");
-            sw.WriteLine($"      <job-type>MyJob.TaskJob{tag}, MyJob</job-type>");
+            sw.WriteLine($"      <job-type>MyJob.{typename}, MyJob</job-type>");
             sw.WriteLine("      <durable>true</durable>");
             sw.WriteLine("      <recover>false</recover>");
             sw.WriteLine("    </job>");
             sw.WriteLine("    <trigger>");
             sw.WriteLine("      <cron>");
             sw.WriteLine("        <!--name(必填) 触发器名称，同一个分组中的名称必须不同-->");
-            sw.WriteLine($"        <name>TaskJob{tag}Trigger</name>");
+            sw.WriteLine($"        <name>{typename}Trigger</name>");
             sw.WriteLine("        <!--group(选填) 触发器组-->");
-            sw.WriteLine($"        <group>TaskJob{tag}TriggerGroup</group>");
+            sw.WriteLine($"        <group>{typename}TriggerGroup</group>");
             sw.WriteLine("        <!--job-name(必填) 要调度的任务名称，该job-name必须和对应job节点中的name完全相同-->");
-            sw.WriteLine($"        <job-name>TaskJob{tag}</job-name>");
+            sw.WriteLine($"        <job-name>{typename}</job-name>");
             sw.WriteLine("        <!--job-group(选填) 调度任务(job)所属分组，该值必须和job中的group完全相同-->");
-            sw.WriteLine($"        <job-group>TaskJob{tag}Group</job-group>");
+            sw.WriteLine($"        <job-group>{typename}Group</job-group>");
             sw.WriteLine("        <misfire-instruction>DoNothing</misfire-instruction>");
             sw.WriteLine("        <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->");
             sw.WriteLine("        <!--周一到周五每天的8点到20点，每一分钟触发一次-->");
@@ -571,34 +573,11 @@ namespace JobController
 
         private void _btnRegConfig_Click(object sender, EventArgs e)
         {
-            switch (this.VersionTag)
-            {
-                case "MyJob.TaskJob":
-                    ExecuteReg(Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg"));
-                    Execute(Path.Combine(TaskJob.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-                    break;
-                case "MyJob.TaskJobA":
-                    ExecuteReg(Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg"));
-                    Execute(Path.Combine(TaskJobA.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-                    break;
-                case "MyJob.TaskJobB":
-                    ExecuteReg(Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg"));
-                    Execute(Path.Combine(TaskJobB.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-                    break;
-                case "MyJob.TaskJobC":
-                    ExecuteReg(Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg"));
-                    Execute(Path.Combine(TaskJobC.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-                    break;
-                case "MyJob.TaskJobD":
-                    ExecuteReg(Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg"));
-                    Execute(Path.Combine(TaskJobD.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-                    break;
-                case "MyJob.TaskJobE":
-                    ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
-                    Execute(Path.Combine(TaskJobE.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
-                    break;
-            }
-            
+            string customer = ConfigHelper.GetCustomerName(this.VersionTag, true);
+            string bat1 = Path.Combine(ConfigHelper.GetBasePath(this.VersionTag, true), $"BatchFiles\\注册表\\{customer}注册表.reg");
+            string bat2 = Path.Combine(ConfigHelper.GetBasePath(this.VersionTag, true), $"BatchFiles\\__copy2svcbin.bat");
+            ExecuteReg(bat1);
+            Execute(bat2, 0);
             RestartServices();
         }
 
@@ -642,18 +621,12 @@ namespace JobController
                     if (process.Start())//开始进程  
                     {
                         if (seconds == 0)
-                        {
                             process.WaitForExit();//这里无限等待进程结束  
-                        }
                         else
-                        {
                             process.WaitForExit(seconds); //等待进程结束，等待时间为指定的毫秒  
-                        }
                     }
                 }
-                catch
-                {
-                }
+                catch { }
                 finally
                 {
                     if (process != null)
@@ -673,40 +646,12 @@ namespace JobController
             string strWql = string.Format("SELECT PathName FROM Win32_Service where Name ='{0}'", servicename);
             string path = GetResultByWql(strWql);
             if (string.IsNullOrWhiteSpace(path))
-            {
                 System.Windows.Forms.MessageBox.Show("服务已卸载，请重新安装服务");
-                //return;
-            }
 
-            //string new_path = RegistryHelper.GetValue(RegistryHelper.LocalServiceKey, string.Empty).ToString();
-            string new_path = Path.Combine(this.JssvcFilePath, "jssvc.exe");
+            string new_path = Path.Combine(ConfigHelper.GetBasePath(this.VersionTag, true), "Lib\\jssvc.exe");
             string batFilePath = Path.Combine(Environment.CurrentDirectory, "_$RestartLocalService");
             string batchCommand = string.Format("{0} \"{1}\" \"{2}\"", batFilePath, path, new_path);
             Execute(batchCommand, 0);
-        }
-
-        private string JssvcFilePath
-        {
-            get
-            {
-                switch (this.VersionTag)
-                {
-                    case "MyJob.TaskJob":
-                        return TaskJob.GetJSSVCFilePath();
-                    case "MyJob.TaskJobA":
-                        return TaskJobA.GetJSSVCFilePath();
-                    case "MyJob.TaskJobB":
-                        return TaskJobB.GetJSSVCFilePath();
-                    case "MyJob.TaskJobC":
-                        return TaskJobC.GetJSSVCFilePath();
-                    case "MyJob.TaskJobD":
-                        return TaskJobD.GetJSSVCFilePath();
-                    case "MyJob.TaskJobE":
-                        return TaskJobE.GetJSSVCFilePath();
-                    default:
-                        return TaskJob.GetJSSVCFilePath();
-                }
-            }
         }
 
         private static string GetResultByWql(string wql)

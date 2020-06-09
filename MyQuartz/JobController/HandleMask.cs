@@ -12,24 +12,22 @@ using Quartz.Simpl;
 using Quartz.Impl.Matchers;
 using MyJob;
 using System.Collections.Concurrent;
+using JobController.Configuration;
 
 namespace JobController
 {
     public class HandleMask
     {
-        private ConcurrentDictionary<JobKey, IScheduler> _schedules = new ConcurrentDictionary<JobKey, IScheduler>();
+        private ConcurrentDictionary<JobKey, IScheduler> _schedules;
         public void Start()
         {
             Task.Run(async () =>
             {
-                _schedules.Values.ForEach((IScheduler a) => { a.Shutdown(true); });
                 _schedules = new ConcurrentDictionary<JobKey, IScheduler>();
-                _schedules.TryAdd(new JobKey("TaskJob", "TaskJobGroup"), await NewScheduler("JobConfig.xml"));
-                _schedules.TryAdd(new JobKey("TaskJobA", "TaskJobAGroup"), await NewScheduler("JobAConfig.xml"));
-                _schedules.TryAdd(new JobKey("TaskJobB", "TaskJobBGroup"), await NewScheduler("JobBConfig.xml"));
-                _schedules.TryAdd(new JobKey("TaskJobC", "TaskJobCGroup"), await NewScheduler("JobCConfig.xml"));
-                _schedules.TryAdd(new JobKey("TaskJobD", "TaskJobDGroup"), await NewScheduler("JobDConfig.xml"));
-                _schedules.TryAdd(new JobKey("TaskJobE", "TaskJobEGroup"), await NewScheduler("JobEConfig.xml"));
+                foreach (JobTypeElement item in ConfigHelper.SchedulerCollection)
+                {
+                    _schedules.TryAdd(new JobKey(item.JobKey, item.JobGroup), await NewScheduler(item.SchedulerFile));
+                }
 
                 foreach (var item in _schedules)
                 {

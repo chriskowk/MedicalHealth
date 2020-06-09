@@ -24,22 +24,22 @@ namespace JobController
 
         public static string GetRegFilePath(string executePath)
         {
-            string ret = string.Empty;
-
+            string typename = string.Empty;
             if (executePath.Contains(@"\MedicalHealth\"))
-                ret = Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg");
+                typename = typeof(TaskJob).Name;
             else if (executePath.Contains(@"\MedicalHealthSY\"))
-                ret = Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg");
+                typename = typeof(TaskJobA).Name;
             else if (executePath.Contains(@"\MedicalHealthBasicRC\"))
-                ret = Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg");
+                typename = typeof(TaskJobB).Name;
             else if (executePath.Contains(@"\MedicalHealthGH\"))
-                ret = Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg");
+                typename = typeof(TaskJobC).Name;
             else if (executePath.Contains(@"\MedicalHealthS1\"))
-                ret = Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg");
+                typename = typeof(TaskJobD).Name;
             else if (executePath.Contains(@"\MedicalHealthSGS1\"))
-                ret = Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg");
+                typename = typeof(TaskJobE).Name;
 
-            return ret;
+            string customer = ConfigHelper.GetCustomerName(typename);
+            return Path.Combine(ConfigHelper.GetBasePath(typename), $"BatchFiles\\注册表\\{customer}注册表.reg");
         }
     }
 
@@ -61,7 +61,7 @@ namespace JobController
                 string regFilePath = GlobalEventManager.GetRegFilePath(executePath);
                 IJobDetail job = context.JobDetail;
                 job.JobDataMap.Put(TaskJobBase.RegisterFilePath, regFilePath);
-                
+
                 _logger.Info($"JobToBeExecuted: {regFilePath}");
             });
         }
