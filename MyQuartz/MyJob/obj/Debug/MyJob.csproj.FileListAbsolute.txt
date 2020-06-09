@@ -60,3 +60,4 @@ F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Jobs.pdb
 F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Jobs.xml
 F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Plugins.pdb
 F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Plugins.xml
+F:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csproj.CoreCompileInputs.cache

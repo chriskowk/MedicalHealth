@@ -625,3 +625,4 @@ F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Log4Net1
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Log4Net1211.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\log4net.xml
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\log4net.config
+F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.CoreCompileInputs.cache

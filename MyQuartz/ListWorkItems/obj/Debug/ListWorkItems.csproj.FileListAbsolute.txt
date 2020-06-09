@@ -508,3 +508,5 @@ F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\zh-Hant\Microsoft.TeamF
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CopyComplete
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CoreCompileInputs.cache

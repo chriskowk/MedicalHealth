@@ -18,6 +18,7 @@ namespace MyJob
     {
         // 定义参数常量
         public const string JobKey = "JobKey";
+        public const string RegisterFilePath = "RegisterFilePath";
         public const string SQL = "SQL";
         public const string ExecutionCount = "ExecutionCount";
         public const string RowCount = "RowCount";
@@ -34,13 +35,14 @@ namespace MyJob
                 JobKey jobKey = context.JobDetail.Key;
                 // 获取传递过来的参数            
                 JobDataMap data = context.JobDetail.JobDataMap;
+                string regFilePath = data.GetString(RegisterFilePath);
                 string sql = data.GetString(SQL);
                 int count = data.GetInt(ExecutionCount);
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
                 // 此处为执行的任务
                 TFGetLatestVersion();
-                BuildAll();
+                BuildAll(regFilePath);
                 RebuildDataModels();
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
@@ -83,7 +85,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            string output = JobHelper.Execute(path, 60, true, true, ref errMsg);
+            string output = JobHelper.Execute(path, string.Empty, 60, true, true, ref errMsg);
 
             FileStream fs = new FileStream(string.Format(@"{0}\Log\TFGetLog{1}.txt", BatchFilesPath, DateTime.Now.ToString("yyyyMMddHHmmss")), FileMode.Append);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
@@ -92,13 +94,13 @@ namespace MyJob
             fs.Close();
         }
 
-        private void BuildAll()
+        private void BuildAll(string regFilePath)
         {
-            string path = Path.Combine(BatchFilesPath, "全编译Upload.bat");
+            string path = Path.Combine(BatchFilesPath, $"全编译Upload.bat");
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            JobHelper.Execute(path, false, false, ref errMsg);
+            JobHelper.Execute(path, regFilePath, false, false, ref errMsg);
         }
 
         public virtual void RebuildDataModels()
@@ -139,7 +141,7 @@ namespace MyJob
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            JobHelper.Execute(path, false, false, ref errMsg);
+            JobHelper.Execute(path, string.Empty, false, false, ref errMsg);
         }
     }
 
@@ -281,12 +283,12 @@ namespace MyJob
 
     public static class JobHelper
     {
-        public static string Execute(string filefullname, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
+        public static string Execute(string filefullname, string arguments, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
         {
-            return Execute(filefullname, 0, redirectStandardOutput, redirectStandardError, ref errMsg);
+            return Execute(filefullname, arguments, 0, redirectStandardOutput, redirectStandardError, ref errMsg);
         }
 
-        public static string Execute(string filefullname, int seconds, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
+        public static string Execute(string filefullname, string arguments, int seconds, bool redirectStandardOutput, bool redirectStandardError, ref string errMsg)
         {
             string output = ""; //输出字符串  
             if (filefullname != null && !filefullname.Equals(""))
@@ -296,7 +298,7 @@ namespace MyJob
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = "cmd.exe";//设定需要执行的命令  
                 startInfo.WorkingDirectory = file.Directory.FullName;
-                startInfo.Arguments = "/C " + filefullname;//“/C”表示执行完命令后马上退出  
+                startInfo.Arguments = $"/C {filefullname} {arguments}"; //“/C”表示执行完命令后马上退出  
                 startInfo.UseShellExecute = false;//使用系统外壳程序启动  
                 startInfo.RedirectStandardInput = false;//不重定向输入  
                 startInfo.RedirectStandardOutput = redirectStandardOutput; //重定向输出  

@@ -162,7 +162,7 @@ namespace JobController
             }
 
             LoadResources();
-            LoadExecutablePath();
+            
             //OnReceivedTaskFinishedMessage();
 
             _timer = new System.Threading.Timer(new TimerCallback(ResetTrayIcon));
@@ -294,32 +294,7 @@ namespace JobController
 
         private void ShowTaskFinishedMessage(string jobType)
         {
-            ResetExecutePath();
             System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
-        }
-
-        private string _executePath;
-        private void LoadExecutablePath()
-        {
-            object path = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\", "ExecutablePath", "");
-            _executePath = path == null ? "" : path.ToString();
-            _txtStatus.Text = string.Format("{0}注册表项 ExecutablePath: {1}", string.IsNullOrEmpty(_txtStatus.Text) ? string.Empty : _txtStatus.Text + "\r\n", _executePath);
-        }
-
-        private void ResetExecutePath()
-        {
-            if (_executePath.Contains(@"\MedicalHealth\"))
-                ExecuteReg(Path.Combine(TaskJob.GetBatchFilePath(), @"注册表\眼科注册表.reg"));
-            else if (_executePath.Contains(@"\MedicalHealthSY\"))
-                ExecuteReg(Path.Combine(TaskJobA.GetBatchFilePath(), @"注册表\省医注册表.reg"));
-            else if (_executePath.Contains(@"\MedicalHealthBasicRC\"))
-                ExecuteReg(Path.Combine(TaskJobB.GetBatchFilePath(), @"注册表\市十二注册表.reg"));
-            else if (_executePath.Contains(@"\MedicalHealthGH\"))
-                ExecuteReg(Path.Combine(TaskJobC.GetBatchFilePath(), @"注册表\光华注册表.reg"));
-            else if (_executePath.Contains(@"\MedicalHealthS1\"))
-                ExecuteReg(Path.Combine(TaskJobD.GetBatchFilePath(), @"注册表\市一注册表.reg"));
-            else if (_executePath.Contains(@"\MedicalHealthSGS1\"))
-                ExecuteReg(Path.Combine(TaskJobE.GetBatchFilePath(), @"注册表\韶关市一注册表.reg"));
         }
 
         private string GetJobExecuteState(string jobType)
@@ -429,7 +404,6 @@ namespace JobController
             }
         }
 
-        private bool _isCompiledPending = false;
         private void Restart()
         {
             _batch.Stop();
@@ -440,7 +414,6 @@ namespace JobController
 
             lblCurState.ForeColor = Color.Black;
             lblCurState.Text = "作业已启动，启动时间：" + _starting;
-            _isCompiledPending = true;
         }
 
         private void tscbStop_Click(object sender, EventArgs e)
@@ -451,7 +424,6 @@ namespace JobController
             tscbExit.Enabled = true;
             lblCurState.ForeColor = Color.Red;
             lblCurState.Text = "作业已暂停，停止时间：" + DateTime.Now;
-            _isCompiledPending = false;
         }
 
         private void tscbExit_Click(object sender, EventArgs e)
@@ -626,7 +598,7 @@ namespace JobController
                     Execute(Path.Combine(TaskJobE.GetBatchFilePath(), "__copy2svcbin.bat"), 0);
                     break;
             }
-            LoadExecutablePath();
+            
             RestartServices();
         }
 
