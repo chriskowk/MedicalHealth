@@ -344,16 +344,28 @@ namespace JobController
 
         private void _btnResetJobConfig_Click(object sender, EventArgs e)
         {
+            _btnResetJobConfig.Enabled = false;
             _starting = DateTime.Now;
             int i = 19;
             foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
             {
-                i++;
-                WriteJobConfig(item.SchedulerFile, item.JobName, item.TypeName, item.CustomerName, DateTime.Now.Date.AddHours(i));
+                WriteJobConfig(item.SchedulerFile, item.JobName, item.TypeName, item.CustomerName, DateTime.Now.Date.AddHours(i++));
             }
-            _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 作业调度计划已重置。", DateTime.Now);
 
+            Delay(10000);
             Restart();
+            _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 作业调度计划已重置。", DateTime.Now);
+            _btnResetJobConfig.Enabled = true;
+        }
+        
+        public static void Delay(int mm)
+        {
+            DateTime current = DateTime.Now;
+            while (current.AddMilliseconds(mm) > DateTime.Now)
+            {
+                System.Windows.Forms.Application.DoEvents();
+            }
+            return;
         }
 
         private DateTime _starting;

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace MyJob
 {
     [PersistJobDataAfterExecution]
-    //[DisallowConcurrentExecution]
+    [DisallowConcurrentExecution]
     public abstract class TaskJobBase : IJob
     {
         // 定义参数常量
