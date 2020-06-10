@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,39 +14,58 @@ namespace JobController
     {
         private static readonly IntegrationSection _integrationSection = ConfigurationManager.GetSection("integration.config") as IntegrationSection;
 
-        public static JobTypeCollection SchedulerCollection
+        public static SchedulerCollection SchedulerCollection
         {
             get { return _integrationSection.SchedulerCollection; }
         }
 
-        public static string GetBasePath(string name, bool byFullName = false)
+        public static string GetJobNameByExecutablePath(string executablePath)
         {
-            JobTypeElement item = byFullName ? SchedulerCollection.FirstOrDefault(a => a.FullName == name) : SchedulerCollection.FirstOrDefault(a => a.Name == name);
+            SchedulerElement item = SchedulerCollection.FirstOrDefault(a => executablePath.StartsWith(a.BasePath, StringComparison.OrdinalIgnoreCase));
+            return item?.JobName;
+        }
+
+        public static string GetBasePath(string jobname)
+        {
+            SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
             return item?.BasePath;
         }
 
-        public static string GetCustomerName(string name, bool byFullName = false)
+        public static string GetCustomerName(string jobname)
         {
-            JobTypeElement item = byFullName ? SchedulerCollection.FirstOrDefault(a => a.FullName == name) : SchedulerCollection.FirstOrDefault(a => a.Name == name);
+            SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
             return item?.CustomerName;
         }
 
-        public static string GetSchedulerFile(string name, bool byFullName = false)
+        public static string GetSchedulerFile(string jobname)
         {
-            JobTypeElement item = byFullName ? SchedulerCollection.FirstOrDefault(a => a.FullName == name) : SchedulerCollection.FirstOrDefault(a => a.Name == name);
+            SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
             return item?.SchedulerFile;
         }
 
-        public static string GetName(string fullname)
+        public static string GetTypeName(string jobname)
         {
-            JobTypeElement item = SchedulerCollection.FirstOrDefault(a => a.FullName == fullname);
-            return item?.Name;
+            SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
+            return item?.TypeName;
         }
 
-        public static string GetFullName(string name)
+        /// <summary>
+        /// 获取配置文件键值对（appSettings）
+        /// </summary>
+        /// <param name="strKey"></param>
+        /// <returns></returns>
+        public static string GetAppConfig(string strKey)
         {
-            JobTypeElement item = SchedulerCollection.FirstOrDefault(a => a.Name == name);
-            return item?.FullName;
+            string file = System.Windows.Forms.Application.ExecutablePath;
+            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(file);
+            foreach (string key in config.AppSettings.Settings.AllKeys)
+            {
+                if (key == strKey)
+                {
+                    return config.AppSettings.Settings[strKey].Value.ToString();
+                }
+            }
+            return null;
         }
     }
 }

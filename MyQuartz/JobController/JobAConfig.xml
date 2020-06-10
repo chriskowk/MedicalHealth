@@ -11,7 +11,7 @@
       <group>TaskJobAGroup</group>
       <description>省医编译任务</description>
       <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->
-      <job-type>MyJob.TaskJobA, MyJob</job-type>
+      <job-type>MyJob.TaskJob, MyJob</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>

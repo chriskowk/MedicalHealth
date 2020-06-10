@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-
-using System.Xml;
 using System.Threading;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -23,13 +21,14 @@ using SqlExtensionVB;
 using System.Linq;
 using System.Management;
 using static System.Management.PropertyDataCollection;
-using MyJob;
 using System.Configuration;
 using Microsoft.Win32;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using JobController.Configuration;
 using System.Data.SqlTypes;
+using MyJob;
+using Quartz;
 
 namespace JobController
 {
@@ -43,20 +42,6 @@ namespace JobController
         {
             public Emp(int a) { Age = a; }
             public int Age;
-        }
-
-        public static string GetAppConfig(string strKey)
-        {
-            string file = System.Windows.Forms.Application.ExecutablePath;
-            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(file);
-            foreach (string key in config.AppSettings.Settings.AllKeys)
-            {
-                if (key == strKey)
-                {
-                    return config.AppSettings.Settings[strKey].Value.ToString();
-                }
-            }
-            return null;
         }
 
         public MainForm()
@@ -78,29 +63,14 @@ namespace JobController
                 string correct = string.Format("{0:yyyy-MM-dd HH:mm}", System.DateTime.Now);
                 Console.WriteLine("{0}\t{1}\t{2}", wrong1, wrong2, correct);
 
-                this.Top = (int)(SystemParameters.WorkArea.Height - this.Height - 105);
-                this.Left = (int)(SystemParameters.WorkArea.Width - this.Width - 360);
+                this.Top = (int)(SystemParameters.WorkArea.Height - this.Height - 120);
+                this.Left = (int)(SystemParameters.WorkArea.Width - this.Width - 320);
 
-                TaskJob.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJob).Name); // GetAppConfig("TaskJob");
-                TaskJobA.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobA).Name); // GetAppConfig("TaskJobA");
-                TaskJobB.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobB).Name); // GetAppConfig("TaskJobB");
-                TaskJobC.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobC).Name); // GetAppConfig("TaskJobC");
-                TaskJobD.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobD).Name); // GetAppConfig("TaskJobD");
-                TaskJobE.BASE_PATH = ConfigHelper.GetBasePath(typeof(TaskJobE).Name); // GetAppConfig("TaskJobE");
-
-                SetFilesWritable(Path.Combine(TaskJob.BASE_PATH, @"bin\Resources"));
-                SetFilesWritable(Path.Combine(TaskJobA.BASE_PATH, @"bin\Resources"));
-                SetFilesWritable(Path.Combine(TaskJobB.BASE_PATH, @"bin\Resources"));
-                SetFilesWritable(Path.Combine(TaskJobC.BASE_PATH, @"bin\Resources"));
-                SetFilesWritable(Path.Combine(TaskJobD.BASE_PATH, @"bin\Resources"));
-                SetFilesWritable(Path.Combine(TaskJobE.BASE_PATH, @"bin\Resources"));
-
-                SetFilesWritable(Path.Combine(TaskJob.BASE_PATH, @"\DataModel\Oracle"));
-                SetFilesWritable(Path.Combine(TaskJobA.BASE_PATH, @"\DataModel\Oracle"));
-                SetFilesWritable(Path.Combine(TaskJobB.BASE_PATH, @"\DataModel\Oracle"));
-                SetFilesWritable(Path.Combine(TaskJobC.BASE_PATH, @"\DataModel\Oracle"));
-                SetFilesWritable(Path.Combine(TaskJobD.BASE_PATH, @"\DataModel\Oracle"));
-                SetFilesWritable(Path.Combine(TaskJobE.BASE_PATH, @"\DataModel\Oracle"));
+                foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
+                {
+                    SetFilesWritable(Path.Combine(item.BasePath, @"bin\Resources"));
+                    SetFilesWritable(Path.Combine(item.BasePath, @"\DataModel\Oracle"));
+                }
 
                 //NetworkCredential credential = new NetworkCredential("guoshaoyue", "netboy", "hissoft.com");//初始化用户  
                 //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
@@ -141,12 +111,14 @@ namespace JobController
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.Print(ex.ToString());
+                    Debug.Print(ex.ToString());
                     Environment.Exit(1);
                 }
                 if (newMutexCreated)
                 {
                     InitializeComponent();
+                    CreateCustomerRadioButtons();
+                    BindControlEvents(Controls);
                     lblCurState.Text = "作业已启动，启动时间：" + DateTime.Now;
                     _batch = new HandleMask();
                     _starting = DateTime.Now;
@@ -164,43 +136,66 @@ namespace JobController
             }
 
             LoadResources();
-
-            //OnReceivedTaskFinishedMessage();
+            OnReceivedTaskFinishedMessage();
+            GlobalEventManager.JobWasExecuted += GlobalEventManager_JobWasExecuted;
 
             _timer = new System.Threading.Timer(new TimerCallback(ResetTrayIcon));
             _timer.Change(0, 1000);
-
-            GlobalEventManager.JobWasExecuted += GlobalEventManager_JobWasExecuted;
         }
 
         private void GlobalEventManager_JobWasExecuted(object sender, EventArgs e)
         {
-            ShowTaskFinishedMessage(sender.ToString());
+            JobKey jobKey = sender as JobKey;
+            if (jobKey != null)
+                ShowTaskFinishedMessage(jobKey.Name);
         }
 
+        private static ConnectionFactory _connectionFactory;
+        private static ConnectionFactory ConnectionFactory
+        {
+            get
+            {
+                if (_connectionFactory == null)
+                    _connectionFactory = new ConnectionFactory
+                    {
+                        HostName = "localhost",//RabbitMQ服务在本地运行
+                        UserName = "guest",//用户名
+                        Password = "guest"//密码 
+                    };
+
+                return _connectionFactory;
+            }
+        }
+
+        private static readonly IConnection _connection = ConnectionFactory.CreateConnection();
+        private static readonly IModel _channel = _connection.CreateModel();
+        private static EventingBasicConsumer _consumer = null;
         private void OnReceivedTaskFinishedMessage()
         {
-            var factory = new ConnectionFactory();
-            factory.HostName = "localhost";//RabbitMQ服务在本地运行
-            factory.UserName = "guest";//用户名
-            factory.Password = "guest";//密码 
-            using (var connection = factory.CreateConnection())
+            _channel.QueueDeclare(queue: "TaskFinishedMessage", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.ExchangeDeclare(exchange: "TaskFinishedMessageExchange", type: ExchangeType.Direct, durable: true, autoDelete: false, arguments: null);
+            _channel.QueueBind(queue: "TaskFinishedMessage", exchange: "TaskFinishedMessageExchange", routingKey: string.Empty, arguments: null);
+            try
             {
-                using (var channel = connection.CreateModel())
+                if (_consumer == null) { _consumer = new EventingBasicConsumer(_channel); }
+                _consumer.Received += (model, ea) =>
                 {
-                    channel.QueueDeclare(queue: "TaskFinishedMessage", durable: true, exclusive: false, autoDelete: false, arguments: null);
-                    channel.ExchangeDeclare(exchange: "TaskFinishedMessageExchange", type: ExchangeType.Direct, durable: true, autoDelete: false, arguments: null);
-                    channel.QueueBind(queue: "TaskFinishedMessage", exchange: "TaskFinishedMessageExchange", routingKey: string.Empty, arguments: null);
-                    var consumer = new EventingBasicConsumer(channel);
-                    consumer.Received += (model, ea) =>
-                    {
-                        var body = ea.Body;
-                        var message = Encoding.UTF8.GetString(body.ToArray());
-                        ShowTaskFinishedMessage(message);
-                    };
-                    channel.BasicConsume(queue: "TaskFinishedMessage",
-                                 autoAck: true,
-                                 consumer: consumer);
+                    var body = ea.Body;
+                    var message = Encoding.UTF8.GetString(body.ToArray());
+                    message = $"【{ConfigHelper.GetCustomerName(message)}】版本编译已完成";
+                    string errMsg = string.Empty;
+                    string path = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location), "MessageBox.exe");
+                    JobHelper.ExecBatch(path, false, false, false, $"{message.Replace(" ", "{SPACE}")}", ref errMsg);
+                };
+                _channel.BasicConsume(queue: "TaskFinishedMessage",
+                                     autoAck: true,
+                                     consumer: _consumer);
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = new StreamWriter(@"E:\err_msg.log", true, Encoding.UTF8))
+                {
+                    sw.WriteLine($"接收消息队列异常:{ex.Message}-{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}");
                 }
             }
         }
@@ -294,10 +289,9 @@ namespace JobController
             RewriteConfigAndRestartJob();
         }
 
-        private void ShowTaskFinishedMessage(string jobType)
+        private void ShowTaskFinishedMessage(string jobname)
         {
-            //System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", GetAppConfig(jobType)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
-            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", ConfigHelper.GetCustomerName(jobType, true)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
+            System.Windows.Forms.MessageBox.Show(string.Format("【{0}】 编译任务刚结束！", ConfigHelper.GetCustomerName(jobname)), "检查任务状态", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, System.Windows.Forms.MessageBoxOptions.ServiceNotification);
         }
 
         private void RewriteConfigAndRestartJob()
@@ -327,7 +321,6 @@ namespace JobController
 
             // get a list of resource names from the manifest
             string[] resNames = a.GetManifestResourceNames();
-
             foreach (string s in resNames)
             {
                 pos = s.IndexOf(".Tray");
@@ -353,10 +346,10 @@ namespace JobController
         {
             _starting = DateTime.Now;
             int i = 19;
-            foreach (JobTypeElement item in ConfigHelper.SchedulerCollection)
+            foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
             {
                 i++;
-                WriteJobConfig(item.SchedulerFile, item.Name, DateTime.Now.Date.AddHours(i));
+                WriteJobConfig(item.SchedulerFile, item.JobName, item.TypeName, item.CustomerName, DateTime.Now.Date.AddHours(i));
             }
             _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 作业调度计划已重置。", DateTime.Now);
 
@@ -367,49 +360,12 @@ namespace JobController
         private void tscbStart_Click(object sender, EventArgs e)
         {
             _starting = DateTime.Now;
-            _dtpRestart.Value = _starting.AddMinutes(1);
-            string filename = ConfigHelper.GetSchedulerFile(this.VersionTag, true);
-            string typename = ConfigHelper.GetName(this.VersionTag);
-            WriteJobConfig(filename, typename, _dtpRestart.Value);
-
-            Restart();
-        }
-
-        private string VersionTag
-        {
-            get { return VersionSelected.Tag == null ? string.Empty : VersionSelected.Tag.ToString(); }
-        }
-
-        private RadioButton VersionSelected
-        {
-            get
+            if (VersionSelected.Tag is SchedulerElement se)
             {
-                if (_rbZSYK.Checked)
-                    return _rbZSYK;
-                else if (_rbSY.Checked)
-                    return _rbSY;
-                else if (_rbS12.Checked)
-                    return _rbS12;
-                else if (_rbGH.Checked)
-                    return _rbGH;
-                else if (_rbS1.Checked)
-                    return _rbS1;
-                else if (_rbSGS1.Checked)
-                    return _rbSGS1;
-                return null;
+                _dtpRestart.Value = _starting.AddMinutes(1);
+                WriteJobConfig(se.SchedulerFile, se.JobName, se.TypeName, se.CustomerName, _dtpRestart.Value);
+                Restart();
             }
-        }
-
-        private void Restart()
-        {
-            _batch.Stop();
-            _batch.Start();
-            tscbStart.Enabled = false;
-            tscbStop.Enabled = true;
-            tscbExit.Enabled = true;
-
-            lblCurState.ForeColor = Color.Black;
-            lblCurState.Text = "作业已启动，启动时间：" + _starting;
         }
 
         private void tscbStop_Click(object sender, EventArgs e)
@@ -427,6 +383,42 @@ namespace JobController
             _batch.Stop();
             _isExiting = true;
             System.Windows.Forms.Application.Exit();
+        }
+
+        private RadioButton VersionSelected
+        {
+            get
+            {
+                foreach (Control item in grpCustomers.Controls)
+                {
+                    if (item is RadioButton rdo && rdo.Checked) { return rdo; }
+                }
+                return null;
+            }
+        }
+
+        private RadioButton DefaultCustomer
+        {
+            get
+            {
+                foreach (Control item in grpCustomers.Controls)
+                {
+                    if (item is RadioButton rdo) { return rdo; }
+                }
+                return null;
+            }
+        }
+
+        private void Restart()
+        {
+            _batch.Stop();
+            _batch.Start();
+            tscbStart.Enabled = false;
+            tscbStop.Enabled = true;
+            tscbExit.Enabled = true;
+
+            lblCurState.ForeColor = Color.Black;
+            lblCurState.Text = "作业已启动，启动时间：" + _starting;
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -467,7 +459,7 @@ namespace JobController
             _cboProjects.SelectedIndex = 0;
             _dtpRestart.Value = DateTime.Now;
             if (_currentVersion == null)
-                _rbZSYK.Checked = true;
+                DefaultCustomer.Checked = true;
             else
                 _currentVersion.Checked = true;
         }
@@ -514,7 +506,7 @@ namespace JobController
             }
         }
 
-        private void WriteJobConfig(string fileName, string typename, DateTime dt)
+        private void WriteJobConfig(string fileName, string jobname, string typename, string customer, DateTime dt)
         {
             FileStream fs = new FileStream(fileName, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
@@ -526,10 +518,10 @@ namespace JobController
             sw.WriteLine("  <schedule>");
             sw.WriteLine("    <job>");
             sw.WriteLine("      <!--name(必填)同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->");
-            sw.WriteLine($"      <name>{typename}</name>");
+            sw.WriteLine($"      <name>{jobname}</name>");
             sw.WriteLine("      <!--group(选填) 任务所属分组，用于标识任务所属分组-->");
-            sw.WriteLine($"      <group>{typename}Group</group>");
-            sw.WriteLine("      <description>省医编译任务</description>");
+            sw.WriteLine($"      <group>{jobname}Group</group>");
+            sw.WriteLine($"      <description>{customer}版本编译任务</description>");
             sw.WriteLine("      <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->");
             sw.WriteLine($"      <job-type>MyJob.{typename}, MyJob</job-type>");
             sw.WriteLine("      <durable>true</durable>");
@@ -538,13 +530,13 @@ namespace JobController
             sw.WriteLine("    <trigger>");
             sw.WriteLine("      <cron>");
             sw.WriteLine("        <!--name(必填) 触发器名称，同一个分组中的名称必须不同-->");
-            sw.WriteLine($"        <name>{typename}Trigger</name>");
+            sw.WriteLine($"        <name>{jobname}Trigger</name>");
             sw.WriteLine("        <!--group(选填) 触发器组-->");
-            sw.WriteLine($"        <group>{typename}TriggerGroup</group>");
+            sw.WriteLine($"        <group>{jobname}TriggerGroup</group>");
             sw.WriteLine("        <!--job-name(必填) 要调度的任务名称，该job-name必须和对应job节点中的name完全相同-->");
-            sw.WriteLine($"        <job-name>{typename}</job-name>");
+            sw.WriteLine($"        <job-name>{jobname}</job-name>");
             sw.WriteLine("        <!--job-group(选填) 调度任务(job)所属分组，该值必须和job中的group完全相同-->");
-            sw.WriteLine($"        <job-group>{typename}Group</job-group>");
+            sw.WriteLine($"        <job-group>{jobname}Group</job-group>");
             sw.WriteLine("        <misfire-instruction>DoNothing</misfire-instruction>");
             sw.WriteLine("        <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->");
             sw.WriteLine("        <!--周一到周五每天的8点到20点，每一分钟触发一次-->");
@@ -573,12 +565,14 @@ namespace JobController
 
         private void _btnRegConfig_Click(object sender, EventArgs e)
         {
-            string customer = ConfigHelper.GetCustomerName(this.VersionTag, true);
-            string bat1 = Path.Combine(ConfigHelper.GetBasePath(this.VersionTag, true), $"BatchFiles\\注册表\\{customer}注册表.reg");
-            string bat2 = Path.Combine(ConfigHelper.GetBasePath(this.VersionTag, true), $"BatchFiles\\__copy2svcbin.bat");
-            ExecuteReg(bat1);
-            Execute(bat2, 0);
-            RestartServices();
+            if (VersionSelected.Tag is SchedulerElement se)
+            {
+                string bat1 = Path.Combine(ConfigHelper.GetBasePath(se.JobName), $"BatchFiles\\注册表\\{se.CustomerName}注册表.reg");
+                string bat2 = Path.Combine(ConfigHelper.GetBasePath(se.JobName), $"BatchFiles\\__copy2svcbin.bat");
+                ExecuteReg(bat1);
+                Execute(bat2, 0);
+                RestartServices();
+            }
         }
 
         /// <summary>  
@@ -648,10 +642,13 @@ namespace JobController
             if (string.IsNullOrWhiteSpace(path))
                 System.Windows.Forms.MessageBox.Show("服务已卸载，请重新安装服务");
 
-            string new_path = Path.Combine(ConfigHelper.GetBasePath(this.VersionTag, true), "Lib\\jssvc.exe");
-            string batFilePath = Path.Combine(Environment.CurrentDirectory, "_$RestartLocalService");
-            string batchCommand = string.Format("{0} \"{1}\" \"{2}\"", batFilePath, path, new_path);
-            Execute(batchCommand, 0);
+            if (VersionSelected.Tag is SchedulerElement se)
+            {
+                string new_path = Path.Combine(se.BasePath, "Lib\\jssvc.exe");
+                string batFilePath = Path.Combine(Environment.CurrentDirectory, "_$RestartLocalService");
+                string batchCommand = string.Format("{0} \"{1}\" \"{2}\"", batFilePath, path, new_path);
+                Execute(batchCommand, 0);
+            }
         }
 
         private static string GetResultByWql(string wql)
@@ -670,9 +667,62 @@ namespace JobController
         }
 
         private RadioButton _currentVersion;
-        private void _optCustomer_CheckedChanged(object sender, EventArgs e)
+        private void CustomerRadio_CheckedChanged(object sender, EventArgs e)
         {
             _currentVersion = sender as RadioButton;
         }
+
+        private void CreateCustomerRadioButtons()
+        {
+            var xStep = 0;
+            var yStep = 0;
+            int width = lblRef.Width * 2;
+            int height = (int)(lblRef.Height * 1.5);
+            int px = 10;
+            int py = 0;
+            int i = 0;
+            foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
+            {
+                if (i % 3 == 0)
+                {
+                    xStep = 0;
+                    yStep += lblRef.Height * 2;
+                }
+                var rdo = new RadioButton
+                {
+                    Text = item.CustomerName,
+                    Name = "rdoCustomer" + i,
+                    Tag = item,
+                    Size = new System.Drawing.Size(width, height),
+                    Location = new System.Drawing.Point(px + width * xStep, py + yStep)
+                };
+                grpCustomers.Controls.Add(rdo);
+                xStep++;
+                i++;
+            }
+        }
+
+        /// <summary>
+        /// 为控件绑定事件
+        /// </summary>
+        private void BindControlEvents(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control.HasChildren)
+                {
+                    BindControlEvents(control.Controls);
+                }
+                else
+                {
+                    if (control is RadioButton rdo)
+                    {
+                        rdo.CheckedChanged -= CustomerRadio_CheckedChanged;
+                        rdo.CheckedChanged += CustomerRadio_CheckedChanged;
+                    }
+                }
+            }
+        }
+
     }
 }

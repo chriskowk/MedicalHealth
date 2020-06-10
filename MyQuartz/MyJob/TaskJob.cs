@@ -13,20 +13,19 @@ using System.Threading.Tasks;
 namespace MyJob
 {
     [PersistJobDataAfterExecution]
-    [DisallowConcurrentExecution]
+    //[DisallowConcurrentExecution]
     public abstract class TaskJobBase : IJob
     {
         // 定义参数常量
         public const string RegisterFilePath = "RegisterFilePath";
+        public const string BASE_PATH = "BASE_PATH";
         public const string SQL = "SQL";
         public const string ExecutionCount = "ExecutionCount";
         public const string RowCount = "RowCount";
         // Quartz 每次执行时都会重新实例化一个类, 因此Job类中的非静态变量不能存储状态信息
         private static int _counter = 1;//可以保存状态
-        public abstract string BasePath { get; }
-        public abstract string BatchFilesPath { get; }
-        public abstract string JSSVCFilePath { get; }
 
+        public string BatchFilesPath { get; private set; }
         public Task Execute(IJobExecutionContext context)
         {
             return Task.Run(() =>
@@ -37,6 +36,8 @@ namespace MyJob
                 string regFilePath = data.GetString(RegisterFilePath);
                 string sql = data.GetString(SQL);
                 int count = data.GetInt(ExecutionCount);
+                string basepath = data.GetString(BASE_PATH);
+                BatchFilesPath = Path.Combine(basepath, "BatchFiles");
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
                 // 此处为执行的任务
@@ -45,7 +46,7 @@ namespace MyJob
                 RebuildDataModels();
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
-                //SendMessageQueue();
+                SendMessageQueue(jobKey.Name);
 
                 data.Put(RowCount, 5);
                 data.Put(ExecutionCount, ++count);
@@ -53,7 +54,7 @@ namespace MyJob
             });
         }
 
-        private void SendMessageQueue()
+        private void SendMessageQueue(string message)
         {
             var factory = new ConnectionFactory();
             factory.HostName = "localhost";//RabbitMQ服务在本地运行
@@ -68,7 +69,6 @@ namespace MyJob
                     channel.QueueBind(queue: "TaskFinishedMessage", exchange: "TaskFinishedMessageExchange", routingKey: string.Empty, arguments: null);
 
                     //string message = string.Format("STATE_COMPLETE ON {0:yyyy-MM-dd HH:mm:ss.fff}", DateTime.Now);
-                    string message = this.GetType().ToString();
                     byte[] body = Encoding.UTF8.GetBytes(message);
                     channel.BasicPublish(exchange: "TaskFinishedMessageExchange",
                                     routingKey: string.Empty,
@@ -95,7 +95,7 @@ namespace MyJob
 
         private void BuildAll(string regFilePath)
         {
-            string path = Path.Combine(BatchFilesPath, $"全编译Upload.bat");
+            string path = Path.Combine(BatchFilesPath, "全编译Upload.bat");
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
@@ -109,30 +109,10 @@ namespace MyJob
 
     public class TaskJob : TaskJobBase
     {
-        public static string BASE_PATH;
-        public override string BasePath
-        {
-            get { return BASE_PATH; }
-        }
-        public static string GetBatchFilePath()
-        {
-            return Path.Combine(BASE_PATH, "BatchFiles"); 
-        }
-        public static string GetJSSVCFilePath()
-        {
-            return Path.Combine(BASE_PATH, "Lib");
-        }
+    }
 
-        public override string BatchFilesPath
-        {
-            get { return GetBatchFilePath(); }
-        }
-
-        public override string JSSVCFilePath
-        {
-            get { return GetJSSVCFilePath(); }
-        }
-
+    public class TaskJobAdvanced : TaskJobBase
+    {
         public override void RebuildDataModels()
         {
             base.RebuildDataModels();
@@ -141,142 +121,6 @@ namespace MyJob
 
             string errMsg = string.Empty;
             JobHelper.Execute(path, string.Empty, false, false, ref errMsg);
-        }
-    }
-
-    public class TaskJobA : TaskJobBase
-    {
-        public static string BASE_PATH;
-        public override string BasePath
-        {
-            get { return BASE_PATH; }
-        }
-        public static string GetBatchFilePath()
-        {
-            return Path.Combine(BASE_PATH, "BatchFiles"); 
-        }
-        public static string GetJSSVCFilePath()
-        {
-            return Path.Combine(BASE_PATH, "Lib");
-        }
-
-        public override string BatchFilesPath
-        {
-            get { return GetBatchFilePath(); }
-        }
-
-        public override string JSSVCFilePath
-        {
-            get { return GetJSSVCFilePath(); }
-        }
-    }
-
-    public class TaskJobB : TaskJobBase
-    {
-        public static string BASE_PATH;
-        public override string BasePath
-        {
-            get { return BASE_PATH; }
-        }
-        public static string GetBatchFilePath()
-        {
-            return Path.Combine(BASE_PATH, "BatchFiles"); ;
-        }
-        public static string GetJSSVCFilePath()
-        {
-            return Path.Combine(BASE_PATH, "Lib");
-        }
-
-        public override string BatchFilesPath
-        {
-            get { return GetBatchFilePath(); }
-        }
-
-        public override string JSSVCFilePath
-        {
-            get { return GetJSSVCFilePath(); }
-        }
-    }
-
-
-    public class TaskJobC : TaskJobBase
-    {
-        public static string BASE_PATH;
-        public override string BasePath
-        {
-            get { return BASE_PATH; }
-        }
-        public static string GetBatchFilePath()
-        {
-            return Path.Combine(BASE_PATH, "BatchFiles"); ;
-        }
-        public static string GetJSSVCFilePath()
-        {
-            return Path.Combine(BASE_PATH, "Lib");
-        }
-
-        public override string BatchFilesPath
-        {
-            get { return GetBatchFilePath(); }
-        }
-
-        public override string JSSVCFilePath
-        {
-            get { return GetJSSVCFilePath(); }
-        }
-    }
-
-    public class TaskJobD : TaskJobBase
-    {
-        public static string BASE_PATH;
-        public override string BasePath
-        {
-            get { return BASE_PATH; }
-        }
-        public static string GetBatchFilePath()
-        {
-            return Path.Combine(BASE_PATH, "BatchFiles"); ;
-        }
-        public static string GetJSSVCFilePath()
-        {
-            return Path.Combine(BASE_PATH, "Lib");
-        }
-
-        public override string BatchFilesPath
-        {
-            get { return GetBatchFilePath(); }
-        }
-
-        public override string JSSVCFilePath
-        {
-            get { return GetJSSVCFilePath(); }
-        }
-    }
-
-    public class TaskJobE : TaskJobBase
-    {
-        public static string BASE_PATH;
-        public override string BasePath
-        {
-            get { return BASE_PATH; }
-        }
-        public static string GetBatchFilePath()
-        {
-            return Path.Combine(BASE_PATH, "BatchFiles"); ;
-        }
-        public static string GetJSSVCFilePath()
-        {
-            return Path.Combine(BASE_PATH, "Lib");
-        }
-
-        public override string BatchFilesPath
-        {
-            get { return GetBatchFilePath(); }
-        }
-
-        public override string JSSVCFilePath
-        {
-            get { return GetJSSVCFilePath(); }
         }
     }
 
@@ -331,5 +175,32 @@ namespace MyJob
             }
             return output;
         }
+
+        public static string ExecBatch(string batPath, bool useShellExecute, bool redirectStandardOutput, bool redirectStandardError, string arguments, ref string errMsg)
+        {
+            string outputString = string.Empty;
+
+            using (Process pro = new Process())
+            {
+                FileInfo file = new FileInfo(batPath);
+                ProcessStartInfo psi = new ProcessStartInfo(batPath, arguments)
+                {
+                    WorkingDirectory = file.Directory.FullName,
+                    CreateNoWindow = false,
+                    RedirectStandardOutput = redirectStandardOutput,
+                    RedirectStandardError = redirectStandardError,
+                    UseShellExecute = useShellExecute
+                };
+                pro.StartInfo = psi;
+                pro.Start();
+                pro.WaitForExit();
+
+                outputString = redirectStandardOutput ? pro.StandardOutput.ReadToEnd() : string.Empty;
+                errMsg = redirectStandardError ? pro.StandardError.ReadToEnd() : string.Empty;
+            }
+            return outputString;
+        }
     }
+
 }
+

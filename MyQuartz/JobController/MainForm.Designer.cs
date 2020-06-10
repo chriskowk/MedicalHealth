@@ -39,21 +39,16 @@
             this.lblDuration = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this._txtWorkItemIDs = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblRef = new System.Windows.Forms.Label();
             this._btnBuild = new System.Windows.Forms.Button();
             this._txtStatus = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this._cboProjects = new System.Windows.Forms.ComboBox();
             this._dtpRestart = new System.Windows.Forms.DateTimePicker();
             this._btnResetJobConfig = new System.Windows.Forms.Button();
-            this._rbZSYK = new System.Windows.Forms.RadioButton();
-            this._rbSY = new System.Windows.Forms.RadioButton();
             this._btnStartServices = new System.Windows.Forms.Button();
-            this._rbS12 = new System.Windows.Forms.RadioButton();
-            this._rbGH = new System.Windows.Forms.RadioButton();
-            this._rbS1 = new System.Windows.Forms.RadioButton();
             this._btnRegConfig = new System.Windows.Forms.Button();
-            this._rbSGS1 = new System.Windows.Forms.RadioButton();
+            this.grpCustomers = new System.Windows.Forms.GroupBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,15 +145,15 @@
             this._txtWorkItemIDs.Size = new System.Drawing.Size(570, 91);
             this._txtWorkItemIDs.TabIndex = 10;
             // 
-            // label2
+            // lblRef
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label2.Location = new System.Drawing.Point(12, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "工作项ID串";
+            this.lblRef.AutoSize = true;
+            this.lblRef.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lblRef.Location = new System.Drawing.Point(12, 58);
+            this.lblRef.Name = "lblRef";
+            this.lblRef.Size = new System.Drawing.Size(65, 12);
+            this.lblRef.TabIndex = 11;
+            this.lblRef.Text = "工作项ID串";
             // 
             // _btnBuild
             // 
@@ -172,7 +167,7 @@
             // 
             // _txtStatus
             // 
-            this._txtStatus.Location = new System.Drawing.Point(12, 292);
+            this._txtStatus.Location = new System.Drawing.Point(12, 309);
             this._txtStatus.Multiline = true;
             this._txtStatus.Name = "_txtStatus";
             this._txtStatus.ReadOnly = true;
@@ -217,32 +212,6 @@
             this._btnResetJobConfig.UseVisualStyleBackColor = true;
             this._btnResetJobConfig.Click += new System.EventHandler(this._btnResetJobConfig_Click);
             // 
-            // _rbZSYK
-            // 
-            this._rbZSYK.AutoSize = true;
-            this._rbZSYK.Location = new System.Drawing.Point(14, 238);
-            this._rbZSYK.Name = "_rbZSYK";
-            this._rbZSYK.Size = new System.Drawing.Size(47, 16);
-            this._rbZSYK.TabIndex = 18;
-            this._rbZSYK.TabStop = true;
-            this._rbZSYK.Tag = "MyJob.TaskJob";
-            this._rbZSYK.Text = "眼科";
-            this._rbZSYK.UseVisualStyleBackColor = true;
-            this._rbZSYK.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
-            // 
-            // _rbSY
-            // 
-            this._rbSY.AutoSize = true;
-            this._rbSY.Location = new System.Drawing.Point(80, 238);
-            this._rbSY.Name = "_rbSY";
-            this._rbSY.Size = new System.Drawing.Size(47, 16);
-            this._rbSY.TabIndex = 19;
-            this._rbSY.TabStop = true;
-            this._rbSY.Tag = "MyJob.TaskJobA";
-            this._rbSY.Text = "省医";
-            this._rbSY.UseVisualStyleBackColor = true;
-            this._rbSY.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
-            // 
             // _btnStartServices
             // 
             this._btnStartServices.Location = new System.Drawing.Point(506, 229);
@@ -252,45 +221,6 @@
             this._btnStartServices.Text = "重启服务";
             this._btnStartServices.UseVisualStyleBackColor = true;
             this._btnStartServices.Click += new System.EventHandler(this._btnStartServices_Click);
-            // 
-            // _rbS12
-            // 
-            this._rbS12.AutoSize = true;
-            this._rbS12.Location = new System.Drawing.Point(146, 237);
-            this._rbS12.Name = "_rbS12";
-            this._rbS12.Size = new System.Drawing.Size(59, 16);
-            this._rbS12.TabIndex = 23;
-            this._rbS12.TabStop = true;
-            this._rbS12.Tag = "MyJob.TaskJobB";
-            this._rbS12.Text = "市十二";
-            this._rbS12.UseVisualStyleBackColor = true;
-            this._rbS12.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
-            // 
-            // _rbGH
-            // 
-            this._rbGH.AutoSize = true;
-            this._rbGH.Location = new System.Drawing.Point(224, 237);
-            this._rbGH.Name = "_rbGH";
-            this._rbGH.Size = new System.Drawing.Size(71, 16);
-            this._rbGH.TabIndex = 25;
-            this._rbGH.TabStop = true;
-            this._rbGH.Tag = "MyJob.TaskJobC";
-            this._rbGH.Text = "光华口腔";
-            this._rbGH.UseVisualStyleBackColor = true;
-            this._rbGH.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
-            // 
-            // _rbS1
-            // 
-            this._rbS1.AutoSize = true;
-            this._rbS1.Location = new System.Drawing.Point(314, 238);
-            this._rbS1.Name = "_rbS1";
-            this._rbS1.Size = new System.Drawing.Size(47, 16);
-            this._rbS1.TabIndex = 27;
-            this._rbS1.TabStop = true;
-            this._rbS1.Tag = "MyJob.TaskJobD";
-            this._rbS1.Text = "市一";
-            this._rbS1.UseVisualStyleBackColor = true;
-            this._rbS1.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
             // 
             // _btnRegConfig
             // 
@@ -302,39 +232,29 @@
             this._btnRegConfig.UseVisualStyleBackColor = true;
             this._btnRegConfig.Click += new System.EventHandler(this._btnRegConfig_Click);
             // 
-            // _rbSGS1
+            // grpCustomers
             // 
-            this._rbSGS1.AutoSize = true;
-            this._rbSGS1.Location = new System.Drawing.Point(14, 263);
-            this._rbSGS1.Name = "_rbSGS1";
-            this._rbSGS1.Size = new System.Drawing.Size(71, 16);
-            this._rbSGS1.TabIndex = 29;
-            this._rbSGS1.TabStop = true;
-            this._rbSGS1.Tag = "MyJob.TaskJobE";
-            this._rbSGS1.Text = "韶关市一";
-            this._rbSGS1.UseVisualStyleBackColor = true;
-            this._rbSGS1.CheckedChanged += new System.EventHandler(this._optCustomer_CheckedChanged);
+            this.grpCustomers.Location = new System.Drawing.Point(12, 223);
+            this.grpCustomers.Name = "grpCustomers";
+            this.grpCustomers.Size = new System.Drawing.Size(403, 80);
+            this.grpCustomers.TabIndex = 31;
+            this.grpCustomers.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 366);
+            this.ClientSize = new System.Drawing.Size(591, 375);
+            this.Controls.Add(this.grpCustomers);
             this.Controls.Add(this._btnRegConfig);
-            this.Controls.Add(this._rbSGS1);
-            this.Controls.Add(this._rbS1);
-            this.Controls.Add(this._rbGH);
-            this.Controls.Add(this._rbS12);
             this.Controls.Add(this._btnStartServices);
-            this.Controls.Add(this._rbSY);
-            this.Controls.Add(this._rbZSYK);
             this.Controls.Add(this._btnResetJobConfig);
             this.Controls.Add(this._dtpRestart);
             this.Controls.Add(this._cboProjects);
             this.Controls.Add(this.label3);
             this.Controls.Add(this._txtStatus);
             this.Controls.Add(this._btnBuild);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblRef);
             this.Controls.Add(this._txtWorkItemIDs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDuration);
@@ -370,21 +290,16 @@
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox _txtWorkItemIDs;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblRef;
         private System.Windows.Forms.Button _btnBuild;
         private System.Windows.Forms.TextBox _txtStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox _cboProjects;
         private System.Windows.Forms.DateTimePicker _dtpRestart;
         private System.Windows.Forms.Button _btnResetJobConfig;
-        private System.Windows.Forms.RadioButton _rbZSYK;
-        private System.Windows.Forms.RadioButton _rbSY;
         private System.Windows.Forms.Button _btnStartServices;
-        private System.Windows.Forms.RadioButton _rbS12;
-        private System.Windows.Forms.RadioButton _rbGH;
-        private System.Windows.Forms.RadioButton _rbS1;
         private System.Windows.Forms.Button _btnRegConfig;
-        private System.Windows.Forms.RadioButton _rbSGS1;
+        private System.Windows.Forms.GroupBox grpCustomers;
     }
 }
 

@@ -9,9 +9,9 @@
       <name>TaskJobC</name>
       <!--group(选填) 任务所属分组，用于标识任务所属分组-->
       <group>TaskJobCGroup</group>
-      <description>省医编译任务</description>
+      <description>光华口腔版本编译任务</description>
       <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->
-      <job-type>MyJob.TaskJobC, MyJob</job-type>
+      <job-type>MyJob.TaskJob, MyJob</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>
@@ -42,7 +42,7 @@
         每周星期天凌晨1点实行一次：0 0 1 ? * L
         在26分、29分、33分执行一次：0 26,29,33 * * * ?
         每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ? -->
-        <cron-expression>0 0 23 * * ?</cron-expression>
+        <cron-expression>0 7 17 * * ?</cron-expression>
       </cron>
     </trigger>
   </schedule>

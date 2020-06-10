@@ -117,8 +117,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\JobTypeCollection.cs" />
-    <Compile Include="Configuration\JobTypeElement.cs" />
+    <Compile Include="Configuration\SchedulerCollection.cs" />
+    <Compile Include="Configuration\SchedulerElement.cs" />
     <Compile Include="Configuration\IntegrationSection.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="MainForm.cs">

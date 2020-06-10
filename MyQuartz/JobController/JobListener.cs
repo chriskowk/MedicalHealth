@@ -24,22 +24,9 @@ namespace JobController
 
         public static string GetRegFilePath(string executePath)
         {
-            string typename = string.Empty;
-            if (executePath.Contains(@"\MedicalHealth\"))
-                typename = typeof(TaskJob).Name;
-            else if (executePath.Contains(@"\MedicalHealthSY\"))
-                typename = typeof(TaskJobA).Name;
-            else if (executePath.Contains(@"\MedicalHealthBasicRC\"))
-                typename = typeof(TaskJobB).Name;
-            else if (executePath.Contains(@"\MedicalHealthGH\"))
-                typename = typeof(TaskJobC).Name;
-            else if (executePath.Contains(@"\MedicalHealthS1\"))
-                typename = typeof(TaskJobD).Name;
-            else if (executePath.Contains(@"\MedicalHealthSGS1\"))
-                typename = typeof(TaskJobE).Name;
-
-            string customer = ConfigHelper.GetCustomerName(typename);
-            return Path.Combine(ConfigHelper.GetBasePath(typename), $"BatchFiles\\注册表\\{customer}注册表.reg");
+            string jobname = ConfigHelper.GetJobNameByExecutablePath(executePath);
+            string customer = ConfigHelper.GetCustomerName(jobname);
+            return Path.Combine(ConfigHelper.GetBasePath(jobname), $"BatchFiles\\注册表\\{customer}注册表.reg");
         }
     }
 
@@ -60,6 +47,10 @@ namespace JobController
                 string executePath = path == null ? "" : path.ToString();
                 string regFilePath = GlobalEventManager.GetRegFilePath(executePath);
                 IJobDetail job = context.JobDetail;
+                // 设置初始参数
+                job.JobDataMap.Put(TaskJobBase.SQL, "SELECT * FROM [ACT_ID_USER]");
+                job.JobDataMap.Put(TaskJobBase.ExecutionCount, 1);
+                job.JobDataMap.Put(TaskJobBase.BASE_PATH, ConfigHelper.GetBasePath(job.Key.Name));
                 job.JobDataMap.Put(TaskJobBase.RegisterFilePath, regFilePath);
 
                 _logger.Info($"JobToBeExecuted: {regFilePath}");
@@ -95,7 +86,7 @@ namespace JobController
 
                     }
                     _logger.Info(rowCount.ToString());
-                    GlobalEventManager.FireJobWasExecutedEvent(job.JobType.FullName, new EventArgs());
+                    GlobalEventManager.FireJobWasExecutedEvent(jobKey, new EventArgs());
                 }
                 catch (SchedulerException e)
                 {

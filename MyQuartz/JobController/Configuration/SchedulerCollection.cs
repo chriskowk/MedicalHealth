@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace JobController.Configuration
 {
 
-    [ConfigurationCollection(typeof(JobTypeElement))]
-    public class JobTypeCollection : ConfigurationElementCollection, IEnumerable<JobTypeElement>
+    [ConfigurationCollection(typeof(SchedulerElement))]
+    public class SchedulerCollection : ConfigurationElementCollection, IEnumerable<SchedulerElement>
     {
         // 设定 app.config 中 collection 的 element 标签为 
-        internal const string _propertyName = "jobtype";
+        internal const string _propertyName = "scheduler";
         public override ConfigurationElementCollectionType CollectionType
         {
             get
@@ -28,20 +28,20 @@ namespace JobController.Configuration
 
         protected override ConfigurationElement CreateNewElement()
         {
-            return new JobTypeElement();
+            return new SchedulerElement();
         }
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return ((JobTypeElement)(element)).Name;
+            return ((SchedulerElement)(element)).JobName;
         }
 
-        IEnumerator<JobTypeElement> IEnumerable<JobTypeElement>.GetEnumerator()
+        IEnumerator<SchedulerElement> IEnumerable<SchedulerElement>.GetEnumerator()
         {
             int count = Count;
             for (var i = 0; i < count; i++)
             {
-                yield return BaseGet(i) as JobTypeElement;
+                yield return BaseGet(i) as SchedulerElement;
             }
         }
 

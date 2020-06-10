@@ -24,20 +24,14 @@ namespace JobController
             Task.Run(async () =>
             {
                 _schedules = new ConcurrentDictionary<JobKey, IScheduler>();
-                foreach (JobTypeElement item in ConfigHelper.SchedulerCollection)
+                foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
                 {
-                    _schedules.TryAdd(new JobKey(item.JobKey, item.JobGroup), await NewScheduler(item.SchedulerFile));
+                    _schedules.TryAdd(new JobKey(item.JobName, item.JobGroup), await NewScheduler(item.SchedulerFile));
                 }
 
                 foreach (var item in _schedules)
                 {
-                    JobKey key = item.Key;
                     IScheduler sched = item.Value;
-                    // 设置初始参数
-                    IJobDetail job = await sched.GetJobDetail(key);
-                    job.JobDataMap.Put(TaskJobBase.SQL, "SELECT * FROM [ACT_ID_USER]");
-                    job.JobDataMap.Put(TaskJobBase.ExecutionCount, 1);
-
                     // 设置监听器
                     JobListener listener = new JobListener();
                     //IMatcher<JobKey> matcher = KeyMatcher<JobKey>.KeyEquals(key);
