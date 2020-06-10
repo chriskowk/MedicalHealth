@@ -357,7 +357,7 @@ namespace JobController
             _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 作业调度计划已重置。", DateTime.Now);
             _btnResetJobConfig.Enabled = true;
         }
-        
+
         public static void Delay(int mm)
         {
             DateTime current = DateTime.Now;
@@ -401,7 +401,7 @@ namespace JobController
         {
             get
             {
-                foreach (Control item in grpCustomers.Controls)
+                foreach (Control item in panCustomers.Controls)
                 {
                     if (item is RadioButton rdo && rdo.Checked) { return rdo; }
                 }
@@ -413,7 +413,7 @@ namespace JobController
         {
             get
             {
-                foreach (Control item in grpCustomers.Controls)
+                foreach (Control item in panCustomers.Controls)
                 {
                     if (item is RadioButton rdo) { return rdo; }
                 }
@@ -708,7 +708,7 @@ namespace JobController
                     Size = new System.Drawing.Size(width, height),
                     Location = new System.Drawing.Point(px + width * xStep, py + yStep)
                 };
-                grpCustomers.Controls.Add(rdo);
+                panCustomers.Controls.Add(rdo);
                 xStep++;
                 i++;
             }
