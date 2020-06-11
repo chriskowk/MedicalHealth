@@ -581,8 +581,8 @@ namespace JobController
         {
             if (VersionSelected.Tag is SchedulerElement se)
             {
-                string bat1 = Path.Combine(ConfigHelper.GetBasePath(se.JobName), $"BatchFiles\\注册表\\{se.CustomerName}注册表.reg");
-                string bat2 = Path.Combine(ConfigHelper.GetBasePath(se.JobName), $"BatchFiles\\__copy2svcbin.bat");
+                string bat1 = Path.Combine(se.BasePath, $"BatchFiles\\注册表\\{se.CustomerName}注册表.reg");
+                string bat2 = Path.Combine(se.BasePath, $"BatchFiles\\__copy2svcbin.bat");
                 ExecuteReg(bat1);
                 Execute(bat2, 0);
                 RestartServices();
