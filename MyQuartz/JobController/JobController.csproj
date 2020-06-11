@@ -121,6 +121,7 @@
     <Compile Include="Configuration\SchedulerElement.cs" />
     <Compile Include="Configuration\IntegrationSection.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
+    <Compile Include="Helpers\ScreenHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

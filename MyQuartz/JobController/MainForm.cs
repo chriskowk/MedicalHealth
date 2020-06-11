@@ -63,9 +63,6 @@ namespace JobController
                 string correct = string.Format("{0:yyyy-MM-dd HH:mm}", System.DateTime.Now);
                 Console.WriteLine("{0}\t{1}\t{2}", wrong1, wrong2, correct);
 
-                this.Top = (int)(SystemParameters.WorkArea.Height - this.Height - 120);
-                this.Left = (int)(SystemParameters.WorkArea.Width - this.Width - 320);
-
                 foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
                 {
                     SetFilesWritable(Path.Combine(item.BasePath, @"bin\Resources"));
@@ -119,6 +116,11 @@ namespace JobController
                     InitializeComponent();
                     CreateCustomerRadioButtons();
                     BindControlEvents(Controls);
+
+                    // 注意：this.Width和this.Height只有在InitializeComponent()初始化UI控件之后才能正确获取
+                    this.Left = (int)(SystemParameters.WorkArea.Width - this.Width);
+                    this.Top = (int)(SystemParameters.WorkArea.Height - this.Height);
+
                     lblCurState.Text = "作业已启动，启动时间：" + DateTime.Now;
                     _batch = new HandleMask();
                     _starting = DateTime.Now;
