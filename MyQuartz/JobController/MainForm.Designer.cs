@@ -49,9 +49,6 @@
             this._btnStartServices = new System.Windows.Forms.Button();
             this._btnRegConfig = new System.Windows.Forms.Button();
             this.panCustomers = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this._txtVersionID = new System.Windows.Forms.TextBox();
-            this.btnRetrieve = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,10 +142,10 @@
             // 
             // _txtWorkItemIDs
             // 
-            this._txtWorkItemIDs.Location = new System.Drawing.Point(10, 72);
+            this._txtWorkItemIDs.Location = new System.Drawing.Point(10, 71);
             this._txtWorkItemIDs.Multiline = true;
             this._txtWorkItemIDs.Name = "_txtWorkItemIDs";
-            this._txtWorkItemIDs.Size = new System.Drawing.Size(578, 90);
+            this._txtWorkItemIDs.Size = new System.Drawing.Size(570, 91);
             this._txtWorkItemIDs.TabIndex = 10;
             // 
             // lblRef
@@ -163,9 +160,9 @@
             // 
             // _btnBuild
             // 
-            this._btnBuild.Location = new System.Drawing.Point(434, 41);
+            this._btnBuild.Location = new System.Drawing.Point(433, 37);
             this._btnBuild.Name = "_btnBuild";
-            this._btnBuild.Size = new System.Drawing.Size(155, 28);
+            this._btnBuild.Size = new System.Drawing.Size(149, 29);
             this._btnBuild.TabIndex = 12;
             this._btnBuild.Text = "Sysnc Build WorkItems";
             this._btnBuild.UseVisualStyleBackColor = true;
@@ -178,7 +175,7 @@
             this._txtStatus.Name = "_txtStatus";
             this._txtStatus.ReadOnly = true;
             this._txtStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._txtStatus.Size = new System.Drawing.Size(578, 63);
+            this._txtStatus.Size = new System.Drawing.Size(570, 63);
             this._txtStatus.TabIndex = 13;
             // 
             // label3
@@ -197,7 +194,7 @@
             this._cboProjects.FormattingEnabled = true;
             this._cboProjects.Location = new System.Drawing.Point(77, 11);
             this._cboProjects.Name = "_cboProjects";
-            this._cboProjects.Size = new System.Drawing.Size(511, 20);
+            this._cboProjects.Size = new System.Drawing.Size(505, 20);
             this._cboProjects.TabIndex = 15;
             // 
             // _dtpRestart
@@ -210,9 +207,9 @@
             // 
             // _btnResetJobConfig
             // 
-            this._btnResetJobConfig.Location = new System.Drawing.Point(415, 230);
+            this._btnResetJobConfig.Location = new System.Drawing.Point(421, 230);
             this._btnResetJobConfig.Name = "_btnResetJobConfig";
-            this._btnResetJobConfig.Size = new System.Drawing.Size(84, 28);
+            this._btnResetJobConfig.Size = new System.Drawing.Size(74, 24);
             this._btnResetJobConfig.TabIndex = 17;
             this._btnResetJobConfig.Text = "Reset";
             this._btnResetJobConfig.UseVisualStyleBackColor = true;
@@ -222,7 +219,7 @@
             // 
             this._btnStartServices.Location = new System.Drawing.Point(505, 230);
             this._btnStartServices.Name = "_btnStartServices";
-            this._btnStartServices.Size = new System.Drawing.Size(84, 28);
+            this._btnStartServices.Size = new System.Drawing.Size(74, 24);
             this._btnStartServices.TabIndex = 22;
             this._btnStartServices.Text = "重启服务";
             this._btnStartServices.UseVisualStyleBackColor = true;
@@ -232,7 +229,7 @@
             // 
             this._btnRegConfig.Location = new System.Drawing.Point(506, 265);
             this._btnRegConfig.Name = "_btnRegConfig";
-            this._btnRegConfig.Size = new System.Drawing.Size(84, 28);
+            this._btnRegConfig.Size = new System.Drawing.Size(74, 24);
             this._btnRegConfig.TabIndex = 30;
             this._btnRegConfig.Text = "重设配置";
             this._btnRegConfig.UseVisualStyleBackColor = true;
@@ -247,43 +244,11 @@
             this.panCustomers.Size = new System.Drawing.Size(400, 90);
             this.panCustomers.TabIndex = 31;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(149, 53);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "提交版本ID";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // _txtVersionID
-            // 
-            this._txtVersionID.Location = new System.Drawing.Point(217, 48);
-            this._txtVersionID.Name = "_txtVersionID";
-            this._txtVersionID.Size = new System.Drawing.Size(84, 21);
-            this._txtVersionID.TabIndex = 32;
-            // 
-            // btnRetrieve
-            // 
-            this.btnRetrieve.Location = new System.Drawing.Point(308, 41);
-            this.btnRetrieve.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnRetrieve.Name = "btnRetrieve";
-            this.btnRetrieve.Size = new System.Drawing.Size(84, 28);
-            this.btnRetrieve.TabIndex = 34;
-            this.btnRetrieve.Text = "提取";
-            this.btnRetrieve.UseVisualStyleBackColor = true;
-            this.btnRetrieve.Click += new System.EventHandler(this.btnRetrieve_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 376);
-            this.Controls.Add(this.btnRetrieve);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this._txtVersionID);
+            this.ClientSize = new System.Drawing.Size(591, 376);
             this.Controls.Add(this.panCustomers);
             this.Controls.Add(this._btnRegConfig);
             this.Controls.Add(this._btnStartServices);
@@ -339,9 +304,6 @@
         private System.Windows.Forms.Button _btnStartServices;
         private System.Windows.Forms.Button _btnRegConfig;
         private System.Windows.Forms.Panel panCustomers;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox _txtVersionID;
-        private System.Windows.Forms.Button btnRetrieve;
     }
 }
 
