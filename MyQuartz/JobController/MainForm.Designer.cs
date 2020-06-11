@@ -56,7 +56,7 @@
             // 
             this.lblCurState.AutoSize = true;
             this.lblCurState.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblCurState.Location = new System.Drawing.Point(11, 174);
+            this.lblCurState.Location = new System.Drawing.Point(10, 174);
             this.lblCurState.Name = "lblCurState";
             this.lblCurState.Size = new System.Drawing.Size(65, 12);
             this.lblCurState.TabIndex = 3;
@@ -88,7 +88,7 @@
             this.tscbStart.Name = "tscbStart";
             this.tscbStart.Size = new System.Drawing.Size(60, 28);
             this.tscbStart.Text = "启动";
-            this.tscbStart.ToolTipText = "启动定时注册";
+            this.tscbStart.ToolTipText = "启动定时任务";
             this.tscbStart.Click += new System.EventHandler(this.tscbStart_Click);
             // 
             // tscbStop
@@ -98,7 +98,7 @@
             this.tscbStop.Name = "tscbStop";
             this.tscbStop.Size = new System.Drawing.Size(60, 28);
             this.tscbStop.Text = "暂停";
-            this.tscbStop.ToolTipText = "停止定时注册";
+            this.tscbStop.ToolTipText = "停止定时任务";
             this.tscbStop.Click += new System.EventHandler(this.tscbStop_Click);
             // 
             // tscbExit
@@ -142,7 +142,7 @@
             // 
             // _txtWorkItemIDs
             // 
-            this._txtWorkItemIDs.Location = new System.Drawing.Point(11, 71);
+            this._txtWorkItemIDs.Location = new System.Drawing.Point(10, 71);
             this._txtWorkItemIDs.Multiline = true;
             this._txtWorkItemIDs.Name = "_txtWorkItemIDs";
             this._txtWorkItemIDs.Size = new System.Drawing.Size(570, 91);
@@ -152,7 +152,7 @@
             // 
             this.lblRef.AutoSize = true;
             this.lblRef.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblRef.Location = new System.Drawing.Point(11, 53);
+            this.lblRef.Location = new System.Drawing.Point(10, 53);
             this.lblRef.Name = "lblRef";
             this.lblRef.Size = new System.Drawing.Size(65, 12);
             this.lblRef.TabIndex = 11;
@@ -170,7 +170,7 @@
             // 
             // _txtStatus
             // 
-            this._txtStatus.Location = new System.Drawing.Point(11, 309);
+            this._txtStatus.Location = new System.Drawing.Point(10, 309);
             this._txtStatus.Multiline = true;
             this._txtStatus.Name = "_txtStatus";
             this._txtStatus.ReadOnly = true;
@@ -182,7 +182,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label3.Location = new System.Drawing.Point(11, 14);
+            this.label3.Location = new System.Drawing.Point(10, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 14;
@@ -200,7 +200,7 @@
             // _dtpRestart
             // 
             this._dtpRestart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this._dtpRestart.Location = new System.Drawing.Point(11, 191);
+            this._dtpRestart.Location = new System.Drawing.Point(10, 191);
             this._dtpRestart.Name = "_dtpRestart";
             this._dtpRestart.Size = new System.Drawing.Size(165, 21);
             this._dtpRestart.TabIndex = 16;
@@ -238,10 +238,10 @@
             // panCustomers
             // 
             this.panCustomers.AutoScroll = true;
-            this.panCustomers.Location = new System.Drawing.Point(12, 215);
-            this.panCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panCustomers.Location = new System.Drawing.Point(10, 216);
+            this.panCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.panCustomers.Name = "panCustomers";
-            this.panCustomers.Size = new System.Drawing.Size(401, 92);
+            this.panCustomers.Size = new System.Drawing.Size(400, 90);
             this.panCustomers.TabIndex = 31;
             // 
             // MainForm
