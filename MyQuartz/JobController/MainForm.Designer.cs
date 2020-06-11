@@ -76,7 +76,7 @@
             this.tscbStop,
             this.tscbExit});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStrip1.Location = new System.Drawing.Point(404, 187);
+            this.toolStrip1.Location = new System.Drawing.Point(420, 185);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.Size = new System.Drawing.Size(184, 31);
@@ -145,10 +145,11 @@
             // 
             // _txtWorkItemIDs
             // 
-            this._txtWorkItemIDs.Location = new System.Drawing.Point(10, 72);
+            this._txtWorkItemIDs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._txtWorkItemIDs.Location = new System.Drawing.Point(10, 73);
             this._txtWorkItemIDs.Multiline = true;
             this._txtWorkItemIDs.Name = "_txtWorkItemIDs";
-            this._txtWorkItemIDs.Size = new System.Drawing.Size(578, 90);
+            this._txtWorkItemIDs.Size = new System.Drawing.Size(588, 90);
             this._txtWorkItemIDs.TabIndex = 10;
             // 
             // lblRef
@@ -163,7 +164,8 @@
             // 
             // _btnBuild
             // 
-            this._btnBuild.Location = new System.Drawing.Point(434, 41);
+            this._btnBuild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnBuild.Location = new System.Drawing.Point(443, 41);
             this._btnBuild.Name = "_btnBuild";
             this._btnBuild.Size = new System.Drawing.Size(155, 28);
             this._btnBuild.TabIndex = 12;
@@ -173,12 +175,13 @@
             // 
             // _txtStatus
             // 
+            this._txtStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._txtStatus.Location = new System.Drawing.Point(10, 309);
             this._txtStatus.Multiline = true;
             this._txtStatus.Name = "_txtStatus";
             this._txtStatus.ReadOnly = true;
             this._txtStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._txtStatus.Size = new System.Drawing.Size(578, 63);
+            this._txtStatus.Size = new System.Drawing.Size(587, 63);
             this._txtStatus.TabIndex = 13;
             // 
             // label3
@@ -194,10 +197,11 @@
             // _cboProjects
             // 
             this._cboProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cboProjects.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._cboProjects.FormattingEnabled = true;
             this._cboProjects.Location = new System.Drawing.Point(77, 11);
             this._cboProjects.Name = "_cboProjects";
-            this._cboProjects.Size = new System.Drawing.Size(511, 20);
+            this._cboProjects.Size = new System.Drawing.Size(520, 20);
             this._cboProjects.TabIndex = 15;
             // 
             // _dtpRestart
@@ -210,7 +214,8 @@
             // 
             // _btnResetJobConfig
             // 
-            this._btnResetJobConfig.Location = new System.Drawing.Point(415, 230);
+            this._btnResetJobConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnResetJobConfig.Location = new System.Drawing.Point(423, 230);
             this._btnResetJobConfig.Name = "_btnResetJobConfig";
             this._btnResetJobConfig.Size = new System.Drawing.Size(84, 28);
             this._btnResetJobConfig.TabIndex = 17;
@@ -220,7 +225,8 @@
             // 
             // _btnStartServices
             // 
-            this._btnStartServices.Location = new System.Drawing.Point(505, 230);
+            this._btnStartServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnStartServices.Location = new System.Drawing.Point(513, 230);
             this._btnStartServices.Name = "_btnStartServices";
             this._btnStartServices.Size = new System.Drawing.Size(84, 28);
             this._btnStartServices.TabIndex = 22;
@@ -230,7 +236,8 @@
             // 
             // _btnRegConfig
             // 
-            this._btnRegConfig.Location = new System.Drawing.Point(506, 265);
+            this._btnRegConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnRegConfig.Location = new System.Drawing.Point(514, 265);
             this._btnRegConfig.Name = "_btnRegConfig";
             this._btnRegConfig.Size = new System.Drawing.Size(84, 28);
             this._btnRegConfig.TabIndex = 30;
@@ -244,7 +251,7 @@
             this.panCustomers.Location = new System.Drawing.Point(10, 216);
             this.panCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.panCustomers.Name = "panCustomers";
-            this.panCustomers.Size = new System.Drawing.Size(400, 90);
+            this.panCustomers.Size = new System.Drawing.Size(408, 90);
             this.panCustomers.TabIndex = 31;
             // 
             // label6
@@ -260,6 +267,7 @@
             // 
             // _txtVersionID
             // 
+            this._txtVersionID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._txtVersionID.Location = new System.Drawing.Point(217, 48);
             this._txtVersionID.Name = "_txtVersionID";
             this._txtVersionID.Size = new System.Drawing.Size(84, 21);
@@ -267,6 +275,7 @@
             // 
             // btnRetrieve
             // 
+            this.btnRetrieve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRetrieve.Location = new System.Drawing.Point(308, 41);
             this.btnRetrieve.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRetrieve.Name = "btnRetrieve";
@@ -280,7 +289,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 376);
+            this.ClientSize = new System.Drawing.Size(609, 376);
             this.Controls.Add(this.btnRetrieve);
             this.Controls.Add(this.label6);
             this.Controls.Add(this._txtVersionID);

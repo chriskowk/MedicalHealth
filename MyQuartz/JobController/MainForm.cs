@@ -707,6 +707,7 @@ namespace JobController
                     Text = item.CustomerName,
                     Name = "rdoCustomer" + i,
                     Tag = item,
+                    FlatStyle = FlatStyle.Flat,
                     Size = new System.Drawing.Size(width, height),
                     Location = new System.Drawing.Point(px + width * xStep, py + yStep)
                 };
