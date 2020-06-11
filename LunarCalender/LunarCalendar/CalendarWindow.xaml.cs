@@ -94,6 +94,11 @@ namespace LunarCalendar
                 SubscribeNavigationButtonEvents();
 
                 InitializTrayIcon();
+
+                this.Top = System.Windows.SystemParameters.WorkArea.Height - this.Height;
+                this.Left = System.Windows.SystemParameters.WorkArea.Width - this.Width;
+                //this.Top = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - this.Height;
+                //this.Left = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.Width;
             }
             catch (Exception ex)
             {
