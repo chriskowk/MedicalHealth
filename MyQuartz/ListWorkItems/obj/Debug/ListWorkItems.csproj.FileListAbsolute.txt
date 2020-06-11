@@ -510,3 +510,10 @@ F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CoreCompileInputs.cache
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe.config
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.pdb
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CoreCompileInputs.cache
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CopyComplete
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
+E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
