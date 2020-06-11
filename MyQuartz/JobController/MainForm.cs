@@ -118,8 +118,8 @@ namespace JobController
                     BindControlEvents(Controls);
 
                     // 注意：this.Width和this.Height只有在InitializeComponent()初始化UI控件之后才能正确获取
-                    this.Left = (int)(SystemParameters.WorkArea.Width - this.Width);
-                    this.Top = (int)(SystemParameters.WorkArea.Height - this.Height);
+                    this.Left = (int)(Screen.PrimaryScreen.WorkingArea.Width - this.Width);
+                    this.Top = (int)(Screen.PrimaryScreen.WorkingArea.Height - this.Height);
 
                     lblCurState.Text = "作业已启动，启动时间：" + DateTime.Now;
                     _batch = new HandleMask();
