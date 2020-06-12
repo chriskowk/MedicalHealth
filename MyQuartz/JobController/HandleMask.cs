@@ -13,55 +13,47 @@ using Quartz.Impl.Matchers;
 using MyJob;
 using System.Collections.Concurrent;
 using JobController.Configuration;
+using System.Diagnostics;
 
 namespace JobController
 {
     public class HandleMask
     {
-        private ConcurrentDictionary<JobKey, IScheduler> _schedules;
-        public void Start()
+        public static string QuartzSchedulerFile
         {
-            Task.Run(async () =>
-            {
-                _schedules = new ConcurrentDictionary<JobKey, IScheduler>();
-                foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
-                {
-                    _schedules.TryAdd(new JobKey(item.JobName, item.JobGroup), await NewScheduler(item.SchedulerFile));
-                }
-
-                foreach (var item in _schedules)
-                {
-                    IScheduler sched = item.Value;
-                    // …Ë÷√º‡Ã˝∆˜
-                    JobListener listener = new JobListener();
-                    //IMatcher<JobKey> matcher = KeyMatcher<JobKey>.KeyEquals(key);
-                    //sched.ListenerManager.AddJobListener(listener, matcher);
-                    sched.ListenerManager.AddJobListener(listener);
-
-                    await sched.Start();
-                }
-            });
+            get { return ConfigHelper.GetAppConfig("QuartzSchedulerFile"); }
         }
 
-        private static async Task<IScheduler> NewScheduler(string configFile)
+        private static IScheduler _scheduler;
+        public void Start()
         {
-            ISchedulerFactory sf = new StdSchedulerFactory();
-            IScheduler sched = await sf.GetScheduler();
-            string path = AppDomain.CurrentDomain.BaseDirectory + configFile;
-            XMLSchedulingDataProcessor processor = new XMLSchedulingDataProcessor(new SimpleTypeLoadHelper());
-            await processor.ProcessFileAndScheduleJobs(path, sched);
+            if (!File.Exists(QuartzSchedulerFile)) return;
 
-            return sched;
+            Task.Run(async () =>
+            {
+                ISchedulerFactory sf = new StdSchedulerFactory();
+                _scheduler = await sf.GetScheduler();
+                string path = AppDomain.CurrentDomain.BaseDirectory + QuartzSchedulerFile;
+                XMLSchedulingDataProcessor processor = new XMLSchedulingDataProcessor(new SimpleTypeLoadHelper());
+                await processor.ProcessFileAndScheduleJobs(path, _scheduler);
+
+                // …Ë÷√º‡Ã˝∆˜
+                JobListener listener = new JobListener();
+                //IMatcher<JobKey> matcher = KeyMatcher<JobKey>.KeyEquals(key);
+                //sched.ListenerManager.AddJobListener(listener, matcher);
+                _scheduler.ListenerManager.AddJobListener(listener);
+                await _scheduler.Start();
+            });
         }
 
         public void Stop()
         {
+            if (_scheduler == null) return;
+
             Task.Run(() =>
             {
-                foreach (var sched in _schedules.Values)
-                {
-                    sched.Shutdown(true);
-                }
+                Debug.Print(_scheduler.InStandbyMode.ToString());
+                _scheduler.Standby();
             });
         }
     }

@@ -305,7 +305,7 @@ namespace JobController
             }
             if (!_dailyreset && DateTime.Now.Hour > 23)
             {
-                _btnResetJobConfig_Click(this, new EventArgs());
+                ResetButton_Click(this, new EventArgs());
                 _dailyreset = true;
             }
         }
@@ -344,17 +344,12 @@ namespace JobController
             }
         }
 
-        private void _btnResetJobConfig_Click(object sender, EventArgs e)
+        private void ResetButton_Click(object sender, EventArgs e)
         {
             _btnResetJobConfig.Enabled = false;
             _starting = DateTime.Now;
-            int i = 19;
-            foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
-            {
-                WriteJobConfig(item.SchedulerFile, item.JobName, item.TypeName, item.CustomerName, DateTime.Now.Date.AddHours(i++));
-            }
-
-            Delay(10000);
+            WriteQuartzJobsConfig();
+            Delay(1000);
             Restart();
             _txtStatus.Text = string.Format("{0:yyyy-MM-dd HH:mm:ss}: 作业调度计划已重置。", DateTime.Now);
             _btnResetJobConfig.Enabled = true;
@@ -371,18 +366,21 @@ namespace JobController
         }
 
         private DateTime _starting;
-        private void tscbStart_Click(object sender, EventArgs e)
+        private void StartToolButton_Click(object sender, EventArgs e)
         {
+            DateTime dt;
             _starting = DateTime.Now;
             if (VersionSelected.Tag is SchedulerElement se)
             {
-                _dtpRestart.Value = _starting.AddMinutes(1);
-                WriteJobConfig(se.SchedulerFile, se.JobName, se.TypeName, se.CustomerName, _dtpRestart.Value);
+                dt = _starting.AddMinutes(1);
+                _dtpRestart.Value = dt.AddSeconds(-dt.Second);
+                se.CronModified = $"0 {dt.Minute} {dt.Hour} * * ?";
+                WriteQuartzJobsConfig();
                 Restart();
             }
         }
 
-        private void tscbStop_Click(object sender, EventArgs e)
+        private void StopToolButton_Click(object sender, EventArgs e)
         {
             _batch.Stop();
             tscbStart.Enabled = true;
@@ -392,7 +390,7 @@ namespace JobController
             lblCurState.Text = "作业已暂停，停止时间：" + DateTime.Now;
         }
 
-        private void tscbExit_Click(object sender, EventArgs e)
+        private void ExitToolButton_Click(object sender, EventArgs e)
         {
             _batch.Stop();
             _isExiting = true;
@@ -435,7 +433,7 @@ namespace JobController
             lblCurState.Text = "作业已启动，启动时间：" + _starting;
         }
 
-        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        private void NotifyTrayIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -520,9 +518,9 @@ namespace JobController
             }
         }
 
-        private void WriteJobConfig(string fileName, string jobname, string typename, string customer, DateTime dt)
+        private void WriteQuartzJobsConfig()
         {
-            FileStream fs = new FileStream(fileName, FileMode.Create);
+            FileStream fs = new FileStream(HandleMask.QuartzSchedulerFile, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             sw.WriteLine("<job-scheduling-data xmlns=\"http://quartznet.sourceforge.net/JobSchedulingData\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"2.0\">");
@@ -530,54 +528,66 @@ namespace JobController
             sw.WriteLine("    <overwrite-existing-data>true</overwrite-existing-data>");
             sw.WriteLine("  </processing-directives>");
             sw.WriteLine("  <schedule>");
-            sw.WriteLine("    <job>");
-            sw.WriteLine("      <!--name(必填)同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->");
-            sw.WriteLine($"      <name>{jobname}</name>");
-            sw.WriteLine("      <!--group(选填) 任务所属分组，用于标识任务所属分组-->");
-            sw.WriteLine($"      <group>{jobname}Group</group>");
-            sw.WriteLine($"      <description>{customer}版本编译任务</description>");
-            sw.WriteLine("      <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->");
-            sw.WriteLine($"      <job-type>MyJob.{typename}, MyJob</job-type>");
-            sw.WriteLine("      <durable>true</durable>");
-            sw.WriteLine("      <recover>false</recover>");
-            sw.WriteLine("    </job>");
-            sw.WriteLine("    <trigger>");
-            sw.WriteLine("      <cron>");
-            sw.WriteLine("        <!--name(必填) 触发器名称，同一个分组中的名称必须不同-->");
-            sw.WriteLine($"        <name>{jobname}Trigger</name>");
-            sw.WriteLine("        <!--group(选填) 触发器组-->");
-            sw.WriteLine($"        <group>{jobname}TriggerGroup</group>");
-            sw.WriteLine("        <!--job-name(必填) 要调度的任务名称，该job-name必须和对应job节点中的name完全相同-->");
-            sw.WriteLine($"        <job-name>{jobname}</job-name>");
-            sw.WriteLine("        <!--job-group(选填) 调度任务(job)所属分组，该值必须和job中的group完全相同-->");
-            sw.WriteLine($"        <job-group>{jobname}Group</job-group>");
-            sw.WriteLine("        <misfire-instruction>DoNothing</misfire-instruction>");
-            sw.WriteLine("        <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->");
-            sw.WriteLine("        <!--周一到周五每天的8点到20点，每一分钟触发一次-->");
-            sw.WriteLine("        <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->");
-            sw.WriteLine("        <!--周一到周五每天的16点45分触发-->");
-            sw.WriteLine("        <!--<cron-expression>0 45 16 ? * MON-FRI</cron-expression>-->");
-            sw.WriteLine("        <!--每天16点45分触发-->");
-            sw.WriteLine("        <!--<cron-expression>0 45 16 ? * *</cron-expression>-->");
-            sw.WriteLine("        <!-- 每隔5秒执行一次：*/5 * * * * ?");
-            sw.WriteLine("        每隔1分钟执行一次：0 */1 * * * ?");
-            sw.WriteLine("        每天23点执行一次：0 0 23 * * ?");
-            sw.WriteLine("        每天凌晨1点执行一次：0 0 1 * * ?");
-            sw.WriteLine("        每月1号凌晨1点执行一次：0 0 1 1 * ?");
-            sw.WriteLine("        每月最后一天23点执行一次：0 0 23 L * ?");
-            sw.WriteLine("        每周星期天凌晨1点实行一次：0 0 1 ? * L");
-            sw.WriteLine("        在26分、29分、33分执行一次：0 26,29,33 * * * ?");
-            sw.WriteLine("        每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ? -->");
-            sw.WriteLine($"        <cron-expression>0 {dt.Minute} {dt.Hour} * * ?</cron-expression>");
-            sw.WriteLine("      </cron>");
-            sw.WriteLine("    </trigger>");
+            foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
+            {
+                string cronexpr = item.CronModified ?? item.CronExpression;
+                sw.WriteLine(BuildOneJobTrigger(item.JobName, item.JobGroup, item.TypeFullName, item.CustomerName, cronexpr));
+            }
             sw.WriteLine("  </schedule>");
             sw.WriteLine("</job-scheduling-data>");
             sw.Close();
             fs.Close();
         }
 
-        private void _btnRegConfig_Click(object sender, EventArgs e)
+        private static string BuildOneJobTrigger(string jobname, string groupname, string fulltypename, string customer, string cornexpr)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("    <job>");
+            sb.AppendLine("      <!--name(必填)同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->");
+            sb.AppendLine($"      <name>{jobname}</name>");
+            sb.AppendLine("      <!--group(选填) 任务所属分组，用于标识任务所属分组-->");
+            sb.AppendLine($"      <group>{groupname}</group>");
+            sb.AppendLine($"      <description>{customer}版本编译任务</description>");
+            sb.AppendLine("      <!--job-type(必填)任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->");
+            sb.AppendLine($"      <job-type>{fulltypename}</job-type>");
+            sb.AppendLine("      <durable>true</durable>");
+            sb.AppendLine("      <recover>false</recover>");
+            sb.AppendLine("    </job>");
+            sb.AppendLine("    <trigger>");
+            sb.AppendLine("      <cron>");
+            sb.AppendLine("        <!--name(必填) 触发器名称，同一个分组中的名称必须不同-->");
+            sb.AppendLine($"        <name>{jobname}Trigger</name>");
+            sb.AppendLine("        <!--group(选填) 触发器组-->");
+            sb.AppendLine($"        <group>{jobname}TriggerGroup</group>");
+            sb.AppendLine("        <!--job-name(必填) 要调度的任务名称，该job-name必须和对应job节点中的name完全相同-->");
+            sb.AppendLine($"        <job-name>{jobname}</job-name>");
+            sb.AppendLine("        <!--job-group(选填) 调度任务(job)所属分组，该值必须和job中的group完全相同-->");
+            sb.AppendLine($"        <job-group>{groupname}</job-group>");
+            sb.AppendLine("        <misfire-instruction>DoNothing</misfire-instruction>");
+            sb.AppendLine("        <!--秒 分 小时 月内日期 月 周内日期 年（可选字段）-->");
+            sb.AppendLine("        <!--周一到周五每天的8点到20点，每一分钟触发一次-->");
+            sb.AppendLine("        <!--<cron-expression>0 0/1 8-20 ? * MON-FRI</cron-expression>-->");
+            sb.AppendLine("        <!--周一到周五每天的16点45分触发-->");
+            sb.AppendLine("        <!--<cron-expression>0 45 16 ? * MON-FRI</cron-expression>-->");
+            sb.AppendLine("        <!--每天16点45分触发-->");
+            sb.AppendLine("        <!--<cron-expression>0 45 16 ? * *</cron-expression>-->");
+            sb.AppendLine("        <!-- 每隔5秒执行一次：*/5 * * * * ?");
+            sb.AppendLine("        每隔1分钟执行一次：0 */1 * * * ?");
+            sb.AppendLine("        每天23点执行一次：0 0 23 * * ?");
+            sb.AppendLine("        每天凌晨1点执行一次：0 0 1 * * ?");
+            sb.AppendLine("        每月1号凌晨1点执行一次：0 0 1 1 * ?");
+            sb.AppendLine("        每月最后一天23点执行一次：0 0 23 L * ?");
+            sb.AppendLine("        每周星期天凌晨1点实行一次：0 0 1 ? * L");
+            sb.AppendLine("        在26分、29分、33分执行一次：0 26,29,33 * * * ?");
+            sb.AppendLine("        每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ? -->");
+            sb.AppendLine($"        <cron-expression>{cornexpr}</cron-expression>");
+            sb.AppendLine("      </cron>");
+            sb.AppendLine("    </trigger>");
+
+            return sb.ToString();
+        }
+
+        private void ResetRegistryTableButton_Click(object sender, EventArgs e)
         {
             if (VersionSelected.Tag is SchedulerElement se)
             {
@@ -643,7 +653,7 @@ namespace JobController
             }
         }
 
-        private void _btnStartServices_Click(object sender, EventArgs e)
+        private void RestartServicesButton_Click(object sender, EventArgs e)
         {
             RestartServices();
         }
@@ -738,7 +748,7 @@ namespace JobController
             }
         }
 
-        private void btnRetrieve_Click(object sender, EventArgs e)
+        private void RetrieveButton_Click(object sender, EventArgs e)
         {
             if (!IsNumberic(_txtVersionID.Text)) return;
 

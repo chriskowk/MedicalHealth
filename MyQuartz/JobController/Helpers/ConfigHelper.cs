@@ -36,11 +36,11 @@ namespace JobController
             SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
             return item?.CustomerName;
         }
-
-        public static string GetSchedulerFile(string jobname)
+        
+        public static string GetCronExpression(string jobname)
         {
             SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
-            return item?.SchedulerFile;
+            return item?.CronExpression;
         }
 
         public static string GetTypeName(string jobname)

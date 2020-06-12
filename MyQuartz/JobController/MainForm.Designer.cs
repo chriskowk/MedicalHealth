@@ -92,7 +92,7 @@
             this.tscbStart.Size = new System.Drawing.Size(60, 28);
             this.tscbStart.Text = "启动";
             this.tscbStart.ToolTipText = "启动定时任务";
-            this.tscbStart.Click += new System.EventHandler(this.tscbStart_Click);
+            this.tscbStart.Click += new System.EventHandler(this.StartToolButton_Click);
             // 
             // tscbStop
             // 
@@ -102,7 +102,7 @@
             this.tscbStop.Size = new System.Drawing.Size(60, 28);
             this.tscbStop.Text = "暂停";
             this.tscbStop.ToolTipText = "停止定时任务";
-            this.tscbStop.Click += new System.EventHandler(this.tscbStop_Click);
+            this.tscbStop.Click += new System.EventHandler(this.StopToolButton_Click);
             // 
             // tscbExit
             // 
@@ -112,14 +112,14 @@
             this.tscbExit.Size = new System.Drawing.Size(60, 28);
             this.tscbExit.Text = "退出";
             this.tscbExit.ToolTipText = "退出程序";
-            this.tscbExit.Click += new System.EventHandler(this.tscbExit_Click);
+            this.tscbExit.Click += new System.EventHandler(this.ExitToolButton_Click);
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "作业调度控制器";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NotifyTrayIcon_MouseClick);
             // 
             // lblDuration
             // 
@@ -216,7 +216,7 @@
             this._btnResetJobConfig.TabIndex = 17;
             this._btnResetJobConfig.Text = "Reset";
             this._btnResetJobConfig.UseVisualStyleBackColor = true;
-            this._btnResetJobConfig.Click += new System.EventHandler(this._btnResetJobConfig_Click);
+            this._btnResetJobConfig.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // _btnStartServices
             // 
@@ -226,7 +226,7 @@
             this._btnStartServices.TabIndex = 22;
             this._btnStartServices.Text = "重启服务";
             this._btnStartServices.UseVisualStyleBackColor = true;
-            this._btnStartServices.Click += new System.EventHandler(this._btnStartServices_Click);
+            this._btnStartServices.Click += new System.EventHandler(this.RestartServicesButton_Click);
             // 
             // _btnRegConfig
             // 
@@ -236,7 +236,7 @@
             this._btnRegConfig.TabIndex = 30;
             this._btnRegConfig.Text = "重设配置";
             this._btnRegConfig.UseVisualStyleBackColor = true;
-            this._btnRegConfig.Click += new System.EventHandler(this._btnRegConfig_Click);
+            this._btnRegConfig.Click += new System.EventHandler(this.ResetRegistryTableButton_Click);
             // 
             // panCustomers
             // 
@@ -274,7 +274,7 @@
             this.btnRetrieve.TabIndex = 34;
             this.btnRetrieve.Text = "提取";
             this.btnRetrieve.UseVisualStyleBackColor = true;
-            this.btnRetrieve.Click += new System.EventHandler(this.btnRetrieve_Click);
+            this.btnRetrieve.Click += new System.EventHandler(this.RetrieveButton_Click);
             // 
             // MainForm
             // 

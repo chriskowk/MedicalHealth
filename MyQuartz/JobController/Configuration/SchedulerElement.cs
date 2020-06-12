@@ -10,19 +10,19 @@ namespace JobController.Configuration
     public class SchedulerElement : ConfigurationElement
     {
         // JOB NAME
-        [ConfigurationProperty("jobname", DefaultValue = "", IsKey = true, IsRequired = true)]
+        [ConfigurationProperty("job-name", DefaultValue = "", IsKey = true, IsRequired = true)]
         public string JobName
         {
-            get { return (string)this["jobname"]; }
-            set { this["jobname"] = value; }
+            get { return (string)this["job-name"]; }
+            set { this["job-name"] = value; }
         }
 
         // JOB Group
-        [ConfigurationProperty("jobgroup", DefaultValue = "", IsKey = false, IsRequired = true)]
+        [ConfigurationProperty("job-group", DefaultValue = "", IsKey = false, IsRequired = true)]
         public string JobGroup
         {
-            get { return (string)this["jobgroup"]; }
-            set { this["jobgroup"] = value; }
+            get { return (string)this["job-group"]; }
+            set { this["job-group"] = value; }
         }
 
         // 作业类型名
@@ -42,20 +42,22 @@ namespace JobController.Configuration
         }
 
         // 根路径（BASE_PATH）
-        [ConfigurationProperty("basepath", DefaultValue = "", IsKey = false, IsRequired = true)]
+        [ConfigurationProperty("base-path", DefaultValue = "", IsKey = false, IsRequired = true)]
         public string BasePath
         {
-            get { return (string)this["basepath"]; }
-            set { this["basepath"] = value; }
+            get { return (string)this["base-path"]; }
+            set { this["base-path"] = value; }
         }
 
-        // Scheduler File
-        [ConfigurationProperty("schedulerfile", DefaultValue = "", IsKey = false, IsRequired = true)]
-        public string SchedulerFile
-        {
-            get { return (string)this["schedulerfile"]; }
-            set { this["schedulerfile"] = value; }
+        // cron-expression
+        [ConfigurationProperty("cron-expression", DefaultValue = "", IsKey = false, IsRequired = true)]
+        public string CronExpression
+        { 
+            get { return (string)this["cron-expression"]; }
+            set { this["cron-expression"] = value; }
         }
+
+        public string CronModified { get; set; }
 
         // 客户名称
         [ConfigurationProperty("customer", DefaultValue = "", IsKey = false, IsRequired = true)]
