@@ -19,21 +19,17 @@ namespace JobController
 {
     public class HandleMask
     {
-        public static string QuartzSchedulerFile
-        {
-            get { return ConfigHelper.GetAppConfig("QuartzSchedulerFile"); }
-        }
-
         private static IScheduler _scheduler;
         public void Start()
         {
-            if (!File.Exists(QuartzSchedulerFile)) return;
+            if (!File.Exists(ConfigHelper.QuartzSchedulerFile)) return;
 
             Task.Run(async () =>
             {
                 ISchedulerFactory sf = new StdSchedulerFactory();
                 _scheduler = await sf.GetScheduler();
-                string path = AppDomain.CurrentDomain.BaseDirectory + QuartzSchedulerFile;
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigHelper.QuartzSchedulerFile);
+
                 XMLSchedulingDataProcessor processor = new XMLSchedulingDataProcessor(new SimpleTypeLoadHelper());
                 await processor.ProcessFileAndScheduleJobs(path, _scheduler);
 
