@@ -84,7 +84,8 @@ namespace LunarCalendar
                     CronExpress = string.Empty,
                     RunningStart = null,
                     RunningEnd = null,
-                    RecordDate = new DateTime(_year, _month, _day)
+                    RecordDate = new DateTime(_year, _month, _day),
+                    RowVersion = DateTime.Now
                 };
             }
 
@@ -154,6 +155,7 @@ namespace LunarCalendar
 
         private bool SaveDiary()
         {
+            Current.RowVersion = DateTime.Now;
             if (Current.ID > 0)
                 return DapperExHelper<Diary>.Update(Current);
             else
@@ -169,7 +171,7 @@ namespace LunarCalendar
         {
             Diary selectedRow = (Diary)_lvwDiarys.SelectedItem;
             string title = selectedRow.Title;
-            string message = "确认要删除该日记 “" + title + "” 吗?";
+            string message = $"确认要删除该日记 “{title}” 吗?";
             if (MessageBox.Show(message, "删除日记", MessageBoxButton.YesNoCancel, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 //selectedRow.IsDeleted = true;
