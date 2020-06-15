@@ -634,11 +634,11 @@ namespace JobController
             int width = lblRef.Width * 2;
             int height = (int)(lblRef.Height * 1.5);
             int px = 10;
-            int py = 0;
+            int py = 10;
             int i = 0;
             foreach (SchedulerElement item in ConfigHelper.SchedulerCollection)
             {
-                if (i % 3 == 0)
+                if (i > 0 && i % 3 == 0)
                 {
                     xStep = 0;
                     yStep += lblRef.Height * 2;
