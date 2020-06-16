@@ -99,6 +99,8 @@ namespace LunarCalendar
                 this.Left = System.Windows.SystemParameters.WorkArea.Width - this.Width;
                 //this.Top = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - this.Height;
                 //this.Left = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.Width;
+
+                MonthDiarys.StartRemindJobs(DateTime.Now, out IList<Diary> diaries);
             }
             catch (Exception ex)
             {

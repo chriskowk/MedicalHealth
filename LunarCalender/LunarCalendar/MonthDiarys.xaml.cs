@@ -107,15 +107,8 @@ namespace LunarCalendar
         private int _day = 0;
         public void LoadDiarys(DateTime recordedOn)
         {
-            DateTime start = new DateTime(recordedOn.Year, recordedOn.Month, 1);
-            DateTime end = GetNextMonthFirstDate(recordedOn);
-
-            string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
-            Diaries = new DiaryDAL().GetDiaries(sql);
-            foreach (var item in Diaries.Where(a => a.IsRemindRequired).ToList())
-            {
-                JobCenter.StartScheduleJobAsync(item).Wait();
-            }
+            StartRemindJobs(recordedOn, out IList<Diary> diaries);
+            this.Diaries = diaries;
 
             this.DataContext = null;
             this.DataContext = Diaries;
@@ -126,7 +119,20 @@ namespace LunarCalendar
             if (_lvwDiarys.Items.Count > 0) _lvwDiarys.SelectedIndex = 0;
         }
 
-        private DateTime GetNextMonthFirstDate(DateTime dt)
+        public static void StartRemindJobs(DateTime recordedOn, out IList<Diary> diaries)
+        {
+            DateTime start = new DateTime(recordedOn.Year, recordedOn.Month, 1);
+            DateTime end = GetNextMonthFirstDate(recordedOn);
+
+            string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
+            diaries = new DiaryDAL().GetDiaries(sql);
+            foreach (var item in diaries.Where(a => a.IsRemindRequired).ToList())
+            {
+                JobCenter.StartScheduleJobAsync(item).Wait();
+            }
+        }
+
+        private static DateTime GetNextMonthFirstDate(DateTime dt)
         {
             int year = dt.Year;
             int month = dt.Month;
