@@ -141,7 +141,7 @@ namespace MyJob
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = "cmd.exe";//设定需要执行的命令  
                 startInfo.WorkingDirectory = file.Directory.FullName;
-                startInfo.Arguments = $"/C {filefullname} {arguments}"; //“/C”表示执行完命令后马上退出  
+                startInfo.Arguments = $"/C \"{filefullname}\" {arguments}"; //“/C”表示执行完命令后马上退出  
                 startInfo.UseShellExecute = false;//使用系统外壳程序启动  
                 startInfo.RedirectStandardInput = false;//不重定向输入  
                 startInfo.RedirectStandardOutput = redirectStandardOutput; //重定向输出  

@@ -217,6 +217,8 @@ namespace LunarCalendar
         {
             using (QuartzCronForm form = new QuartzCronForm())
             {
+                string cronexpr = string.IsNullOrWhiteSpace(_txtCronExpress.Text) ? "* * * * * ?" : _txtCronExpress.Text;
+                form.SetCornExpress(cronexpr);
                 form.ShowDialog();
             }
         }

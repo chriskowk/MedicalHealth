@@ -637,6 +637,12 @@ namespace LunarCalendar
             return baseNum + "#" + day;
         }
 
+        public void SetCornExpress(string cronexpr)
+        {
+            txtExpression.Text = cronexpr;
+            ReverseButton_Click(null, null);
+        }
+
         /// <summary>
         ///反解析到ui
         /// </summary>
