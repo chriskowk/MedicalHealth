@@ -25,6 +25,7 @@ using System.Windows.Threading;
 using System.ServiceModel;
 using System.Runtime.InteropServices;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using SWF = System.Windows.Forms;
 using System.Threading;
 
 namespace LunarCalendar
@@ -95,10 +96,10 @@ namespace LunarCalendar
 
                 InitializTrayIcon();
 
-                this.Top = System.Windows.SystemParameters.WorkArea.Height - this.Height;
-                this.Left = System.Windows.SystemParameters.WorkArea.Width - this.Width;
-                //this.Top = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - this.Height;
-                //this.Left = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.Width;
+                this.Top = SystemParameters.WorkArea.Height - this.Height;
+                this.Left = SystemParameters.WorkArea.Width - this.Width;
+                //this.Top = SWF.Screen.PrimaryScreen.WorkingArea.Height - this.Height;
+                //this.Left = SWF.Screen.PrimaryScreen.WorkingArea.Width - this.Width;
 
                 MonthDiarys.StartRemindJobs(DateTime.Now, out IList<Diary> diaries);
             }
@@ -580,12 +581,13 @@ namespace LunarCalendar
             this.Visibility = Visibility.Hidden;
         }
 
-        private System.Windows.Forms.NotifyIcon _notifyIcon = null;
-        private System.Threading.Timer _timer;
+        private SWF.NotifyIcon _notifyIcon = null;
+        private SWF.MenuItem _muiShow = null;
+        private Timer _timer;
         private void InitializTrayIcon()
         {
             this.Visibility = Visibility.Hidden;
-            _notifyIcon = new System.Windows.Forms.NotifyIcon();
+            _notifyIcon = new SWF.NotifyIcon();
             //_notifyIcon.BalloonTipText = "万年历程序运行中...";
             //_notifyIcon.ShowBalloonTip(1000);//托盘气泡显示时间
             _notifyIcon.Text = GetFullDateDesc(DateTime.Now, true);
@@ -593,21 +595,21 @@ namespace LunarCalendar
             //重要提示：此处的图标图片在resouces文件夹。可是打包后安装发现无法获取路径，导致程序死机。建议复制一份resouces文件到UI层的bin目录下，确保万无一失。
             _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream);
             //双击事件
-            _notifyIcon.MouseDoubleClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseDoubleClick += NotifyIcon_MouseClick;
             //鼠标点击事件
             _notifyIcon.MouseClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseClick += NotifyIcon_MouseClick;
             //右键菜单--显示/退出菜单项
-            System.Windows.Forms.MenuItem muiShow = new System.Windows.Forms.MenuItem("显示");
-            muiShow.Click -= Show_Click;
-            muiShow.Click += Show_Click;
-            System.Windows.Forms.MenuItem muiExit = new System.Windows.Forms.MenuItem("退出");
-            muiExit.Click -= Exit_Click;
-            muiExit.Click += Exit_Click;
+            _muiShow = new SWF.MenuItem("显示");
+            _muiShow.Click += ShowMenuItem_Click;
+            SWF.MenuItem muiAutoStartNextTime = new SWF.MenuItem("下次自动启动");
+            muiAutoStartNextTime.Checked = true;
+            SWF.MenuItem muiAbout = new SWF.MenuItem("关于...");
+            SWF.MenuItem muiExit = new SWF.MenuItem("退出");
+            muiExit.Click += ExitMenuItem_Click;
             //关联托盘控件
-            System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { muiShow, new System.Windows.Forms.MenuItem("-"), muiExit };
-            _notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(childen);
+            SWF.MenuItem[] childen = new SWF.MenuItem[] { _muiShow, muiAutoStartNextTime, new SWF.MenuItem("-"), muiAbout, new SWF.MenuItem("-"), muiExit };
+            _notifyIcon.ContextMenu = new SWF.ContextMenu(childen);
             //时钟按秒
             _timer = new Timer(new TimerCallback(ResetTrayIcon));
             _timer.Change(0, 1000);
@@ -626,9 +628,9 @@ namespace LunarCalendar
 
 
         // 托盘图标鼠标单击事件
-        private void NotifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void NotifyIcon_MouseClick(object sender, SWF.MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == SWF.MouseButtons.Left)
             {
                 if (this.Visibility == Visibility.Visible)
                 {
@@ -655,20 +657,30 @@ namespace LunarCalendar
             if (_timer != null) _timer.Dispose();
         }
 
-        private void Show_Click(object sender, EventArgs e)
+        private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            this.Visibility = Visibility.Visible;
-            this.Activate();
+            _muiShow.Text = bool.Parse(e.NewValue.ToString()) ? "隐藏" : "显示";
         }
 
-        private void Exit_Click(object sender, EventArgs e)
+        private void ShowMenuItem_Click(object sender, EventArgs e)
         {
-            if (System.Windows.MessageBox.Show("确定要退出本程序吗？", "万年历", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            if (this.IsVisible)
+                this.Visibility = Visibility.Hidden;
+            else
+            {
+                this.Visibility = Visibility.Visible;
+                this.Activate();
+            }
+        }
+
+        private void ExitMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要退出本程序吗？", "万年历", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
             {
                 _notifyIcon.Visible = false;
 
                 //System.Environment.Exit(0);
-                System.Windows.Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
         }
     }
