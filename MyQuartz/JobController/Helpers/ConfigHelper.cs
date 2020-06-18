@@ -20,16 +20,22 @@ namespace JobController
             get { return _integrationSection.SchedulerCollection; }
         }
 
-        public static string GetJobNameByExecutablePath(string executablePath)
+        public static SchedulerElement GetElementByExecutablePath(string executablePath)
         {
             SchedulerElement item = SchedulerCollection.FirstOrDefault(a => executablePath.StartsWith(a.BasePath, StringComparison.OrdinalIgnoreCase));
-            return item?.JobName;
+            return item;
         }
 
         public static string GetBasePath(string jobname)
         {
             SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
             return item?.BasePath;
+        }
+
+        public static string GetBatchFilesPath(string jobname)
+        {
+            SchedulerElement item = SchedulerCollection.FirstOrDefault(a => a.JobName == jobname);
+            return item?.BatchFilesPath;
         }
 
         public static string GetCustomerName(string jobname)

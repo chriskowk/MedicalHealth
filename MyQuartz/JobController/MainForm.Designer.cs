@@ -52,6 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this._txtVersionID = new System.Windows.Forms.TextBox();
             this.btnRetrieve = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +88,7 @@
             // 
             this.tscbStart.Enabled = false;
             this.tscbStart.Image = ((System.Drawing.Image)(resources.GetObject("tscbStart.Image")));
-            this.tscbStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tscbStart.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tscbStart.Name = "tscbStart";
             this.tscbStart.Size = new System.Drawing.Size(60, 28);
             this.tscbStart.Text = "启动";
@@ -97,7 +98,7 @@
             // tscbStop
             // 
             this.tscbStop.Image = ((System.Drawing.Image)(resources.GetObject("tscbStop.Image")));
-            this.tscbStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tscbStop.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tscbStop.Name = "tscbStop";
             this.tscbStop.Size = new System.Drawing.Size(60, 28);
             this.tscbStop.Text = "暂停";
@@ -107,7 +108,7 @@
             // tscbExit
             // 
             this.tscbExit.Image = ((System.Drawing.Image)(resources.GetObject("tscbExit.Image")));
-            this.tscbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tscbExit.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tscbExit.Name = "tscbExit";
             this.tscbExit.Size = new System.Drawing.Size(60, 28);
             this.tscbExit.Text = "退出";
@@ -168,6 +169,7 @@
             this._btnBuild.Size = new System.Drawing.Size(155, 28);
             this._btnBuild.TabIndex = 12;
             this._btnBuild.Text = "Sysnc Build WorkItems";
+            this.toolTip1.SetToolTip(this._btnBuild, "同步创建VSTS工作项");
             this._btnBuild.UseVisualStyleBackColor = true;
             this._btnBuild.Click += new System.EventHandler(this._btnBuild_Click);
             // 
@@ -215,6 +217,7 @@
             this._btnResetJobConfig.Size = new System.Drawing.Size(84, 28);
             this._btnResetJobConfig.TabIndex = 17;
             this._btnResetJobConfig.Text = "Reset";
+            this.toolTip1.SetToolTip(this._btnResetJobConfig, "重置调度配置文件");
             this._btnResetJobConfig.UseVisualStyleBackColor = true;
             this._btnResetJobConfig.Click += new System.EventHandler(this.ResetButton_Click);
             // 
@@ -225,6 +228,7 @@
             this._btnStartServices.Size = new System.Drawing.Size(84, 28);
             this._btnStartServices.TabIndex = 22;
             this._btnStartServices.Text = "重启服务";
+            this.toolTip1.SetToolTip(this._btnStartServices, "重启本地服务");
             this._btnStartServices.UseVisualStyleBackColor = true;
             this._btnStartServices.Click += new System.EventHandler(this.RestartServicesButton_Click);
             // 
@@ -235,8 +239,9 @@
             this._btnRegConfig.Size = new System.Drawing.Size(84, 28);
             this._btnRegConfig.TabIndex = 30;
             this._btnRegConfig.Text = "重设配置";
+            this.toolTip1.SetToolTip(this._btnRegConfig, "重设注册表文件及运行拷贝中间层文件");
             this._btnRegConfig.UseVisualStyleBackColor = true;
-            this._btnRegConfig.Click += new System.EventHandler(this.ResetRegistryTableButton_Click);
+            this._btnRegConfig.Click += new System.EventHandler(this.RunRegFileAndSvcBinButton_Click);
             // 
             // panCustomers
             // 
@@ -273,6 +278,7 @@
             this.btnRetrieve.Size = new System.Drawing.Size(84, 28);
             this.btnRetrieve.TabIndex = 34;
             this.btnRetrieve.Text = "提取";
+            this.toolTip1.SetToolTip(this.btnRetrieve, "提取提交版本的所有工作项ID");
             this.btnRetrieve.UseVisualStyleBackColor = true;
             this.btnRetrieve.Click += new System.EventHandler(this.RetrieveButton_Click);
             // 
@@ -342,6 +348,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox _txtVersionID;
         private System.Windows.Forms.Button btnRetrieve;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

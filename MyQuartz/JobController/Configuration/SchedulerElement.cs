@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,12 +53,10 @@ namespace JobController.Configuration
         // cron-expression
         [ConfigurationProperty("cron-expression", DefaultValue = "", IsKey = false, IsRequired = true)]
         public string CronExpression
-        { 
+        {
             get { return (string)this["cron-expression"]; }
             set { this["cron-expression"] = value; }
         }
-
-        public string CronModified { get; set; }
 
         // 客户名称
         [ConfigurationProperty("customer", DefaultValue = "", IsKey = false, IsRequired = true)]
@@ -65,6 +64,35 @@ namespace JobController.Configuration
         {
             get { return (string)this["customer"]; }
             set { this["customer"] = value; }
+        }
+
+        /// <summary>
+        /// 修改后的Cron表达式
+        /// </summary>
+        public string CronModified { get; set; }
+
+        /// <summary>
+        /// 获取批命令路径
+        /// </summary>
+        public string BatchFilesPath
+        {
+            get { return Path.Combine(BasePath, "BatchFiles"); }
+        }
+
+        /// <summary>
+        /// 获取注册表文件
+        /// </summary>
+        public string RegistryFile
+        {
+            get { return Path.Combine(BatchFilesPath, $"注册表\\{CustomerName}注册表.reg"); }
+        }
+
+        /// <summary>
+        /// 获取注册表文件 
+        /// </summary>
+        public string Copy2SvcBinBatFile
+        {
+            get { return Path.Combine(BatchFilesPath, "__copy2svcbin.bat"); }
         }
     }
 }

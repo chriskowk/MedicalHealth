@@ -17,8 +17,8 @@ namespace MyJob
     public abstract class TaskJobBase : IJob
     {
         // 定义参数常量
-        public const string RegisterFilePath = "RegisterFilePath";
-        public const string BASE_PATH = "BASE_PATH";
+        public const string CALLBACK_REGISTRYFILE = "CALLBACK_REGISTRYFILE";
+        public const string BATCHFILES_PATH = "BATCHFILES_PATH";
         public const string SQL = "SQL";
         public const string ExecutionCount = "ExecutionCount";
         public const string RowCount = "RowCount";
@@ -33,16 +33,15 @@ namespace MyJob
                 JobKey jobKey = context.JobDetail.Key;
                 // 获取传递过来的参数            
                 JobDataMap data = context.JobDetail.JobDataMap;
-                string regFilePath = data.GetString(RegisterFilePath);
+                string callBackRegFile = data.GetString(CALLBACK_REGISTRYFILE);
                 string sql = data.GetString(SQL);
                 int count = data.GetInt(ExecutionCount);
-                string basepath = data.GetString(BASE_PATH);
-                BatchFilesPath = Path.Combine(basepath, "BatchFiles");
+                BatchFilesPath = data.GetString(BATCHFILES_PATH);
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_START");
                 // 此处为执行的任务
                 TFGetLatestVersion();
-                BuildAll(regFilePath);
+                BuildAll(callBackRegFile);
                 RebuildDataModels();
 
                 //Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\JetSun\3.0\Quartz\Job\" + this.GetType().ToString(), "State", "STATE_COMPLETE");
@@ -93,13 +92,13 @@ namespace MyJob
             fs.Close();
         }
 
-        private void BuildAll(string regFilePath)
+        private void BuildAll(string callBackRegFile)
         {
             string path = Path.Combine(BatchFilesPath, "全编译Upload.bat");
             if (!File.Exists(path)) return;
 
             string errMsg = string.Empty;
-            JobHelper.Execute(path, regFilePath, false, false, ref errMsg);
+            JobHelper.Execute(path, callBackRegFile, false, false, ref errMsg);
         }
 
         public virtual void RebuildDataModels()

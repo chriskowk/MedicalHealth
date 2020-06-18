@@ -518,14 +518,12 @@ namespace JobController
             }
         }
 
-        private void ResetRegistryTableButton_Click(object sender, EventArgs e)
+        private void RunRegFileAndSvcBinButton_Click(object sender, EventArgs e)
         {
             if (VersionSelected.Tag is SchedulerElement se)
             {
-                string bat1 = Path.Combine(se.BasePath, $"BatchFiles\\注册表\\{se.CustomerName}注册表.reg");
-                string bat2 = Path.Combine(se.BasePath, $"BatchFiles\\__copy2svcbin.bat");
-                ExecuteReg(bat1);
-                Execute(bat2, 0);
+                ExecuteReg(se.RegistryFile);
+                Execute(se.Copy2SvcBinBatFile, 0);
                 RestartServices();
             }
         }
