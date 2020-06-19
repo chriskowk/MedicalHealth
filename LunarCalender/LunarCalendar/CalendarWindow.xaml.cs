@@ -600,7 +600,7 @@ namespace LunarCalendar
             _notifyIcon.MouseClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseClick += NotifyIcon_MouseClick;
             //右键菜单--显示/退出菜单项
-            _muiShow = new SWF.MenuItem("显示");
+            _muiShow = new SWF.MenuItem("显示日历窗口");
             _muiShow.Click += ShowMenuItem_Click;
             SWF.MenuItem muiAutoStartNextTime = new SWF.MenuItem("下次自动启动");
             muiAutoStartNextTime.Checked = true;
@@ -659,7 +659,7 @@ namespace LunarCalendar
 
         private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            _muiShow.Text = bool.Parse(e.NewValue.ToString()) ? "隐藏" : "显示";
+            _muiShow.Text = string.Format("{0}日历窗口", bool.Parse(e.NewValue.ToString()) ? "隐藏" : "显示");
         }
 
         private void ShowMenuItem_Click(object sender, EventArgs e)
