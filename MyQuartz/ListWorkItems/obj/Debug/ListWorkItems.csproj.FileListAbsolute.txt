@@ -338,9 +338,6 @@ D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\zh-Hant\
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csprojResolveAssemblyReference.cache
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
 D:\CHRIS的文档\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe.config
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.pdb
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\Microsoft.TeamFoundation.Client.dll
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\Microsoft.TeamFoundation.Common.dll
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\Microsoft.TeamFoundation.VersionControl.Client.dll
@@ -506,8 +503,6 @@ F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\tr\Microsoft.TeamFounda
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CopyComplete
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CoreCompileInputs.cache
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe.config
@@ -517,3 +512,8 @@ E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.Co
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CopyComplete
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\sfw.exe.config
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\sfw.exe
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\sfw.pdb
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\sfw.exe
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\sfw.pdb

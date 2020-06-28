@@ -11,7 +11,11 @@ namespace ListWorkItems
     {
         public static void SetFilesWritable(string foldername, SearchOption searchOption)
         {
-            if (!Directory.Exists(foldername)) return;
+            if (!Directory.Exists(foldername))
+            {
+                Console.WriteLine($"路径 {foldername} 不存在");
+                return;
+            }
 
             DirectoryInfo folder = new DirectoryInfo(foldername);
             FileInfo[] fileInfos = folder.GetFiles("*", searchOption);

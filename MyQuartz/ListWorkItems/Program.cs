@@ -17,6 +17,8 @@ namespace ListWorkItems
             if (args.Length < 1)
             {
                 Console.WriteLine("Usage: SFW.exe <FolderName>");
+                Console.WriteLine("提示：文件夹路径如有空格需用双引号括起来！");
+                return;
             }
             FileHelper.SetFilesWritable(args[0], System.IO.SearchOption.AllDirectories);
         }
