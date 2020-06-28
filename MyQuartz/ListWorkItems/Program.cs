@@ -10,7 +10,7 @@ namespace ListWorkItems
     {
         static void Main(string[] args)
         {
-            //WorkItemHelper.List(new string[] { "http://svrdevelop:8080/tfs/medicalhealthsy", "$/ClinicalManagement" });
+            //WorkItemHelper.List(new string[] { "http://172.18.128.166:8080/medicalhealthsy", "$/ClinicalManagement" });
             //Console.WriteLine("Press any key...");
             //Console.ReadKey();
 

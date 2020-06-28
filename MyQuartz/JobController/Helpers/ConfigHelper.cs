@@ -63,6 +63,14 @@ namespace JobController
         }
 
         /// <summary>
+        /// 获取 TeamFoundationServerURL
+        /// </summary>
+        public static string TeamFoundationServerURL
+        {
+            get { return ConfigHelper.GetAppConfig("TeamFoundationServerURL"); }
+        }
+
+        /// <summary>
         /// 获取全局调度配置文件名
         /// </summary>
         public static string QuartzSchedulerFile

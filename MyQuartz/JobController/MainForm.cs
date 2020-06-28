@@ -70,8 +70,8 @@ namespace JobController
                 }
 
                 //NetworkCredential credential = new NetworkCredential("guoshaoyue", "netboy", "hissoft.com");//初始化用户  
-                //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
-                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), CredentialCache.DefaultCredentials);
+                //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(ConfigHelper.TeamFoundationServerURL), credential);
+                TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(ConfigHelper.TeamFoundationServerURL), CredentialCache.DefaultCredentials);
                 tpc.Authenticate();
                 WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
 
@@ -210,8 +210,8 @@ namespace JobController
             string updateSQL = string.Empty;
 
             //NetworkCredential credential = new NetworkCredential("guoshaoyue", "netboy", "hissoft.com");//初始化用户  
-            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), CredentialCache.DefaultCredentials);
+            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(ConfigHelper.TeamFoundationServerURL), credential);
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(ConfigHelper.TeamFoundationServerURL), CredentialCache.DefaultCredentials);
             tpc.Authenticate();
 
             // [System.Title], [System.WorkItemType], [System.State], [System.ChangedDate], [System.Id]
@@ -459,14 +459,14 @@ namespace JobController
 
             _cboProjects.Items.Clear();
             //NetworkCredential credential = new NetworkCredential("guoshaoyue", "netboy", "hissoft.com");//初始化用户  
-            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), credential);
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri("http://svrdevelop:8080/tfs/medicalhealthsy"), CredentialCache.DefaultCredentials);
+            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(ConfigHelper.TeamFoundationServerURL), credential);
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(ConfigHelper.TeamFoundationServerURL), CredentialCache.DefaultCredentials);
             tpc.Authenticate();
 
             WorkItemStore workItemStore = tpc.GetService<WorkItemStore>();
             foreach (Project item in workItemStore.Projects)
             {
-                if (!item.Name.StartsWith("CDSS")) _cboProjects.Items.Add(item.Name);
+                _cboProjects.Items.Add(item.Name);
             }
             _cboProjects.SelectedIndex = 0;
             _dtpRestart.Value = DateTime.Now;
