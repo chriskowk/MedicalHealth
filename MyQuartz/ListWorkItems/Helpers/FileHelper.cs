@@ -13,7 +13,7 @@ namespace ListWorkItems
         {
             if (!Directory.Exists(foldername))
             {
-                Console.WriteLine($"路径 {foldername} 不存在");
+                Console.WriteLine($"路径 {foldername} 不存在！");
                 return;
             }
 
@@ -24,6 +24,7 @@ namespace ListWorkItems
                 if (fi.Attributes.ToString().IndexOf("ReadOnly") != -1)
                 {
                     fi.Attributes = FileAttributes.Normal;
+                    Console.WriteLine($"文件 {fi.FullName} 已改可写");
                 }
             }
         }
