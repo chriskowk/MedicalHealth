@@ -10,6 +10,8 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Windows;
+using TFSideKicks.Configuration;
+using TFSideKicks.Helpers;
 
 namespace TFSideKicks
 {
@@ -28,15 +30,19 @@ namespace TFSideKicks
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RegistryKey rk = RegistryHelper.GetRegistryKeyEx(_tfsUrisKeyPath);
-            if (rk != null)
+            //RegistryKey rk = RegistryHelper.GetRegistryKeyEx(_tfsUrisKeyPath);
+            //if (rk != null)
+            //{
+            //    foreach (string name in rk.GetValueNames())
+            //    {
+            //        object obj = RegistryHelper.GetRegistryValueEx(_tfsUrisKeyPath, name);
+            //        _cboTfsUris.Items.Add(new TfsTeamProjectCollectionUri(name, obj == null ? string.Empty : obj.ToString()));
+            //    }
+            //    rk.Close();
+            //}
+            foreach (TfsUrlElement item in ConfigHelper.ProjectCollection)
             {
-                foreach (string name in rk.GetValueNames())
-                {
-                    object obj = RegistryHelper.GetRegistryValueEx(_tfsUrisKeyPath, name);
-                    _cboTfsUris.Items.Add(new TfsTeamProjectCollectionUri(name, obj == null ? string.Empty : obj.ToString()));
-                }
-                rk.Close();
+                _cboTfsUris.Items.Add(new TfsTeamProjectCollectionUri(item.VersionName, item.TfsUrl));
             }
 
             string str1 = Process.GetCurrentProcess().MainModule.FileName;
