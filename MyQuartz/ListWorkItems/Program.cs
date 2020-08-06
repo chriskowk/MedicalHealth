@@ -11,8 +11,12 @@ namespace ListWorkItems
         static void Main(string[] args)
         {
             //WorkItemHelper.List(new string[] { "http://172.18.128.166:8080/medicalhealthsy", "$/ClinicalManagement" });
+            //TFSHelper.ShowHistory(new string[] { "http://172.18.128.166:8080/medicalhealthsy" });
             //Console.WriteLine("Press any key...");
             //Console.ReadKey();
+
+            //WorkItemHelper.List(args);
+            //TFSHelper.ShowHistory(args);
 
             if (args.Length < 1)
             {
