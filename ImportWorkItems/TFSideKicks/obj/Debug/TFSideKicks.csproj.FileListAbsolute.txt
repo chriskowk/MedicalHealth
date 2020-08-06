@@ -572,3 +572,5 @@ F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\FileDateModifier.g
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj.CoreCompileInputs.cache
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj.CopyComplete
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ShowHistory.g.cs
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ShowHistory.baml

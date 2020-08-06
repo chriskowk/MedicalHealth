@@ -21,6 +21,7 @@
             <GroupBox Header="">
                 <StackPanel>
                     <Button Content="Import WorkItems to TFS" Tag="ImportWorkItem"></Button>
+                    <Button Content="TFS Query History Records" Tag="ShowHistory"></Button>
                     <Button Content="Oracle SqlProfiler" Tag="OracleProfiler"></Button>
                     <Button Content="Version Comparer" Tag="CompareVersion"></Button>
                     <Button Content="Files Date Modifier" Tag="FileDateModifier"></Button>

@@ -113,6 +113,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ShowHistory.xaml.cs">
+      <DependentUpon>ShowHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Component.cs" />
     <Compile Include="CompareVersion.cs">
       <SubType>Form</SubType>
@@ -139,6 +142,10 @@
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="ViewModel\FileDateModifierViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Page Include="ShowHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FileDateModifier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
