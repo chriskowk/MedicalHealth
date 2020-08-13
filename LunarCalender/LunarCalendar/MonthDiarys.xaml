@@ -21,8 +21,8 @@
             </DataTemplate>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
         <ListView Grid.Column="0" Name="_lvwDiarys" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" SelectionChanged="_lvwDiarys_SelectionChanged">
@@ -45,7 +45,7 @@
         </ListView>
         <Grid Grid.Column="1" Name="_grdDetail">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
