@@ -147,3 +147,5 @@ E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.cspr
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.exe
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.pdb
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csproj.CoreCompileInputs.cache
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Data.SQLite.dll
