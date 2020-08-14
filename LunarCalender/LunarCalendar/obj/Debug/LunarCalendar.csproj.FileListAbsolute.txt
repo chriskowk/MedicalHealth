@@ -95,7 +95,6 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.Contrib.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.Contrib.xml
-F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.Core.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Common.Logging.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.dll

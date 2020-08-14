@@ -582,7 +582,7 @@ namespace LunarCalendar
         }
 
         private SWF.NotifyIcon _notifyIcon = null;
-        private SWF.MenuItem _muiShow = null;
+        private SWF.ToolStripMenuItem _muiShow = null;
         private Timer _timer;
         private void InitializTrayIcon()
         {
@@ -595,24 +595,33 @@ namespace LunarCalendar
             //重要提示：此处的图标图片在resouces文件夹。可是打包后安装发现无法获取路径，导致程序死机。建议复制一份resouces文件到UI层的bin目录下，确保万无一失。
             _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream);
             //双击事件
+            _notifyIcon.MouseDoubleClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseDoubleClick += NotifyIcon_MouseClick;
             //鼠标点击事件
             _notifyIcon.MouseClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseClick += NotifyIcon_MouseClick;
-            //右键菜单--显示/退出菜单项
-            _muiShow = new SWF.MenuItem("显示日历窗口");
-            _muiShow.Click += ShowMenuItem_Click;
-            SWF.MenuItem muiAutoStartNextTime = new SWF.MenuItem("下次自动启动");
-            muiAutoStartNextTime.Checked = true;
-            SWF.MenuItem muiAbout = new SWF.MenuItem("关于...");
-            SWF.MenuItem muiExit = new SWF.MenuItem("退出");
-            muiExit.Click += ExitMenuItem_Click;
+            //右键弹出式菜单
+            SWF.ContextMenuStrip notifyContextMenu = new SWF.ContextMenuStrip();
+            _muiShow = new SWF.ToolStripMenuItem("显示日历窗口", new System.Drawing.Bitmap(Application.GetResourceStream(new Uri($"images/screen.png", UriKind.Relative)).Stream), ShowMenuItem_Click);
+            SWF.ToolStripMenuItem muiAutoStartNextTime = new SWF.ToolStripMenuItem("下次自动启动");
+            muiAutoStartNextTime.Checked = AutoManageHelper.IsMeAutoStart();
+            muiAutoStartNextTime.CheckOnClick = true;
+            muiAutoStartNextTime.Click -= MuiAutoStartNextTime_Click;
+            muiAutoStartNextTime.Click += MuiAutoStartNextTime_Click;
+            SWF.ToolStripMenuItem muiAbout = new SWF.ToolStripMenuItem("关于...");
+            SWF.ToolStripMenuItem muiExit = new SWF.ToolStripMenuItem("退出", new System.Drawing.Bitmap(Application.GetResourceStream(new Uri($"images/exit.png", UriKind.Relative)).Stream), ExitMenuItem_Click);
+            notifyContextMenu.Items.AddRange(new SWF.ToolStripItem[] { _muiShow, muiAutoStartNextTime, muiAbout, new SWF.ToolStripSeparator(), muiExit });
             //关联托盘控件
-            SWF.MenuItem[] childen = new SWF.MenuItem[] { _muiShow, muiAutoStartNextTime, new SWF.MenuItem("-"), muiAbout, new SWF.MenuItem("-"), muiExit };
-            _notifyIcon.ContextMenu = new SWF.ContextMenu(childen);
+            _notifyIcon.ContextMenuStrip = notifyContextMenu;
             //时钟按秒
             _timer = new Timer(new TimerCallback(ResetTrayIcon));
             _timer.Change(0, 1000);
+        }
+
+        private void MuiAutoStartNextTime_Click(object sender, EventArgs e)
+        {
+            SWF.ToolStripMenuItem mi = sender as SWF.ToolStripMenuItem;
+            AutoManageHelper.SetMeStart(mi.Checked);
         }
 
         private DateTime _latestRefreshOn = DateTime.Now;
@@ -660,6 +669,8 @@ namespace LunarCalendar
         private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             _muiShow.Text = string.Format("{0}日历窗口", bool.Parse(e.NewValue.ToString()) ? "隐藏" : "显示");
+            string imagefile = bool.Parse(e.NewValue.ToString()) ? "noscreen.png" : "screen.png";
+            _muiShow.Image = new System.Drawing.Bitmap(Application.GetResourceStream(new Uri($"images/{imagefile}", UriKind.Relative)).Stream);
         }
 
         private void ShowMenuItem_Click(object sender, EventArgs e)

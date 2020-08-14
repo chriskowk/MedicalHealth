@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("readme.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/noscreen.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/screen.png")]
 
 

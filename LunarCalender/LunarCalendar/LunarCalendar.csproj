@@ -157,6 +157,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\AutoManageHelper.cs" />
     <Compile Include="Helpers\Common.cs" />
     <Compile Include="CronForm\QuartzCronForm.cs">
       <SubType>Form</SubType>
@@ -174,6 +175,7 @@
     <Compile Include="Helpers\DapperExHelper.cs" />
     <Compile Include="Helpers\DapperHelper.cs" />
     <Compile Include="Helpers\GlobalParams.cs" />
+    <Compile Include="Helpers\RegistryHelper.cs" />
     <Compile Include="Helpers\SQLiteHelper.cs" />
     <Compile Include="JobScheduler\JobCenter.cs" />
     <Compile Include="JobScheduler\RemindJob.cs" />
@@ -294,6 +296,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\noscreen.png" />
+    <Resource Include="images\screen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
