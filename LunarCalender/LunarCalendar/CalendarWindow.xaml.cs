@@ -179,6 +179,7 @@ namespace LunarCalendar
             DateTime dt = new DateTime(year, month, 1);
             dt = dt.AddDays(day - 1);
             CalendarListBox.SelectedIndex = dt.Day - 1;
+            CalendarListBox.Focus();
         }
 
         public void DisplayCalendar(int year, int month)
@@ -692,6 +693,18 @@ namespace LunarCalendar
 
                 //System.Environment.Exit(0);
                 Application.Current.Shutdown();
+            }
+        }
+
+        private void CalendarListBox_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Down && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                NextMonthOnClick(null, null);
+            }
+            else if (e.Key == Key.Up && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                PreviousMonthOnClick(null, null);
             }
         }
     }

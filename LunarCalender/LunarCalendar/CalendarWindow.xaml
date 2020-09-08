@@ -2,13 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:properties="clr-namespace:LunarCalendar.Properties"
-    Title="" AllowsTransparency="True" Opacity="0.8" WindowStyle="None" HorizontalAlignment="Center" FontSize="14" Icon="/LunarCalendar;component/images/cal.ico" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="390" Width="520" ShowInTaskbar="False" IsVisibleChanged="MainWindow_IsVisibleChanged">
+    Title="" AllowsTransparency="True" Opacity="0.8" WindowStyle="None" HorizontalAlignment="Center" FontSize="14" Icon="/LunarCalendar;component/images/cal.ico" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="390" Width="520" ShowInTaskbar="False" IsVisibleChanged="MainWindow_IsVisibleChanged" >
     <Window.Resources>
         <Style x:Key="Font">
             <Setter Property="Control.FontFamily" Value="Arial" />
         </Style>
     </Window.Resources>
-    <Grid Height = "350" Opacity ="1" Visibility="Visible" Style="{StaticResource Font}">
+    <Grid x:Name="Grid" Height = "350" Opacity ="1" Visibility="Visible" Style="{StaticResource Font}">
         <StackPanel  Height="30" Margin="8,0,119,0" Name="stackPanel1" VerticalAlignment="Top" Orientation="Horizontal" Width="350">
             <Label Width="50" Content="{x:Static properties:Resources.Sunday}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold"></Label>
             <Label Width="50" Content="{x:Static properties:Resources.Monday}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold"></Label>
@@ -19,9 +19,9 @@
             <Label Width="50" Content="{x:Static properties:Resources.Saturday}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold"></Label>
         </StackPanel>
         <ListBox Margin="19,0,129,40" Name="CalendarListBox" 
-                 VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" 
+                 VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Focusable="True"
                  ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
-                 FontSize="15" Height="276" VerticalAlignment="Bottom" MouseDoubleClick="CalendarListBox_MouseDoubleClick">
+                 FontSize="15" Height="276" VerticalAlignment="Bottom" MouseDoubleClick="CalendarListBox_MouseDoubleClick" PreviewKeyUp="CalendarListBox_PreviewKeyUp">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Name="CalendarDisplayUniformGrid" 
