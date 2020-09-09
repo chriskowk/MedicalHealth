@@ -748,7 +748,7 @@ namespace LunarCalendar
                         chk.Checked = false;
                         foreach (var num in nums)
                         {
-                            if (chk.Text == num)
+                            if (chk.Text == num || (chk.Tag != null && chk.Tag.ToString() == num))
                             {
                                 chk.Checked = true;
                             }

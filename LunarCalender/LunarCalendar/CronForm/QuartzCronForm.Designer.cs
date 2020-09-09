@@ -232,11 +232,10 @@
             this.tab.Controls.Add(this.tabWeek);
             this.tab.Controls.Add(this.tabYear);
             this.tab.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tab.Location = new System.Drawing.Point(4, 4);
-            this.tab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab.Location = new System.Drawing.Point(3, 3);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(806, 524);
+            this.tab.Size = new System.Drawing.Size(537, 349);
             this.tab.TabIndex = 0;
             // 
             // tabSecond
@@ -258,11 +257,10 @@
             this.tabSecond.Controls.Add(this.label11);
             this.tabSecond.Controls.Add(this.rdoEverySecond);
             this.tabSecond.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabSecond.Location = new System.Drawing.Point(4, 37);
-            this.tabSecond.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabSecond.Location = new System.Drawing.Point(4, 29);
             this.tabSecond.Name = "tabSecond";
-            this.tabSecond.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabSecond.Size = new System.Drawing.Size(798, 483);
+            this.tabSecond.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabSecond.Size = new System.Drawing.Size(529, 316);
             this.tabSecond.TabIndex = 0;
             this.tabSecond.Text = "秒";
             this.tabSecond.UseVisualStyleBackColor = true;
@@ -271,10 +269,9 @@
             // 
             this.lblAppointSecond.AutoSize = true;
             this.lblAppointSecond.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAppointSecond.Location = new System.Drawing.Point(50, 162);
-            this.lblAppointSecond.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppointSecond.Location = new System.Drawing.Point(33, 108);
             this.lblAppointSecond.Name = "lblAppointSecond";
-            this.lblAppointSecond.Size = new System.Drawing.Size(54, 28);
+            this.lblAppointSecond.Size = new System.Drawing.Size(37, 20);
             this.lblAppointSecond.TabIndex = 16;
             this.lblAppointSecond.Text = "指定";
             // 
@@ -282,10 +279,9 @@
             // 
             this.rdoAppointSecond.AutoSize = true;
             this.rdoAppointSecond.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoAppointSecond.Location = new System.Drawing.Point(20, 168);
-            this.rdoAppointSecond.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAppointSecond.Location = new System.Drawing.Point(13, 112);
             this.rdoAppointSecond.Name = "rdoAppointSecond";
-            this.rdoAppointSecond.Size = new System.Drawing.Size(21, 20);
+            this.rdoAppointSecond.Size = new System.Drawing.Size(14, 13);
             this.rdoAppointSecond.TabIndex = 15;
             this.rdoAppointSecond.UseVisualStyleBackColor = true;
             // 
@@ -293,60 +289,55 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(372, 116);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(248, 77);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(117, 28);
+            this.label15.Size = new System.Drawing.Size(79, 20);
             this.label15.TabIndex = 14;
             this.label15.Text = "秒执行一次";
             // 
             // nudSecondFrequencyIntervalNum
             // 
             this.nudSecondFrequencyIntervalNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudSecondFrequencyIntervalNum.Location = new System.Drawing.Point(290, 110);
-            this.nudSecondFrequencyIntervalNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudSecondFrequencyIntervalNum.Location = new System.Drawing.Point(193, 73);
             this.nudSecondFrequencyIntervalNum.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudSecondFrequencyIntervalNum.Name = "nudSecondFrequencyIntervalNum";
-            this.nudSecondFrequencyIntervalNum.Size = new System.Drawing.Size(80, 35);
+            this.nudSecondFrequencyIntervalNum.Size = new System.Drawing.Size(53, 26);
             this.nudSecondFrequencyIntervalNum.TabIndex = 13;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(168, 116);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(112, 77);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(117, 28);
+            this.label16.Size = new System.Drawing.Size(79, 20);
             this.label16.TabIndex = 12;
             this.label16.Text = "秒开始，每";
             // 
             // nudSecondFrequencyBaseNum
             // 
             this.nudSecondFrequencyBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudSecondFrequencyBaseNum.Location = new System.Drawing.Point(84, 110);
-            this.nudSecondFrequencyBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudSecondFrequencyBaseNum.Location = new System.Drawing.Point(56, 73);
             this.nudSecondFrequencyBaseNum.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudSecondFrequencyBaseNum.Name = "nudSecondFrequencyBaseNum";
-            this.nudSecondFrequencyBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.nudSecondFrequencyBaseNum.Size = new System.Drawing.Size(55, 26);
             this.nudSecondFrequencyBaseNum.TabIndex = 11;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(50, 114);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(33, 76);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 28);
+            this.label17.Size = new System.Drawing.Size(23, 20);
             this.label17.TabIndex = 10;
             this.label17.Text = "从";
             // 
@@ -354,10 +345,9 @@
             // 
             this.rdoFrequencySecond.AutoSize = true;
             this.rdoFrequencySecond.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoFrequencySecond.Location = new System.Drawing.Point(20, 117);
-            this.rdoFrequencySecond.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoFrequencySecond.Location = new System.Drawing.Point(13, 78);
             this.rdoFrequencySecond.Name = "rdoFrequencySecond";
-            this.rdoFrequencySecond.Size = new System.Drawing.Size(21, 20);
+            this.rdoFrequencySecond.Size = new System.Drawing.Size(14, 13);
             this.rdoFrequencySecond.TabIndex = 9;
             this.rdoFrequencySecond.UseVisualStyleBackColor = true;
             // 
@@ -365,60 +355,55 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(334, 64);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(223, 43);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(33, 28);
+            this.label14.Size = new System.Drawing.Size(23, 20);
             this.label14.TabIndex = 8;
             this.label14.Text = "秒";
             // 
             // nudSecondCycleEnd
             // 
             this.nudSecondCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudSecondCycleEnd.Location = new System.Drawing.Point(246, 58);
-            this.nudSecondCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudSecondCycleEnd.Location = new System.Drawing.Point(164, 39);
             this.nudSecondCycleEnd.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudSecondCycleEnd.Name = "nudSecondCycleEnd";
-            this.nudSecondCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudSecondCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudSecondCycleEnd.TabIndex = 7;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(208, 64);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(139, 43);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 28);
+            this.label13.Size = new System.Drawing.Size(24, 20);
             this.label13.TabIndex = 6;
             this.label13.Text = "—";
             // 
             // nudSecondCycleBegin
             // 
             this.nudSecondCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudSecondCycleBegin.Location = new System.Drawing.Point(126, 58);
-            this.nudSecondCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudSecondCycleBegin.Location = new System.Drawing.Point(84, 39);
             this.nudSecondCycleBegin.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudSecondCycleBegin.Name = "nudSecondCycleBegin";
-            this.nudSecondCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudSecondCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudSecondCycleBegin.TabIndex = 5;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(50, 64);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(33, 43);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(75, 28);
+            this.label12.Size = new System.Drawing.Size(51, 20);
             this.label12.TabIndex = 4;
             this.label12.Text = "周期从";
             // 
@@ -426,10 +411,9 @@
             // 
             this.rdoCycleSecond.AutoSize = true;
             this.rdoCycleSecond.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleSecond.Location = new System.Drawing.Point(20, 69);
-            this.rdoCycleSecond.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleSecond.Location = new System.Drawing.Point(13, 46);
             this.rdoCycleSecond.Name = "rdoCycleSecond";
-            this.rdoCycleSecond.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleSecond.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleSecond.TabIndex = 3;
             this.rdoCycleSecond.UseVisualStyleBackColor = true;
             // 
@@ -437,22 +421,20 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(50, 20);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(33, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(251, 28);
+            this.label11.Size = new System.Drawing.Size(172, 20);
             this.label11.TabIndex = 2;
-            this.label11.Text = "每秒 允许的通配符[, - * /]";
+            this.label11.Text = "每秒 允许的通配符 [, - * /]";
             // 
             // rdoEverySecond
             // 
             this.rdoEverySecond.AutoSize = true;
             this.rdoEverySecond.Checked = true;
             this.rdoEverySecond.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEverySecond.Location = new System.Drawing.Point(20, 24);
-            this.rdoEverySecond.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEverySecond.Location = new System.Drawing.Point(13, 16);
             this.rdoEverySecond.Name = "rdoEverySecond";
-            this.rdoEverySecond.Size = new System.Drawing.Size(21, 20);
+            this.rdoEverySecond.Size = new System.Drawing.Size(14, 13);
             this.rdoEverySecond.TabIndex = 0;
             this.rdoEverySecond.TabStop = true;
             this.rdoEverySecond.UseVisualStyleBackColor = true;
@@ -476,11 +458,10 @@
             this.tabMinute.Controls.Add(this.label26);
             this.tabMinute.Controls.Add(this.rdoEveryMinute);
             this.tabMinute.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabMinute.Location = new System.Drawing.Point(4, 37);
-            this.tabMinute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabMinute.Location = new System.Drawing.Point(4, 29);
             this.tabMinute.Name = "tabMinute";
-            this.tabMinute.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabMinute.Size = new System.Drawing.Size(798, 483);
+            this.tabMinute.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabMinute.Size = new System.Drawing.Size(529, 316);
             this.tabMinute.TabIndex = 1;
             this.tabMinute.Text = "分钟";
             this.tabMinute.UseVisualStyleBackColor = true;
@@ -489,10 +470,9 @@
             // 
             this.lblAppointMinute.AutoSize = true;
             this.lblAppointMinute.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAppointMinute.Location = new System.Drawing.Point(50, 162);
-            this.lblAppointMinute.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppointMinute.Location = new System.Drawing.Point(33, 108);
             this.lblAppointMinute.Name = "lblAppointMinute";
-            this.lblAppointMinute.Size = new System.Drawing.Size(54, 28);
+            this.lblAppointMinute.Size = new System.Drawing.Size(37, 20);
             this.lblAppointMinute.TabIndex = 32;
             this.lblAppointMinute.Text = "指定";
             // 
@@ -500,10 +480,9 @@
             // 
             this.rdoAppointMinute.AutoSize = true;
             this.rdoAppointMinute.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoAppointMinute.Location = new System.Drawing.Point(20, 168);
-            this.rdoAppointMinute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAppointMinute.Location = new System.Drawing.Point(13, 112);
             this.rdoAppointMinute.Name = "rdoAppointMinute";
-            this.rdoAppointMinute.Size = new System.Drawing.Size(21, 20);
+            this.rdoAppointMinute.Size = new System.Drawing.Size(14, 13);
             this.rdoAppointMinute.TabIndex = 31;
             this.rdoAppointMinute.UseVisualStyleBackColor = true;
             // 
@@ -511,60 +490,55 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(386, 116);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(257, 77);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(138, 28);
+            this.label20.Size = new System.Drawing.Size(93, 20);
             this.label20.TabIndex = 30;
             this.label20.Text = "分钟执行一次";
             // 
             // nudMinuteFrequencyIntervalNum
             // 
             this.nudMinuteFrequencyIntervalNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMinuteFrequencyIntervalNum.Location = new System.Drawing.Point(304, 110);
-            this.nudMinuteFrequencyIntervalNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMinuteFrequencyIntervalNum.Location = new System.Drawing.Point(203, 73);
             this.nudMinuteFrequencyIntervalNum.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudMinuteFrequencyIntervalNum.Name = "nudMinuteFrequencyIntervalNum";
-            this.nudMinuteFrequencyIntervalNum.Size = new System.Drawing.Size(80, 35);
+            this.nudMinuteFrequencyIntervalNum.Size = new System.Drawing.Size(53, 26);
             this.nudMinuteFrequencyIntervalNum.TabIndex = 29;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(168, 116);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(112, 77);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(138, 28);
+            this.label21.Size = new System.Drawing.Size(93, 20);
             this.label21.TabIndex = 28;
             this.label21.Text = "分钟开始，每";
             // 
             // nudMinuteFrequencyBaseNum
             // 
             this.nudMinuteFrequencyBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMinuteFrequencyBaseNum.Location = new System.Drawing.Point(84, 110);
-            this.nudMinuteFrequencyBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMinuteFrequencyBaseNum.Location = new System.Drawing.Point(56, 73);
             this.nudMinuteFrequencyBaseNum.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudMinuteFrequencyBaseNum.Name = "nudMinuteFrequencyBaseNum";
-            this.nudMinuteFrequencyBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.nudMinuteFrequencyBaseNum.Size = new System.Drawing.Size(55, 26);
             this.nudMinuteFrequencyBaseNum.TabIndex = 27;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(50, 114);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(33, 76);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(33, 28);
+            this.label22.Size = new System.Drawing.Size(23, 20);
             this.label22.TabIndex = 26;
             this.label22.Text = "从";
             // 
@@ -572,10 +546,9 @@
             // 
             this.rdoFrequencyMinute.AutoSize = true;
             this.rdoFrequencyMinute.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoFrequencyMinute.Location = new System.Drawing.Point(20, 117);
-            this.rdoFrequencyMinute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoFrequencyMinute.Location = new System.Drawing.Point(13, 78);
             this.rdoFrequencyMinute.Name = "rdoFrequencyMinute";
-            this.rdoFrequencyMinute.Size = new System.Drawing.Size(21, 20);
+            this.rdoFrequencyMinute.Size = new System.Drawing.Size(14, 13);
             this.rdoFrequencyMinute.TabIndex = 25;
             this.rdoFrequencyMinute.UseVisualStyleBackColor = true;
             // 
@@ -583,60 +556,55 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(334, 64);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(223, 43);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(54, 28);
+            this.label23.Size = new System.Drawing.Size(37, 20);
             this.label23.TabIndex = 24;
             this.label23.Text = "分钟";
             // 
             // nudMinuteCycleEnd
             // 
             this.nudMinuteCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMinuteCycleEnd.Location = new System.Drawing.Point(246, 58);
-            this.nudMinuteCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMinuteCycleEnd.Location = new System.Drawing.Point(164, 39);
             this.nudMinuteCycleEnd.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudMinuteCycleEnd.Name = "nudMinuteCycleEnd";
-            this.nudMinuteCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudMinuteCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudMinuteCycleEnd.TabIndex = 23;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(208, 64);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(139, 43);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(35, 28);
+            this.label24.Size = new System.Drawing.Size(24, 20);
             this.label24.TabIndex = 22;
             this.label24.Text = "—";
             // 
             // nudMinuteCycleBegin
             // 
             this.nudMinuteCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMinuteCycleBegin.Location = new System.Drawing.Point(126, 58);
-            this.nudMinuteCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMinuteCycleBegin.Location = new System.Drawing.Point(84, 39);
             this.nudMinuteCycleBegin.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.nudMinuteCycleBegin.Name = "nudMinuteCycleBegin";
-            this.nudMinuteCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudMinuteCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudMinuteCycleBegin.TabIndex = 21;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(50, 64);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Location = new System.Drawing.Point(33, 43);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(75, 28);
+            this.label25.Size = new System.Drawing.Size(51, 20);
             this.label25.TabIndex = 20;
             this.label25.Text = "周期从";
             // 
@@ -644,10 +612,9 @@
             // 
             this.rdoCycleMinute.AutoSize = true;
             this.rdoCycleMinute.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleMinute.Location = new System.Drawing.Point(20, 69);
-            this.rdoCycleMinute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleMinute.Location = new System.Drawing.Point(13, 46);
             this.rdoCycleMinute.Name = "rdoCycleMinute";
-            this.rdoCycleMinute.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleMinute.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleMinute.TabIndex = 19;
             this.rdoCycleMinute.UseVisualStyleBackColor = true;
             // 
@@ -655,22 +622,20 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.Location = new System.Drawing.Point(50, 20);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Location = new System.Drawing.Point(33, 13);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(272, 28);
+            this.label26.Size = new System.Drawing.Size(186, 20);
             this.label26.TabIndex = 18;
-            this.label26.Text = "每分钟 允许的通配符[, - * /]";
+            this.label26.Text = "每分钟 允许的通配符 [, - * /]";
             // 
             // rdoEveryMinute
             // 
             this.rdoEveryMinute.AutoSize = true;
             this.rdoEveryMinute.Checked = true;
             this.rdoEveryMinute.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEveryMinute.Location = new System.Drawing.Point(20, 24);
-            this.rdoEveryMinute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEveryMinute.Location = new System.Drawing.Point(13, 16);
             this.rdoEveryMinute.Name = "rdoEveryMinute";
-            this.rdoEveryMinute.Size = new System.Drawing.Size(21, 20);
+            this.rdoEveryMinute.Size = new System.Drawing.Size(14, 13);
             this.rdoEveryMinute.TabIndex = 17;
             this.rdoEveryMinute.TabStop = true;
             this.rdoEveryMinute.UseVisualStyleBackColor = true;
@@ -694,10 +659,9 @@
             this.tabHour.Controls.Add(this.label34);
             this.tabHour.Controls.Add(this.rdoEveryHour);
             this.tabHour.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabHour.Location = new System.Drawing.Point(4, 37);
-            this.tabHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabHour.Location = new System.Drawing.Point(4, 29);
             this.tabHour.Name = "tabHour";
-            this.tabHour.Size = new System.Drawing.Size(798, 483);
+            this.tabHour.Size = new System.Drawing.Size(529, 316);
             this.tabHour.TabIndex = 2;
             this.tabHour.Text = "小时";
             this.tabHour.UseVisualStyleBackColor = true;
@@ -706,10 +670,9 @@
             // 
             this.lblAppointHour.AutoSize = true;
             this.lblAppointHour.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAppointHour.Location = new System.Drawing.Point(50, 162);
-            this.lblAppointHour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppointHour.Location = new System.Drawing.Point(33, 108);
             this.lblAppointHour.Name = "lblAppointHour";
-            this.lblAppointHour.Size = new System.Drawing.Size(54, 28);
+            this.lblAppointHour.Size = new System.Drawing.Size(37, 20);
             this.lblAppointHour.TabIndex = 48;
             this.lblAppointHour.Text = "指定";
             // 
@@ -717,10 +680,9 @@
             // 
             this.rdoAppointHour.AutoSize = true;
             this.rdoAppointHour.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoAppointHour.Location = new System.Drawing.Point(20, 168);
-            this.rdoAppointHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAppointHour.Location = new System.Drawing.Point(13, 112);
             this.rdoAppointHour.Name = "rdoAppointHour";
-            this.rdoAppointHour.Size = new System.Drawing.Size(21, 20);
+            this.rdoAppointHour.Size = new System.Drawing.Size(14, 13);
             this.rdoAppointHour.TabIndex = 47;
             this.rdoAppointHour.UseVisualStyleBackColor = true;
             // 
@@ -728,60 +690,55 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.Location = new System.Drawing.Point(386, 116);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Location = new System.Drawing.Point(257, 77);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(138, 28);
+            this.label28.Size = new System.Drawing.Size(93, 20);
             this.label28.TabIndex = 46;
             this.label28.Text = "小时执行一次";
             // 
             // nudHourFrequencyIntervalNum
             // 
             this.nudHourFrequencyIntervalNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudHourFrequencyIntervalNum.Location = new System.Drawing.Point(304, 110);
-            this.nudHourFrequencyIntervalNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudHourFrequencyIntervalNum.Location = new System.Drawing.Point(203, 73);
             this.nudHourFrequencyIntervalNum.Maximum = new decimal(new int[] {
             24,
             0,
             0,
             0});
             this.nudHourFrequencyIntervalNum.Name = "nudHourFrequencyIntervalNum";
-            this.nudHourFrequencyIntervalNum.Size = new System.Drawing.Size(80, 35);
+            this.nudHourFrequencyIntervalNum.Size = new System.Drawing.Size(53, 26);
             this.nudHourFrequencyIntervalNum.TabIndex = 45;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label29.Location = new System.Drawing.Point(168, 116);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Location = new System.Drawing.Point(112, 77);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(138, 28);
+            this.label29.Size = new System.Drawing.Size(93, 20);
             this.label29.TabIndex = 44;
             this.label29.Text = "小时开始，每";
             // 
             // nudHourFrequencyBaseNum
             // 
             this.nudHourFrequencyBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudHourFrequencyBaseNum.Location = new System.Drawing.Point(84, 110);
-            this.nudHourFrequencyBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudHourFrequencyBaseNum.Location = new System.Drawing.Point(56, 73);
             this.nudHourFrequencyBaseNum.Maximum = new decimal(new int[] {
             24,
             0,
             0,
             0});
             this.nudHourFrequencyBaseNum.Name = "nudHourFrequencyBaseNum";
-            this.nudHourFrequencyBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.nudHourFrequencyBaseNum.Size = new System.Drawing.Size(55, 26);
             this.nudHourFrequencyBaseNum.TabIndex = 43;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label30.Location = new System.Drawing.Point(50, 114);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Location = new System.Drawing.Point(33, 76);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(33, 28);
+            this.label30.Size = new System.Drawing.Size(23, 20);
             this.label30.TabIndex = 42;
             this.label30.Text = "从";
             // 
@@ -789,10 +746,9 @@
             // 
             this.rdoFrequencyHour.AutoSize = true;
             this.rdoFrequencyHour.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoFrequencyHour.Location = new System.Drawing.Point(20, 117);
-            this.rdoFrequencyHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoFrequencyHour.Location = new System.Drawing.Point(13, 78);
             this.rdoFrequencyHour.Name = "rdoFrequencyHour";
-            this.rdoFrequencyHour.Size = new System.Drawing.Size(21, 20);
+            this.rdoFrequencyHour.Size = new System.Drawing.Size(14, 13);
             this.rdoFrequencyHour.TabIndex = 41;
             this.rdoFrequencyHour.UseVisualStyleBackColor = true;
             // 
@@ -800,60 +756,55 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(334, 64);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Location = new System.Drawing.Point(223, 43);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(54, 28);
+            this.label31.Size = new System.Drawing.Size(37, 20);
             this.label31.TabIndex = 40;
             this.label31.Text = "小时";
             // 
             // nudHourCycleEnd
             // 
             this.nudHourCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudHourCycleEnd.Location = new System.Drawing.Point(246, 58);
-            this.nudHourCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudHourCycleEnd.Location = new System.Drawing.Point(164, 39);
             this.nudHourCycleEnd.Maximum = new decimal(new int[] {
             24,
             0,
             0,
             0});
             this.nudHourCycleEnd.Name = "nudHourCycleEnd";
-            this.nudHourCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudHourCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudHourCycleEnd.TabIndex = 39;
             // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label32.Location = new System.Drawing.Point(208, 64);
-            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Location = new System.Drawing.Point(139, 43);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(35, 28);
+            this.label32.Size = new System.Drawing.Size(24, 20);
             this.label32.TabIndex = 38;
             this.label32.Text = "—";
             // 
             // nudHourCycleBegin
             // 
             this.nudHourCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudHourCycleBegin.Location = new System.Drawing.Point(126, 58);
-            this.nudHourCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudHourCycleBegin.Location = new System.Drawing.Point(84, 39);
             this.nudHourCycleBegin.Maximum = new decimal(new int[] {
             24,
             0,
             0,
             0});
             this.nudHourCycleBegin.Name = "nudHourCycleBegin";
-            this.nudHourCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudHourCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudHourCycleBegin.TabIndex = 37;
             // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label33.Location = new System.Drawing.Point(50, 64);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Location = new System.Drawing.Point(33, 43);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(75, 28);
+            this.label33.Size = new System.Drawing.Size(51, 20);
             this.label33.TabIndex = 36;
             this.label33.Text = "周期从";
             // 
@@ -861,10 +812,9 @@
             // 
             this.rdoCycleHour.AutoSize = true;
             this.rdoCycleHour.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleHour.Location = new System.Drawing.Point(20, 69);
-            this.rdoCycleHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleHour.Location = new System.Drawing.Point(13, 46);
             this.rdoCycleHour.Name = "rdoCycleHour";
-            this.rdoCycleHour.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleHour.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleHour.TabIndex = 35;
             this.rdoCycleHour.UseVisualStyleBackColor = true;
             // 
@@ -872,22 +822,20 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label34.Location = new System.Drawing.Point(50, 20);
-            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Location = new System.Drawing.Point(33, 13);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(272, 28);
+            this.label34.Size = new System.Drawing.Size(186, 20);
             this.label34.TabIndex = 34;
-            this.label34.Text = "每小时 允许的通配符[, - * /]";
+            this.label34.Text = "每小时 允许的通配符 [, - * /]";
             // 
             // rdoEveryHour
             // 
             this.rdoEveryHour.AutoSize = true;
             this.rdoEveryHour.Checked = true;
             this.rdoEveryHour.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEveryHour.Location = new System.Drawing.Point(20, 24);
-            this.rdoEveryHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEveryHour.Location = new System.Drawing.Point(13, 16);
             this.rdoEveryHour.Name = "rdoEveryHour";
-            this.rdoEveryHour.Size = new System.Drawing.Size(21, 20);
+            this.rdoEveryHour.Size = new System.Drawing.Size(14, 13);
             this.rdoEveryHour.TabIndex = 33;
             this.rdoEveryHour.TabStop = true;
             this.rdoEveryHour.UseVisualStyleBackColor = true;
@@ -917,10 +865,9 @@
             this.tabDay.Controls.Add(this.label35);
             this.tabDay.Controls.Add(this.rdoEveryDay);
             this.tabDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabDay.Location = new System.Drawing.Point(4, 37);
-            this.tabDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabDay.Location = new System.Drawing.Point(4, 29);
             this.tabDay.Name = "tabDay";
-            this.tabDay.Size = new System.Drawing.Size(798, 483);
+            this.tabDay.Size = new System.Drawing.Size(529, 316);
             this.tabDay.TabIndex = 3;
             this.tabDay.Text = "日";
             this.tabDay.UseVisualStyleBackColor = true;
@@ -929,18 +876,16 @@
             // 
             this.label69.AutoSize = true;
             this.label69.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label69.Location = new System.Drawing.Point(195, 166);
-            this.label69.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label69.Location = new System.Drawing.Point(130, 111);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(201, 28);
+            this.label69.Size = new System.Drawing.Size(135, 20);
             this.label69.TabIndex = 60;
             this.label69.Text = "号最近的那个工作日";
             // 
             // nudDayRencent
             // 
             this.nudDayRencent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudDayRencent.Location = new System.Drawing.Point(105, 160);
-            this.nudDayRencent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudDayRencent.Location = new System.Drawing.Point(70, 107);
             this.nudDayRencent.Maximum = new decimal(new int[] {
             31,
             0,
@@ -952,7 +897,7 @@
             0,
             0});
             this.nudDayRencent.Name = "nudDayRencent";
-            this.nudDayRencent.Size = new System.Drawing.Size(82, 35);
+            this.nudDayRencent.Size = new System.Drawing.Size(55, 26);
             this.nudDayRencent.TabIndex = 59;
             this.nudDayRencent.Value = new decimal(new int[] {
             1,
@@ -964,10 +909,9 @@
             // 
             this.label70.AutoSize = true;
             this.label70.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label70.Location = new System.Drawing.Point(50, 165);
-            this.label70.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label70.Location = new System.Drawing.Point(33, 110);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(54, 28);
+            this.label70.Size = new System.Drawing.Size(37, 20);
             this.label70.TabIndex = 58;
             this.label70.Text = "每月";
             // 
@@ -975,10 +919,9 @@
             // 
             this.rdoRencentWorkDay.AutoSize = true;
             this.rdoRencentWorkDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoRencentWorkDay.Location = new System.Drawing.Point(20, 168);
-            this.rdoRencentWorkDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoRencentWorkDay.Location = new System.Drawing.Point(13, 112);
             this.rdoRencentWorkDay.Name = "rdoRencentWorkDay";
-            this.rdoRencentWorkDay.Size = new System.Drawing.Size(21, 20);
+            this.rdoRencentWorkDay.Size = new System.Drawing.Size(14, 13);
             this.rdoRencentWorkDay.TabIndex = 57;
             this.rdoRencentWorkDay.UseVisualStyleBackColor = true;
             // 
@@ -986,10 +929,9 @@
             // 
             this.label68.AutoSize = true;
             this.label68.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label68.Location = new System.Drawing.Point(50, 208);
-            this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label68.Location = new System.Drawing.Point(33, 139);
             this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(138, 28);
+            this.label68.Size = new System.Drawing.Size(93, 20);
             this.label68.TabIndex = 56;
             this.label68.Text = "本月最后一天";
             // 
@@ -997,10 +939,9 @@
             // 
             this.rdoLastDay.AutoSize = true;
             this.rdoLastDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoLastDay.Location = new System.Drawing.Point(20, 214);
-            this.rdoLastDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoLastDay.Location = new System.Drawing.Point(13, 143);
             this.rdoLastDay.Name = "rdoLastDay";
-            this.rdoLastDay.Size = new System.Drawing.Size(21, 20);
+            this.rdoLastDay.Size = new System.Drawing.Size(14, 13);
             this.rdoLastDay.TabIndex = 55;
             this.rdoLastDay.UseVisualStyleBackColor = true;
             // 
@@ -1008,10 +949,9 @@
             // 
             this.lblAppointDay.AutoSize = true;
             this.lblAppointDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAppointDay.Location = new System.Drawing.Point(50, 250);
-            this.lblAppointDay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppointDay.Location = new System.Drawing.Point(33, 167);
             this.lblAppointDay.Name = "lblAppointDay";
-            this.lblAppointDay.Size = new System.Drawing.Size(54, 28);
+            this.lblAppointDay.Size = new System.Drawing.Size(37, 20);
             this.lblAppointDay.TabIndex = 54;
             this.lblAppointDay.Text = "指定";
             // 
@@ -1019,10 +959,9 @@
             // 
             this.rdoAppointDay.AutoSize = true;
             this.rdoAppointDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoAppointDay.Location = new System.Drawing.Point(20, 255);
-            this.rdoAppointDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAppointDay.Location = new System.Drawing.Point(13, 170);
             this.rdoAppointDay.Name = "rdoAppointDay";
-            this.rdoAppointDay.Size = new System.Drawing.Size(21, 20);
+            this.rdoAppointDay.Size = new System.Drawing.Size(14, 13);
             this.rdoAppointDay.TabIndex = 53;
             this.rdoAppointDay.UseVisualStyleBackColor = true;
             // 
@@ -1030,18 +969,16 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(380, 116);
-            this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label39.Location = new System.Drawing.Point(253, 77);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(117, 28);
+            this.label39.Size = new System.Drawing.Size(79, 20);
             this.label39.TabIndex = 52;
             this.label39.Text = "天执行一次";
             // 
             // nudDayFrequencyIntervalNum
             // 
             this.nudDayFrequencyIntervalNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudDayFrequencyIntervalNum.Location = new System.Drawing.Point(296, 110);
-            this.nudDayFrequencyIntervalNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudDayFrequencyIntervalNum.Location = new System.Drawing.Point(197, 73);
             this.nudDayFrequencyIntervalNum.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1053,7 +990,7 @@
             0,
             0});
             this.nudDayFrequencyIntervalNum.Name = "nudDayFrequencyIntervalNum";
-            this.nudDayFrequencyIntervalNum.Size = new System.Drawing.Size(80, 35);
+            this.nudDayFrequencyIntervalNum.Size = new System.Drawing.Size(53, 26);
             this.nudDayFrequencyIntervalNum.TabIndex = 51;
             this.nudDayFrequencyIntervalNum.Value = new decimal(new int[] {
             1,
@@ -1065,18 +1002,16 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label40.Location = new System.Drawing.Point(168, 116);
-            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label40.Location = new System.Drawing.Point(112, 77);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(117, 28);
+            this.label40.Size = new System.Drawing.Size(79, 20);
             this.label40.TabIndex = 50;
             this.label40.Text = "日开始，每";
             // 
             // nudDayFrequencyBaseNum
             // 
             this.nudDayFrequencyBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudDayFrequencyBaseNum.Location = new System.Drawing.Point(84, 110);
-            this.nudDayFrequencyBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudDayFrequencyBaseNum.Location = new System.Drawing.Point(56, 73);
             this.nudDayFrequencyBaseNum.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1088,7 +1023,7 @@
             0,
             0});
             this.nudDayFrequencyBaseNum.Name = "nudDayFrequencyBaseNum";
-            this.nudDayFrequencyBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.nudDayFrequencyBaseNum.Size = new System.Drawing.Size(55, 26);
             this.nudDayFrequencyBaseNum.TabIndex = 49;
             this.nudDayFrequencyBaseNum.Value = new decimal(new int[] {
             1,
@@ -1100,10 +1035,9 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label41.Location = new System.Drawing.Point(50, 114);
-            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label41.Location = new System.Drawing.Point(33, 76);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(33, 28);
+            this.label41.Size = new System.Drawing.Size(23, 20);
             this.label41.TabIndex = 48;
             this.label41.Text = "从";
             // 
@@ -1111,10 +1045,9 @@
             // 
             this.rdoFrequencyDay.AutoSize = true;
             this.rdoFrequencyDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoFrequencyDay.Location = new System.Drawing.Point(20, 117);
-            this.rdoFrequencyDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoFrequencyDay.Location = new System.Drawing.Point(13, 78);
             this.rdoFrequencyDay.Name = "rdoFrequencyDay";
-            this.rdoFrequencyDay.Size = new System.Drawing.Size(21, 20);
+            this.rdoFrequencyDay.Size = new System.Drawing.Size(14, 13);
             this.rdoFrequencyDay.TabIndex = 47;
             this.rdoFrequencyDay.UseVisualStyleBackColor = true;
             // 
@@ -1122,18 +1055,16 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label36.Location = new System.Drawing.Point(334, 64);
-            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Location = new System.Drawing.Point(223, 43);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(33, 28);
+            this.label36.Size = new System.Drawing.Size(23, 20);
             this.label36.TabIndex = 46;
             this.label36.Text = "日";
             // 
             // nudDayCycleEnd
             // 
             this.nudDayCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudDayCycleEnd.Location = new System.Drawing.Point(246, 58);
-            this.nudDayCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudDayCycleEnd.Location = new System.Drawing.Point(164, 39);
             this.nudDayCycleEnd.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1145,7 +1076,7 @@
             0,
             0});
             this.nudDayCycleEnd.Name = "nudDayCycleEnd";
-            this.nudDayCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudDayCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudDayCycleEnd.TabIndex = 45;
             this.nudDayCycleEnd.Value = new decimal(new int[] {
             1,
@@ -1157,18 +1088,16 @@
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(208, 64);
-            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Location = new System.Drawing.Point(139, 43);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(35, 28);
+            this.label37.Size = new System.Drawing.Size(24, 20);
             this.label37.TabIndex = 44;
             this.label37.Text = "—";
             // 
             // nudDayCycleBegin
             // 
             this.nudDayCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudDayCycleBegin.Location = new System.Drawing.Point(126, 58);
-            this.nudDayCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudDayCycleBegin.Location = new System.Drawing.Point(84, 39);
             this.nudDayCycleBegin.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1180,7 +1109,7 @@
             0,
             0});
             this.nudDayCycleBegin.Name = "nudDayCycleBegin";
-            this.nudDayCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudDayCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudDayCycleBegin.TabIndex = 43;
             this.nudDayCycleBegin.Value = new decimal(new int[] {
             1,
@@ -1192,10 +1121,9 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(50, 64);
-            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label38.Location = new System.Drawing.Point(33, 43);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(75, 28);
+            this.label38.Size = new System.Drawing.Size(51, 20);
             this.label38.TabIndex = 42;
             this.label38.Text = "周期从";
             // 
@@ -1203,10 +1131,9 @@
             // 
             this.rdoCycleDay.AutoSize = true;
             this.rdoCycleDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleDay.Location = new System.Drawing.Point(20, 69);
-            this.rdoCycleDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleDay.Location = new System.Drawing.Point(13, 46);
             this.rdoCycleDay.Name = "rdoCycleDay";
-            this.rdoCycleDay.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleDay.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleDay.TabIndex = 41;
             this.rdoCycleDay.UseVisualStyleBackColor = true;
             // 
@@ -1214,22 +1141,20 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label35.Location = new System.Drawing.Point(50, 20);
-            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label35.Location = new System.Drawing.Point(33, 13);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(331, 28);
+            this.label35.Size = new System.Drawing.Size(225, 20);
             this.label35.TabIndex = 36;
-            this.label35.Text = "每日 允许的通配符[, - * / ? L W C]";
+            this.label35.Text = "每日 允许的通配符 [, - * / ? L W C]";
             // 
             // rdoEveryDay
             // 
             this.rdoEveryDay.AutoSize = true;
             this.rdoEveryDay.Checked = true;
             this.rdoEveryDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEveryDay.Location = new System.Drawing.Point(20, 24);
-            this.rdoEveryDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEveryDay.Location = new System.Drawing.Point(13, 16);
             this.rdoEveryDay.Name = "rdoEveryDay";
-            this.rdoEveryDay.Size = new System.Drawing.Size(21, 20);
+            this.rdoEveryDay.Size = new System.Drawing.Size(14, 13);
             this.rdoEveryDay.TabIndex = 35;
             this.rdoEveryDay.TabStop = true;
             this.rdoEveryDay.UseVisualStyleBackColor = true;
@@ -1253,10 +1178,9 @@
             this.tabMonth.Controls.Add(this.label43);
             this.tabMonth.Controls.Add(this.rdoEveryMonth);
             this.tabMonth.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabMonth.Location = new System.Drawing.Point(4, 37);
-            this.tabMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabMonth.Location = new System.Drawing.Point(4, 29);
             this.tabMonth.Name = "tabMonth";
-            this.tabMonth.Size = new System.Drawing.Size(798, 483);
+            this.tabMonth.Size = new System.Drawing.Size(529, 316);
             this.tabMonth.TabIndex = 4;
             this.tabMonth.Text = "月";
             this.tabMonth.UseVisualStyleBackColor = true;
@@ -1265,10 +1189,9 @@
             // 
             this.lblAppointMonth.AutoSize = true;
             this.lblAppointMonth.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAppointMonth.Location = new System.Drawing.Point(50, 160);
-            this.lblAppointMonth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppointMonth.Location = new System.Drawing.Point(33, 107);
             this.lblAppointMonth.Name = "lblAppointMonth";
-            this.lblAppointMonth.Size = new System.Drawing.Size(54, 28);
+            this.lblAppointMonth.Size = new System.Drawing.Size(37, 20);
             this.lblAppointMonth.TabIndex = 66;
             this.lblAppointMonth.Text = "指定";
             // 
@@ -1276,10 +1199,9 @@
             // 
             this.rdoAppointMonth.AutoSize = true;
             this.rdoAppointMonth.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoAppointMonth.Location = new System.Drawing.Point(20, 166);
-            this.rdoAppointMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAppointMonth.Location = new System.Drawing.Point(13, 111);
             this.rdoAppointMonth.Name = "rdoAppointMonth";
-            this.rdoAppointMonth.Size = new System.Drawing.Size(21, 20);
+            this.rdoAppointMonth.Size = new System.Drawing.Size(14, 13);
             this.rdoAppointMonth.TabIndex = 65;
             this.rdoAppointMonth.UseVisualStyleBackColor = true;
             // 
@@ -1287,18 +1209,16 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label45.Location = new System.Drawing.Point(380, 118);
-            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label45.Location = new System.Drawing.Point(253, 79);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(117, 28);
+            this.label45.Size = new System.Drawing.Size(79, 20);
             this.label45.TabIndex = 64;
             this.label45.Text = "月执行一次";
             // 
             // nudMonthFrequencyIntervalNum
             // 
             this.nudMonthFrequencyIntervalNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMonthFrequencyIntervalNum.Location = new System.Drawing.Point(296, 112);
-            this.nudMonthFrequencyIntervalNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMonthFrequencyIntervalNum.Location = new System.Drawing.Point(197, 75);
             this.nudMonthFrequencyIntervalNum.Maximum = new decimal(new int[] {
             12,
             0,
@@ -1310,7 +1230,7 @@
             0,
             0});
             this.nudMonthFrequencyIntervalNum.Name = "nudMonthFrequencyIntervalNum";
-            this.nudMonthFrequencyIntervalNum.Size = new System.Drawing.Size(80, 35);
+            this.nudMonthFrequencyIntervalNum.Size = new System.Drawing.Size(53, 26);
             this.nudMonthFrequencyIntervalNum.TabIndex = 63;
             this.nudMonthFrequencyIntervalNum.Value = new decimal(new int[] {
             1,
@@ -1322,18 +1242,16 @@
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label46.Location = new System.Drawing.Point(168, 118);
-            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label46.Location = new System.Drawing.Point(112, 79);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(117, 28);
+            this.label46.Size = new System.Drawing.Size(79, 20);
             this.label46.TabIndex = 62;
             this.label46.Text = "月开始，每";
             // 
             // nudMonthFrequencyBaseNum
             // 
             this.nudMonthFrequencyBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMonthFrequencyBaseNum.Location = new System.Drawing.Point(84, 112);
-            this.nudMonthFrequencyBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMonthFrequencyBaseNum.Location = new System.Drawing.Point(56, 75);
             this.nudMonthFrequencyBaseNum.Maximum = new decimal(new int[] {
             12,
             0,
@@ -1345,7 +1263,7 @@
             0,
             0});
             this.nudMonthFrequencyBaseNum.Name = "nudMonthFrequencyBaseNum";
-            this.nudMonthFrequencyBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.nudMonthFrequencyBaseNum.Size = new System.Drawing.Size(55, 26);
             this.nudMonthFrequencyBaseNum.TabIndex = 61;
             this.nudMonthFrequencyBaseNum.Value = new decimal(new int[] {
             1,
@@ -1357,10 +1275,9 @@
             // 
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label47.Location = new System.Drawing.Point(50, 117);
-            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label47.Location = new System.Drawing.Point(33, 78);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(33, 28);
+            this.label47.Size = new System.Drawing.Size(23, 20);
             this.label47.TabIndex = 60;
             this.label47.Text = "从";
             // 
@@ -1368,10 +1285,9 @@
             // 
             this.rdoFrequencyMonth.AutoSize = true;
             this.rdoFrequencyMonth.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoFrequencyMonth.Location = new System.Drawing.Point(20, 120);
-            this.rdoFrequencyMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoFrequencyMonth.Location = new System.Drawing.Point(13, 80);
             this.rdoFrequencyMonth.Name = "rdoFrequencyMonth";
-            this.rdoFrequencyMonth.Size = new System.Drawing.Size(21, 20);
+            this.rdoFrequencyMonth.Size = new System.Drawing.Size(14, 13);
             this.rdoFrequencyMonth.TabIndex = 59;
             this.rdoFrequencyMonth.UseVisualStyleBackColor = true;
             // 
@@ -1379,18 +1295,16 @@
             // 
             this.label48.AutoSize = true;
             this.label48.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label48.Location = new System.Drawing.Point(334, 64);
-            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label48.Location = new System.Drawing.Point(223, 43);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(33, 28);
+            this.label48.Size = new System.Drawing.Size(23, 20);
             this.label48.TabIndex = 58;
             this.label48.Text = "月";
             // 
             // nudMonthCycleEnd
             // 
             this.nudMonthCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMonthCycleEnd.Location = new System.Drawing.Point(246, 58);
-            this.nudMonthCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMonthCycleEnd.Location = new System.Drawing.Point(164, 39);
             this.nudMonthCycleEnd.Maximum = new decimal(new int[] {
             12,
             0,
@@ -1402,7 +1316,7 @@
             0,
             0});
             this.nudMonthCycleEnd.Name = "nudMonthCycleEnd";
-            this.nudMonthCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudMonthCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudMonthCycleEnd.TabIndex = 57;
             this.nudMonthCycleEnd.Value = new decimal(new int[] {
             1,
@@ -1414,20 +1328,18 @@
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label49.Location = new System.Drawing.Point(208, 64);
-            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label49.Location = new System.Drawing.Point(139, 43);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(35, 28);
+            this.label49.Size = new System.Drawing.Size(24, 20);
             this.label49.TabIndex = 56;
             this.label49.Text = "—";
             // 
             // nudMonthCycleBegin
             // 
             this.nudMonthCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudMonthCycleBegin.Location = new System.Drawing.Point(126, 58);
-            this.nudMonthCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudMonthCycleBegin.Location = new System.Drawing.Point(84, 39);
             this.nudMonthCycleBegin.Name = "nudMonthCycleBegin";
-            this.nudMonthCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudMonthCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudMonthCycleBegin.TabIndex = 55;
             this.nudMonthCycleBegin.Value = new decimal(new int[] {
             1,
@@ -1439,10 +1351,9 @@
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label50.Location = new System.Drawing.Point(50, 64);
-            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label50.Location = new System.Drawing.Point(33, 43);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(75, 28);
+            this.label50.Size = new System.Drawing.Size(51, 20);
             this.label50.TabIndex = 54;
             this.label50.Text = "周期从";
             // 
@@ -1450,10 +1361,9 @@
             // 
             this.rdoCycleMonth.AutoSize = true;
             this.rdoCycleMonth.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleMonth.Location = new System.Drawing.Point(20, 69);
-            this.rdoCycleMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleMonth.Location = new System.Drawing.Point(13, 46);
             this.rdoCycleMonth.Name = "rdoCycleMonth";
-            this.rdoCycleMonth.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleMonth.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleMonth.TabIndex = 53;
             this.rdoCycleMonth.UseVisualStyleBackColor = true;
             // 
@@ -1461,22 +1371,20 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label43.Location = new System.Drawing.Point(50, 20);
-            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label43.Location = new System.Drawing.Point(33, 13);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(251, 28);
+            this.label43.Size = new System.Drawing.Size(172, 20);
             this.label43.TabIndex = 38;
-            this.label43.Text = "每月 允许的通配符[, - * /]";
+            this.label43.Text = "每月 允许的通配符 [, - * /]";
             // 
             // rdoEveryMonth
             // 
             this.rdoEveryMonth.AutoSize = true;
             this.rdoEveryMonth.Checked = true;
             this.rdoEveryMonth.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEveryMonth.Location = new System.Drawing.Point(20, 24);
-            this.rdoEveryMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEveryMonth.Location = new System.Drawing.Point(13, 16);
             this.rdoEveryMonth.Name = "rdoEveryMonth";
-            this.rdoEveryMonth.Size = new System.Drawing.Size(21, 20);
+            this.rdoEveryMonth.Size = new System.Drawing.Size(14, 13);
             this.rdoEveryMonth.TabIndex = 37;
             this.rdoEveryMonth.TabStop = true;
             this.rdoEveryMonth.UseVisualStyleBackColor = true;
@@ -1503,10 +1411,9 @@
             this.tabWeek.Controls.Add(this.label52);
             this.tabWeek.Controls.Add(this.rdoEveryWeek);
             this.tabWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabWeek.Location = new System.Drawing.Point(4, 37);
-            this.tabWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabWeek.Location = new System.Drawing.Point(4, 29);
             this.tabWeek.Name = "tabWeek";
-            this.tabWeek.Size = new System.Drawing.Size(798, 483);
+            this.tabWeek.Size = new System.Drawing.Size(529, 316);
             this.tabWeek.TabIndex = 5;
             this.tabWeek.Text = "星期";
             this.tabWeek.UseVisualStyleBackColor = true;
@@ -1515,10 +1422,9 @@
             // 
             this.lblAppointWeek.AutoSize = true;
             this.lblAppointWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblAppointWeek.Location = new System.Drawing.Point(50, 264);
-            this.lblAppointWeek.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAppointWeek.Location = new System.Drawing.Point(33, 176);
             this.lblAppointWeek.Name = "lblAppointWeek";
-            this.lblAppointWeek.Size = new System.Drawing.Size(54, 28);
+            this.lblAppointWeek.Size = new System.Drawing.Size(37, 20);
             this.lblAppointWeek.TabIndex = 72;
             this.lblAppointWeek.Text = "指定";
             // 
@@ -1526,18 +1432,16 @@
             // 
             this.rdoAppointWeek.AutoSize = true;
             this.rdoAppointWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoAppointWeek.Location = new System.Drawing.Point(20, 270);
-            this.rdoAppointWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAppointWeek.Location = new System.Drawing.Point(13, 180);
             this.rdoAppointWeek.Name = "rdoAppointWeek";
-            this.rdoAppointWeek.Size = new System.Drawing.Size(21, 20);
+            this.rdoAppointWeek.Size = new System.Drawing.Size(14, 13);
             this.rdoAppointWeek.TabIndex = 71;
             this.rdoAppointWeek.UseVisualStyleBackColor = true;
             // 
             // nudWeekLastDay
             // 
             this.nudWeekLastDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudWeekLastDay.Location = new System.Drawing.Point(240, 212);
-            this.nudWeekLastDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudWeekLastDay.Location = new System.Drawing.Point(160, 141);
             this.nudWeekLastDay.Maximum = new decimal(new int[] {
             7,
             0,
@@ -1549,7 +1453,7 @@
             0,
             0});
             this.nudWeekLastDay.Name = "nudWeekLastDay";
-            this.nudWeekLastDay.Size = new System.Drawing.Size(82, 35);
+            this.nudWeekLastDay.Size = new System.Drawing.Size(55, 26);
             this.nudWeekLastDay.TabIndex = 70;
             this.nudWeekLastDay.Value = new decimal(new int[] {
             1,
@@ -1561,10 +1465,9 @@
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label58.Location = new System.Drawing.Point(50, 214);
-            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label58.Location = new System.Drawing.Point(33, 143);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(180, 28);
+            this.label58.Size = new System.Drawing.Size(121, 20);
             this.label58.TabIndex = 69;
             this.label58.Text = "本月最后一个星期";
             // 
@@ -1572,18 +1475,16 @@
             // 
             this.rdoLastWeek.AutoSize = true;
             this.rdoLastWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoLastWeek.Location = new System.Drawing.Point(20, 220);
-            this.rdoLastWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoLastWeek.Location = new System.Drawing.Point(13, 147);
             this.rdoLastWeek.Name = "rdoLastWeek";
-            this.rdoLastWeek.Size = new System.Drawing.Size(21, 20);
+            this.rdoLastWeek.Size = new System.Drawing.Size(14, 13);
             this.rdoLastWeek.TabIndex = 68;
             this.rdoLastWeek.UseVisualStyleBackColor = true;
             // 
             // undWeekSpecialDay
             // 
             this.undWeekSpecialDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.undWeekSpecialDay.Location = new System.Drawing.Point(290, 159);
-            this.undWeekSpecialDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.undWeekSpecialDay.Location = new System.Drawing.Point(193, 106);
             this.undWeekSpecialDay.Maximum = new decimal(new int[] {
             7,
             0,
@@ -1595,7 +1496,7 @@
             0,
             0});
             this.undWeekSpecialDay.Name = "undWeekSpecialDay";
-            this.undWeekSpecialDay.Size = new System.Drawing.Size(87, 35);
+            this.undWeekSpecialDay.Size = new System.Drawing.Size(58, 26);
             this.undWeekSpecialDay.TabIndex = 67;
             this.undWeekSpecialDay.Value = new decimal(new int[] {
             1,
@@ -1607,18 +1508,16 @@
             // 
             this.label56.AutoSize = true;
             this.label56.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label56.Location = new System.Drawing.Point(178, 164);
-            this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label56.Location = new System.Drawing.Point(119, 109);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(96, 28);
+            this.label56.Size = new System.Drawing.Size(65, 20);
             this.label56.TabIndex = 66;
             this.label56.Text = "周的星期";
             // 
             // undWeekSpecialBaseNum
             // 
             this.undWeekSpecialBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.undWeekSpecialBaseNum.Location = new System.Drawing.Point(86, 159);
-            this.undWeekSpecialBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.undWeekSpecialBaseNum.Location = new System.Drawing.Point(57, 106);
             this.undWeekSpecialBaseNum.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1630,7 +1529,7 @@
             0,
             0});
             this.undWeekSpecialBaseNum.Name = "undWeekSpecialBaseNum";
-            this.undWeekSpecialBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.undWeekSpecialBaseNum.Size = new System.Drawing.Size(55, 26);
             this.undWeekSpecialBaseNum.TabIndex = 65;
             this.undWeekSpecialBaseNum.Value = new decimal(new int[] {
             1,
@@ -1642,10 +1541,9 @@
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label57.Location = new System.Drawing.Point(50, 164);
-            this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label57.Location = new System.Drawing.Point(33, 109);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(33, 28);
+            this.label57.Size = new System.Drawing.Size(23, 20);
             this.label57.TabIndex = 64;
             this.label57.Text = "第";
             // 
@@ -1653,10 +1551,9 @@
             // 
             this.rdoSpecialWeek.AutoSize = true;
             this.rdoSpecialWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoSpecialWeek.Location = new System.Drawing.Point(20, 168);
-            this.rdoSpecialWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoSpecialWeek.Location = new System.Drawing.Point(13, 112);
             this.rdoSpecialWeek.Name = "rdoSpecialWeek";
-            this.rdoSpecialWeek.Size = new System.Drawing.Size(21, 20);
+            this.rdoSpecialWeek.Size = new System.Drawing.Size(14, 13);
             this.rdoSpecialWeek.TabIndex = 63;
             this.rdoSpecialWeek.UseVisualStyleBackColor = true;
             // 
@@ -1664,18 +1561,16 @@
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label55.Location = new System.Drawing.Point(252, 114);
-            this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label55.Location = new System.Drawing.Point(168, 76);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(35, 28);
+            this.label55.Size = new System.Drawing.Size(24, 20);
             this.label55.TabIndex = 62;
             this.label55.Text = "—";
             // 
             // nudWeekCycleEnd
             // 
             this.nudWeekCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudWeekCycleEnd.Location = new System.Drawing.Point(290, 108);
-            this.nudWeekCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudWeekCycleEnd.Location = new System.Drawing.Point(193, 72);
             this.nudWeekCycleEnd.Maximum = new decimal(new int[] {
             7,
             0,
@@ -1687,7 +1582,7 @@
             0,
             0});
             this.nudWeekCycleEnd.Name = "nudWeekCycleEnd";
-            this.nudWeekCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudWeekCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudWeekCycleEnd.TabIndex = 61;
             this.nudWeekCycleEnd.Value = new decimal(new int[] {
             1,
@@ -1698,8 +1593,7 @@
             // nudWeekCycleBegin
             // 
             this.nudWeekCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudWeekCycleBegin.Location = new System.Drawing.Point(170, 108);
-            this.nudWeekCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudWeekCycleBegin.Location = new System.Drawing.Point(113, 72);
             this.nudWeekCycleBegin.Maximum = new decimal(new int[] {
             7,
             0,
@@ -1711,7 +1605,7 @@
             0,
             0});
             this.nudWeekCycleBegin.Name = "nudWeekCycleBegin";
-            this.nudWeekCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudWeekCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudWeekCycleBegin.TabIndex = 60;
             this.nudWeekCycleBegin.Value = new decimal(new int[] {
             1,
@@ -1723,10 +1617,9 @@
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label54.Location = new System.Drawing.Point(50, 112);
-            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label54.Location = new System.Drawing.Point(33, 75);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(117, 28);
+            this.label54.Size = new System.Drawing.Size(79, 20);
             this.label54.TabIndex = 59;
             this.label54.Text = "周期从星期";
             // 
@@ -1734,10 +1627,9 @@
             // 
             this.rdoCycleWeek.AutoSize = true;
             this.rdoCycleWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleWeek.Location = new System.Drawing.Point(20, 117);
-            this.rdoCycleWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleWeek.Location = new System.Drawing.Point(13, 78);
             this.rdoCycleWeek.Name = "rdoCycleWeek";
-            this.rdoCycleWeek.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleWeek.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleWeek.TabIndex = 58;
             this.rdoCycleWeek.UseVisualStyleBackColor = true;
             // 
@@ -1745,10 +1637,9 @@
             // 
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label53.Location = new System.Drawing.Point(50, 64);
-            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label53.Location = new System.Drawing.Point(33, 43);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(75, 28);
+            this.label53.Size = new System.Drawing.Size(51, 20);
             this.label53.TabIndex = 46;
             this.label53.Text = "不指定";
             // 
@@ -1757,10 +1648,9 @@
             this.rdoNotSpecifyWeek.AutoSize = true;
             this.rdoNotSpecifyWeek.Checked = true;
             this.rdoNotSpecifyWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoNotSpecifyWeek.Location = new System.Drawing.Point(20, 69);
-            this.rdoNotSpecifyWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoNotSpecifyWeek.Location = new System.Drawing.Point(13, 46);
             this.rdoNotSpecifyWeek.Name = "rdoNotSpecifyWeek";
-            this.rdoNotSpecifyWeek.Size = new System.Drawing.Size(21, 20);
+            this.rdoNotSpecifyWeek.Size = new System.Drawing.Size(14, 13);
             this.rdoNotSpecifyWeek.TabIndex = 45;
             this.rdoNotSpecifyWeek.TabStop = true;
             this.rdoNotSpecifyWeek.UseVisualStyleBackColor = true;
@@ -1769,21 +1659,19 @@
             // 
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label52.Location = new System.Drawing.Point(50, 20);
-            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label52.Location = new System.Drawing.Point(33, 13);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(608, 28);
+            this.label52.Size = new System.Drawing.Size(431, 20);
             this.label52.TabIndex = 40;
-            this.label52.Text = "每周 允许的通配符[, - * / ? L C #](1表示星期天, 2表示星期一, ...)";
+            this.label52.Text = "每周 允许的通配符 [, - * / ? L C #]（1表示星期天, 2表示星期一, ... ）";
             // 
             // rdoEveryWeek
             // 
             this.rdoEveryWeek.AutoSize = true;
             this.rdoEveryWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEveryWeek.Location = new System.Drawing.Point(20, 24);
-            this.rdoEveryWeek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEveryWeek.Location = new System.Drawing.Point(13, 16);
             this.rdoEveryWeek.Name = "rdoEveryWeek";
-            this.rdoEveryWeek.Size = new System.Drawing.Size(21, 20);
+            this.rdoEveryWeek.Size = new System.Drawing.Size(14, 13);
             this.rdoEveryWeek.TabIndex = 39;
             this.rdoEveryWeek.UseVisualStyleBackColor = true;
             // 
@@ -1806,10 +1694,9 @@
             this.tabYear.Controls.Add(this.label60);
             this.tabYear.Controls.Add(this.rdoEveryYear);
             this.tabYear.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabYear.Location = new System.Drawing.Point(4, 37);
-            this.tabYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabYear.Location = new System.Drawing.Point(4, 29);
             this.tabYear.Name = "tabYear";
-            this.tabYear.Size = new System.Drawing.Size(798, 483);
+            this.tabYear.Size = new System.Drawing.Size(529, 316);
             this.tabYear.TabIndex = 6;
             this.tabYear.Text = "年";
             this.tabYear.UseVisualStyleBackColor = true;
@@ -1818,18 +1705,16 @@
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label67.Location = new System.Drawing.Point(394, 164);
-            this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label67.Location = new System.Drawing.Point(263, 109);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(117, 28);
+            this.label67.Size = new System.Drawing.Size(79, 20);
             this.label67.TabIndex = 74;
             this.label67.Text = "年执行一次";
             // 
             // nudYearFrequencyIntervalNum
             // 
             this.nudYearFrequencyIntervalNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudYearFrequencyIntervalNum.Location = new System.Drawing.Point(302, 159);
-            this.nudYearFrequencyIntervalNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudYearFrequencyIntervalNum.Location = new System.Drawing.Point(201, 106);
             this.nudYearFrequencyIntervalNum.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1841,7 +1726,7 @@
             0,
             0});
             this.nudYearFrequencyIntervalNum.Name = "nudYearFrequencyIntervalNum";
-            this.nudYearFrequencyIntervalNum.Size = new System.Drawing.Size(87, 35);
+            this.nudYearFrequencyIntervalNum.Size = new System.Drawing.Size(58, 26);
             this.nudYearFrequencyIntervalNum.TabIndex = 73;
             this.nudYearFrequencyIntervalNum.Value = new decimal(new int[] {
             1,
@@ -1853,30 +1738,27 @@
             // 
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label65.Location = new System.Drawing.Point(178, 165);
-            this.label65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label65.Location = new System.Drawing.Point(119, 110);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(117, 28);
+            this.label65.Size = new System.Drawing.Size(79, 20);
             this.label65.TabIndex = 72;
             this.label65.Text = "年开始，每";
             // 
             // nudYearFrequencyBaseNum
             // 
             this.nudYearFrequencyBaseNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudYearFrequencyBaseNum.Location = new System.Drawing.Point(86, 159);
-            this.nudYearFrequencyBaseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudYearFrequencyBaseNum.Location = new System.Drawing.Point(57, 106);
             this.nudYearFrequencyBaseNum.Name = "nudYearFrequencyBaseNum";
-            this.nudYearFrequencyBaseNum.Size = new System.Drawing.Size(82, 35);
+            this.nudYearFrequencyBaseNum.Size = new System.Drawing.Size(55, 26);
             this.nudYearFrequencyBaseNum.TabIndex = 71;
             // 
             // label66
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label66.Location = new System.Drawing.Point(50, 164);
-            this.label66.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label66.Location = new System.Drawing.Point(33, 109);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(33, 28);
+            this.label66.Size = new System.Drawing.Size(23, 20);
             this.label66.TabIndex = 70;
             this.label66.Text = "从";
             // 
@@ -1884,10 +1766,9 @@
             // 
             this.rdoFrequencyYear.AutoSize = true;
             this.rdoFrequencyYear.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoFrequencyYear.Location = new System.Drawing.Point(20, 168);
-            this.rdoFrequencyYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoFrequencyYear.Location = new System.Drawing.Point(13, 112);
             this.rdoFrequencyYear.Name = "rdoFrequencyYear";
-            this.rdoFrequencyYear.Size = new System.Drawing.Size(21, 20);
+            this.rdoFrequencyYear.Size = new System.Drawing.Size(14, 13);
             this.rdoFrequencyYear.TabIndex = 69;
             this.rdoFrequencyYear.UseVisualStyleBackColor = true;
             // 
@@ -1895,10 +1776,9 @@
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label64.Location = new System.Drawing.Point(350, 112);
-            this.label64.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label64.Location = new System.Drawing.Point(233, 75);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(33, 28);
+            this.label64.Size = new System.Drawing.Size(23, 20);
             this.label64.TabIndex = 68;
             this.label64.Text = "年";
             // 
@@ -1906,39 +1786,35 @@
             // 
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label62.Location = new System.Drawing.Point(219, 114);
-            this.label62.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label62.Location = new System.Drawing.Point(146, 76);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(35, 28);
+            this.label62.Size = new System.Drawing.Size(24, 20);
             this.label62.TabIndex = 67;
             this.label62.Text = "—";
             // 
             // nudYearCycleEnd
             // 
             this.nudYearCycleEnd.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudYearCycleEnd.Location = new System.Drawing.Point(256, 108);
-            this.nudYearCycleEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudYearCycleEnd.Location = new System.Drawing.Point(171, 72);
             this.nudYearCycleEnd.Name = "nudYearCycleEnd";
-            this.nudYearCycleEnd.Size = new System.Drawing.Size(87, 35);
+            this.nudYearCycleEnd.Size = new System.Drawing.Size(58, 26);
             this.nudYearCycleEnd.TabIndex = 66;
             // 
             // nudYearCycleBegin
             // 
             this.nudYearCycleBegin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.nudYearCycleBegin.Location = new System.Drawing.Point(134, 108);
-            this.nudYearCycleBegin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudYearCycleBegin.Location = new System.Drawing.Point(89, 72);
             this.nudYearCycleBegin.Name = "nudYearCycleBegin";
-            this.nudYearCycleBegin.Size = new System.Drawing.Size(82, 35);
+            this.nudYearCycleBegin.Size = new System.Drawing.Size(55, 26);
             this.nudYearCycleBegin.TabIndex = 65;
             // 
             // label63
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label63.Location = new System.Drawing.Point(50, 112);
-            this.label63.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label63.Location = new System.Drawing.Point(33, 75);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(75, 28);
+            this.label63.Size = new System.Drawing.Size(51, 20);
             this.label63.TabIndex = 64;
             this.label63.Text = "周期从";
             // 
@@ -1946,10 +1822,9 @@
             // 
             this.rdoCycleYear.AutoSize = true;
             this.rdoCycleYear.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoCycleYear.Location = new System.Drawing.Point(20, 117);
-            this.rdoCycleYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCycleYear.Location = new System.Drawing.Point(13, 78);
             this.rdoCycleYear.Name = "rdoCycleYear";
-            this.rdoCycleYear.Size = new System.Drawing.Size(21, 20);
+            this.rdoCycleYear.Size = new System.Drawing.Size(14, 13);
             this.rdoCycleYear.TabIndex = 63;
             this.rdoCycleYear.UseVisualStyleBackColor = true;
             // 
@@ -1957,10 +1832,9 @@
             // 
             this.label61.AutoSize = true;
             this.label61.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label61.Location = new System.Drawing.Point(50, 64);
-            this.label61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label61.Location = new System.Drawing.Point(33, 43);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(75, 28);
+            this.label61.Size = new System.Drawing.Size(51, 20);
             this.label61.TabIndex = 48;
             this.label61.Text = "不指定";
             // 
@@ -1969,10 +1843,9 @@
             this.rdoNotSpecifyYear.AutoSize = true;
             this.rdoNotSpecifyYear.Checked = true;
             this.rdoNotSpecifyYear.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoNotSpecifyYear.Location = new System.Drawing.Point(20, 69);
-            this.rdoNotSpecifyYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoNotSpecifyYear.Location = new System.Drawing.Point(13, 46);
             this.rdoNotSpecifyYear.Name = "rdoNotSpecifyYear";
-            this.rdoNotSpecifyYear.Size = new System.Drawing.Size(21, 20);
+            this.rdoNotSpecifyYear.Size = new System.Drawing.Size(14, 13);
             this.rdoNotSpecifyYear.TabIndex = 47;
             this.rdoNotSpecifyYear.TabStop = true;
             this.rdoNotSpecifyYear.UseVisualStyleBackColor = true;
@@ -1981,21 +1854,19 @@
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label60.Location = new System.Drawing.Point(50, 20);
-            this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label60.Location = new System.Drawing.Point(33, 13);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(320, 28);
+            this.label60.Size = new System.Drawing.Size(218, 20);
             this.label60.TabIndex = 42;
-            this.label60.Text = "每年 允许的通配符[, - * /] 非必填";
+            this.label60.Text = "每年 允许的通配符 [, - * /] 非必填";
             // 
             // rdoEveryYear
             // 
             this.rdoEveryYear.AutoSize = true;
             this.rdoEveryYear.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdoEveryYear.Location = new System.Drawing.Point(20, 24);
-            this.rdoEveryYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoEveryYear.Location = new System.Drawing.Point(13, 16);
             this.rdoEveryYear.Name = "rdoEveryYear";
-            this.rdoEveryYear.Size = new System.Drawing.Size(21, 20);
+            this.rdoEveryYear.Size = new System.Drawing.Size(14, 13);
             this.rdoEveryYear.TabIndex = 41;
             this.rdoEveryYear.UseVisualStyleBackColor = true;
             // 
@@ -2022,21 +1893,18 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(4, 531);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(3, 354);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1131, 183);
+            this.groupBox1.Size = new System.Drawing.Size(754, 122);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // CloseButton
             // 
             this.CloseButton.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CloseButton.Location = new System.Drawing.Point(1002, 116);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CloseButton.Location = new System.Drawing.Point(668, 77);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(120, 52);
+            this.CloseButton.Size = new System.Drawing.Size(80, 35);
             this.CloseButton.TabIndex = 19;
             this.CloseButton.Text = "关闭";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -2045,10 +1913,9 @@
             // ReverseButton
             // 
             this.ReverseButton.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ReverseButton.Location = new System.Drawing.Point(1002, 48);
-            this.ReverseButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReverseButton.Location = new System.Drawing.Point(668, 32);
             this.ReverseButton.Name = "ReverseButton";
-            this.ReverseButton.Size = new System.Drawing.Size(120, 52);
+            this.ReverseButton.Size = new System.Drawing.Size(80, 35);
             this.ReverseButton.TabIndex = 18;
             this.ReverseButton.Text = "反解析";
             this.ReverseButton.UseVisualStyleBackColor = true;
@@ -2057,10 +1924,9 @@
             // CopyButton
             // 
             this.CopyButton.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CopyButton.Location = new System.Drawing.Point(856, 116);
-            this.CopyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CopyButton.Location = new System.Drawing.Point(571, 77);
             this.CopyButton.Name = "CopyButton";
-            this.CopyButton.Size = new System.Drawing.Size(120, 52);
+            this.CopyButton.Size = new System.Drawing.Size(80, 35);
             this.CopyButton.TabIndex = 17;
             this.CopyButton.Text = "复制";
             this.CopyButton.UseVisualStyleBackColor = true;
@@ -2069,96 +1935,87 @@
             // txtExpression
             // 
             this.txtExpression.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtExpression.Location = new System.Drawing.Point(177, 123);
-            this.txtExpression.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExpression.Location = new System.Drawing.Point(118, 82);
             this.txtExpression.Name = "txtExpression";
-            this.txtExpression.Size = new System.Drawing.Size(666, 35);
+            this.txtExpression.Size = new System.Drawing.Size(445, 26);
             this.txtExpression.TabIndex = 16;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(20, 128);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(13, 85);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(123, 28);
+            this.label9.Size = new System.Drawing.Size(83, 20);
             this.label9.TabIndex = 15;
             this.label9.Text = "Cron表达式";
             // 
             // txtYearCron
             // 
             this.txtYearCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtYearCron.Location = new System.Drawing.Point(870, 70);
-            this.txtYearCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtYearCron.Location = new System.Drawing.Point(580, 47);
             this.txtYearCron.Name = "txtYearCron";
             this.txtYearCron.ReadOnly = true;
-            this.txtYearCron.Size = new System.Drawing.Size(88, 35);
+            this.txtYearCron.Size = new System.Drawing.Size(60, 26);
             this.txtYearCron.TabIndex = 14;
             // 
             // txtMonthCron
             // 
             this.txtMonthCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtMonthCron.Location = new System.Drawing.Point(640, 70);
-            this.txtMonthCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMonthCron.Location = new System.Drawing.Point(427, 47);
             this.txtMonthCron.Name = "txtMonthCron";
             this.txtMonthCron.ReadOnly = true;
-            this.txtMonthCron.Size = new System.Drawing.Size(88, 35);
+            this.txtMonthCron.Size = new System.Drawing.Size(60, 26);
             this.txtMonthCron.TabIndex = 13;
             this.txtMonthCron.Text = "*";
             // 
             // txtWeekCron
             // 
             this.txtWeekCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtWeekCron.Location = new System.Drawing.Point(754, 70);
-            this.txtWeekCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtWeekCron.Location = new System.Drawing.Point(503, 47);
             this.txtWeekCron.Name = "txtWeekCron";
             this.txtWeekCron.ReadOnly = true;
-            this.txtWeekCron.Size = new System.Drawing.Size(88, 35);
+            this.txtWeekCron.Size = new System.Drawing.Size(60, 26);
             this.txtWeekCron.TabIndex = 12;
             this.txtWeekCron.Text = "?";
             // 
             // txtDayCron
             // 
             this.txtDayCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDayCron.Location = new System.Drawing.Point(520, 70);
-            this.txtDayCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDayCron.Location = new System.Drawing.Point(347, 47);
             this.txtDayCron.Name = "txtDayCron";
             this.txtDayCron.ReadOnly = true;
-            this.txtDayCron.Size = new System.Drawing.Size(88, 35);
+            this.txtDayCron.Size = new System.Drawing.Size(60, 26);
             this.txtDayCron.TabIndex = 11;
             this.txtDayCron.Text = "*";
             // 
             // txtHourCron
             // 
             this.txtHourCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtHourCron.Location = new System.Drawing.Point(406, 70);
-            this.txtHourCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHourCron.Location = new System.Drawing.Point(271, 47);
             this.txtHourCron.Name = "txtHourCron";
             this.txtHourCron.ReadOnly = true;
-            this.txtHourCron.Size = new System.Drawing.Size(88, 35);
+            this.txtHourCron.Size = new System.Drawing.Size(60, 26);
             this.txtHourCron.TabIndex = 10;
             this.txtHourCron.Text = "*";
             // 
             // txtMinuteCron
             // 
             this.txtMinuteCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtMinuteCron.Location = new System.Drawing.Point(285, 70);
-            this.txtMinuteCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMinuteCron.Location = new System.Drawing.Point(190, 47);
             this.txtMinuteCron.Name = "txtMinuteCron";
             this.txtMinuteCron.ReadOnly = true;
-            this.txtMinuteCron.Size = new System.Drawing.Size(88, 35);
+            this.txtMinuteCron.Size = new System.Drawing.Size(60, 26);
             this.txtMinuteCron.TabIndex = 9;
             this.txtMinuteCron.Text = "*";
             // 
             // txtSecondCron
             // 
             this.txtSecondCron.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSecondCron.Location = new System.Drawing.Point(177, 70);
-            this.txtSecondCron.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSecondCron.Location = new System.Drawing.Point(118, 47);
             this.txtSecondCron.Name = "txtSecondCron";
             this.txtSecondCron.ReadOnly = true;
-            this.txtSecondCron.Size = new System.Drawing.Size(88, 35);
+            this.txtSecondCron.Size = new System.Drawing.Size(60, 26);
             this.txtSecondCron.TabIndex = 8;
             this.txtSecondCron.Text = "*";
             // 
@@ -2166,10 +2023,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(279, 36);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(186, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 28);
+            this.label8.Size = new System.Drawing.Size(37, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "分钟";
             // 
@@ -2177,10 +2033,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(400, 36);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(267, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 28);
+            this.label7.Size = new System.Drawing.Size(37, 20);
             this.label7.TabIndex = 6;
             this.label7.Text = "小时";
             // 
@@ -2188,10 +2043,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(514, 36);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(343, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 28);
+            this.label6.Size = new System.Drawing.Size(23, 20);
             this.label6.TabIndex = 5;
             this.label6.Text = "日";
             // 
@@ -2199,10 +2053,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(634, 36);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(423, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 28);
+            this.label5.Size = new System.Drawing.Size(23, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "月";
             // 
@@ -2210,10 +2063,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(748, 36);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(499, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 28);
+            this.label4.Size = new System.Drawing.Size(37, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "星期";
             // 
@@ -2221,10 +2073,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(864, 36);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(576, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 28);
+            this.label3.Size = new System.Drawing.Size(23, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "年";
             // 
@@ -2232,10 +2083,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(171, 36);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(114, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 28);
+            this.label2.Size = new System.Drawing.Size(23, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "秒";
             // 
@@ -2243,10 +2093,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(20, 70);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(13, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 28);
+            this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "表达式字段";
             // 
@@ -2254,10 +2103,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(819, 18);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(546, 12);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(204, 28);
+            this.label10.Size = new System.Drawing.Size(137, 20);
             this.label10.TabIndex = 2;
             this.label10.Tag = "";
             this.label10.Text = "最近50次运行时间：";
@@ -2265,25 +2113,23 @@
             // txtRunDetail
             // 
             this.txtRunDetail.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtRunDetail.Location = new System.Drawing.Point(819, 48);
-            this.txtRunDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRunDetail.Location = new System.Drawing.Point(546, 32);
             this.txtRunDetail.Multiline = true;
             this.txtRunDetail.Name = "txtRunDetail";
             this.txtRunDetail.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRunDetail.Size = new System.Drawing.Size(314, 478);
+            this.txtRunDetail.Size = new System.Drawing.Size(211, 320);
             this.txtRunDetail.TabIndex = 3;
             // 
             // QuartzCronForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 726);
+            this.ClientSize = new System.Drawing.Size(769, 484);
             this.Controls.Add(this.txtRunDetail);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tab);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "QuartzCronForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
