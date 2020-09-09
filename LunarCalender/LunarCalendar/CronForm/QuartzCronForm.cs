@@ -11,8 +11,6 @@ namespace LunarCalendar
 {
     public partial class QuartzCronForm : Form
     {
-        readonly int _controlWidth = 70;
-        readonly int _controlHeight = 25;
         public QuartzCronForm()
         {
             InitializeComponent();
@@ -645,7 +643,7 @@ namespace LunarCalendar
         }
 
         /// <summary>
-        ///反解析到ui
+        ///反解析到UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -662,7 +660,7 @@ namespace LunarCalendar
             {
                 try
                 {
-                    ReverseUi(crons);
+                    ReverseUI(crons);
                 }
                 catch (Exception ex)
                 {
@@ -719,10 +717,10 @@ namespace LunarCalendar
         }
 
         /// <summary>
-        /// 反解析到ui
+        /// 反解析到UI
         /// </summary>
         /// <param name="crons"></param>
-        private void ReverseUi(List<string> crons)
+        private void ReverseUI(List<string> crons)
         {
             var tabPages = tab.TabPages;
             for (var i = 0; i < crons.Count; i++)
