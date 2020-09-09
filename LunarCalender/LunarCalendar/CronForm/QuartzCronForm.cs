@@ -207,7 +207,8 @@ namespace LunarCalendar
                 }
                 var chkTime = new CheckBox
                 {
-                    Text = Common.GetWeekDayText(i + 1),
+                    Text = Common.GetWeekDayText((WeekdayEnum)(i + 1)),
+                    Tag = i + 1,
                     Name = "chkWeek" + i,
                     Size = new Size(width, height),
                     Location = new Point(px + width * xStep, py + yStep)
@@ -558,7 +559,7 @@ namespace LunarCalendar
                 var chk = (CheckBox)control;
                 if (chk.Checked)
                 {
-                    string text = chk.Text.StartsWith("星期") ? Common.GetWeekValue(chk.Text).ToString() : chk.Text;
+                    string text = chk.Text.StartsWith("星期") ? chk.Tag.ToString() : chk.Text;
                     strCron += text + ",";
                 }
             }

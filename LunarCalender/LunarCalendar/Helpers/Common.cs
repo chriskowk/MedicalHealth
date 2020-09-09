@@ -12,6 +12,20 @@ using System.Windows.Interop;
 namespace LunarCalendar
 {
     /// <summary>
+    /// 正确表达式：0 0 5 ? * 2-6  或者 0 0 5 ? * MON-FRI （Cron支持配置星期缩写 MON TUE WED THU FRI SAT SUN）
+    /// 星期数值枚举如下
+    /// </summary>
+    public enum WeekdayEnum
+    {
+        SUNDAY = 1,
+        MONDAY = 2,
+        TUESDAY = 3,
+        WEDNESDAY = 4,
+        THURSDAY = 5,
+        FRIDAY = 6,
+        SATURDAY = 7
+    }
+    /// <summary>
     /// 
     /// </summary>
     public static class WindowStateMessage
@@ -74,75 +88,39 @@ namespace LunarCalendar
             }
             return outputString;
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="weekday"></param>
         /// <returns></returns>
-        public static string GetWeekDayText(int value)
+        public static string GetWeekDayText(WeekdayEnum weekday)
         {
             string ret = string.Empty;
-            switch (value)
+            switch (weekday)
             {
-                case 1:
-                    ret = "星期一";
-                    break;
-                case 2:
-                    ret = "星期二";
-                    break;
-                case 3:
-                    ret = "星期三";
-                    break;
-                case 4:
-                    ret = "星期四";
-                    break;
-                case 5:
-                    ret = "星期五";
-                    break;
-                case 6:
-                    ret = "星期六";
-                    break;
-                case 7:
+                case WeekdayEnum.SUNDAY:
                     ret = "星期日";
                     break;
-                default:
+                case WeekdayEnum.MONDAY:
+                    ret = "星期一";
                     break;
-            }
-            return ret;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public static int GetWeekValue(string text)
-        {
-            int ret;
-            switch (text)
-            {
-                case "星期一":
-                    ret = 1;
+                case WeekdayEnum.TUESDAY:
+                    ret = "星期二";
                     break;
-                case "星期二":
-                    ret = 2;
+                case WeekdayEnum.WEDNESDAY:
+                    ret = "星期三";
                     break;
-                case "星期三":
-                    ret = 3;
+                case WeekdayEnum.THURSDAY:
+                    ret = "星期四";
                     break;
-                case "星期四":
-                    ret = 4;
+                case WeekdayEnum.FRIDAY:
+                    ret = "星期五";
                     break;
-                case "星期五":
-                    ret = 5;
-                    break;
-                case "星期六":
-                    ret = 6;
-                    break;
-                case "星期日":
-                    ret = 7;
+                case WeekdayEnum.SATURDAY:
+                    ret = "星期六";
                     break;
                 default:
-                    int.TryParse(text, out ret);
                     break;
             }
             return ret;
