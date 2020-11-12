@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TFSideKicks"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Team Foundation Sidekicks" Height="448.773" Width="525" Loaded="Window_Loaded" Activated="Window_Activated" Icon="application.ico" >
+        Title="Team Foundation Sidekicks" Width="640" Height="480" Loaded="Window_Loaded" Activated="Window_Activated" Icon="application.ico" >
     <Grid Margin="5,5,5,5">
         <Grid.Resources>
             <Style TargetType="Label">
@@ -23,9 +23,11 @@
             <RowDefinition Height="5" />
             <RowDefinition Height="30" />
             <RowDefinition Height="5" />
-            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="5" />
-            <RowDefinition Height="60" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="90" />
             <RowDefinition Height="5" />
             <RowDefinition Height="*"/>
             <RowDefinition Height="5" />
@@ -39,15 +41,24 @@
         <ComboBox Name="_cboTfsUris" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" SelectionChanged="_cboTfsUris_SelectionChanged"/>
         <Label Grid.Row="2" >团队项目</Label>
         <ComboBox Name="_cboProjects" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
-        <Label Grid.Row="4" >工作项ID串</Label>
-        <TextBox Name="_txtWorkItemIDs" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.Row="4" Grid.Column="1" VerticalAlignment="Stretch"/>
-        <Label Grid.Row="6" >TFS WorkItemIDs</Label>
-        <TextBox Name="_txtTFSWorkItemIDs" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.Row="6" Grid.Column="1" VerticalAlignment="Stretch"/>
-        <Label Grid.Row="8" >处理结果</Label>
-        <Border BorderBrush="Gray" BorderThickness="1" Grid.Row="8" Grid.Column="1" >
-            <TextBlock  Name="_tbStatus" VerticalAlignment="Stretch" />
+        <Label Grid.Row="4" >提交版本ID</Label>
+        <Grid Grid.Row="4" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="_txtVersionID" Grid.Column="0" VerticalAlignment="Stretch"/>
+            <Button x:Name="_btnbtnRetrieve" Grid.Column="1" Margin="10,0,0,0" Click="_btnRetrieve_Click" Content="提取工作项" Width="Auto"/>
+        </Grid>
+        <Label Grid.Row="6" >工作项ID串</Label>
+        <TextBox Name="_txtWorkItemIDs" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.Row="6" Grid.Column="1" VerticalAlignment="Stretch"/>
+        <Label Grid.Row="8" >TFS WorkItemIDs</Label>
+        <TextBox Name="_txtTFSWorkItemIDs" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.Row="8" Grid.Column="1" VerticalAlignment="Stretch"/>
+        <Label Grid.Row="10" >处理结果</Label>
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Row="10" Grid.Column="1" >
+            <TextBox Name="_tbStatus" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" IsReadOnly="True" VerticalAlignment="Stretch"/>
         </Border>
-        <Grid Grid.Row="10" Grid.Column="1" >
+        <Grid Grid.Row="12" Grid.Column="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="200"/>
