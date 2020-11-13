@@ -11,11 +11,15 @@
             <Style TargetType="Label">
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="FontFamily" Value="Microsoft YaHei"/>
+                <Setter Property="FontSize" Value="13"/>
             </Style>
             <Style TargetType="Button">
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="Width" Value="100"/>
+                <Setter Property="FontFamily" Value="Microsoft YaHei"/>
+                <Setter Property="FontSize" Value="13"/>
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>
@@ -26,7 +30,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" >客户版本</Label>
