@@ -573,3 +573,4 @@ F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj.CopyComplete
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ShowHistory.g.cs
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ShowHistory.baml
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojAssemblyReference.cache
