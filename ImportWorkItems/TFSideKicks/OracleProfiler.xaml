@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TFSideKicks"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="OracleSqlProfiler" Height="768" Width="1024" Icon="1.ico" Activated="Window_Activated">
+        Title="SQL语句探查器 - [Oracle版]" Height="768" Width="1024" Icon="1.ico" Activated="Window_Activated">
     <Grid Margin="5,5,5,5">
         <Grid.Resources>
             <Style TargetType="Label">
@@ -36,15 +36,15 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80" />
-            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="170" />
             <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="170" />
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" >Source</Label>
         <TextBox Name="tb_source" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="172.18.99.243:1521/orclbak" ToolTip="like xx.xx.xx.xx:1521/orcl" />
-        <TextBox Name="tb_log" Foreground="DarkGray" IsReadOnly="True" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
+        <TextBox Name="tb_log" Background="LightYellow" Foreground="DarkGray" IsReadOnly="True" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
         <Label Grid.Row="2" >User ID</Label>
         <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="apps"/>
         <Label Grid.Row="2" Grid.Column="2">Password</Label>
