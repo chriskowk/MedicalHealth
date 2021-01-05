@@ -636,8 +636,11 @@ namespace LunarCalendar
             return baseNum + "#" + day;
         }
 
+        public bool HasCopied { get; private set; } = false;
+
         public void SetCornExpress(string cronexpr)
         {
+            HasCopied = false;
             txtExpression.Text = cronexpr;
             ReverseButton_Click(null, null);
         }
@@ -926,6 +929,7 @@ namespace LunarCalendar
             if (!string.IsNullOrEmpty(txtExpression.Text))
             {
                 Clipboard.SetDataObject(txtExpression.Text);
+                HasCopied = true;
             }
         }
 

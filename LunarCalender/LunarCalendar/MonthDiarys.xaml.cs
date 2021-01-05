@@ -220,6 +220,10 @@ namespace LunarCalendar
                 string cronexpr = string.IsNullOrWhiteSpace(_txtCronExpress.Text) ? "* * * * * ?" : _txtCronExpress.Text;
                 form.SetCornExpress(cronexpr);
                 form.ShowDialog();
+                if (form.HasCopied && MessageBox.Show("是否用您已复制表达式覆盖当前内容？", "设置提醒CRON表达式", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    this._txtCronExpress.Text = Clipboard.GetText();
+                }
             }
         }
 
