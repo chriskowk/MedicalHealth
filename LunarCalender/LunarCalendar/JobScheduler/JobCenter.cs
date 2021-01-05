@@ -84,7 +84,7 @@ namespace LunarCalendar.JobScheduler
             {
                 if (ex.Message.Contains("because one already exists with this identification"))
                 {
-                    string ret = await ResumeScheduleJobAsync(info);
+                    _ = await ResumeScheduleJobAsync(info);
                 }
                 return false;
             }

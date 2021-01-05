@@ -232,15 +232,13 @@ namespace LunarCalendar
                 else
                 {
                     //checkbox事件
-                    var chk = control as CheckBox;
-                    if (chk != null)
+                    if (control is CheckBox chk)
                     {
                         chk.CheckedChanged += checkBox_CheckedChanged;
                         chk.CheckedChanged += GenerateExpressionAndShowDetail;
                     }
                     //numericUpDown事件
-                    var nud = control.Parent as NumericUpDown;
-                    if (nud != null)
+                    if (control.Parent is NumericUpDown nud)
                     {
                         nud.TextChanged += numericUpDown_ValueChanged;
                         nud.MouseDown += numericUpDown_ValueChanged;
@@ -250,8 +248,7 @@ namespace LunarCalendar
                         nud.MouseUp += GenerateExpressionAndShowDetail;
                     }
                     //radio事件
-                    var rdo = control as RadioButton;
-                    if (rdo != null)
+                    if (control is RadioButton rdo)
                     {
                         rdo.CheckedChanged += radioButton_CheckedChanged;
                         rdo.CheckedChanged += GenerateExpressionAndShowDetail;

@@ -9,7 +9,7 @@ namespace LunarCalendar.SqlContext
 {
     public class ConnectionOption
     {
-        private static IDbConnection _dbConnection = new SQLiteConnection();
+        private static readonly IDbConnection _dbConnection = new SQLiteConnection();
         public static IDbConnection DbConnection
         {
             get

@@ -54,9 +54,7 @@ namespace LunarCalendar
         /// <returns></returns>
         public static object GetValue(string keyPath, object defaultValue)
         {
-            string keyName;
-            string valueName;
-            SplitKey(keyPath, out keyName, out valueName);
+            SplitKey(keyPath, out string keyName, out string valueName);
 
             return GetValue(keyName, valueName, defaultValue);
         }
@@ -112,9 +110,7 @@ namespace LunarCalendar
         /// <param name="value">值</param>
         public static void SetValue(string keyPath, object value)
         {
-            string keyName;
-            string valueName;
-            SplitKey(keyPath, out keyName, out valueName);
+            SplitKey(keyPath, out string keyName, out string valueName);
 
             Registry.SetValue(keyName, valueName, value);
         }
@@ -158,8 +154,7 @@ namespace LunarCalendar
 
         private static RegistryKey GetRegistryKey(string keyPath)
         {
-            string subKey;
-            RegistryKey rootKey = GetRootRegistryKey(keyPath, out subKey);
+            RegistryKey rootKey = GetRootRegistryKey(keyPath, out string subKey);
             return rootKey.CreateSubKey(subKey);
         }
 

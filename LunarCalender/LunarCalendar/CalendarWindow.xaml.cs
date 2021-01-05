@@ -42,7 +42,7 @@ namespace LunarCalendar
         private int _month;
         private int _day;
 
-        private CultureInfo _localCultureInfo = new CultureInfo(CultureInfo.CurrentUICulture.ToString());
+        private readonly CultureInfo _localCultureInfo = new CultureInfo(CultureInfo.CurrentUICulture.ToString());
         private StackPanel _selectedDatePanel;
         private UniformGrid _calendarDisplayUniformGrid;
 
@@ -50,11 +50,11 @@ namespace LunarCalendar
         //The first label is used to contain the hidden festival text,
         //the second label is used to contain the Gregorian text,
         //the third label is used to contain the Lunar text.
-        private static int _hiddenLabelIndex = 0;
-        private static int _mainLabelIndex = 1;
-        private static int _subsidiaryLabelIndex = 2;
+        private static readonly int _hiddenLabelIndex = 0;
+        private static readonly int _mainLabelIndex = 1;
+        private static readonly int _subsidiaryLabelIndex = 2;
 
-        private string[] WeekDays = new string[]{
+        private readonly string[] WeekDays = new string[]{
             LunarCalendar.Properties.Resources.Sunday,
             LunarCalendar.Properties.Resources.Monday,
             LunarCalendar.Properties.Resources.Tuesday,
@@ -198,18 +198,22 @@ namespace LunarCalendar
             _diaries = new DiaryDAL().GetDiaries(sql);
             for (int i = 0; i < dayNum; i++)
             {
-                TextBlock mainDateLabel = new TextBlock();
-                mainDateLabel.HorizontalAlignment = HorizontalAlignment.Center;
-                mainDateLabel.VerticalAlignment = VerticalAlignment.Center;
-                mainDateLabel.Background = Brushes.Black;
-                mainDateLabel.Padding = new Thickness(0, 0, 0, 0);
-                mainDateLabel.Margin = new Thickness(0, 0, 0, 0);
+                TextBlock mainDateLabel = new TextBlock
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Background = Brushes.Black,
+                    Padding = new Thickness(0, 0, 0, 0),
+                    Margin = new Thickness(0, 0, 0, 0)
+                };
 
                 //This label is used to hold the holiday string.
-                Label hiddenLabel = new Label();
-                hiddenLabel.HorizontalAlignment = HorizontalAlignment.Stretch;
-                hiddenLabel.VerticalAlignment = VerticalAlignment.Stretch;
-                hiddenLabel.Visibility = Visibility.Collapsed;
+                Label hiddenLabel = new Label
+                {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    Visibility = Visibility.Collapsed
+                };
 
                 //If the application is not running in zh-CN env, 
                 //it can display the date number bigger.
@@ -242,22 +246,26 @@ namespace LunarCalendar
                 Label subsidiary = null;
                 if (_localCultureInfo.ToString() == "zh-CN")
                 {
-                    subsidiary = new Label();
-                    subsidiary.HorizontalAlignment = HorizontalAlignment.Center;
-                    subsidiary.VerticalAlignment = VerticalAlignment.Center;
-                    subsidiary.Background = Brushes.Black;
-                    subsidiary.Padding = new Thickness(0, 0, 0, 0);
-                    subsidiary.FontSize = 13;
+                    subsidiary = new Label
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Background = Brushes.Black,
+                        Padding = new Thickness(0, 0, 0, 0),
+                        FontSize = 13,
 
-                    //Control the festival date to be red.
-                    subsidiary.Foreground = GetCellBrush(uc.Weekday, uc);
-                    subsidiary.Content = sLunarDate;
+                        //Control the festival date to be red.
+                        Foreground = GetCellBrush(uc.Weekday, uc),
+                        Content = sLunarDate
+                    };
                 }
 
                 //Compose the final displaying unit.
-                StackPanel stackPanel = new StackPanel();
-                stackPanel.HorizontalAlignment = HorizontalAlignment.Stretch;
-                stackPanel.VerticalAlignment = VerticalAlignment.Stretch;
+                StackPanel stackPanel = new StackPanel
+                {
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Stretch
+                };
 
                 stackPanel.Children.Add(hiddenLabel);
                 stackPanel.Children.Add(mainDateLabel);
@@ -276,16 +284,20 @@ namespace LunarCalendar
                     tt.HasDropShadow = false;
                     tt.BorderThickness = new Thickness(0);
                     tt.Background = Brushes.Transparent;
-                    FancyToolTip toolTip = new FancyToolTip();
-                    toolTip.Title = diary.Title;
-                    toolTip.InfoText = diary.Content;
-                    toolTip.Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RowVersion);
+                    FancyToolTip toolTip = new FancyToolTip
+                    {
+                        Title = diary.Title,
+                        InfoText = diary.Content,
+                        Footer = string.Format("{0:yyyy-MM-dd HH:mm}", diary.RowVersion)
+                    };
                     tt.Content = toolTip;
                 }
 
-                Border border = new Border();
-                border.Margin = new Thickness(1.5);
-                border.Child = stackPanel;
+                Border border = new Border
+                {
+                    Margin = new Thickness(1.5),
+                    Child = stackPanel
+                };
                 CalendarListBox.Items.Add(border);
 
                 //Display the current day in another color
@@ -315,9 +327,7 @@ namespace LunarCalendar
 
         private UniformGrid GetCalendarUniformGrid(DependencyObject uniformGrid)
         {
-            UniformGrid tempGrid = uniformGrid as UniformGrid;
-
-            if (tempGrid != null)
+            if (uniformGrid is UniformGrid tempGrid)
             {
                 return tempGrid;
             }
@@ -444,11 +454,9 @@ namespace LunarCalendar
                 this._day = selectedDay;
                 DateTime dateTimeDisplay = new DateTime(_year, _month, _day);
                 UltraCalendar uc = new UltraCalendar(dateTimeDisplay);
-                string festivalString = null;
-
                 if (string.IsNullOrEmpty((string)((Label)stackPanel.Children[_hiddenLabelIndex]).Content) == false)
                 {
-                    festivalString = (string)((Label)stackPanel.Children[_hiddenLabelIndex]).Content;
+                    string festivalString = (string)((Label)stackPanel.Children[_hiddenLabelIndex]).Content;
                 }
                 ShowStatus(dateTimeDisplay);
             }
@@ -556,13 +564,17 @@ namespace LunarCalendar
         {
             // Fill the baseline decoration with a linear gradient brush.
             TextDecorationCollection myCollection = new TextDecorationCollection();
-            TextDecoration myBaseline = new TextDecoration();
-            myBaseline.Location = TextDecorationLocation.Underline;
+            TextDecoration myBaseline = new TextDecoration
+            {
+                Location = TextDecorationLocation.Underline
+            };
 
             // Set the linear gradient brush.
-            Pen myPen = new Pen();
-            myPen.Brush = new LinearGradientBrush(Colors.Orange, Colors.Red, 0);
-            myPen.Thickness = 1;
+            Pen myPen = new Pen
+            {
+                Brush = new LinearGradientBrush(Colors.Orange, Colors.Red, 0),
+                Thickness = 1
+            };
             myBaseline.Pen = myPen;
             myBaseline.PenThicknessUnit = TextDecorationUnit.FontRecommended;
 
@@ -588,13 +600,15 @@ namespace LunarCalendar
         private void InitializTrayIcon()
         {
             this.Visibility = Visibility.Hidden;
-            _notifyIcon = new SWF.NotifyIcon();
-            //_notifyIcon.BalloonTipText = "万年历程序运行中...";
+            _notifyIcon = new SWF.NotifyIcon
+            {
+                //BalloonTipText = "万年历程序运行中...";
+                Text = GetFullDateDesc(DateTime.Now, true),
+                Visible = true,
+                //重要提示：此处的图标图片在resouces文件夹。可是打包后安装发现无法获取路径，导致程序死机。建议复制一份resouces文件到UI层的bin目录下，确保万无一失。
+                Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream)
+            };
             //_notifyIcon.ShowBalloonTip(1000);//托盘气泡显示时间
-            _notifyIcon.Text = GetFullDateDesc(DateTime.Now, true);
-            _notifyIcon.Visible = true;
-            //重要提示：此处的图标图片在resouces文件夹。可是打包后安装发现无法获取路径，导致程序死机。建议复制一份resouces文件到UI层的bin目录下，确保万无一失。
-            _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream);
             //双击事件
             _notifyIcon.MouseDoubleClick -= NotifyIcon_MouseClick;
             _notifyIcon.MouseDoubleClick += NotifyIcon_MouseClick;
@@ -604,9 +618,11 @@ namespace LunarCalendar
             //右键弹出式菜单
             SWF.ContextMenuStrip notifyContextMenu = new SWF.ContextMenuStrip();
             _muiShow = new SWF.ToolStripMenuItem("显示日历窗口", new System.Drawing.Bitmap(Application.GetResourceStream(new Uri($"images/screen.png", UriKind.Relative)).Stream), ShowMenuItem_Click);
-            SWF.ToolStripMenuItem muiAutoStartNextTime = new SWF.ToolStripMenuItem("下次自动启动");
-            muiAutoStartNextTime.Checked = AutoManageHelper.IsMeAutoStart();
-            muiAutoStartNextTime.CheckOnClick = true;
+            SWF.ToolStripMenuItem muiAutoStartNextTime = new SWF.ToolStripMenuItem("下次自动启动")
+            {
+                Checked = AutoManageHelper.IsMeAutoStart(),
+                CheckOnClick = true
+            };
             muiAutoStartNextTime.Click -= MuiAutoStartNextTime_Click;
             muiAutoStartNextTime.Click += MuiAutoStartNextTime_Click;
             SWF.ToolStripMenuItem muiAbout = new SWF.ToolStripMenuItem("关于...");

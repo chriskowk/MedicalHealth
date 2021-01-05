@@ -7,8 +7,8 @@ namespace LunarCalendar
 {
     public class UltraCalendar
     {
-        private bool _hasConverted;
-        private int _convertFlag;       //==0 则输入日期为西历, !=0 则输入为农历
+        private readonly bool _hasConverted;
+        private readonly int _convertFlag;       //==0 则输入日期为西历, !=0 则输入为农历
         private DateTime _solarDate;  //完整日期 2000-01-01
         private int _solarYear;    //输出或输入之西历年份
         private int _solarMonth;   //西历月
@@ -146,17 +146,17 @@ namespace LunarCalendar
         private const string DZ = "子丑寅卯辰巳午未申酉戌亥";
         private const string NUM = "一二三四五六七八九十";
         private const string MONTHNUM = "正二三四五六七八九十冬腊";
+        readonly string[] TGS = new string[10] { "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸" };
+        readonly string[] DZS = new string[12] { "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥" };
+        readonly string[] NUMS = new string[10] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" };
+        readonly string[] MONTHNUMS = new string[12] { "正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "冬", "腊" };
+        readonly string[] ANIMALS = new string[12] { "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪" };
 
-        string[] TGS = new string[10] { "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸" };
-        string[] DZS = new string[12] { "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥" };
-        string[] NUMS = new string[10] { "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" };
-        string[] MONTHNUMS = new string[12] { "正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "冬", "腊" };
-        string[] ANIMALS = new string[12] { "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪" };
         /* 西历年每月之日数 */
-        int[] SolarCal = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        readonly int[] SolarCal = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
         /* 西历年每月之累积日数, 平年与闰年 */
-        int[,] SolarDays = new int[2, 14] {
+        readonly int[,] SolarDays = new int[2, 14] {
             { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365, 396 },
             { 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366, 397 } 
         };
@@ -168,7 +168,7 @@ namespace LunarCalendar
         //    int Weekday;
         //    string HolidayName;
         //}
-        string[,] WeekHolidays = new string[8, 4] { 
+        readonly string[,] WeekHolidays = new string[8, 4] { 
             {"5", "2", "0", "母亲节"}, 
             {"5", "3", "0", "全国助残日"}, 
             {"6", "3", "0", "父亲节"},
@@ -186,7 +186,7 @@ namespace LunarCalendar
         //    int Recess;   //是否放假（0－不放假; 1－放假）
         //    string HolidayName;
         //}
-        string[,] LunarHolidays = new string[9, 4] { 
+        readonly string[,] LunarHolidays = new string[9, 4] { 
             {"1", "1", "1", "春节"},
             {"1", "15", "0", "元宵节"},
             {"5", "5", "0", "端午节"},
@@ -205,7 +205,7 @@ namespace LunarCalendar
         //    int Recess;   //是否放假（0－不放假; 1－放假）
         //    string HolidayName;
         //}
-        string[,] SolarHolidays = new string[74, 4] { 
+        readonly string[,] SolarHolidays = new string[74, 4] { 
              {"1", "1", "1", "元旦"},
              {"2", "2", "0", "世界湿地日"},
              {"2", "7", "0", "国际声援南非日"},
@@ -290,7 +290,7 @@ namespace LunarCalendar
         //    int BaseKanChih;      /*LunarCal[i, 3]: 此年公历1月1日之干支序号(函数GetKanChihNum("癸酉"))减 1 (甲子：60 乙丑:1 丙寅:2 丁卯:3 ......)*/
         //    int[] MonthDays = new int[13];    /*LunarCal[i, 4]～LunarCal[i, 17]: 此农历年每月之大小, 0==小月(29日), 1==大月(30日) */
         //};
-        int[,] LunarCal = new int[200, 17] {
+        readonly int[,] LunarCal = new int[200, 17] {
             { 49, 0, 1, 14, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1 },    /* 1901 */
             { 38, 0, 2, 19, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0 },
             { 28, 5, 3, 24, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1 },
@@ -509,7 +509,7 @@ namespace LunarCalendar
         //上面第一行数据为每月节气对应日期,
         //第二行数据生成规则:15减去每月第一个节气,每月第二个节气减去15得第二行
         // 这样每月两个节气对应数据都小于16,每月用一个字节存放,高位存放第一个节气数据,低位存放第二个节气的数据,可得下表
-        byte[,] SolarTermFlags = new byte[200, 12] 
+        readonly byte[,] SolarTermFlags = new byte[200, 12] 
         {
             {0x96, 0xB4, 0x96, 0xA6, 0x97, 0x97, 0x78, 0x79, 0x79, 0x69, 0x78, 0x77},  //1901
             {0x96, 0xA4, 0x96, 0x96, 0x97, 0x87, 0x79, 0x79, 0x79, 0x69, 0x78, 0x78},  //1902
@@ -712,7 +712,7 @@ namespace LunarCalendar
             {0xA5, 0xC3, 0xA5, 0xB5, 0xA6, 0xA6, 0x87, 0x88, 0x88, 0x78, 0x87, 0x86},
             {0xA5, 0xB3, 0xA5, 0xA5, 0xA6, 0xA6, 0x88, 0x88, 0x88, 0x78, 0x87, 0x87}  //最后2个值未经核对，可能不正确
         };
-        string[] SolarTermNames = new string[24]
+        readonly string[] SolarTermNames = new string[24]
         {
             "小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
         };
@@ -923,13 +923,13 @@ namespace LunarCalendar
 
         private string C2LunarDay()
         {
-            string result = "";
             int ix = 0;
             char[] dest = new char[1];
 
             StringBuilder src = new StringBuilder(NUM);
             dest[0] = ix.ToString()[0];
 
+            string result;
             if (this.LunarDay < 11)
                 result = "初";
             else if (this.LunarDay < 20)
