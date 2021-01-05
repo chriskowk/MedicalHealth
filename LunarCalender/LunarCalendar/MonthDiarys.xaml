@@ -19,6 +19,13 @@
                     <TextBlock Text="{Binding Keywords}" Grid.Column="2" />
                 </Grid>
             </DataTemplate>
+            <Style TargetType="{x:Type CheckBox}" x:Key="RemindCheckBoxStyle">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=IsRemindRequired}" Value="True">
+                        <Setter Property="Foreground" Value="Red"></Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -74,7 +81,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" Content="需要提醒" IsChecked="{Binding IsRemindRequired}" Name="_chkRemindRequired" VerticalAlignment="Center"/>
+                <CheckBox Style="{StaticResource RemindCheckBoxStyle}" Grid.Column="0" Content="需要提醒" IsChecked="{Binding IsRemindRequired}" Name="_chkRemindRequired" VerticalAlignment="Center"/>
                 <Label Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">Cron表达式</Label>
                 <TextBox Grid.Column="2" Margin="1" Text="{Binding CronExpress}" Name="_txtCronExpress" />
                 <Button Grid.Column="3" Height="24" HorizontalAlignment="Right" Name="_btnRemind" VerticalAlignment="Center" Width="26" Click="_btnRemind_Click">
