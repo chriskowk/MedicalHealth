@@ -96,7 +96,6 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Dapper.Contrib.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.dll
-F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.pdb
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Quartz.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.QuartzCronForm.resources
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Newtonsoft.Json.dll
@@ -163,3 +162,15 @@ E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Runtime.Com
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Data.SQLite.dll
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.exe.config
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Buffers.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Memory.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Numerics.Vectors.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Buffers.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Memory.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Numerics.Vectors.xml
+F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
