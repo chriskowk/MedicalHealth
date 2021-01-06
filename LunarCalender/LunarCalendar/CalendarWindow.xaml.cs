@@ -27,6 +27,7 @@ using System.Runtime.InteropServices;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using SWF = System.Windows.Forms;
 using System.Threading;
+using System.Collections.ObjectModel;
 
 namespace LunarCalendar
 {
@@ -50,7 +51,7 @@ namespace LunarCalendar
         //The first label is used to contain the hidden festival text,
         //the second label is used to contain the Gregorian text,
         //the third label is used to contain the Lunar text.
-        private static readonly int _hiddenLabelIndex = 0;
+        //private static readonly int _hiddenLabelIndex = 0;
         private static readonly int _mainLabelIndex = 1;
         private static readonly int _subsidiaryLabelIndex = 2;
 
@@ -64,7 +65,7 @@ namespace LunarCalendar
             LunarCalendar.Properties.Resources.Saturday
         };
 
-        private IList<Diary> _diaries = new List<Diary>();
+        private ObservableCollection<Diary> _diaries = new ObservableCollection<Diary>();
         public CalendarWindow()
         {
             try
@@ -101,7 +102,7 @@ namespace LunarCalendar
                 //this.Top = SWF.Screen.PrimaryScreen.WorkingArea.Height - this.Height;
                 //this.Left = SWF.Screen.PrimaryScreen.WorkingArea.Width - this.Width;
 
-                MonthDiarys.StartRemindJobs(DateTime.Now, out IList<Diary> diaries);
+                MonthDiarys.StartRemindJobs(DateTime.Now, out ObservableCollection<Diary> diaries);
             }
             catch (Exception ex)
             {
@@ -195,7 +196,7 @@ namespace LunarCalendar
             _calendarDisplayUniformGrid.FirstColumn = (int)(dt.DayOfWeek);
 
             string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{dt:yyyy-MM-dd}' AND RecordDate < '{dt.AddMonths(1):yyyy-MM-dd}'";
-            _diaries = new DiaryDAL().GetDiaries(sql);
+            _diaries = new ObservableCollection<Diary>(new DiaryDAL().GetDiaries(sql));
             for (int i = 0; i < dayNum; i++)
             {
                 TextBlock mainDateLabel = new TextBlock
@@ -453,11 +454,11 @@ namespace LunarCalendar
             {
                 this._day = selectedDay;
                 DateTime dateTimeDisplay = new DateTime(_year, _month, _day);
-                UltraCalendar uc = new UltraCalendar(dateTimeDisplay);
-                if (string.IsNullOrEmpty((string)((Label)stackPanel.Children[_hiddenLabelIndex]).Content) == false)
-                {
-                    string festivalString = (string)((Label)stackPanel.Children[_hiddenLabelIndex]).Content;
-                }
+                //UltraCalendar uc = new UltraCalendar(dateTimeDisplay);
+                //if (!string.IsNullOrEmpty((string)((Label)stackPanel.Children[_hiddenLabelIndex]).Content))
+                //{
+                //    string festivalString = ((Label)stackPanel.Children[_hiddenLabelIndex]).Content?.ToString();
+                //}
                 ShowStatus(dateTimeDisplay);
             }
             else
@@ -478,7 +479,7 @@ namespace LunarCalendar
             if (txtHolidayTips.Text == "")
                 txtHolidayTips.Text = strFullHolidayDesc = strTmp;
             else
-                strFullHolidayDesc = strFullHolidayDesc + (strTmp == "" ? "" : "\n" + strTmp);
+                strFullHolidayDesc += (strTmp == "" ? "" : "\n" + strTmp);
             strTmp = uc.LunarHoliday;
             if (txtHolidayTips.Text == "")
                 txtHolidayTips.Text = strFullHolidayDesc = strTmp;

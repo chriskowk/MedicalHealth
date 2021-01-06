@@ -18,6 +18,7 @@ using LunarCalendar.DAL;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using LunarCalendar.JobScheduler;
+using System.Collections.ObjectModel;
 
 namespace LunarCalendar
 {
@@ -26,7 +27,7 @@ namespace LunarCalendar
     /// </summary>
     public partial class MonthDiarys : Window, IDisposable
     {
-        public IList<Diary> Diaries { get; private set; } = new List<Diary>();
+        public ObservableCollection<Diary> Diaries { get; private set; } = new ObservableCollection<Diary>();
         public Diary Current
         {
             get { return _current; }
@@ -107,7 +108,7 @@ namespace LunarCalendar
         private int _day = 0;
         public void LoadDiarys(DateTime recordedOn)
         {
-            StartRemindJobs(recordedOn, out IList<Diary> diaries);
+            StartRemindJobs(recordedOn, out ObservableCollection<Diary> diaries);
             this.Diaries = diaries;
 
             this.DataContext = null;
@@ -119,13 +120,13 @@ namespace LunarCalendar
             if (_lvwDiarys.Items.Count > 0) _lvwDiarys.SelectedIndex = 0;
         }
 
-        public static void StartRemindJobs(DateTime recordedOn, out IList<Diary> diaries)
+        public static void StartRemindJobs(DateTime recordedOn, out ObservableCollection<Diary> diaries)
         {
             DateTime start = new DateTime(recordedOn.Year, recordedOn.Month, 1);
             DateTime end = GetNextMonthFirstDate(recordedOn);
 
             string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
-            diaries = new DiaryDAL().GetDiaries(sql);
+            diaries = new ObservableCollection<Diary>(new DiaryDAL().GetDiaries(sql));
             foreach (var item in diaries.Where(a => a.IsRemindRequired).ToList())
             {
                 JobCenter.StartScheduleJobAsync(item).Wait();
