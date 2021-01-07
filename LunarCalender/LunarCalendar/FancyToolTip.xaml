@@ -65,7 +65,7 @@
                         <ColumnDefinition Width="70" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Normal" Text="创建日期:" />
+                    <TextBlock Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Normal" Text="创建时间:" />
                     <TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="12" FontWeight="Bold" Foreground="#FF141414" Text="{Binding ElementName=me, Path=Footer}" />
                 </Grid>
             </Grid>
