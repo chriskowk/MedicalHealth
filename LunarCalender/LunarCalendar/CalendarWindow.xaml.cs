@@ -484,9 +484,9 @@ namespace LunarCalendar
             if (txtHolidayTips.Text == "")
                 txtHolidayTips.Text = strFullHolidayDesc = strTmp;
             else
-                strFullHolidayDesc = strFullHolidayDesc + (strTmp == "" ? "" : "\n" + strTmp);
+                strFullHolidayDesc += (strTmp == "" ? "" : "\n" + strTmp);
             txtHolidayTips.Foreground = Brushes.Red;
-            txtHolidayTips.ToolTip = strFullHolidayDesc;
+            txtHolidayTips.ToolTip = string.IsNullOrWhiteSpace(strFullHolidayDesc) ? null : strFullHolidayDesc;
 
             if (txtHolidayTips.Text == "")
             {
