@@ -161,7 +161,6 @@ E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Numerics.Ve
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Data.SQLite.dll
 E:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.exe.config
-F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Buffers.dll
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Diagnostics.DiagnosticSource.dll
