@@ -3,6 +3,7 @@ using Genersoft.Platform.Core.DataAccess.Configuration;
 using Genersoft.Platform.Core.DataAccess.Oracle;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using TFSideKicks.Controls;
+using TFSideKicks.Datas;
 
 namespace TFSideKicks
 {
@@ -37,6 +40,7 @@ namespace TFSideKicks
             this.IsCurrUser = false;
             this.IsSaveOracle = false;
             this.tb_oraname.IsEnabled = false;
+            this.mcbo_module.ItemsSource = TraceModuleList.Instance.TraceModuleListData;
         }
 
         private OracleDbContext _context;
@@ -247,6 +251,13 @@ namespace TFSideKicks
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void mcbo_module_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ObservableCollection<MultiComboBox.MultiCbxBaseData> context = mcbo_module.ItemsSource as ObservableCollection<MultiComboBox.MultiCbxBaseData>;
+            string s = string.Join(";", context.Where(a => a.IsChecked));
+            this.tb_module.Text = s;
         }
     }
 }

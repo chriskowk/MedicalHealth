@@ -26,7 +26,7 @@ namespace TFSideKicks
             InitializeComponent();
         }
         private const string _HKEY_LOCAL_MACHINE = "HKEY_LOCAL_MACHINE";
-        private static string _tfsUrisKeyPath = @"SOFTWARE\JetSun\3.0\Quartz\TfsTeamProjectCollectionUris";
+        //private static string _tfsUrisKeyPath = @"SOFTWARE\JetSun\3.0\Quartz\TfsTeamProjectCollectionUris";
         private IDictionary<TfsTeamProjectCollectionUri, IList<Project>> _projects = new Dictionary<TfsTeamProjectCollectionUri, IList<Project>>();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

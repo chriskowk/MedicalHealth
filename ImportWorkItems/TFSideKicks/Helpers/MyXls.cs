@@ -1407,6 +1407,16 @@ namespace Core.MyXls
             clone.Id = Id;
             return clone;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
 namespace Core.MyXls
@@ -4730,7 +4740,7 @@ namespace Core.MyXls
         private bool _protectContents = false;
         private bool _protectWindowSettings = false;
         private string _password = string.Empty;
-        private bool _protectRevisions = false;
+        //private bool _protectRevisions = false;
         private string _revisionsPassword = string.Empty;
 
         internal Workbook(XlsDocument doc)
@@ -4998,7 +5008,7 @@ namespace Core.MyXls
                     _worksheets.Add(boundSheetRecords[i], sheetRecords[i]);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -8915,7 +8925,7 @@ namespace Core.MyOle2
                     //TODO WH
                     docStream = GetStream(stream, i, dir, sectorSize, sat, shortSectorSize, ssat, minStandardStreamSize);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
                 if (docStreamName.Length == 0 && docStream.Length == 0)

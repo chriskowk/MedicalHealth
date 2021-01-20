@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:TFSideKicks"
              StartupUri="Menu.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/TFSideKicks;component/Styles/ComboBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
