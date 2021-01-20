@@ -124,26 +124,9 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="0.3*" MaxWidth="30" />
                                     </Grid.ColumnDefinitions>
-                                    <ListBox x:Name="PART_ListBoxChk"  SelectionMode="Multiple" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                        <ListBox.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <VirtualizingStackPanel Orientation="Horizontal" VirtualizingStackPanel.IsVirtualizing="True" />
-                                            </ItemsPanelTemplate>
-                                        </ListBox.ItemsPanel>
-                                        <ListBox.ItemContainerStyle>
-                                            <Style TargetType="ListBoxItem">
-                                                <Setter Property="BorderThickness" Value="0"/>
-                                                <Setter Property="IsSelected" Value="True"/>
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="ListBoxItem">
-                                                            <CheckBox BorderThickness="0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Content="{Binding ViewName}" IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </ListBox.ItemContainerStyle>
-                                    </ListBox>
+
+                                    <!--选定的文本（可编辑）-->
+                                    <TextBox x:Name="PART_TextBox" Grid.Column="0" />
 
                                     <!--下拉按钮-->
                                     <ToggleButton x:Name="PART_DropDownToggle" IsTabStop="False"  

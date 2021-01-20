@@ -146,7 +146,7 @@ namespace TFSideKicks
             this.button2.IsEnabled = false;
             this.tb_log.AppendText("Processing data ...\r\n");
             string tablename = tb_oraname.Text.ToUpper();
-            string module = tb_module.Text.ToUpper();
+            string module = mcbo_module.Text.ToUpper();
             string sql = string.Empty;
             bool ret = await Task.Run(() => ProcessData(tablename, module, out sql));
             if (!ret || string.IsNullOrEmpty(sql)) return;
@@ -251,13 +251,6 @@ namespace TFSideKicks
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void mcbo_module_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ObservableCollection<MultiComboBox.MultiCbxBaseData> context = mcbo_module.ItemsSource as ObservableCollection<MultiComboBox.MultiCbxBaseData>;
-            string s = string.Join(";", context.Where(a => a.IsChecked));
-            this.tb_module.Text = s;
         }
     }
 }

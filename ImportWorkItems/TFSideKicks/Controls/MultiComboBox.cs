@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace TFSideKicks.Controls
 {
@@ -29,21 +30,21 @@ namespace TFSideKicks.Controls
         /// <summary>
         /// ListBox竖向列表
         /// </summary>
-        private ListBox _ListBoxV;
+        private ListBox _listBoxV;
 
         /// <summary>
         /// ListBox横向列表
         /// </summary>
-        private ListBox _ListBoxH;
+        private TextBox _selectedTextBox;
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _ListBoxV = Template.FindName("PART_ListBox", this) as ListBox;
-            _ListBoxH = Template.FindName("PART_ListBoxChk", this) as ListBox;
-            _ListBoxH.ItemsSource = ChekedItems;
-            _ListBoxV.SelectionChanged += _ListBoxV_SelectionChanged;
-            _ListBoxH.SelectionChanged += _ListBoxH_SelectionChanged;
+            _listBoxV = Template.FindName("PART_ListBox", this) as ListBox;
+            _selectedTextBox = Template.FindName("PART_TextBox", this) as TextBox;
+            _listBoxV.SelectionChanged += _ListBoxV_SelectionChanged;
+            _selectedTextBox.KeyDown += _selectedTextBox_KeyDown;
+            _selectedTextBox.TextChanged += _selectedTextBox_TextChanged;
 
             if (ItemsSource != null)
             {
@@ -52,27 +53,19 @@ namespace TFSideKicks.Controls
                     MultiCbxBaseData bdc = item as MultiCbxBaseData;
                     if (bdc.IsChecked)
                     {
-                        _ListBoxV.SelectedItems.Add(bdc);
+                        _listBoxV.SelectedItems.Add(bdc);
                     }
                 }
             }
         }
 
-        private void _ListBoxH_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void _selectedTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            foreach (var item in e.RemovedItems)
-            {
-                MultiCbxBaseData datachk = item as MultiCbxBaseData;
+            Text = _selectedTextBox.Text;
+        }
 
-                for (int i = 0; i < _ListBoxV.SelectedItems.Count; i++)
-                {
-                    MultiCbxBaseData datachklist = _ListBoxV.SelectedItems[i] as MultiCbxBaseData;
-                    if (datachklist.ID == datachk.ID)
-                    {
-                        _ListBoxV.SelectedItems.Remove(_ListBoxV.SelectedItems[i]);
-                    }
-                }
-            }
+        private void _selectedTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
         }
 
         void _ListBoxV_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,9 +86,12 @@ namespace TFSideKicks.Controls
                 datachk.IsChecked = false;
                 ChekedItems.Remove(datachk);
             }
+
+            string s = string.Join(";", ChekedItems);
+            _selectedTextBox.Text = s;
         }
 
-        public class MultiCbxBaseData
+        public class MultiCbxBaseData : INotifyPropertyChanged
         {
             public override string ToString()
             {
@@ -109,7 +105,7 @@ namespace TFSideKicks.Controls
             public int ID
             {
                 get { return _id; }
-                set { _id = value; }
+                set { _id = value; OnPropertyChanged("ID"); }
             }
 
             private string _viewName;
@@ -119,7 +115,7 @@ namespace TFSideKicks.Controls
             public string ViewName
             {
                 get { return _viewName; }
-                set { _viewName = value; }
+                set { _viewName = value; OnPropertyChanged("ViewName"); }
             }
 
             private bool _isChecked;
@@ -129,8 +125,29 @@ namespace TFSideKicks.Controls
             public bool IsChecked
             {
                 get { return _isChecked; }
-                set { _isChecked = value; }
+                set { _isChecked = value; OnPropertyChanged("IsChecked"); }
             }
+
+            #region INotifyPropertyChanged
+            /// <summary>
+            /// Occurs when a property value changes.
+            /// </summary>
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            /// <summary>
+            /// Called when [property changed].
+            /// </summary>
+            /// <param name="name">The name.</param>
+            protected void OnPropertyChanged(string name)
+            {
+                var handler = PropertyChanged;
+
+                if (null != handler)
+                {
+                    handler(this, new PropertyChangedEventArgs(name));
+                }
+            }
+            #endregion // INotifyPropertyChanged
         }
     }
 }
