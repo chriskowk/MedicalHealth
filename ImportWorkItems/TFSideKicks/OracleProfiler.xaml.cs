@@ -29,14 +29,14 @@ namespace TFSideKicks
     /// </summary>
     public partial class OracleProfiler : Window
     {
-        private string Sysdate;
+        private string StartOnText;
         private bool IsCurrUser;
         private bool IsSaveOracle;
         public OracleProfiler()
         {
             InitializeComponent();
 
-            this.Sysdate = "";
+            this.StartOnText = "";
             this.IsCurrUser = false;
             this.IsSaveOracle = false;
             this.tb_oraname.IsEnabled = false;
@@ -90,7 +90,7 @@ namespace TFSideKicks
             this.tb_log.AppendText("Creating data table ...\r\n");
             bool onlycurruser = this.cb_curruser.IsChecked.Value;
             await Task.Run(() => CreateTables(onlycurruser));
-            this.tb_log.AppendText("Success!\r\n");
+            this.tb_log.AppendText(string.Format("Success! starting on {0}\r\n", this.StartOnText));
             this.tb_log.AppendText("-----------------------------------------------\r\n");
             this.button2.IsEnabled = true;
         }
@@ -124,13 +124,13 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sql";
+                string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sqlarea";
                 Context.DB.ExecSqlStatement(createTableSql);
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
 
                 string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') AS currdate FROM dual";
                 DataSet ds = Context.DB.ExecuteDataSet(getDateSql);
-                if (ds != null) { this.Sysdate = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]); }
+                if (ds != null) { this.StartOnText = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]); }
                 if (onlycurruser) { this.IsCurrUser = true; }
             }
             catch (Exception ex)
@@ -166,11 +166,11 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sql";
+                string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
                 Context.DB.ExecSqlStatement(createTableSql);
 
-                string sqlbase = string.Format(@"SELECT n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
-                , DBMS_LOB.SUBSTR(n.sql_fulltext, 4000, 1) AS SQL_FULLTEXT 
+                string sqlbase = string.Format(@"SELECT n.SQL_ID, n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
+                , n.sql_fulltext AS SQL_FULLTEXT 
                 , n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS 
                 , n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS 
                 , n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS 
@@ -182,7 +182,7 @@ namespace TFSideKicks
                 FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address 
                 WHERE ( to_date(n.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR n.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
                 AND (n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> 
-                ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.Sysdate);
+                ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
 
                 string criteria = "";
                 string criteria2 = "";
@@ -241,11 +241,20 @@ namespace TFSideKicks
             return Context.DB.ExecuteDataSet(sql);
         }
 
-        private void _dgSQLlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void _dgSQLlines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tb_Status.Clear();
             DataRowView dr = dg_SQLlines.CurrentItem as DataRowView;
-            if (dr != null) tb_Status.Text = dr["SQL_FULLTEXT"].ToString();
+            if (dr != null)
+            {
+                tb_Status.Text = dr["SQL_FULLTEXT"].ToString();
+
+                string sql_id = dr["SQL_ID"].ToString();
+                string sql = $"select b.NAME, b.POSITION, b.DATATYPE_STRING, b.VALUE_STRING, b.LAST_CAPTURED from v$sql_bind_capture b where b.sql_id = '{sql_id}'";
+                DataSet ds_result = await Task.Run(() => LoadData(sql));
+                if (ds_result != null)
+                    this.dg_SQLParameters.DataContext = ds_result.Tables[0];
+            }
         }
 
         private void btn_close_Click(object sender, RoutedEventArgs e)

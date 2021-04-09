@@ -574,6 +574,6 @@ F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ShowHistory.g.cs
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\ShowHistory.baml
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\GeneratedInternalTypeHelper.g.cs
-F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\App.baml
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\Styles\ComboBox.baml
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojAssemblyReference.cache
