@@ -140,6 +140,7 @@ namespace TFSideKicks
             }
         }
 
+        DataView _dataView;
         private async void button2_Click(object sender, RoutedEventArgs e)
         {
             this.button1.IsEnabled = false;
@@ -156,7 +157,10 @@ namespace TFSideKicks
 
             DataSet ds_result = await Task.Run(() => LoadData(sql));
             if (ds_result != null)
-                this.dg_SQLlines.DataContext = ds_result.Tables[0];
+            {
+                _dataView = ds_result.Tables[0].DefaultView;
+                this.dg_SQLlines.DataContext = _dataView;
+            }
 
             this.tb_log.AppendText("Success!");
             this.button1.IsEnabled = true;
@@ -251,15 +255,48 @@ namespace TFSideKicks
 
                 string sql_id = dr["SQL_ID"].ToString();
                 string sql = $"select b.NAME, b.POSITION, b.DATATYPE_STRING, b.VALUE_STRING, b.LAST_CAPTURED from v$sql_bind_capture b where b.sql_id = '{sql_id}'";
-                DataSet ds_result = await Task.Run(() => LoadData(sql));
-                if (ds_result != null)
-                    this.dg_SQLParameters.DataContext = ds_result.Tables[0];
+                DataSet ds = await Task.Run(() => LoadData(sql));
+                if (ds != null)
+                    this.dg_SQLParameters.DataContext = ds.Tables[0];
             }
         }
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void tb_searchtext_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control && e.Key == Key.Enter)
+            {
+                if (_dataView == null) return;
+
+                if (string.IsNullOrWhiteSpace(tb_searchtext.Text))
+                    _dataView.RowFilter = null;
+                else
+                {
+                    string st = tb_searchtext.Text.Trim();
+                    _dataView.RowFilter = $"SQL_FULLTEXT LIKE '%{st}%'";
+                }
+                this.dg_SQLlines.DataContext = _dataView;
+            }
+        }
+
+        public static string EscapeLikeValue(string valueWithoutWildcards)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < valueWithoutWildcards.Length; i++)
+            {
+                char c = valueWithoutWildcards[i];
+                if (c == '*' || c == '%' || c == '[' || c == ']')
+                    sb.Append("[").Append(c).Append("]");
+                else if (c == '\'')
+                    sb.Append("''");
+                else
+                    sb.Append(c);
+            }
+            return sb.ToString();
         }
     }
 }
