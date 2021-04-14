@@ -92,20 +92,29 @@
                 <DataGridTextColumn MinWidth="125" Header="LAST ACTIVE TIME" Binding="{Binding LAST_ACTIVE_TIME,StringFormat=yyyy-MM-dd HH:mm:ss}" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid Name="dg_SQLParameters" ItemsSource="{Binding}" Grid.Row="14" Grid.ColumnSpan="4" IsReadOnly="True" AutoGenerateColumns="False">
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="MaxHeight" Value="100" />
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="100" Header="NAME" Binding="{Binding NAME}" />
-                <DataGridTextColumn Width="40" Header="POS" Binding="{Binding POSITION}" />
-                <DataGridTextColumn Width="120" Header="DATATYPE STRING" Binding="{Binding DATATYPE_STRING}" />
-                <DataGridTextColumn Width="*" Header="VALUE STRING" Binding="{Binding VALUE_STRING}" />
-                <DataGridTextColumn Width="140" Header="LAST CAPTURED" Binding="{Binding LAST_CAPTURED}" />
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="14" Grid.Column="4" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" />
+        <GridSplitter Grid.Row="13" Height="5" Grid.ColumnSpan="5" HorizontalAlignment="Stretch" />
+        <Grid Grid.Row="14" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="560" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Name="dg_SQLParameters" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="MaxHeight" Value="100" />
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="100" Header="NAME" Binding="{Binding NAME}" />
+                    <DataGridTextColumn Width="40" Header="POS" Binding="{Binding POSITION}" />
+                    <DataGridTextColumn Width="120" Header="DATATYPE STRING" Binding="{Binding DATATYPE_STRING}" />
+                    <DataGridTextColumn Width="*" Header="VALUE STRING" Binding="{Binding VALUE_STRING}" />
+                    <DataGridTextColumn Width="140" Header="LAST CAPTURED" Binding="{Binding LAST_CAPTURED}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Row="0" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <TextBox Name="tb_Status" Background="LightYellow" Grid.Row="0" Grid.Column="2" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" />
+        </Grid>
     </Grid>
 </Window>
