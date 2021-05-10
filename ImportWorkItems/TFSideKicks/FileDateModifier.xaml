@@ -17,7 +17,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1">
+        <Label Content="Path Type:" Height="28" HorizontalAlignment="Left" Margin="4,0,0,0" Name="label1" VerticalAlignment="Top" Grid.Row="1" />
+        <RadioButton Content="File" GroupName="pathType" Height="16" HorizontalAlignment="Left" IsChecked="{Binding FilePathSelected}" Margin="75,6,0,0" Name="radioButton1" VerticalAlignment="Top" Grid.Row="1" />
+        <RadioButton Content="Directory" GroupName="pathType" Height="16" HorizontalAlignment="Left" IsChecked="{Binding DirPathSelected}" Margin="123,6,0,0" Name="radioButton2" VerticalAlignment="Top" Width="82" Grid.Row="1" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="2">
             <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="Auto" Margin="6,0" Width="405" Height="Auto">
                 <TextBox HorizontalAlignment="Left" Text="{Binding SelectedPath, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="auto" MinWidth="405" Name="_txtSelectedPath" />
             </ScrollViewer>
@@ -45,10 +48,10 @@
             </StackPanel>
         </StackPanel>
         <TextBlock Text="Select Path:" Height="29" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBox1" VerticalAlignment="Top" Width="142" FontWeight="SemiBold" FontSize="15" Grid.Row="0"/>
+        <Button Content="Get Latest Version" Height="30" HorizontalAlignment="Center" Margin="5,5,5,5" VerticalAlignment="Center" Width="120" Command="{Binding TFGetLatestCommand}"/>
+        <Button Content="Exec WinRAR" Height="30" HorizontalAlignment="Right" Margin="5,5,10,5" VerticalAlignment="Center" Width="100" Command="{Binding ExecWinRARCommand}"/>
+
         <TextBlock FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-        <RadioButton Content="File" GroupName="pathType" Height="16" HorizontalAlignment="Left" IsChecked="{Binding FilePathSelected}" Margin="75,6,0,0" Name="radioButton1" VerticalAlignment="Top" Grid.Row="2" />
-        <RadioButton Content="Directory" GroupName="pathType" Height="16" HorizontalAlignment="Left" IsChecked="{Binding DirPathSelected}" Margin="123,6,0,0" Name="radioButton2" VerticalAlignment="Top" Width="82" Grid.Row="2" />
-        <Label Content="Path Type:" Height="28" HorizontalAlignment="Left" Margin="4,0,0,0" Name="label1" VerticalAlignment="Top" Grid.Row="2" />
         <Rectangle Grid.Row="4" Height="254" Margin="12,0,11,0" Name="rectangle1" Stroke="Black" />
     </Grid>
 </Window>

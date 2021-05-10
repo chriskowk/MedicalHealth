@@ -8,9 +8,12 @@ using System.ComponentModel;
 using System.IO;
 using System.Globalization;
 using System.Threading;
+using SharpCompress.Writer;
+using SharpCompress.Common;
+using System.Diagnostics;
 
 namespace TFSideKicks
-{ 
+{
     /// <summary>
     /// The MainViewModel. Provides interaction logic for the View.
     /// </summary>
@@ -25,6 +28,14 @@ namespace TFSideKicks
         /// Backing field for the UpdateDateCommand property.
         /// </summary>
         private RelayCommand _updateDateCommand;
+        /// <summary>
+        /// 
+        /// </summary>
+        private RelayCommand _execWinRARCommand;
+        /// <summary>
+        /// 
+        /// </summary>
+        private RelayCommand _TFGetLatestCommand;
         /// <summary>
         /// Backing field for the SelectedPath property.
         /// </summary>
@@ -41,7 +52,8 @@ namespace TFSideKicks
         /// </summary>
         public FileDateModifierViewMode()
         {
-            FilePathSelected = true;
+            DirPathSelected = true;
+            SelectedPath = "F:\\MedicalHealthSYCode";
             CultureInfo = CultureInfo.CurrentCulture;
 
             var defaultTime = DateTime.Now;
@@ -107,6 +119,30 @@ namespace TFSideKicks
                     MessageBox.Show("Please select a file or directory", "Update");
                 }
             });
+
+            _execWinRARCommand = new RelayCommand(obj =>
+             {
+                 if (!String.IsNullOrEmpty(SelectedPath))
+                 {
+                     if (File.Exists(SelectedPath))
+                     {
+                         CompressByWinRAR(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"), true);
+                     }
+                     else if (Directory.Exists(SelectedPath))
+                     {
+                         CompressByWinRAR(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"));
+                     }
+                 }
+                 else
+                 {
+                     MessageBox.Show("Please select a file or directory", "Compress");
+                 }
+             });
+
+            _TFGetLatestCommand = new RelayCommand(obj =>
+            {
+                TFGetLatestVersion();
+            });
         }
         #endregion // Ctor
 
@@ -120,6 +156,15 @@ namespace TFSideKicks
         /// Gets the update date command.
         /// </summary>
         public ICommand UpdateDateCommand { get { return _updateDateCommand; } }
+
+        /// <summary>
+        /// Gets the ExecWinRAR command.
+        /// </summary>
+        public ICommand ExecWinRARCommand { get { return _execWinRARCommand; } }
+        /// <summary>
+        /// 执行当前运行路径下的批命令（TF_GET_MedicalHealth.bat）
+        /// </summary>
+        public ICommand TFGetLatestCommand { get { return _TFGetLatestCommand; } }
 
         /// <summary>
         /// Gets the current culture info.
@@ -261,6 +306,54 @@ namespace TFSideKicks
                 updateDirDateInfo(d);
             }
         }
+        /// <summary>
+        /// 压缩sourceFilePath文件夹及其下文件；默认压缩方式.rar
+        /// </summary>
+        /// <param name="sourceFilePath"></param>
+        /// <param name="destFilePath"></param>
+        /// <param name="isFile"></param>
+        private void CompressByWinRAR(string sourceFilePath, string destFilePath, bool isFile = false)
+        {
+            if (File.Exists(destFilePath)) File.Delete(destFilePath);
+
+            string opt = isFile ? "-ep" : "-r";
+            string filename = Path.Combine("C:\\Program Files\\WinRAR", "WinRAR.exe");
+            using (Process pro = new Process())
+            {
+                FileInfo file = new FileInfo(filename);
+                pro.StartInfo.Arguments = $" a {opt} {destFilePath} {sourceFilePath}";
+                pro.StartInfo.WorkingDirectory = file.Directory.FullName;
+                pro.StartInfo.FileName = filename;
+                pro.StartInfo.CreateNoWindow = false;
+                pro.StartInfo.UseShellExecute = false;
+
+                pro.Start();
+                pro.WaitForExit();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void TFGetLatestVersion()
+        {
+            string path = Path.Combine(Environment.CurrentDirectory, "TF_GET_MedicalHealth.bat");
+            if (!File.Exists(path)) return;
+
+            string errMsg = string.Empty;
+            string output = Utility.Execute(path, 60, true, true, ref errMsg);
+            string logPath = Path.Combine(Environment.CurrentDirectory, "Log");
+            if (!Directory.Exists(logPath))
+            {
+                Directory.CreateDirectory(logPath);
+            }
+            FileStream fs = new FileStream(Path.Combine(logPath, string.Format("TFGetLog{0}.txt", DateTime.Now.ToString("yyyyMMddHHmmss"))), FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+            sw.Write(string.Format("Output: {0}\r\nErrorMsg:\r\n{1}", output, errMsg));
+            sw.Close();
+            fs.Close();
+        }
+
         #endregion // Methods
 
         #region INotifyPropertyChanged
