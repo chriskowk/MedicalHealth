@@ -130,6 +130,7 @@ namespace TFSideKicks
                      }
                      else if (Directory.Exists(SelectedPath))
                      {
+                         TFGetLatestVersion();
                          CompressByWinRAR(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"));
                      }
                  }
@@ -141,7 +142,7 @@ namespace TFSideKicks
 
             _TFGetLatestCommand = new RelayCommand(obj =>
             {
-                TFGetLatestVersion();
+                TFGetLatestVersionWithConsole();
             });
         }
         #endregion // Ctor
@@ -332,16 +333,28 @@ namespace TFSideKicks
             }
         }
 
+        private static string _filename = Path.Combine(Environment.CurrentDirectory, "TF_GET_MedicalHealth.bat");
+        /// <summary>
+        /// 
+        /// </summary>
+        private void TFGetLatestVersionWithConsole()
+        {
+            if (!File.Exists(_filename)) return;
+
+            string errMsg = string.Empty;
+            string filename = $"{_filename} pause";
+            Utility.Execute(filename, 60, false, false, ref errMsg);
+        }
+
         /// <summary>
         /// 
         /// </summary>
         private void TFGetLatestVersion()
         {
-            string path = Path.Combine(Environment.CurrentDirectory, "TF_GET_MedicalHealth.bat");
-            if (!File.Exists(path)) return;
+            if (!File.Exists(_filename)) return;
 
             string errMsg = string.Empty;
-            string output = Utility.Execute(path, 60, true, true, ref errMsg);
+            string output = Utility.Execute(_filename, 60, true, true, ref errMsg);
             string logPath = Path.Combine(Environment.CurrentDirectory, "Log");
             if (!Directory.Exists(logPath))
             {
