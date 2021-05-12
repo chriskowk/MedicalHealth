@@ -126,12 +126,12 @@ namespace TFSideKicks
                  {
                      if (File.Exists(SelectedPath))
                      {
-                         CompressByWinRAR(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"), true);
+                         WinRARHelper.Compress(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"), true);
                      }
                      else if (Directory.Exists(SelectedPath))
                      {
                          TFGetLatestVersion();
-                         CompressByWinRAR(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"));
+                         WinRARHelper.Compress(SelectedPath, Path.Combine("F:\\FDiskTemp", $"{Path.GetFileNameWithoutExtension(SelectedPath)}.rar"));
                      }
                  }
                  else
@@ -305,31 +305,6 @@ namespace TFSideKicks
                 }
 
                 updateDirDateInfo(d);
-            }
-        }
-        /// <summary>
-        /// 压缩sourceFilePath文件夹及其下文件；默认压缩方式.rar
-        /// </summary>
-        /// <param name="sourceFilePath"></param>
-        /// <param name="destFilePath"></param>
-        /// <param name="isFile"></param>
-        private void CompressByWinRAR(string sourceFilePath, string destFilePath, bool isFile = false)
-        {
-            if (File.Exists(destFilePath)) File.Delete(destFilePath);
-
-            string opt = isFile ? "-ep" : "-r";
-            string filename = Path.Combine("C:\\Program Files\\WinRAR", "WinRAR.exe");
-            using (Process pro = new Process())
-            {
-                FileInfo file = new FileInfo(filename);
-                pro.StartInfo.Arguments = $" a {opt} {destFilePath} {sourceFilePath}";
-                pro.StartInfo.WorkingDirectory = file.Directory.FullName;
-                pro.StartInfo.FileName = filename;
-                pro.StartInfo.CreateNoWindow = false;
-                pro.StartInfo.UseShellExecute = false;
-
-                pro.Start();
-                pro.WaitForExit();
             }
         }
 

@@ -282,10 +282,10 @@ namespace TFSideKicks
             }
         }
 
-        private void ExtractZipFiles(string filename)
+        private void ExtractZipFiles(string fileFullName)
         {
             _resources.Clear();
-            var archive = ArchiveFactory.Open(filename);
+            var archive = ArchiveFactory.Open(fileFullName);
             foreach (var entry in archive.Entries)
             {
                 if (!entry.IsDirectory)
@@ -299,19 +299,19 @@ namespace TFSideKicks
             }
         }
 
-        private void WriteFilesAsZip(string path, string destFilePath)
+        private void CompressFilesAsZip(string sourceFullPath, string destFileFullName)
         {
             try
             {
-                if (File.Exists(destFilePath)) File.Delete(destFilePath);
+                if (File.Exists(destFileFullName)) File.Delete(destFileFullName);
 
-                using (Stream stream = File.OpenWrite(destFilePath))
+                using (Stream stream = File.OpenWrite(destFileFullName))
                 using (var writer = WriterFactory.Open(stream, ArchiveType.Zip, CompressionType.None))
                 {
-                    writer.WriteAll(path, "*", SearchOption.AllDirectories);
+                    writer.WriteAll(sourceFullPath, "*", SearchOption.AllDirectories);
                 }
 
-                MessageBox.Show(string.Format("资源文件导出成功。\r\n{0}", destFilePath), "导出资源", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("资源文件导出成功。\r\n{0}", destFileFullName), "导出资源", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -401,7 +401,7 @@ namespace TFSideKicks
             fbd.SelectedPath = Path.Combine(Directory.GetCurrentDirectory(), TEMP_PATH);
             if (fbd.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
-                WriteFilesAsZip(fbd.SelectedPath, Path.Combine(Directory.GetCurrentDirectory(), "resource.rar"));
+                CompressFilesAsZip(fbd.SelectedPath, Path.Combine(Directory.GetCurrentDirectory(), "resource.rar"));
             }
         }
     }

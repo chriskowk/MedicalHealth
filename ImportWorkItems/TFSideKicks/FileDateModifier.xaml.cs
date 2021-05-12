@@ -27,6 +27,7 @@ namespace TFSideKicks
 
         private void _btnClose_Click(object sender, RoutedEventArgs e)
         {
+            //WinRARHelper.Decompress("F:\\FDiskTemp\\MedicalHealthSYCode.rar", "F:\\FDiskTemp\\MedicalHealthSYCode");
             this.Close();
         }
 
