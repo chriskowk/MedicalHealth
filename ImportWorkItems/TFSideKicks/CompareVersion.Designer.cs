@@ -67,6 +67,7 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRar = new System.Windows.Forms.Button();
             this.txtSummary = new System.Windows.Forms.TextBox();
+            this._status = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabComponent.SuspendLayout();
             this.tabResource.SuspendLayout();
@@ -434,11 +435,25 @@
             this.txtSummary.Size = new System.Drawing.Size(253, 23);
             this.txtSummary.TabIndex = 30;
             // 
+            // _status
+            // 
+            this._status.BackColor = System.Drawing.SystemColors.Info;
+            this._status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._status.Font = new System.Drawing.Font("宋体", 10F);
+            this._status.Location = new System.Drawing.Point(12, 581);
+            this._status.Multiline = true;
+            this._status.Name = "_status";
+            this._status.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this._status.Size = new System.Drawing.Size(904, 75);
+            this._status.TabIndex = 31;
+            this._status.Text = resources.GetString("_status.Text");
+            // 
             // CompareVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 581);
+            this.ClientSize = new System.Drawing.Size(927, 662);
+            this.Controls.Add(this._status);
             this.Controls.Add(this.txtSummary);
             this.Controls.Add(this.btnRar);
             this.Controls.Add(this.btnExcel);
@@ -511,5 +526,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.Button btnRar;
         private System.Windows.Forms.TextBox txtSummary;
+        private System.Windows.Forms.TextBox _status;
     }
 }
