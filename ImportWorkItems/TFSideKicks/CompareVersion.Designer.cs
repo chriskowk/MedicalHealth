@@ -68,6 +68,7 @@
             this.btnRar = new System.Windows.Forms.Button();
             this.txtSummary = new System.Windows.Forms.TextBox();
             this._status = new System.Windows.Forms.TextBox();
+            this._txtWarning = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabComponent.SuspendLayout();
             this.tabResource.SuspendLayout();
@@ -78,7 +79,7 @@
             // 
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(363, 41);
+            this.btnExcel.Location = new System.Drawing.Point(417, 54);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(23, 23);
             this.btnExcel.TabIndex = 27;
@@ -89,7 +90,7 @@
             // 
             this.btnLocalService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLocalService.Image = ((System.Drawing.Image)(resources.GetObject("btnLocalService.Image")));
-            this.btnLocalService.Location = new System.Drawing.Point(869, 13);
+            this.btnLocalService.Location = new System.Drawing.Point(919, 26);
             this.btnLocalService.Name = "btnLocalService";
             this.btnLocalService.Size = new System.Drawing.Size(23, 23);
             this.btnLocalService.TabIndex = 26;
@@ -100,7 +101,7 @@
             // 
             this.btnFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnFolder.Image")));
-            this.btnFolder.Location = new System.Drawing.Point(841, 13);
+            this.btnFolder.Location = new System.Drawing.Point(891, 26);
             this.btnFolder.Name = "btnFolder";
             this.btnFolder.Size = new System.Drawing.Size(23, 23);
             this.btnFolder.TabIndex = 25;
@@ -111,7 +112,7 @@
             // 
             this.lblStatus2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblStatus2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStatus2.Location = new System.Drawing.Point(486, 68);
+            this.lblStatus2.Location = new System.Drawing.Point(536, 81);
             this.lblStatus2.Name = "lblStatus2";
             this.lblStatus2.Size = new System.Drawing.Size(352, 23);
             this.lblStatus2.TabIndex = 24;
@@ -122,7 +123,7 @@
             // 
             this.chkIsWcfServer.AutoSize = true;
             this.chkIsWcfServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkIsWcfServer.Location = new System.Drawing.Point(205, 17);
+            this.chkIsWcfServer.Location = new System.Drawing.Point(264, 30);
             this.chkIsWcfServer.Name = "chkIsWcfServer";
             this.chkIsWcfServer.Size = new System.Drawing.Size(93, 16);
             this.chkIsWcfServer.TabIndex = 23;
@@ -135,16 +136,16 @@
             this.txtVersionID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVersionID.Enabled = false;
             this.txtVersionID.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtVersionID.Location = new System.Drawing.Point(272, 41);
+            this.txtVersionID.Location = new System.Drawing.Point(334, 54);
             this.txtVersionID.Name = "txtVersionID";
-            this.txtVersionID.Size = new System.Drawing.Size(90, 23);
+            this.txtVersionID.Size = new System.Drawing.Size(80, 23);
             this.txtVersionID.TabIndex = 22;
             // 
             // chkVersion
             // 
             this.chkVersion.AutoSize = true;
             this.chkVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkVersion.Location = new System.Drawing.Point(205, 44);
+            this.chkVersion.Location = new System.Drawing.Point(264, 57);
             this.chkVersion.Name = "chkVersion";
             this.chkVersion.Size = new System.Drawing.Size(69, 16);
             this.chkVersion.TabIndex = 21;
@@ -157,7 +158,7 @@
             this.txtExecutePath.BackColor = System.Drawing.SystemColors.Info;
             this.txtExecutePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtExecutePath.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtExecutePath.Location = new System.Drawing.Point(486, 12);
+            this.txtExecutePath.Location = new System.Drawing.Point(536, 25);
             this.txtExecutePath.Name = "txtExecutePath";
             this.txtExecutePath.ReadOnly = true;
             this.txtExecutePath.Size = new System.Drawing.Size(352, 23);
@@ -166,7 +167,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(429, 46);
+            this.label2.Location = new System.Drawing.Point(479, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 20;
@@ -177,7 +178,7 @@
             // 
             this.lblStatus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStatus.Location = new System.Drawing.Point(486, 40);
+            this.lblStatus.Location = new System.Drawing.Point(536, 53);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(352, 23);
             this.lblStatus.TabIndex = 19;
@@ -187,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(429, 19);
+            this.label1.Location = new System.Drawing.Point(479, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 18;
@@ -199,7 +200,7 @@
             this.btnCheckVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckVersion.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckVersion.Image")));
             this.btnCheckVersion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCheckVersion.Location = new System.Drawing.Point(12, 19);
+            this.btnCheckVersion.Location = new System.Drawing.Point(12, 8);
             this.btnCheckVersion.Name = "btnCheckVersion";
             this.btnCheckVersion.Size = new System.Drawing.Size(82, 27);
             this.btnCheckVersion.TabIndex = 16;
@@ -213,7 +214,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(841, 64);
+            this.btnExit.Location = new System.Drawing.Point(891, 77);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(74, 27);
             this.btnExit.TabIndex = 15;
@@ -227,10 +228,10 @@
             this.tabMain.Controls.Add(this.tabComponent);
             this.tabMain.Controls.Add(this.tabResource);
             this.tabMain.Controls.Add(this.tabDBScript);
-            this.tabMain.Location = new System.Drawing.Point(12, 77);
+            this.tabMain.Location = new System.Drawing.Point(12, 108);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(905, 498);
+            this.tabMain.Size = new System.Drawing.Size(960, 488);
             this.tabMain.TabIndex = 14;
             // 
             // tabComponent
@@ -239,7 +240,7 @@
             this.tabComponent.Location = new System.Drawing.Point(4, 22);
             this.tabComponent.Name = "tabComponent";
             this.tabComponent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabComponent.Size = new System.Drawing.Size(897, 472);
+            this.tabComponent.Size = new System.Drawing.Size(952, 462);
             this.tabComponent.TabIndex = 0;
             this.tabComponent.Text = "组件";
             this.tabComponent.UseVisualStyleBackColor = true;
@@ -260,7 +261,7 @@
             this.lvwComponent.Location = new System.Drawing.Point(3, 3);
             this.lvwComponent.MultiSelect = false;
             this.lvwComponent.Name = "lvwComponent";
-            this.lvwComponent.Size = new System.Drawing.Size(891, 466);
+            this.lvwComponent.Size = new System.Drawing.Size(946, 456);
             this.lvwComponent.TabIndex = 29;
             this.lvwComponent.UseCompatibleStateImageBehavior = false;
             this.lvwComponent.View = System.Windows.Forms.View.Details;
@@ -417,7 +418,7 @@
             // 
             this.btnRar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRar.Image = ((System.Drawing.Image)(resources.GetObject("btnRar.Image")));
-            this.btnRar.Location = new System.Drawing.Point(390, 41);
+            this.btnRar.Location = new System.Drawing.Point(444, 54);
             this.btnRar.Name = "btnRar";
             this.btnRar.Size = new System.Drawing.Size(23, 23);
             this.btnRar.TabIndex = 29;
@@ -429,7 +430,7 @@
             this.txtSummary.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtSummary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSummary.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSummary.Location = new System.Drawing.Point(205, 68);
+            this.txtSummary.Location = new System.Drawing.Point(264, 81);
             this.txtSummary.Name = "txtSummary";
             this.txtSummary.ReadOnly = true;
             this.txtSummary.Size = new System.Drawing.Size(253, 23);
@@ -440,19 +441,32 @@
             this._status.BackColor = System.Drawing.SystemColors.Info;
             this._status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._status.Font = new System.Drawing.Font("宋体", 10F);
-            this._status.Location = new System.Drawing.Point(12, 581);
+            this._status.Location = new System.Drawing.Point(12, 602);
             this._status.Multiline = true;
             this._status.Name = "_status";
             this._status.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._status.Size = new System.Drawing.Size(904, 75);
+            this._status.Size = new System.Drawing.Size(960, 75);
             this._status.TabIndex = 31;
             this._status.Text = resources.GetString("_status.Text");
+            // 
+            // _txtWarning
+            // 
+            this._txtWarning.BackColor = System.Drawing.SystemColors.Info;
+            this._txtWarning.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._txtWarning.Font = new System.Drawing.Font("宋体", 10F);
+            this._txtWarning.ForeColor = System.Drawing.Color.Red;
+            this._txtWarning.Location = new System.Drawing.Point(12, 41);
+            this._txtWarning.Multiline = true;
+            this._txtWarning.Name = "_txtWarning";
+            this._txtWarning.Size = new System.Drawing.Size(240, 61);
+            this._txtWarning.TabIndex = 32;
             // 
             // CompareVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 662);
+            this.ClientSize = new System.Drawing.Size(984, 684);
+            this.Controls.Add(this._txtWarning);
             this.Controls.Add(this._status);
             this.Controls.Add(this.txtSummary);
             this.Controls.Add(this.btnRar);
@@ -527,5 +541,6 @@
         private System.Windows.Forms.Button btnRar;
         private System.Windows.Forms.TextBox txtSummary;
         private System.Windows.Forms.TextBox _status;
+        private System.Windows.Forms.TextBox _txtWarning;
     }
 }

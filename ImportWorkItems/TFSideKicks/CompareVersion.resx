@@ -207,7 +207,7 @@
         RudN65tdA8sHzg46DF645Xrr8m2v29fvrLwzMBQydHc4cnjkLvvu5L2key/vZ9yff7DpIfph4SOpR+WP
         lR7X/aj3Y+uI5ciZUdfRvidBTx6Mscae/5T+04fx/Kfkp+UTqhONk2aTp6fcp24+W/1s/Hnq8/npgp+l
         f65+ofviu18cf+mbWTUz/pL/cuHX4lfyr468Xva6e9Z/9vGb5Dfzc4Vv5d8efcd41/s+7P3EfOYH7IeK
-        j3ofuz55f3q4kLyw8Bv3hPP74uYdwgAAAAlwSFlzAAALEAAACxABrSO9dQAAAJRJREFUOE+ljjEOgzAM
+        j3ofuz55f3q4kLyw8Bv3hPP74uYdwgAAAAlwSFlzAAALDwAACw8BkvkDpQAAAJRJREFUOE+ljjEOgzAM
         RTlWT4XUjYUkJ+nExjkYOQwTUjq4/aiOgvUTBTq8RP6xn9OJyF8cRwhBnBvFe3fcJfQd/THG7+hPgPDx
         nJtB/0mA4g5JsE691GDD4CTY9jflkmB4LQndXoIK7GabKUWB/YHNQFWQwzKlKMg3sQxUBTksU6iAgeam
         H6CwqIDRLKiBniS4j3QfKKg+zPpWliUAAAAASUVORK5CYII=
@@ -216,7 +216,7 @@
   <data name="btnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACw8AAAsPAZL5A6UAAACKSURBVDhPY/ifk/OfSLyfARvAohAXxm8AlIsBgHIOA26A
+        YQUAAAAJcEhZcwAACw4AAAsOAUC+4UEAAACKSURBVDhPY/ifk/OfSLyfARvAohAXxm8AlIsBgHIOA26A
         AUgzEPdD+QlgCRgAaQZhKJcggKqfD+ViNwDIBzkbFwarB+L5QCyAywCYIkL4PKUGNGA1AB9A0gwJTDIM
         eA/EDlAuYQOAcgpA3ADEYBuBtAFYAgZAmkEYysUAQDlYyNM4JRKBaWEAAwMAq8dYJWHiioIAAAAASUVO
         RK5CYII=
@@ -225,7 +225,7 @@
   <data name="btnRar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAAGISURBVDhPYwjhV4wVkU4WkcSFgLIRsgx/YIBh0eJlIUIS
+        YQUAAAAJcEhZcwAADr4AAA6+AepCscAAAAGISURBVDhPYwjhV4wVkU4WkcSFgLIRsgx/YIBh0eJlIUIS
         +VIK06YxXLzIMHEiA5BdIqKTLaCOTALVQDUA8dHjZ4D8KiZvoGqgHqDOela3FmZ/oAiEbGQKKOeyhOhh
         WLtu44/f/0+fvwrkz+JKWiCQgZWcyhHfxhQMdCGDmpraufOX/vz9D7QHKPQfCPZ9+L/46f+p9/63X/9f
         e+l/5YX/Oae+JB94EbUV6B+QHxgYGG7efgBUCXT90aNyk5iisKJepuAAoFKIHyB6gAY0NDAARfEghB+0
@@ -240,11 +240,14 @@
   </metadata>
   <data name="_status.Text" xml:space="preserve">
     <value>使用说明（勾选提交版本直接从JSDesk平台数据库查询组件和脚本信息，仅供开发用）：
-1、资源文件先从“提交版本”下载（Resource.rar），放在比较工具的运行目录下；
+1、资源文件先从“提交版本”下载（resource.rar），放在比较工具的运行目录下；
 2、准备好component.xls和dbscript.xls（可以通过比较工具输入提交版本ID，点击excel图标按钮导出；
 3、指定实施完毕后的客户端机器的运行路径；
 4、点击【执行比较】按钮，执行后查看比较结果。</value>
   </data>
+  <metadata name="_txtWarning.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAwAAAAQAAEABAB0IQAAxgAAAAAAAAABAAgAaV0AADoiAAAAAAAAAQAgAGuQAACjfwAAEBAQAAEA

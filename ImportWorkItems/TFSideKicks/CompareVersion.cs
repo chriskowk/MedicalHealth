@@ -55,6 +55,15 @@ namespace TFSideKicks
             ToolTip tip3 = new ToolTip();
             tip3.ShowAlways = true;
             tip3.SetToolTip(btnRar, "打包指定文件夹的所有文件");
+
+            StringBuilder sb = new StringBuilder();
+            if (!File.Exists(Path.Combine(Environment.CurrentDirectory, COMPONENT_FILENAME)))
+                sb.AppendLine($"组件清单文件{COMPONENT_FILENAME}");
+            if (!File.Exists(Path.Combine(Environment.CurrentDirectory, DBSCRIPT_FILENAME)))
+                sb.AppendLine($"脚本清单文件{DBSCRIPT_FILENAME}");
+            if (!File.Exists(Path.Combine(Environment.CurrentDirectory, RESOURCE_FILENAME)))
+                sb.AppendLine($"资源清单文件{RESOURCE_FILENAME}");
+            if (sb.Length > 0) _txtWarning.Text = $"运行路径不存在：\r\n{sb}";
         }
 
         private void Desktop_Load(object sender, EventArgs e)
@@ -214,7 +223,19 @@ namespace TFSideKicks
                 {
                     if (fi.Length != item.FileSize || Math.Abs((fi.LastWriteTime.Subtract(item.CompileDateTime)).TotalSeconds) > 1)
                     {
-                        lvwComponent.Items.Add(new ListViewItem(new string[] { item.FileName, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.CompileDateTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.FileSize.ToString() }));
+                        ListViewItem lvi = new ListViewItem(new string[] { item.FileName, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.CompileDateTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.FileSize.ToString() });
+                        lvi.UseItemStyleForSubItems = false;
+                        if (Math.Abs((fi.LastWriteTime.Subtract(item.CompileDateTime)).TotalSeconds) > 1)
+                        {
+                            lvi.SubItems[1].ForeColor = Color.Red;
+                            lvi.SubItems[2].ForeColor = Color.Red;
+                        }
+                        if (fi.Length != item.FileSize)
+                        {
+                            lvi.SubItems[3].ForeColor = Color.Red;
+                            lvi.SubItems[4].ForeColor = Color.Red;
+                        }
+                        lvwComponent.Items.Add(lvi);
                     }
                 }
             }
@@ -356,7 +377,19 @@ namespace TFSideKicks
                 {
                     if (fi.Length != item.Length || Math.Abs((fi.LastWriteTime.Subtract(item.LastWriteTime)).TotalSeconds) > 1)
                     {
-                        lvwResource.Items.Add(new ListViewItem(new string[] { sourcefile, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.Length.ToString() }));
+                        ListViewItem lvi = new ListViewItem(new string[] { sourcefile, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.Length.ToString() });
+                        lvi.UseItemStyleForSubItems = false;
+                        if (Math.Abs((fi.LastWriteTime.Subtract(item.LastWriteTime)).TotalSeconds) > 1)
+                        {
+                            lvi.SubItems[1].ForeColor = Color.Red;
+                            lvi.SubItems[2].ForeColor = Color.Red;
+                        }
+                        if (fi.Length != item.Length)
+                        {
+                            lvi.SubItems[3].ForeColor = Color.Red;
+                            lvi.SubItems[4].ForeColor = Color.Red;
+                        }
+                        lvwResource.Items.Add(lvi);
                     }
                     //bool issame = Utility.CompareFiles(fi.FullName, item.FullName);
                 }
