@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Linq;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -64,7 +65,43 @@ namespace TFSideKicks
             if (!File.Exists(Path.Combine(Environment.CurrentDirectory, RESOURCE_FILENAME)))
                 sb.AppendLine($"资源清单文件{RESOURCE_FILENAME}");
             if (sb.Length > 0) _txtWarning.Text = $"运行路径不存在：\r\n{sb}";
+
+            //test(15);
+
+            //T t = new T() { Id = 15 };
+            //test2(t);
         }
+
+        //public void test(int i)
+        //{
+        //    lock (this)
+        //    {
+        //        if (i > 10)
+        //        {
+        //            i--;
+        //            test(i);
+        //            Debug.Print(i.ToString());
+        //        }
+        //    }
+        //}
+
+        //public class T
+        //{
+        //    public int Id;
+        //}
+
+        //public  void test2(T t)
+        //{
+        //    lock (this)
+        //    {
+        //        if (t.Id > 10)
+        //        {
+        //            t.Id--;
+        //            test2(t);
+        //            Debug.Print(t.Id.ToString());
+        //        }
+        //    }
+        //}
 
         private void Desktop_Load(object sender, EventArgs e)
         {
