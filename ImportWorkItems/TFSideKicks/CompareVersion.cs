@@ -66,42 +66,43 @@ namespace TFSideKicks
                 sb.AppendLine($"资源清单文件{RESOURCE_FILENAME}");
             if (sb.Length > 0) _txtWarning.Text = $"运行路径不存在：\r\n{sb}";
 
-            //test(15);
+            Test(15);
 
-            //T t = new T() { Id = 15 };
-            //test2(t);
+            T t = new T() { Id = 15 };
+            Test2(t);
         }
 
-        //public void test(int i)
-        //{
-        //    lock (this)
-        //    {
-        //        if (i > 10)
-        //        {
-        //            i--;
-        //            test(i);
-        //            Debug.Print(i.ToString());
-        //        }
-        //    }
-        //}
+        private readonly object x = new object();
+        public void Test(int i)
+        {
+            lock (x)
+            {
+                if (i > 10)
+                {
+                    i--;
+                    Test(i);
+                    Debug.Print(i.ToString());
+                }
+            }
+        }
 
-        //public class T
-        //{
-        //    public int Id;
-        //}
+        public class T
+        {
+            public int Id;
+        }
 
-        //public  void test2(T t)
-        //{
-        //    lock (this)
-        //    {
-        //        if (t.Id > 10)
-        //        {
-        //            t.Id--;
-        //            test2(t);
-        //            Debug.Print(t.Id.ToString());
-        //        }
-        //    }
-        //}
+        public void Test2(T t)
+        {
+            lock (x)
+            {
+                if (t.Id > 10)
+                {
+                    t.Id--;
+                    Test2(t);
+                    Debug.Print(t.Id.ToString());
+                }
+            }
+        }
 
         private void Desktop_Load(object sender, EventArgs e)
         {
@@ -120,27 +121,39 @@ namespace TFSideKicks
 
         private bool LoadComponents(bool fromDB)
         {
-            int versionId;
-            if (fromDB == false)
+            try
             {
-                DataTable dt = GetExcelDataTable(DBSCRIPT_FILENAME);
-                if (dt != null) LoadDBScripts(dt);
-
-                dt = GetExcelDataTable(COMPONENT_FILENAME);
-                if (dt != null)
-                    return LoadComponents(dt);
-                else
-                    MessageBox.Show(string.Format("请确认组件文件是否存在！\r\n{0}", COMPONENT_FILENAME), "版本比较");
-            }
-            else
-            {
-                if (int.TryParse(txtVersionID.Text, out versionId))
+                if (fromDB == false)
                 {
-                    LoadDBScripts(GetDBScriptDataTable(versionId), true);
-                    return LoadComponents(GetComponentDataTable(versionId), true);
+                    DataTable dt = GetExcelDataTable(DBSCRIPT_FILENAME);
+                    if (dt != null) LoadDBScripts(dt);
+
+                    dt = GetExcelDataTable(COMPONENT_FILENAME);
+                    if (dt != null)
+                        return LoadComponents(dt);
+                    else
+                        MessageBox.Show(string.Format("请确认组件文件是否存在！\r\n{0}", COMPONENT_FILENAME), "版本比较");
                 }
                 else
-                    MessageBox.Show("请输入正确的版本号！", "版本比较", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                {
+                    if (int.TryParse(txtVersionID.Text, out int versionId))
+                    {
+                        DataTable dt = GetDBScriptDataTable(versionId);
+                        if (dt != null) LoadDBScripts(dt);
+
+                        dt = GetComponentDataTable(versionId);
+                        if (dt != null)
+                            return LoadComponents(dt);
+                    }
+                    else
+                        MessageBox.Show("请输入正确的版本号！", "版本比较", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                string sourcetips = fromDB ? "访问平台数据库失败！" : string.Format("读取{0}文件Sheet1数据失败！\r\n调整工作表标题行的高度保存后再试！", COMPONENT_FILENAME);
+                MessageBox.Show(string.Format("{0}\r\n{1}", sourcetips, ex.Message), "LoadComponents", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             return false;
         }
@@ -169,58 +182,40 @@ namespace TFSideKicks
             return ds.Tables[0];
         }
 
-        private bool LoadComponents(DataTable dt, bool isFromDB = false)
+        private bool LoadComponents(DataTable dt)
         {
-            try
+            _components.Clear();
+            foreach (DataRowView row in dt.DefaultView)
             {
-                _components.Clear();
-                foreach (DataRowView row in dt.DefaultView)
+                string path = row["SourcePath"].ToString();
+                string extension = Path.GetExtension(path);
+                if (extension.Equals(".dll", StringComparison.OrdinalIgnoreCase) || extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
                 {
-                    string path = row["SourcePath"].ToString();
-                    string extension = Path.GetExtension(path);
-                    if (extension.Equals(".dll", StringComparison.OrdinalIgnoreCase) || extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
-                    {
-                        int id = int.Parse(row["ComponentID"].ToString());
-                        string filename = Path.GetFileName(path);
-                        int filesize = int.Parse(row["FileSize"].ToString());
-                        DateTime compiledatetime = DateTime.Parse(row["CompileDateTime"].ToString());
-                        _components.Add(new Component() { ComponentID = id, FileName = filename, FileSize = filesize, CompileDateTime = compiledatetime });
-                    }
+                    int id = int.Parse(row["ComponentID"].ToString());
+                    string filename = Path.GetFileName(path);
+                    int filesize = int.Parse(row["FileSize"].ToString());
+                    DateTime compiledatetime = DateTime.Parse(row["CompileDateTime"].ToString());
+                    _components.Add(new Component() { ComponentID = id, FileName = filename, FileSize = filesize, CompileDateTime = compiledatetime });
                 }
-                return true;
             }
-            catch (Exception ex)
-            {
-                string sourcetips = isFromDB ? "访问平台数据库失败！" : string.Format("读取{0}文件Sheet1数据失败！\r\n调整工作表标题行的高度保存后再试！", DBSCRIPT_FILENAME);
-                MessageBox.Show(string.Format("{0}\r\n{1}", sourcetips, ex.Message), "LoadDBScripts", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            return true;
         }
 
-        private bool LoadDBScripts(DataTable dt, bool isFromDB = false)
+        private bool LoadDBScripts(DataTable dt)
         {
-            try
+            _dbscripts.Clear();
+            foreach (DataRowView row in dt.DefaultView)
             {
-                _dbscripts.Clear();
-                foreach (DataRowView row in dt.DefaultView)
-                {
-                    int id = int.Parse(row["DBScriptID"].ToString());
-                    DateTime lastedmodifiedon = DateTime.Parse(row["LastedModifyDateTime"].ToString());
-                    _dbscripts.Add(new DBScript() { DBScriptID = id, CreateEmployeeName = row["FullName"].ToString(), Description = row["Description"].ToString(), Note = row["Note"].ToString(), BranchVersion = row["BranchVersion"].ToString(), LastedModifyDateTime = lastedmodifiedon });
-                }
-                lvwDBScript.Items.Clear();
-                foreach (var item in _dbscripts.OrderBy(a => a.DBScriptID))
-                {
-                    lvwDBScript.Items.Add(new ListViewItem(new string[] { item.DBScriptID.ToString(), item.CreateEmployeeName, item.Description, item.Note, item.BranchVersion, item.LastedModifyDateTime.ToString("yyyy-MM-dd HH:mm:ss") }));
-                }
-                return true;
+                int id = int.Parse(row["DBScriptID"].ToString());
+                DateTime lastedmodifiedon = DateTime.Parse(row["LastedModifyDateTime"].ToString());
+                _dbscripts.Add(new DBScript() { DBScriptID = id, CreateEmployeeName = row["FullName"].ToString(), Description = row["Description"].ToString(), Note = row["Note"].ToString(), BranchVersion = row["BranchVersion"].ToString(), LastedModifyDateTime = lastedmodifiedon });
             }
-            catch (Exception ex)
+            lvwDBScript.Items.Clear();
+            foreach (var item in _dbscripts.OrderBy(a => a.DBScriptID))
             {
-                string sourcetips = isFromDB ? "访问平台数据库失败！" : string.Format("读取{0}文件Sheet1数据失败！\r\n调整工作表标题行的高度保存后再试！", COMPONENT_FILENAME);
-                MessageBox.Show(string.Format("{0}\r\n{1}", sourcetips, ex.Message), "LoadDBScripts", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                lvwDBScript.Items.Add(new ListViewItem(new string[] { item.DBScriptID.ToString(), item.CreateEmployeeName, item.Description, item.Note, item.BranchVersion, item.LastedModifyDateTime.ToString("yyyy-MM-dd HH:mm:ss") }));
             }
+            return true;
         }
 
         private void CheckFileVersion()
