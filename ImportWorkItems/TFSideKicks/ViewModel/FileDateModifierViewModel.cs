@@ -151,21 +151,21 @@ namespace TFSideKicks
         /// <summary>
         /// Gets the browse command.
         /// </summary>
-        public ICommand BrowseCommand { get { return _browseCommand; } }
+        public ICommand BrowseCommand => _browseCommand;
 
         /// <summary>
         /// Gets the update date command.
         /// </summary>
-        public ICommand UpdateDateCommand { get { return _updateDateCommand; } }
+        public ICommand UpdateDateCommand => _updateDateCommand;
 
         /// <summary>
         /// Gets the ExecWinRAR command.
         /// </summary>
-        public ICommand ExecWinRARCommand { get { return _execWinRARCommand; } }
+        public ICommand ExecWinRARCommand => _execWinRARCommand;
         /// <summary>
         /// 执行当前运行路径下的批命令（TF_GET_MedicalHealth.bat）
         /// </summary>
-        public ICommand TFGetLatestCommand { get { return _TFGetLatestCommand; } }
+        public ICommand TFGetLatestCommand => _TFGetLatestCommand;
 
         /// <summary>
         /// Gets the current culture info.
