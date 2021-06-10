@@ -33,7 +33,7 @@ namespace TFSideKicks
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            _txtSelectedPath.Focus();
+            _txtSelectedPath.Focus();   
         }
     }
 }
