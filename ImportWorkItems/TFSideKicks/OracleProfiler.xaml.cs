@@ -173,20 +173,35 @@ namespace TFSideKicks
                 string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
                 Context.DB.ExecSqlStatement(createTableSql);
 
+                //string sqlbase = string.Format(@"SELECT n.SQL_ID, n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
+                //, n.sql_fulltext AS SQL_FULLTEXT 
+                //, n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS 
+                //, n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS 
+                //, n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS 
+                //, n.executions - nvl(o.executions, 0) AS EXECUTIONS 
+                //, round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME 
+                //, round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE 
+                //, round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
+                //, to_date(n.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, n.LAST_ACTIVE_TIME 
+                //FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address 
+                //WHERE ( to_date(n.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR n.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
+                //AND (n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> 
+                //ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
+
                 string sqlbase = string.Format(@"SELECT n.SQL_ID, n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
                 , n.sql_fulltext AS SQL_FULLTEXT 
-                , n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS 
-                , n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS 
-                , n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS 
-                , n.executions - nvl(o.executions, 0) AS EXECUTIONS 
-                , round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME 
-                , round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE 
-                , round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
+                , n.parse_calls AS PARSE_CALLS 
+                , n.buffer_gets AS BUFFER_GETS 
+                , n.disk_reads AS DISK_READS 
+                , n.executions AS EXECUTIONS 
+                , round(n.cpu_time / 1000000, 2) AS CPU_TIME 
+                , round(n.cpu_time / (n.executions * 1000000), 2) AS CPU_TIME_PER_EXE 
+                , round(n.elapsed_time / (n.executions * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
                 , to_date(n.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, n.LAST_ACTIVE_TIME 
-                FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address 
-                WHERE ( to_date(n.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR n.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
-                AND (n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> 
-                ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
+                FROM v$sql n 
+                WHERE ( to_date(n.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') OR n.LAST_ACTIVE_TIME > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') )
+                AND n.executions > 0 <CRITERIA> 
+                ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", this.StartOnText);
 
                 string criteria = "";
                 string criteria2 = "";

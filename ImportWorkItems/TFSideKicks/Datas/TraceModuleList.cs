@@ -43,11 +43,16 @@ namespace TFSideKicks.Datas
                 },
                 new MultiComboBox.MultiCbxBaseData(){
                     ID = 3,
-                    ViewName = "sqlservr.exe",
+                    ViewName = "jsenv.exe",
                     IsChecked = false
                 },
                 new MultiComboBox.MultiCbxBaseData(){
                     ID = 4,
+                    ViewName = "sqlservr.exe",
+                    IsChecked = false
+                },
+                new MultiComboBox.MultiCbxBaseData(){
+                    ID = 5,
                     ViewName = "JDBC Thin Client",
                     IsChecked = false
                 },
