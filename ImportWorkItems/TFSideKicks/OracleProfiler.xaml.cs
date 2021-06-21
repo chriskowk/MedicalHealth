@@ -100,17 +100,17 @@ namespace TFSideKicks
             try
             {
                 _context = new OracleDbContext(source, userid, password);
-                string sql1 = "SELECT table_name FROM user_tables WHERE table_name='" + OracleDbContext.OldTable + "'";
-                string sql2 = "SELECT table_name FROM user_tables WHERE table_name='" + OracleDbContext.NewTable + "'";
+                string sql1 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.OldTable + "'";
+                string sql2 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.NewTable + "'";
                 DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
                 DataSet ds2 = Context.DB.ExecuteDataSet(sql2);
                 if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == OracleDbContext.OldTable))
                 {
-                    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.OldTable + " PURGE");
+                    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.OldTable + " PURGE"); //删除Table不进入Recycle
                 }
                 if (((ds2 != null) && (ds2.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds2.Tables[0].Rows[0]["table_name"]) == OracleDbContext.NewTable))
                 {
-                    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.NewTable + " PURGE");
+                    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.NewTable + " PURGE"); //删除Table不进入Recycle
                 }
             }
             catch (Exception ex)
@@ -283,7 +283,8 @@ namespace TFSideKicks
 
         private void tb_searchtext_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control && e.Key == Key.Enter)
+            //if (e.KeyboardDevice.Modifiers == ModifierKeys.Control && e.Key == Key.Enter) // <CTRL>+<ENTER>
+            if (e.Key == Key.Enter) // <ENTER>
             {
                 if (_dataView == null) return;
 
