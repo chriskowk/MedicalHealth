@@ -124,8 +124,8 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sqlarea";
-                Context.DB.ExecSqlStatement(createTableSql);
+                //string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sqlarea";
+                //Context.DB.ExecSqlStatement(createTableSql);
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
 
                 string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') AS currdate FROM dual";
@@ -170,8 +170,8 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
-                Context.DB.ExecSqlStatement(createTableSql);
+                //string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
+                //Context.DB.ExecSqlStatement(createTableSql);
 
                 //string sqlbase = string.Format(@"SELECT n.SQL_ID, n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
                 //, n.sql_fulltext AS SQL_FULLTEXT 
