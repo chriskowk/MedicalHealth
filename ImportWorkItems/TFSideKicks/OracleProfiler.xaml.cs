@@ -173,35 +173,35 @@ namespace TFSideKicks
                 //string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
                 //Context.DB.ExecSqlStatement(createTableSql);
 
-                //string sqlbase = string.Format(@"SELECT n.SQL_ID, n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
-                //, n.sql_fulltext AS SQL_FULLTEXT 
-                //, n.parse_calls - nvl(o.parse_calls, 0) AS PARSE_CALLS 
-                //, n.buffer_gets - nvl(o.buffer_gets, 0) AS BUFFER_GETS 
-                //, n.disk_reads - nvl(o.disk_reads, 0) AS DISK_READS 
-                //, n.executions - nvl(o.executions, 0) AS EXECUTIONS 
-                //, round((n.cpu_time - nvl(o.cpu_time, 0)) / 1000000, 2) AS CPU_TIME 
-                //, round((n.cpu_time - nvl(o.cpu_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE 
-                //, round((n.elapsed_time - nvl(o.elapsed_time, 0)) / ((n.executions - nvl(o.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
-                //, to_date(n.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, n.LAST_ACTIVE_TIME 
-                //FROM {0} n LEFT JOIN {1} o ON o.hash_value = n.hash_value AND o.address = n.address 
-                //WHERE ( to_date(n.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR n.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
-                //AND (n.executions - nvl(o.executions, 0)) > 0 <CRITERIA> 
-                //ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
+                //string sqlbase = string.Format(@"SELECT a.SQL_ID, a.parsing_schema_name AS SCHEMA, a.module AS MODULE, a.sql_text AS SQL_TEXT 
+                //, a.sql_fulltext AS SQL_FULLTEXT 
+                //, a.parse_calls - nvl(b.parse_calls, 0) AS PARSE_CALLS 
+                //, a.buffer_gets - nvl(b.buffer_gets, 0) AS BUFFER_GETS 
+                //, a.disk_reads - nvl(b.disk_reads, 0) AS DISK_READS 
+                //, a.executions - nvl(b.executions, 0) AS EXECUTIONS 
+                //, round((a.cpu_time - nvl(b.cpu_time, 0)) / 1000000, 2) AS CPU_TIME 
+                //, round((a.cpu_time - nvl(b.cpu_time, 0)) / ((a.executions - nvl(b.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE 
+                //, round((a.elapsed_time - nvl(b.elapsed_time, 0)) / ((a.executions - nvl(b.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
+                //, to_date(a.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, a.LAST_ACTIVE_TIME 
+                //FROM {0} a LEFT JOIN {1} b ON a.hash_value = b.hash_value AND a.address = b.address 
+                //WHERE ( to_date(a.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR a.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
+                //AND (a.executions - nvl(b.executions, 0)) > 0 <CRITERIA> 
+                //ORDER BY a.LAST_ACTIVE_TIME DESC, a.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
 
-                string sqlbase = string.Format(@"SELECT n.SQL_ID, n.parsing_schema_name AS SCHEMA, n.module AS MODULE, n.sql_text AS SQL_TEXT 
-                , n.sql_fulltext AS SQL_FULLTEXT 
-                , n.parse_calls AS PARSE_CALLS 
-                , n.buffer_gets AS BUFFER_GETS 
-                , n.disk_reads AS DISK_READS 
-                , n.executions AS EXECUTIONS 
-                , round(n.cpu_time / 1000000, 2) AS CPU_TIME 
-                , round(n.cpu_time / (n.executions * 1000000), 2) AS CPU_TIME_PER_EXE 
-                , round(n.elapsed_time / (n.executions * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
-                , to_date(n.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, n.LAST_ACTIVE_TIME 
-                FROM v$sql n 
-                WHERE ( to_date(n.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') OR n.LAST_ACTIVE_TIME > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') )
-                AND n.executions > 0 <CRITERIA> 
-                ORDER BY n.LAST_ACTIVE_TIME DESC, n.FIRST_LOAD_TIME DESC", this.StartOnText);
+                string sqlbase = string.Format(@"SELECT a.SQL_ID, a.parsing_schema_name AS SCHEMA, a.module AS MODULE, a.sql_text AS SQL_TEXT 
+                , a.sql_fulltext AS SQL_FULLTEXT 
+                , a.parse_calls AS PARSE_CALLS 
+                , a.buffer_gets AS BUFFER_GETS 
+                , a.disk_reads AS DISK_READS 
+                , decode(a.executions,0,1,a.executions) AS EXECUTIONS 
+                , round(a.cpu_time / 1000000, 2) AS CPU_TIME 
+                , round(a.cpu_time / (decode(a.executions,0,1,a.executions) * 1000000), 2) AS CPU_TIME_PER_EXE 
+                , round(a.elapsed_time / (decode(a.executions,0,1,a.executions) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
+                , to_date(a.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, a.LAST_ACTIVE_TIME 
+                FROM v$sql a 
+                WHERE ( to_date(a.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') OR a.LAST_ACTIVE_TIME > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') )
+                <CRITERIA> 
+                ORDER BY a.LAST_ACTIVE_TIME DESC, a.FIRST_LOAD_TIME DESC", this.StartOnText);
 
                 string criteria = "";
                 string criteria2 = "";
@@ -209,7 +209,7 @@ namespace TFSideKicks
                 {
                     IList<string> ms = module.Split(';').Select(a => string.Format("'{0}'", a.ToUpper())).ToList();
                     string modules = string.Join(",", ms);
-                    criteria2 = string.Format("AND UPPER(n.module) IN ({0})", modules);
+                    criteria2 = string.Format("AND UPPER(a.module) IN ({0})", modules);
                 }
 
                 criteria = criteria2;
@@ -221,7 +221,7 @@ namespace TFSideKicks
                     if ((ds != null) && (ds.Tables[0].Rows.Count > 0))
                         user = Convert.ToString(ds.Tables[0].Rows[0]["user"]);
 
-                    criteria = string.Format("AND n.parsing_schema_name = '{0}'", user);
+                    criteria = string.Format("AND a.parsing_schema_name = '{0}'", user);
                     if (!string.IsNullOrWhiteSpace(criteria2))
                     {
                         criteria = string.Format("{0} {1}", criteria, criteria2);
