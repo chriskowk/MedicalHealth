@@ -25,11 +25,13 @@ namespace TFSideKicks
     public abstract class OracleDbHelper
     {
         //数据库连接字符串(web.config来配置)，可以动态更改connectionString支持多数据库.		
-        private static string _userid = "apps";
-        private static string _password = "jetsun";
-        public static string _connectionString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.18.99.243)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={_userid};Password={_password};";
+        //private static string _userid = "apps";
+        //private static string _password = "jetsun";
+        //public static string _connectionString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.18.99.243)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={_userid};Password={_password};";
+        private static string _connectionString = Runtimes.ConnectionString;
         public OracleDbHelper()
         {
+
         }
 
         public static int GetMaxID(string FieldName, string TableName)

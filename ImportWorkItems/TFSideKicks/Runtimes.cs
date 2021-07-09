@@ -15,7 +15,9 @@ namespace TFSideKicks
 {
     public static class Runtimes
     {
-        //根据excle的路径把第一个sheel中的内容放入datatable
+        // ORACLE数据库连接串
+        public static string ConnectionString;
+        // 根据excle的路径把第一个sheel中的内容放入datatable
         public static DataTable ReadExcelToTable(string path)//excel存放的路径
         {
             DataTable ret;

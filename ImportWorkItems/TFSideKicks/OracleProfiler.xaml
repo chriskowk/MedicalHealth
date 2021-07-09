@@ -43,19 +43,33 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" >Source</Label>
-        <TextBox Name="tb_source" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Text="172.18.99.243:1521/orclbak" ToolTip="like xx.xx.xx.xx:1521/orcl" />
+        <Grid Grid.Row="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" >Host:</Label>
+            <TextBox Name="tb_host" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="172.18.99.243" ToolTip="服务器的IP地址" />
+            <Label Grid.Row="0" Grid.Column="2" >Port:</Label>
+            <TextBox Name="tb_port" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Text="1521" ToolTip="端口号" />
+            <Label Grid.Row="0" Grid.Column="4" >Service Name:</Label>
+            <TextBox Name="tb_service" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" Text="orclbak" ToolTip="服务名（或SID）" />
+        </Grid>
         <TextBox Name="tb_log" Background="LightYellow" Foreground="DarkGray" IsReadOnly="True" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
-        <Label Grid.Row="2" >User ID</Label>
+        <Label Grid.Row="2" >User ID:</Label>
         <TextBox Name="tb_user" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="apps"/>
-        <Label Grid.Row="2" Grid.Column="2">Password</Label>
+        <Label Grid.Row="2" Grid.Column="2">Password:</Label>
         <PasswordBox Name="tb_password" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" />
         <CheckBox Name="cb_save" Grid.Row="4" Grid.Column="1" Content="Save to table" HorizontalAlignment="Left" VerticalAlignment="Center" Click="cb_save_Click"/>
         <TextBox Name="tb_oraname" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="10,0,0,0" />
         <CheckBox Name="cb_curruser" Grid.Row="6" Grid.Column="1" Content="Trace only current user" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label Grid.Row="6" Grid.Column="2">Trace module</Label>
+        <Label Grid.Row="6" Grid.Column="2">Trace module:</Label>
         <controls:MultiComboBox x:Name="mcbo_module" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" Text=""/>
-        <Label Grid.Row="8" >Search</Label>
+        <Label Grid.Row="8" >Search:</Label>
         <TextBox Name="tb_searchtext" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Text="" KeyDown="tb_searchtext_KeyDown" ToolTip="按&lt;ENTER&gt;检索指定的文本"/>
         <Grid Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" >
             <Grid.ColumnDefinitions>

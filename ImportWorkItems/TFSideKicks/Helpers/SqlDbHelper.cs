@@ -683,17 +683,22 @@ namespace TFSideKicks
     {
         public static string OldTable = "TEMP_ORACLESQLOLD";
         public static string NewTable = "TEMP_ORACLESQLNEW";
-        private static string _source;
         private static string _userid;
         private static string _password;
+        private static string _host;
+        private static string _port;
+        private static string _service;
 
         private IGSPDatabase _db;
-        public OracleDbContext(string source, string userid, string password)
+        public OracleDbContext(string host, string port, string service, string userid, string password)
         {
-            _source = source;
+            _host = host;
+            _port = port;
+            _service = service;
             _userid = userid;
             _password = password;
-            _db = new Genersoft.Platform.Core.DataAccess.Oracle.OracleDatabase(GetConfigData(_source, _userid, _password));
+            string source = $"{_host}:{_port}/{_service}";
+            _db = new Genersoft.Platform.Core.DataAccess.Oracle.OracleDatabase(GetConfigData(source, _userid, _password));
         }
 
         public IGSPDatabase DB
@@ -719,10 +724,10 @@ namespace TFSideKicks
 
         public static DataTable GetDomainSystemTable()
         {
-            DataTable dt = new DataTable();
-            string connString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.18.99.243)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={_userid};Password={_password};";
+            DataTable _dt = new DataTable();
+            string _connString = Runtimes.ConnectionString;
 
-            using (OracleConnection conn = new OracleConnection(connString))
+            using (OracleConnection conn = new OracleConnection(_connString))
             {
                 string sql = "select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key";
                 OracleCommand cmd = conn.CreateCommand();
@@ -739,7 +744,7 @@ namespace TFSideKicks
                     oda.Fill(ds);
                     oda.Dispose();
                     conn.Close();
-                    if (ds != null && ds.Tables.Count > 0) { dt = ds.Tables[0]; }
+                    if (ds != null && ds.Tables.Count > 0) { _dt = ds.Tables[0]; }
                 }
                 catch (OracleException e)
                 {
@@ -752,7 +757,7 @@ namespace TFSideKicks
                 }
             }
 
-            return dt;
+            return _dt;
         }
     }
 }

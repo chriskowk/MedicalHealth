@@ -1,6 +1,7 @@
 ﻿using Genersoft.Platform.Core.DataAccess;
 using Genersoft.Platform.Core.DataAccess.Configuration;
 using Genersoft.Platform.Core.DataAccess.Oracle;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -66,7 +67,7 @@ namespace TFSideKicks
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            tb_source.Focus();
+            tb_host.Focus();
         }
 
         private async void button1_Click(object sender, RoutedEventArgs e)
@@ -81,10 +82,12 @@ namespace TFSideKicks
             this.tb_log.AppendText("Getting ready ...\r\n");
             this.tb_log.AppendText("Clearing data ...\r\n");
 
-            string source = tb_source.Text;
+            string host = tb_host.Text.Trim();
+            string port = tb_port.Text.Trim();
+            string service = tb_service.Text.Trim();
             string userid = tb_user.Text;
             string password = tb_password.Password;
-            await Task.Run(() => DropTables(source, userid, password));
+            await Task.Run(() => DropTables(host, port, service, userid, password));
             this.tb_log.AppendText("Clear data succeed.\r\n");
 
             this.tb_log.AppendText("Creating data table ...\r\n");
@@ -95,13 +98,15 @@ namespace TFSideKicks
             this.button2.IsEnabled = true;
         }
 
-        private void DropTables(string source, string userid, string password)
+        private void DropTables(string host, string port, string service, string userid, string password)
         {
             try
             {
-                _context = new OracleDbContext(source, userid, password);
+                Runtimes.ConnectionString= $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = {host})(PORT = {port}))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={userid};Password={password};";
+                _context = new OracleDbContext(host, port, service, userid, password);
                 DataTable dt = OracleDbContext.GetDomainSystemTable();
-                //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis7");
+                //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis");
+                DataTable dt1 = OracleDbHelper.ExecuteDataTable("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key", new OracleParameter("@key", "emr"));
                 string sql1 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.OldTable + "'";
                 string sql2 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.NewTable + "'";
                 DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
@@ -126,8 +131,9 @@ namespace TFSideKicks
         {
             try
             {
-                //string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sqlarea";
+                string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sql";
                 //Context.DB.ExecSqlStatement(createTableSql);
+                int count = OracleDbHelper.ExecuteSql(createTableSql);
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
 
                 string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') AS currdate FROM dual";
@@ -172,8 +178,9 @@ namespace TFSideKicks
         {
             try
             {
-                //string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sqlarea";
+                string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sql";
                 //Context.DB.ExecSqlStatement(createTableSql);
+                int count = OracleDbHelper.ExecuteSql(createTableSql);
 
                 //string sqlbase = string.Format(@"SELECT a.SQL_ID, a.parsing_schema_name AS SCHEMA, a.module AS MODULE, a.sql_text AS SQL_TEXT 
                 //, a.sql_fulltext AS SQL_FULLTEXT 
