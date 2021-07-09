@@ -100,6 +100,8 @@ namespace TFSideKicks
             try
             {
                 _context = new OracleDbContext(source, userid, password);
+                DataTable dt = OracleDbContext.GetDomainSystemTable();
+                //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis7");
                 string sql1 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.OldTable + "'";
                 string sql2 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.NewTable + "'";
                 DataSet ds1 = Context.DB.ExecuteDataSet(sql1);

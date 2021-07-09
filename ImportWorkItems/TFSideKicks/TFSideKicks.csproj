@@ -82,10 +82,15 @@
     <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="SharpCompress">
       <HintPath>Lib\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -115,6 +120,7 @@
     </ApplicationDefinition>
     <Compile Include="Controls\MultiComboBox.cs" />
     <Compile Include="Datas\TraceModuleList.cs" />
+    <Compile Include="Helpers\OracleDbHelper.cs" />
     <Compile Include="Helpers\WinRARHelper.cs" />
     <Compile Include="ShowHistory.xaml.cs">
       <DependentUpon>ShowHistory.xaml</DependentUpon>

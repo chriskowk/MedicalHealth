@@ -1,6 +1,7 @@
 ﻿using Genersoft.Platform.Core.DataAccess;
 using Genersoft.Platform.Core.DataAccess.Configuration;
 using Genersoft.Platform.Core.DataAccess.Oracle;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -682,10 +683,17 @@ namespace TFSideKicks
     {
         public static string OldTable = "TEMP_ORACLESQLOLD";
         public static string NewTable = "TEMP_ORACLESQLNEW";
+        private static string _source;
+        private static string _userid;
+        private static string _password;
+
         private IGSPDatabase _db;
         public OracleDbContext(string source, string userid, string password)
         {
-            _db = new OracleDatabase(GetConfigData(source, userid, password));
+            _source = source;
+            _userid = userid;
+            _password = password;
+            _db = new Genersoft.Platform.Core.DataAccess.Oracle.OracleDatabase(GetConfigData(_source, _userid, _password));
         }
 
         public IGSPDatabase DB
@@ -707,6 +715,44 @@ namespace TFSideKicks
             }
 
             return _configData;
+        }
+
+        public static DataTable GetDomainSystemTable()
+        {
+            DataTable dt = new DataTable();
+            string connString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.18.99.243)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={_userid};Password={_password};";
+
+            using (OracleConnection conn = new OracleConnection(connString))
+            {
+                string sql = "select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key";
+                OracleCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql;
+                OracleParameter p0 = new OracleParameter("@key", OracleDbType.Varchar2, ParameterDirection.Input);
+                p0.Value = "cis";
+                cmd.Parameters.Add(p0);
+
+                try
+                {
+                    conn.Open();
+                    OracleDataAdapter oda = new OracleDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    oda.Fill(ds);
+                    oda.Dispose();
+                    conn.Close();
+                    if (ds != null && ds.Tables.Count > 0) { dt = ds.Tables[0]; }
+                }
+                catch (OracleException e)
+                {
+                    throw new Exception(e.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+
+            return dt;
         }
     }
 }
