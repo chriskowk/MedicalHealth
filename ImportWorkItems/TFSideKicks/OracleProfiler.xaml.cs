@@ -102,22 +102,32 @@ namespace TFSideKicks
         {
             try
             {
-                Runtimes.ConnectionString= $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = {host})(PORT = {port}))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={userid};Password={password};";
+                Runtimes.ConnectionString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = {host})(PORT = {port}))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={userid};Password={password};";
                 _context = new OracleDbContext(host, port, service, userid, password);
-                DataTable dt = OracleDbContext.GetDomainSystemTable();
+                //DataTable dt = OracleDbContext.GetDomainSystemTable();
                 //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis");
-                DataTable dt1 = OracleDbHelper.ExecuteDataTable("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key", new OracleParameter("@key", "emr"));
-                string sql1 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.OldTable + "'";
-                string sql2 = "SELECT table_name FROM user_tables WHERE table_name = '" + OracleDbContext.NewTable + "'";
-                DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
-                DataSet ds2 = Context.DB.ExecuteDataSet(sql2);
-                if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == OracleDbContext.OldTable))
+                //DataTable dt1 = OracleDbHelper.ExecuteDataTable("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key", new OracleParameter("@key", "emr"));
+                string sql1 = "SELECT table_name FROM all_tables WHERE table_name = '" + OracleDbContext.OldTable + "'";
+                string sql2 = "SELECT table_name FROM all_tables WHERE table_name = '" + OracleDbContext.NewTable + "'";
+                //DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
+                //DataSet ds2 = Context.DB.ExecuteDataSet(sql2);
+                //if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == OracleDbContext.OldTable))
+                //{
+                //    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.OldTable + " PURGE"); //删除Table不进入Recycle
+                //}
+                //if (((ds2 != null) && (ds2.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds2.Tables[0].Rows[0]["table_name"]) == OracleDbContext.NewTable))
+                //{
+                //    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.NewTable + " PURGE"); //删除Table不进入Recycle
+                //}
+                string oldtable = OracleDbHelper.GetSingle(sql1)?.ToString();
+                string newtable = OracleDbHelper.GetSingle(sql2)?.ToString();
+                if (!string.IsNullOrEmpty(oldtable))
                 {
-                    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.OldTable + " PURGE"); //删除Table不进入Recycle
+                    OracleDbHelper.ExecuteSql("DROP TABLE " + OracleDbContext.OldTable + " PURGE"); //删除Table不进入Recycle
                 }
-                if (((ds2 != null) && (ds2.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds2.Tables[0].Rows[0]["table_name"]) == OracleDbContext.NewTable))
+                if (!string.IsNullOrEmpty(newtable))
                 {
-                    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.NewTable + " PURGE"); //删除Table不进入Recycle
+                    OracleDbHelper.ExecuteSql("DROP TABLE " + OracleDbContext.NewTable + " PURGE"); //删除Table不进入Recycle
                 }
             }
             catch (Exception ex)
@@ -137,8 +147,10 @@ namespace TFSideKicks
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
 
                 string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') AS currdate FROM dual";
-                DataSet ds = Context.DB.ExecuteDataSet(getDateSql);
-                if (ds != null) { this.StartOnText = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]); }
+                //DataSet ds = Context.DB.ExecuteDataSet(getDateSql);
+                //if (ds != null) { this.StartOnText = Convert.ToString(ds.Tables[0].Rows[0]["currdate"]); }
+                string currdate = OracleDbHelper.GetSingle(getDateSql)?.ToString();
+                if (!string.IsNullOrEmpty(currdate)) this.StartOnText = currdate;
                 if (onlycurruser) { this.IsCurrUser = true; }
             }
             catch (Exception ex)
@@ -226,9 +238,10 @@ namespace TFSideKicks
                 {
                     string user = "";
                     string usersql = "SELECT user FROM dual";
-                    DataSet ds = Context.DB.ExecuteDataSet(usersql);
-                    if ((ds != null) && (ds.Tables[0].Rows.Count > 0))
-                        user = Convert.ToString(ds.Tables[0].Rows[0]["user"]);
+                    //DataSet ds = Context.DB.ExecuteDataSet(usersql);
+                    //if ((ds != null) && (ds.Tables[0].Rows.Count > 0))
+                    //    user = Convert.ToString(ds.Tables[0].Rows[0]["user"]);
+                    user = OracleDbHelper.GetSingle(usersql).ToString();
 
                     criteria = string.Format("AND a.parsing_schema_name = '{0}'", user);
                     if (!string.IsNullOrWhiteSpace(criteria2))
@@ -241,16 +254,24 @@ namespace TFSideKicks
                 if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
                 {
                     this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Checking table:" + tablename + " ...\r\n")));
-                    string sql1 = "SELECT table_name FROM user_tables WHERE table_name='" + tablename + "'";
-                    DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
-                    if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
+                    string sql2 = "SELECT table_name FROM all_tables WHERE table_name='" + tablename + "'";
+                    //DataSet ds1 = Context.DB.ExecuteDataSet(sql2);
+                    //if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
+                    //{
+                    //    this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + " ...\r\n")));
+                    //    Context.DB.ExecSqlStatement("DROP TABLE " + tablename + " PURGE");
+                    //}
+                    string savetable = OracleDbHelper.GetSingle(sql2)?.ToString();
+                    if (!string.IsNullOrEmpty(savetable))
                     {
                         this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + " ...\r\n")));
-                        Context.DB.ExecSqlStatement("DROP TABLE " + tablename + " PURGE");
+                        OracleDbHelper.ExecuteSql("DROP TABLE " + tablename + " PURGE");
                     }
+
                     this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Creating table:" + tablename + " ...\r\n")));
                     string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
-                    Context.DB.ExecSqlStatement(createTable);
+                    //Context.DB.ExecSqlStatement(createTable);
+                    OracleDbHelper.ExecuteSql(createTable);
                 }
 
                 sql = string.Format("SELECT ROWNUM, t.* FROM ({0}) t WHERE ROWNUM <= 500", sqlbase);
@@ -266,7 +287,8 @@ namespace TFSideKicks
 
         private DataSet LoadData(string sql)
         {
-            return Context.DB.ExecuteDataSet(sql);
+            //return Context.DB.ExecuteDataSet(sql);
+            return OracleDbHelper.Query(sql);
         }
 
         private async void _dgSQLlines_SelectionChanged(object sender, SelectionChangedEventArgs e)

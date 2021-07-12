@@ -169,11 +169,6 @@ namespace TFSideKicks
                 {
                     connection.Open();
                     int rows = cmd.ExecuteNonQuery();
-                    //OracleDataAdapter oda = new OracleDataAdapter(cmd);
-                    //DataSet ds = new DataSet();
-                    //oda.Fill(ds);
-                    //DataTable dt = ds.Tables[0];
-
                     return rows;
                 }
                 catch (OracleException e)
@@ -592,30 +587,30 @@ namespace TFSideKicks
         }
 
         /// <summary>
-        /// 执行SQL语句
+        /// 执行SQL语句，返回DataSet
         /// </summary>
-        /// <param name="sSQL">SQL语句</param>
-        /// <param name="Params">参数列表</param>
+        /// <param name="sql">SQL语句</param>
+        /// <param name="paras">参数列表</param>
         /// <returns>查询到的数据DataSet</returns>
-        public static DataSet ExecuteSQL(string sSQL, object[][] Params)
+        public static DataSet ExecuteSql(string sql, object[][] paras)
         {
             try
             {
                 DataSet ds = new DataSet();
-                OracleDataAdapter adapter = new OracleDataAdapter(sSQL, _connectionString);
-                if (Params != null)
+                OracleDataAdapter adapter = new OracleDataAdapter(sql, _connectionString);
+                if (paras != null)
                 {
-                    for (int i = 0; i <= Params.Length - 1; i++)
+                    for (int i = 0; i <= paras.Length - 1; i++)
                     {
                         OracleParameter oraclePar = new OracleParameter();
                         oraclePar.Direction = ParameterDirection.Input;
                         try
                         {
-                            oraclePar.OracleDbType = (OracleDbType)Params[i][1];
+                            oraclePar.OracleDbType = (OracleDbType)paras[i][1];
                         }
                         catch
                         {
-                            switch (Params[i][1].ToString())
+                            switch (paras[i][1].ToString())
                             {
                                 case "1":
                                     oraclePar.OracleDbType = OracleDbType.Varchar2;
@@ -631,8 +626,8 @@ namespace TFSideKicks
                                     break;
                             }
                         }
-                        oraclePar.ParameterName = Params[i][2].ToString().ToUpper();
-                        oraclePar.Value = Params[i][3];
+                        oraclePar.ParameterName = paras[i][2].ToString().ToUpper();
+                        oraclePar.Value = paras[i][3];
                         adapter.SelectCommand.Parameters.Add(oraclePar);
                     }
                 }
@@ -771,7 +766,7 @@ namespace TFSideKicks
         {
             DateTime dtNow;
             string sSQL = @" SELECT SYSDATE FROM DUAL ";
-            dtNow = (DateTime)(ExecuteSQL(sSQL, null).Tables[0].Rows[0][0]); //
+            dtNow = (DateTime)(ExecuteSql(sSQL, (object[][])null).Tables[0].Rows[0][0]); //
             return dtNow;
         }
 
@@ -793,7 +788,7 @@ namespace TFSideKicks
             Params[0] = new object[] { ParameterDirection.Input, OracleDbType.Varchar2, "RACK_STATUS", sStatus };
             Params[1] = new object[] { ParameterDirection.Input, OracleDbType.Varchar2, "PDLINE_ID", "1" };
             Params[2] = new object[] { ParameterDirection.Input, OracleDbType.Varchar2, "CRANE_LOC", sLocation };
-            return ExecuteSQL(sSQL, Params);
+            return ExecuteSql(sSQL, Params);
         }
 
         /// <summary>
