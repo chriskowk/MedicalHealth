@@ -107,27 +107,14 @@ namespace TFSideKicks
                 //DataTable dt = OracleDbContext.GetDomainSystemTable();
                 //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis");
                 //DataTable dt1 = OracleDbHelper.ExecuteDataTable("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key", new OracleParameter("@key", "emr"));
-                string sql1 = "SELECT table_name FROM all_tables WHERE table_name = '" + OracleDbContext.OldTable + "'";
-                string sql2 = "SELECT table_name FROM all_tables WHERE table_name = '" + OracleDbContext.NewTable + "'";
-                //DataSet ds1 = Context.DB.ExecuteDataSet(sql1);
-                //DataSet ds2 = Context.DB.ExecuteDataSet(sql2);
-                //if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == OracleDbContext.OldTable))
-                //{
-                //    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.OldTable + " PURGE"); //删除Table不进入Recycle
-                //}
-                //if (((ds2 != null) && (ds2.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds2.Tables[0].Rows[0]["table_name"]) == OracleDbContext.NewTable))
-                //{
-                //    Context.DB.ExecSqlStatement("DROP TABLE " + OracleDbContext.NewTable + " PURGE"); //删除Table不进入Recycle
-                //}
-                string oldtable = OracleDbHelper.GetSingle(sql1)?.ToString();
-                string newtable = OracleDbHelper.GetSingle(sql2)?.ToString();
-                if (!string.IsNullOrEmpty(oldtable))
+                string sql = "SELECT table_name FROM all_tables WHERE table_name = :p0";
+                IList<string> tns = new List<string> { OracleDbContext.OldTable, OracleDbContext.NewTable };
+                foreach (var tablename in tns)
                 {
-                    OracleDbHelper.ExecuteSql("DROP TABLE " + OracleDbContext.OldTable + " PURGE"); //删除Table不进入Recycle
-                }
-                if (!string.IsNullOrEmpty(newtable))
-                {
-                    OracleDbHelper.ExecuteSql("DROP TABLE " + OracleDbContext.NewTable + " PURGE"); //删除Table不进入Recycle
+                    if (!string.IsNullOrEmpty(OracleDbHelper.GetSingle(sql, new OracleParameter("@p0", tablename))?.ToString()))
+                    {
+                        OracleDbHelper.ExecuteSql($"DROP TABLE {tablename} PURGE"); //删除Table不进入Recycle
+                    }
                 }
             }
             catch (Exception ex)
@@ -141,9 +128,9 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = "CREATE TABLE " + OracleDbContext.OldTable + " AS SELECT * FROM v$sql";
+                string createTableSql = $"CREATE TABLE {OracleDbContext.OldTable} AS SELECT * FROM v$sql";
                 //Context.DB.ExecSqlStatement(createTableSql);
-                int count = OracleDbHelper.ExecuteSql(createTableSql);
+                OracleDbHelper.ExecuteSql(createTableSql);
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
 
                 string getDateSql = "SELECT to_char(SYSDATE,'yyyy/MM/dd hh24:mi:ss') AS currdate FROM dual";
@@ -190,9 +177,9 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = "CREATE TABLE " + OracleDbContext.NewTable + " AS SELECT * FROM v$sql";
+                string createTableSql = $"CREATE TABLE {OracleDbContext.NewTable} AS SELECT * FROM v$sql";
                 //Context.DB.ExecSqlStatement(createTableSql);
-                int count = OracleDbHelper.ExecuteSql(createTableSql);
+                OracleDbHelper.ExecuteSql(createTableSql);
 
                 //string sqlbase = string.Format(@"SELECT a.SQL_ID, a.parsing_schema_name AS SCHEMA, a.module AS MODULE, a.sql_text AS SQL_TEXT 
                 //, a.sql_fulltext AS SQL_FULLTEXT 
@@ -254,22 +241,15 @@ namespace TFSideKicks
                 if (this.IsSaveOracle && !string.IsNullOrWhiteSpace(tablename))
                 {
                     this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Checking table:" + tablename + " ...\r\n")));
-                    string sql2 = "SELECT table_name FROM all_tables WHERE table_name='" + tablename + "'";
-                    //DataSet ds1 = Context.DB.ExecuteDataSet(sql2);
-                    //if (((ds1 != null) && (ds1.Tables[0].Rows.Count > 0)) && (Convert.ToString(ds1.Tables[0].Rows[0]["table_name"]) == tablename))
-                    //{
-                    //    this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + " ...\r\n")));
-                    //    Context.DB.ExecSqlStatement("DROP TABLE " + tablename + " PURGE");
-                    //}
-                    string savetable = OracleDbHelper.GetSingle(sql2)?.ToString();
-                    if (!string.IsNullOrEmpty(savetable))
+                    string sql2 = "SELECT table_name FROM all_tables WHERE table_name = :p0";
+                    if (!string.IsNullOrEmpty(OracleDbHelper.GetSingle(sql2, new OracleParameter("@p0", tablename))?.ToString()))
                     {
                         this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Drop table:" + tablename + " ...\r\n")));
-                        OracleDbHelper.ExecuteSql("DROP TABLE " + tablename + " PURGE");
+                        OracleDbHelper.ExecuteSql($"DROP TABLE {tablename} PURGE");
                     }
 
                     this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Creating table:" + tablename + " ...\r\n")));
-                    string createTable = string.Format("CREATE TABLE {0} AS {1}", tablename, sqlbase);
+                    string createTable = $"CREATE TABLE {tablename} AS {sqlbase}";
                     //Context.DB.ExecSqlStatement(createTable);
                     OracleDbHelper.ExecuteSql(createTable);
                 }
