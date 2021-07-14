@@ -28,7 +28,6 @@ namespace TFSideKicks
         //private static string _userid = "apps";
         //private static string _password = "jetsun";
         //public static string _connectionString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 172.18.99.243)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={_userid};Password={_password};";
-        private static string _connectionString = Runtimes.ConnectionString;
         public OracleDbHelper()
         {
 
@@ -98,7 +97,7 @@ namespace TFSideKicks
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (OracleCommand cmd = new OracleCommand(SQLString, connection))
                 {
@@ -123,7 +122,7 @@ namespace TFSideKicks
         /// <param name="SQLStringList">多条SQL语句</param>		
         public static void ExecuteSqlTran(ArrayList SQLStringList)
         {
-            using (OracleConnection conn = new OracleConnection(_connectionString))
+            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 conn.Open();
                 OracleCommand cmd = new OracleCommand();
@@ -159,7 +158,7 @@ namespace TFSideKicks
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, string content)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 OracleCommand cmd = new OracleCommand(SQLString, connection);
                 OracleParameter myParameter = new OracleParameter("@content", OracleDbType.Varchar2, ParameterDirection.Input);
@@ -190,7 +189,7 @@ namespace TFSideKicks
         /// <returns>影响的记录数</returns>
         public static int ExecuteSqlInsertImg(string strSQL, byte[] fs)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 OracleCommand cmd = new OracleCommand(strSQL, connection);
                 OracleParameter myParameter = new OracleParameter("@fs", OracleDbType.LongRaw);
@@ -221,7 +220,7 @@ namespace TFSideKicks
         /// <returns>查询结果（object）</returns>
         public static object GetSingle(string SQLString)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (OracleCommand cmd = new OracleCommand(SQLString, connection))
                 {
@@ -253,17 +252,21 @@ namespace TFSideKicks
         /// <returns>OracleDataReader</returns>
         public static OracleDataReader ExecuteReader(string strSQL)
         {
-            OracleConnection connection = new OracleConnection(_connectionString);
-            OracleCommand cmd = new OracleCommand(strSQL, connection);
-            try
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                connection.Open();
-                OracleDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                return myReader;
-            }
-            catch (OracleException e)
-            {
-                throw new Exception(e.Message);
+                using (OracleCommand cmd = new OracleCommand(strSQL, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        OracleDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                        return myReader;
+                    }
+                    catch (OracleException e)
+                    {
+                        throw new Exception(e.Message);
+                    }
+                }
             }
 
         }
@@ -274,7 +277,7 @@ namespace TFSideKicks
         /// <returns>DataSet</returns>
         public static DataSet Query(string SQLString)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 DataSet ds = new DataSet();
                 try
@@ -298,7 +301,7 @@ namespace TFSideKicks
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, params OracleParameter[] cmdParms)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (OracleCommand cmd = new OracleCommand())
                 {
@@ -324,7 +327,7 @@ namespace TFSideKicks
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的OracleParameter[]）</param>
         public static void ExecuteSqlTran(Hashtable SQLStringList)
         {
-            using (OracleConnection conn = new OracleConnection(_connectionString))
+            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 conn.Open();
                 using (OracleTransaction trans = conn.BeginTransaction())
@@ -361,7 +364,7 @@ namespace TFSideKicks
         /// <returns>查询结果（object）</returns>
         public static object GetSingle(string SQLString, params OracleParameter[] cmdParms)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (OracleCommand cmd = new OracleCommand())
                 {
@@ -394,20 +397,23 @@ namespace TFSideKicks
         /// <returns>OracleDataReader</returns>
         public static OracleDataReader ExecuteReader(string SQLString, params OracleParameter[] cmdParms)
         {
-            OracleConnection connection = new OracleConnection(_connectionString);
-            OracleCommand cmd = new OracleCommand();
-            try
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                PrepareCommand(cmd, connection, null, SQLString, cmdParms);
-                OracleDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                cmd.Parameters.Clear();
-                return myReader;
+                using (OracleCommand cmd = new OracleCommand())
+                {
+                    try
+                    {
+                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                        OracleDataReader myReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                        cmd.Parameters.Clear();
+                        return myReader;
+                    }
+                    catch (OracleException e)
+                    {
+                        throw new Exception(e.Message);
+                    }
+                }
             }
-            catch (OracleException e)
-            {
-                throw new Exception(e.Message);
-            }
-
         }
 
         /// <summary>
@@ -417,7 +423,7 @@ namespace TFSideKicks
         /// <returns>DataSet</returns>
         public static DataSet Query(string SQLString, params OracleParameter[] cmdParms)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 OracleCommand cmd = new OracleCommand();
                 PrepareCommand(cmd, connection, null, SQLString, cmdParms);
@@ -463,13 +469,17 @@ namespace TFSideKicks
         /// <returns>OracleDataReader</returns>
         public static OracleDataReader RunProcedure(string storedProcName, IDataParameter[] parameters)
         {
-            OracleConnection connection = new OracleConnection(_connectionString);
-            OracleDataReader returnReader;
-            connection.Open();
-            OracleCommand command = BuildQueryCommand(connection, storedProcName, parameters);
-            command.CommandType = CommandType.StoredProcedure;
-            returnReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            return returnReader;
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
+            {
+                OracleDataReader ret;
+                connection.Open();
+                using (OracleCommand command = BuildQueryCommand(connection, storedProcName, parameters))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    ret = command.ExecuteReader(CommandBehavior.CloseConnection);
+                    return ret;
+                }
+            }
         }
 
 
@@ -482,7 +492,7 @@ namespace TFSideKicks
         /// <returns>DataSet</returns>
         public static DataSet RunProcedure(string storedProcName, IDataParameter[] parameters, string tableName)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 DataSet dataSet = new DataSet();
                 connection.Open();
@@ -522,7 +532,7 @@ namespace TFSideKicks
         /// <returns></returns>
         public static int RunProcedure(string storedProcName, IDataParameter[] parameters, out int rowsAffected)
         {
-            using (OracleConnection connection = new OracleConnection(_connectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
                 int result;
                 connection.Open();
@@ -551,7 +561,7 @@ namespace TFSideKicks
 
         public static int ExecuteNonQuery(string sql, params OracleParameter[] parameters)
         {
-            using (OracleConnection conn = new OracleConnection(_connectionString))
+            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 conn.Open();
                 using (OracleCommand cmd = conn.CreateCommand())
@@ -571,7 +581,7 @@ namespace TFSideKicks
         /// <returns></returns>
         public static DataTable ExecuteDataTable(string sql, params OracleParameter[] parameters)
         {
-            using (OracleConnection conn = new OracleConnection(_connectionString))
+            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 conn.Open();
                 using (OracleCommand cmd = conn.CreateCommand())
@@ -597,7 +607,7 @@ namespace TFSideKicks
             try
             {
                 DataSet ds = new DataSet();
-                OracleDataAdapter adapter = new OracleDataAdapter(sql, _connectionString);
+                OracleDataAdapter adapter = new OracleDataAdapter(sql, Runtimes.ConnectionString);
                 if (paras != null)
                 {
                     for (int i = 0; i <= paras.Length - 1; i++)
@@ -661,7 +671,7 @@ namespace TFSideKicks
         {
             try
             {
-                OracleConnection OraConnection = new OracleConnection(_connectionString);
+                OracleConnection OraConnection = new OracleConnection(Runtimes.ConnectionString);
                 OracleCommand oraCmd = new OracleCommand("", OraConnection);
                 oraCmd.CommandText = sProcName;
 
@@ -801,7 +811,7 @@ namespace TFSideKicks
         public static int ExecuteScalar(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             int count = 0;
-            using (var conn = new OracleConnection(_connectionString))
+            using (var conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (var cmd = new OracleCommand(commandText, conn))
                 {
@@ -824,7 +834,7 @@ namespace TFSideKicks
         public static int ExecuteNonQuery(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             int result = 0;
-            using (var conn = new OracleConnection(_connectionString))
+            using (var conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (var cmd = new OracleCommand(commandText, conn))
                 {
@@ -882,7 +892,7 @@ namespace TFSideKicks
         public static T ExecuteEntity<T>(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             T obj = default(T);
-            using (var conn = new OracleConnection(_connectionString))
+            using (var conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (var cmd = new OracleCommand(commandText, conn))
                 {
@@ -913,7 +923,7 @@ namespace TFSideKicks
         public static IList<T> ExecuteList<T>(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             IList<T> list = new List<T>();
-            using (var conn = new OracleConnection(_connectionString))
+            using (var conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 using (var cmd = new OracleCommand(commandText, conn))
                 {

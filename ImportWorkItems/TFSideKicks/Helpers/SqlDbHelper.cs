@@ -679,7 +679,7 @@ namespace TFSideKicks
     /// <summary>
     /// ORACLE数据库上下文
     /// </summary>
-    public class OracleDbContext
+    public static class OracleDbContext
     {
         public static string OldTable = "TEMP_ORACLESQLOLD";
         public static string NewTable = "TEMP_ORACLESQLNEW";
@@ -689,8 +689,9 @@ namespace TFSideKicks
         private static string _port;
         private static string _service;
 
-        private IGSPDatabase _db;
-        public OracleDbContext(string host, string port, string service, string userid, string password)
+        private static IGSPDatabase _db;
+        private static bool _initialized = false;
+        public static void Initialize(string host, string port, string service, string userid, string password)
         {
             _host = host;
             _port = port;
@@ -699,9 +700,10 @@ namespace TFSideKicks
             _password = password;
             string source = $"{_host}:{_port}/{_service}";
             _db = new Genersoft.Platform.Core.DataAccess.Oracle.OracleDatabase(GetConfigData(source, _userid, _password));
+            _initialized = true;
         }
 
-        public IGSPDatabase DB
+        public static IGSPDatabase DB
         {
             get { return _db; }
         }

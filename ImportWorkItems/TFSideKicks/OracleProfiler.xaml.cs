@@ -44,12 +44,6 @@ namespace TFSideKicks
             this.mcbo_module.ItemsSource = TraceModuleList.Instance.TraceModuleListData;
         }
 
-        private OracleDbContext _context;
-        public OracleDbContext Context
-        {
-            get { return _context; }
-        }
-
         private void cb_save_Click(object sender, RoutedEventArgs e)
         {
             if (this.cb_save.IsChecked.HasValue && this.cb_save.IsChecked.Value)
@@ -103,7 +97,7 @@ namespace TFSideKicks
             try
             {
                 Runtimes.ConnectionString = $"Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = {host})(PORT = {port}))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = orclbak))); Persist Security Info=True;User ID={userid};Password={password};";
-                _context = new OracleDbContext(host, port, service, userid, password);
+                OracleDbContext.Initialize(host, port, service, userid, password);
                 //DataTable dt = OracleDbContext.GetDomainSystemTable();
                 //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis");
                 //DataTable dt1 = OracleDbHelper.ExecuteDataTable("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key", new OracleParameter("@key", "emr"));
