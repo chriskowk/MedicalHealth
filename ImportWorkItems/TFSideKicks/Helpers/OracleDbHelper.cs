@@ -14,6 +14,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Genersoft.Platform.Core.DataAccess;
+using Genersoft.Platform.Core.DataAccess.Configuration;
+using Genersoft.Platform.Core.DataAccess.Oracle;
 
 
 namespace TFSideKicks
@@ -1290,6 +1293,94 @@ namespace TFSideKicks
         /// 小数
         /// </summary>
         public int? Data_Scale { get; set; }
+    }
+
+
+    /// <summary>
+    /// ORACLE数据库上下文
+    /// </summary>
+    public static class OracleDbContext
+    {
+        public static string OldTable = "TEMP_ORACLESQLOLD";
+        public static string NewTable = "TEMP_ORACLESQLNEW";
+        private static string _userid;
+        private static string _password;
+        private static string _host;
+        private static string _port;
+        private static string _service;
+
+        private static IGSPDatabase _db;
+        private static bool _initialized = false;
+        public static void Initialize(string host, string port, string service, string userid, string password)
+        {
+            _host = host;
+            _port = port;
+            _service = service;
+            _userid = userid;
+            _password = password;
+            string source = $"{_host}:{_port}/{_service}";
+            _db = new Genersoft.Platform.Core.DataAccess.Oracle.OracleDatabase(GetConfigData(source, _userid, _password));
+            _initialized = true;
+        }
+
+        public static IGSPDatabase DB
+        {
+            get { return _db; }
+        }
+
+        private static GSPDbConfigData _configData = null;
+        private static GSPDbConfigData GetConfigData(string source, string userid, string password)
+        {
+            if (_configData == null || _configData.Source != source || _configData.UserId != userid || _configData.Password != password)
+            {
+                _configData = new GSPDbConfigData();
+                _configData.DbType = GSPDbType.Oracle;
+                _configData.ConnectionString = string.Format("DATA SOURCE = {0}; USER ID = {1}; PASSWORD = {2};", source, userid, password);
+                _configData.Source = source;
+                _configData.UserId = userid;
+                _configData.Password = password;
+            }
+
+            return _configData;
+        }
+
+        public static DataTable GetDomainSystemTable()
+        {
+            DataTable _dt = new DataTable();
+            string _connString = Runtimes.ConnectionString;
+
+            using (OracleConnection conn = new OracleConnection(_connString))
+            {
+                string sql = "select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key";
+                OracleCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql;
+                OracleParameter p0 = new OracleParameter("@key", OracleDbType.Varchar2, ParameterDirection.Input);
+                p0.Value = "cis";
+                cmd.Parameters.Add(p0);
+
+                try
+                {
+                    conn.Open();
+                    OracleDataAdapter oda = new OracleDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    oda.Fill(ds);
+                    oda.Dispose();
+                    conn.Close();
+                    if (ds != null && ds.Tables.Count > 0) { _dt = ds.Tables[0]; }
+                }
+                catch (OracleException e)
+                {
+                    throw new Exception(e.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+
+            return _dt;
+        }
     }
 }
 
