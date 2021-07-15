@@ -125,12 +125,12 @@ namespace TFSideKicks
         /// <param name="SQLStringList">多条SQL语句</param>		
         public static void ExecuteSqlTran(ArrayList SQLStringList)
         {
-            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                conn.Open();
+                connection.Open();
                 OracleCommand cmd = new OracleCommand();
-                cmd.Connection = conn;
-                OracleTransaction tx = conn.BeginTransaction();
+                cmd.Connection = connection;
+                OracleTransaction tx = connection.BeginTransaction();
                 cmd.Transaction = tx;
                 try
                 {
@@ -302,7 +302,7 @@ namespace TFSideKicks
         /// </summary>
         /// <param name="SQLString">SQL语句</param>
         /// <returns>影响的记录数</returns>
-        public static int ExecuteSql(string SQLString, params OracleParameter[] cmdParms)
+        public static int ExecuteSql(string SQLString, params OracleParameter[] paras)
         {
             using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
@@ -310,7 +310,7 @@ namespace TFSideKicks
                 {
                     try
                     {
-                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                        PrepareCommand(cmd, connection, null, SQLString, paras);
                         int rows = cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                         return rows;
@@ -330,10 +330,10 @@ namespace TFSideKicks
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的OracleParameter[]）</param>
         public static void ExecuteSqlTran(Hashtable SQLStringList)
         {
-            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                conn.Open();
-                using (OracleTransaction trans = conn.BeginTransaction())
+                connection.Open();
+                using (OracleTransaction trans = connection.BeginTransaction())
                 {
                     OracleCommand cmd = new OracleCommand();
                     try
@@ -343,7 +343,7 @@ namespace TFSideKicks
                         {
                             string cmdText = myDE.Key.ToString();
                             OracleParameter[] cmdParms = (OracleParameter[])myDE.Value;
-                            PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
+                            PrepareCommand(cmd, connection, trans, cmdText, cmdParms);
                             int val = cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
 
@@ -667,106 +667,102 @@ namespace TFSideKicks
         /// <summary>
         /// 执行存储过程
         /// </summary>
-        /// <param name="sProcName">存储过程名称</param>
-        /// <param name="Params">参数列表</param>
+        /// <param name="procname">存储过程名称</param>
+        /// <param name="paras">参数列表</param>
         /// <returns>返回的数据</returns>
-        public static DataSet ExecuteProc(string sProcName, object[][] Params)
+        public static DataSet ExecuteProc(string procname, object[][] paras)
         {
-            try
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                OracleConnection OraConnection = new OracleConnection(Runtimes.ConnectionString);
-                OracleCommand oraCmd = new OracleCommand("", OraConnection);
-                oraCmd.CommandText = sProcName;
-
-                oraCmd.CommandType = CommandType.StoredProcedure;
-                DataSet ds = new DataSet();
-                DataTable dsTable = new DataTable();
-                DataRow dr = dsTable.NewRow();
-                OracleDataAdapter adapter = null;
-                for (int i = 0; i <= Params.Length - 1; i++)
+                using (OracleCommand cmd = new OracleCommand(procname, connection))
                 {
-                    OracleParameter oraclePar = new OracleParameter();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    DataSet ds = new DataSet();
+                    DataTable dsTable = new DataTable();
+                    DataRow dr = dsTable.NewRow();
+                    OracleDataAdapter adapter = null;
+                    for (int i = 0; i <= paras.Length - 1; i++)
+                    {
+                        OracleParameter para = new OracleParameter();
+                        try
+                        {
+                            para.Direction = (ParameterDirection)paras[i][0];
+                        }
+                        catch
+                        {
+                            switch (paras[i][0].ToString().ToUpper())
+                            {
+                                case "INPUT":
+                                    para.Direction = ParameterDirection.Input;
+                                    break;
+                                case "OUTPUT":
+                                    para.Direction = ParameterDirection.Output;
+                                    break;
+                                default:
+                                    para.Direction = ParameterDirection.Input;
+                                    break;
+                            }
+                        }
+
+                        try
+                        {
+                            para.OracleDbType = (OracleDbType)paras[i][1];
+                        }
+                        catch
+                        {
+                            switch (paras[i][1].ToString())
+                            {
+                                case "1":
+                                    para.OracleDbType = OracleDbType.Varchar2;
+                                    break;
+                                case "2":
+                                    para.OracleDbType = OracleDbType.Int32;
+                                    break;
+                                case "3":
+                                    para.OracleDbType = OracleDbType.Date;
+                                    break;
+                                default:
+                                    para.OracleDbType = OracleDbType.Varchar2;
+                                    break;
+                            }
+                        }
+                        para.ParameterName = paras[i][2].ToString().ToUpper();
+                        para.Size = paras[i][3].ToString().Length;
+                        if (para.Direction == ParameterDirection.Output)
+                        {
+                            para.Size = 1000;
+                        }
+                        para.Value = paras[i][3].ToString();
+                        cmd.Parameters.Add(para);
+                    }
+
+                    adapter = new OracleDataAdapter(cmd);
                     try
                     {
-                        oraclePar.Direction = (ParameterDirection)Params[i][0];
-                    }
-                    catch
-                    {
-                        switch (Params[i][0].ToString().ToUpper())
+                        adapter.Fill(ds);
+                        for (int i = 0; i <= adapter.SelectCommand.Parameters.Count - 1; i++)
                         {
-                            case "INPUT":
-                                oraclePar.Direction = ParameterDirection.Input;
-                                break;
-                            case "OUTPUT":
-                                oraclePar.Direction = ParameterDirection.Output;
-                                break;
-                            default:
-                                oraclePar.Direction = ParameterDirection.Input;
-                                break;
+                            if (adapter.SelectCommand.Parameters[i].Direction == ParameterDirection.Output)
+                            {
+                                dsTable.Columns.Add(adapter.SelectCommand.Parameters[i].ParameterName, typeof(string));
+                                dr[adapter.SelectCommand.Parameters[i].ParameterName] =
+                                    adapter.SelectCommand.Parameters[i].Value;
+                            }
                         }
+                        dsTable.Rows.Add(dr);
+                        ds.Tables.Clear();
+                        ds.Tables.Add(dsTable);
+                        return ds;
                     }
-
-                    try
+                    finally
                     {
-                        oraclePar.OracleDbType = (OracleDbType)Params[i][1];
+                        connection.Dispose();
+                        cmd.Dispose();
+                        ds.Dispose();
+                        dsTable.Dispose();
+                        adapter.Dispose();
                     }
-                    catch
-                    {
-                        switch (Params[i][1].ToString())
-                        {
-                            case "1":
-                                oraclePar.OracleDbType = OracleDbType.Varchar2;
-                                break;
-                            case "2":
-                                oraclePar.OracleDbType = OracleDbType.Int32;
-                                break;
-                            case "3":
-                                oraclePar.OracleDbType = OracleDbType.Date;
-                                break;
-                            default:
-                                oraclePar.OracleDbType = OracleDbType.Varchar2;
-                                break;
-                        }
-                    }
-                    oraclePar.ParameterName = Params[i][2].ToString().ToUpper();
-                    oraclePar.Size = Params[i][3].ToString().Length;
-                    if (oraclePar.Direction == ParameterDirection.Output)
-                    {
-                        oraclePar.Size = 1000;
-                    }
-                    oraclePar.Value = Params[i][3].ToString();
-                    oraCmd.Parameters.Add(oraclePar);
                 }
-
-                adapter = new OracleDataAdapter(oraCmd);
-                try
-                {
-                    adapter.Fill(ds);
-                    for (int i = 0; i <= adapter.SelectCommand.Parameters.Count - 1; i++)
-                    {
-                        if (adapter.SelectCommand.Parameters[i].Direction == ParameterDirection.Output)
-                        {
-                            dsTable.Columns.Add(adapter.SelectCommand.Parameters[i].ParameterName, typeof(string));
-                            dr[adapter.SelectCommand.Parameters[i].ParameterName] =
-                                adapter.SelectCommand.Parameters[i].Value;
-                        }
-                    }
-                    dsTable.Rows.Add(dr);
-                    ds.Tables.Clear();
-                    ds.Tables.Add(dsTable);
-                    return ds;
-                }
-                finally
-                {
-                    OraConnection.Dispose();
-                    oraCmd.Dispose();
-                    ds.Dispose();
-                    dsTable.Dispose();
-                    adapter.Dispose();
-                }
-            }
-            finally
-            {
             }
         }
 
@@ -814,13 +810,13 @@ namespace TFSideKicks
         public static int ExecuteScalar(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             int count = 0;
-            using (var conn = new OracleConnection(Runtimes.ConnectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                using (var cmd = new OracleCommand(commandText, conn))
+                using (OracleCommand cmd = new OracleCommand(commandText, connection))
                 {
                     cmd.CommandType = commandType;
                     cmd.Parameters.AddRange(param);
-                    conn.Open();
+                    connection.Open();
                     count = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
@@ -837,13 +833,13 @@ namespace TFSideKicks
         public static int ExecuteNonQuery(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             int result = 0;
-            using (var conn = new OracleConnection(Runtimes.ConnectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                using (var cmd = new OracleCommand(commandText, conn))
+                using (OracleCommand cmd = new OracleCommand(commandText, connection))
                 {
                     cmd.CommandType = commandType;
                     cmd.Parameters.AddRange(param);
-                    conn.Open();
+                    connection.Open();
                     result = cmd.ExecuteNonQuery();
                 }
             }
@@ -862,7 +858,7 @@ namespace TFSideKicks
 
             Type type = typeof(T);
             obj = (T)Activator.CreateInstance(type); //从当前程序集里面通过反射的方式创建指定类型的对象   
-            //obj = (T)Assembly.Load(OracleHelper._assemblyName).CreateInstance(OracleHelper._assemblyName + "." + type.Name);//从另一个程序集里面通过反射的方式创建指定类型的对象 
+                                                     //obj = (T)Assembly.Load(OracleHelper._assemblyName).CreateInstance(OracleHelper._assemblyName + "." + type.Name);//从另一个程序集里面通过反射的方式创建指定类型的对象 
             var propertyInfos = type.GetProperties(); //获取指定类型里面的所有属性
             foreach (var propertyInfo in propertyInfos)
             {
@@ -895,16 +891,16 @@ namespace TFSideKicks
         public static T ExecuteEntity<T>(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             T obj = default(T);
-            using (var conn = new OracleConnection(Runtimes.ConnectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                using (var cmd = new OracleCommand(commandText, conn))
+                using (OracleCommand cmd = new OracleCommand(commandText, connection))
                 {
                     cmd.CommandType = commandType;
                     if (param != null && param.Length > 0)
                     {
                         cmd.Parameters.AddRange(param);
                     }
-                    conn.Open();
+                    connection.Open();
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -926,16 +922,16 @@ namespace TFSideKicks
         public static IList<T> ExecuteList<T>(string commandText, CommandType commandType, params OracleParameter[] param)
         {
             IList<T> list = new List<T>();
-            using (var conn = new OracleConnection(Runtimes.ConnectionString))
+            using (OracleConnection connection = new OracleConnection(Runtimes.ConnectionString))
             {
-                using (var cmd = new OracleCommand(commandText, conn))
+                using (OracleCommand cmd = new OracleCommand(commandText, connection))
                 {
                     cmd.CommandType = commandType;
                     if (param != null && param.Length > 0)
                     {
                         cmd.Parameters.AddRange(param);
                     }
-                    conn.Open();
+                    connection.Open();
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -1347,9 +1343,7 @@ namespace TFSideKicks
         public static DataTable GetDomainSystemTable()
         {
             DataTable _dt = new DataTable();
-            string _connString = Runtimes.ConnectionString;
-
-            using (OracleConnection conn = new OracleConnection(_connString))
+            using (OracleConnection conn = new OracleConnection(Runtimes.ConnectionString))
             {
                 string sql = "select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key";
                 OracleCommand cmd = conn.CreateCommand();
