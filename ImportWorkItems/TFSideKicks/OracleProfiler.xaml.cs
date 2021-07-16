@@ -101,6 +101,19 @@ namespace TFSideKicks
                 //DataTable dt = OracleDbContext.GetDomainSystemTable();
                 //int count = OracleDbHelper.ExecuteSql("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :p0", "cis");
                 //DataTable dt1 = OracleDbHelper.ExecuteDataTable("select * from CORE.DOMAINSYSTEM where SYSTEMKEY = :key", new OracleParameter("@key", "emr"));
+                StringBuilder sb = new StringBuilder();
+                IList<OracleParameter> paras = new List<OracleParameter>();
+                IList<string> uniqueIds = new List<string> { "c5331527bcc249909742c1f961df3e0d,672a1eb4bedd414c9baa36051f63d120", "5d09f9f161d04202895d18233d56886b,8d531688e23b4d96964f852921925e16", "e32db5191dec4c91a5a176d33a98236d,28273471d69644518225fcc4ce2a86f1" };
+                sb.AppendLine("BEGIN");
+                for (int i = 0; i < 3; i++)
+                {
+                    sb.AppendLine($"update DATA.bjcasignitem set SignStatusCodeId=:p{i * 3},RowVersion=:p{i * 3 + 1} where UniqueId in (SELECT CAST(column_value AS VARCHAR2(128)) ItemId FROM TABLE(poor.fnIDInString(:p{i * 3 + 2},',')));");
+                    paras.Add(new OracleParameter($"@p{i * 3}", OracleDbType.Int32, i, ParameterDirection.Input));
+                    paras.Add(new OracleParameter($"@p{i * 3 + 1}", OracleDbType.Date, DateTime.Now, ParameterDirection.Input));
+                    paras.Add(new OracleParameter($"@p{i * 3 + 2}", OracleDbType.Varchar2, uniqueIds[i], ParameterDirection.Input));
+                }
+                sb.Append("END;");
+                int ret = OracleDbHelper.ExecuteSql(sb.ToString(), paras.ToArray());
                 string sql = "SELECT table_name FROM all_tables WHERE table_name = :p0";
                 IList<string> tns = new List<string> { OracleDbContext.OldTable, OracleDbContext.NewTable };
                 foreach (var tablename in tns)

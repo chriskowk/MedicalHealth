@@ -315,9 +315,9 @@ namespace TFSideKicks
                         cmd.Parameters.Clear();
                         return rows;
                     }
-                    catch (OracleException E)
+                    catch (OracleException e)
                     {
-                        throw new Exception(E.Message);
+                        throw new Exception(e.Message);
                     }
                 }
             }
