@@ -114,6 +114,18 @@ namespace TFSideKicks
                 }
                 sb.Append("END;");
                 int ret = OracleDbHelper.ExecuteSql(sb.ToString(), paras.ToArray());
+
+                sb = new StringBuilder();
+                sb.AppendLine("BEGIN");
+                sb.AppendLine($"UPDATE POOR.ORDERREQUEST s set S.ISDELETED=1 where s.encounterid =:EncounterId and s.ISDELETED=0;");
+                sb.AppendLine($"UPDATE POOR.PERFORMREQUEST s SET S.ISDELETED = 1 where s.ENCOUNTERID =:EncounterId and s.ISDELETED = 0;");
+                sb.AppendLine($"UPDATE POOR.PERFORMREQUESTBILL s SET S.ISDELETED= 1 where s.ENCOUNTERID =:EncounterId and s.ISDELETED=0;");
+                sb.AppendLine($"UPDATE FIAB.OTHERBILLING s SET S.ISDELETED= 1 where s.ENCOUNTERID =:EncounterId and s.ISDELETED=0;");
+                sb.AppendLine("COMMIT;");
+                sb.AppendLine("END;");
+                paras.Add(new OracleParameter($"@EncounterId", OracleDbType.Int32, 11961, ParameterDirection.Input));
+                ret = OracleDbHelper.ExecuteSql(sb.ToString(), paras.ToArray());
+
                 string sql = "SELECT table_name FROM all_tables WHERE table_name = :p0";
                 IList<string> tns = new List<string> { OracleDbContext.OldTable, OracleDbContext.NewTable };
                 foreach (var tablename in tns)
