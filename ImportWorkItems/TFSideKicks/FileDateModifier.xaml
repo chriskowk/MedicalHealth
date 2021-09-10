@@ -15,6 +15,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Label Content="Path Type:" Height="28" HorizontalAlignment="Left" Margin="4,0,0,0" Name="label1" VerticalAlignment="Top" Grid.Row="1" />
@@ -26,7 +28,10 @@
             </ScrollViewer>
             <Button Content="Browse..." Height="25" VerticalAlignment="Top"  Width="75" Command="{Binding BrowseCommand}" />
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="66,3,65,0" Grid.Row="4">
+
+        <TextBlock Grid.Row="3" FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="142" />
+        <Rectangle Grid.Row="4" Height="254" Margin="12,0,11,0" Name="rectangle1" Stroke="Black" />
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="66,3,65,0">
             <StackPanel Orientation="Horizontal" Grid.Row="1" Height="50" Margin="5">
                 <Label Width="75" Content="Created:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                 <xctk:DateTimePicker Width="250" Value="{Binding CreatedDateTime}" IsEnabled="{Binding ElementName=createdCheckBox, Path=IsChecked}" CultureInfo="{Binding CultureInfo}" />
@@ -42,7 +47,7 @@
                 <xctk:DateTimePicker Width="250" Value="{Binding AccessedDateTime}" IsEnabled="{Binding ElementName=accessedCheckBox, Path=IsChecked}" CultureInfo="{Binding CultureInfo}" />
                 <CheckBox Name="accessedCheckBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="15" Margin="10" IsChecked="{Binding AccessedChecked}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="4" Height="50" Margin="5">
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Height="50" Margin="5">
                 <Button Content="UPDATE" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Margin="5,5,10,5" Command="{Binding UpdateDateCommand}"/>
                 <Button Content="CLOSE" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" Margin="10,5,5,5" Name="_btnClose" Click="_btnClose_Click" />
             </StackPanel>
@@ -51,7 +56,14 @@
         <Button Content="Get Latest Version" Height="30" HorizontalAlignment="Center" Margin="5,5,5,5" VerticalAlignment="Center" Width="120" Command="{Binding TFGetLatestCommand}"/>
         <Button Content="Exec WinRAR" Height="30" HorizontalAlignment="Right" Margin="5,5,10,5" VerticalAlignment="Center" Width="100" Command="{Binding ExecWinRARCommand}"/>
 
-        <TextBlock FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-        <Rectangle Grid.Row="4" Height="254" Margin="12,0,11,0" Name="rectangle1" Stroke="Black" />
+
+        <TextBlock Grid.Row="5" FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock0" Text="Encrypt/Decrypt:" VerticalAlignment="Top" Width="142" />
+        <StackPanel Grid.Row="6" Orientation="Horizontal" VerticalAlignment="Bottom" >
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="6,0" Width="405" Height="Auto">
+                <TextBox HorizontalAlignment="Left" Text="{Binding PlainText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="auto" MinWidth="405" Height="auto" MinHeight="40" Name="_txtPlainText" TextWrapping="WrapWithOverflow" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+            </ScrollViewer>
+            <Button Content="{Binding CommandText, UpdateSourceTrigger=PropertyChanged}" Height="25" VerticalAlignment="Center"  Width="75" Command="{Binding EncryptCommand}" Margin="0,0,5,0" />
+        </StackPanel>
+
     </Grid>
 </Window>

@@ -120,6 +120,8 @@
     </ApplicationDefinition>
     <Compile Include="Controls\MultiComboBox.cs" />
     <Compile Include="Datas\TraceModuleList.cs" />
+    <Compile Include="Helpers\CryptographyHelper.cs" />
+    <Compile Include="Helpers\EncryptHepler.cs" />
     <Compile Include="Helpers\OracleDbHelper.cs" />
     <Compile Include="Helpers\WinRARHelper.cs" />
     <Compile Include="ShowHistory.xaml.cs">

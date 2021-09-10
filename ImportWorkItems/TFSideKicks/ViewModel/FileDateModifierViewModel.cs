@@ -11,6 +11,7 @@ using System.Threading;
 using SharpCompress.Writer;
 using SharpCompress.Common;
 using System.Diagnostics;
+using TFSideKicks.Helpers;
 
 namespace TFSideKicks
 {
@@ -36,6 +37,10 @@ namespace TFSideKicks
         /// 
         /// </summary>
         private RelayCommand _TFGetLatestCommand;
+        /// <summary>
+        /// Backing field for the EncryptCommand property.
+        /// </summary>
+        private RelayCommand _encryptCommand;
         /// <summary>
         /// Backing field for the SelectedPath property.
         /// </summary>
@@ -144,6 +149,11 @@ namespace TFSideKicks
             {
                 TFGetLatestVersionWithConsole();
             });
+
+            _encryptCommand = new RelayCommand(obj =>
+            {
+                DoEncrypt();
+            });
         }
         #endregion // Ctor
 
@@ -152,6 +162,11 @@ namespace TFSideKicks
         /// Gets the browse command.
         /// </summary>
         public ICommand BrowseCommand => _browseCommand;
+
+        /// <summary>
+        /// Gets the encrypt command.
+        /// </summary>
+        public ICommand EncryptCommand => _encryptCommand;
 
         /// <summary>
         /// Gets the update date command.
@@ -244,16 +259,36 @@ namespace TFSideKicks
         /// </value>
         public string SelectedPath
         {
-            get
-            {
-                return _selectedPath;
-            }
+            get { return _selectedPath; }
             set
             {
                 _selectedPath = value;
                 OnPropertyChanged("SelectedPath");
             }
         }
+
+        private string _plainText;
+        public string PlainText
+        {
+            get { return _plainText; }
+            set
+            {
+                _plainText = value;
+                OnPropertyChanged("PlainText");
+            }
+        }
+
+        private string _commandText = "Encrypt";
+        public string CommandText
+        {
+            get { return _commandText; }
+            set
+            {
+                _commandText = value;
+                OnPropertyChanged("CommandText");
+            }
+        }
+
         #endregion // Properties
 
         #region Methods
@@ -305,6 +340,23 @@ namespace TFSideKicks
                 }
 
                 updateDirDateInfo(d);
+            }
+        }
+
+        private void DoEncrypt()
+        {
+            bool isEncrypt = CommandText == "Encrypt";
+            try
+            {
+                PlainText = isEncrypt ? EncryptHepler.Encrypt(PlainText) : EncryptHepler.Decrypt(PlainText);
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                isEncrypt = !isEncrypt;
+                CommandText = isEncrypt ? "Encrypt" : "Decrypt";
             }
         }
 

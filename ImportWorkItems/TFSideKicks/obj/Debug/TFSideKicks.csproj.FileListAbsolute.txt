@@ -578,4 +578,4 @@ F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\App.baml
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\Styles\ComboBox.baml
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\TF_GET_MedicalHealth.bat
 F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\bin\Debug\Oracle.ManagedDataAccess.dll
-F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csprojAssemblyReference.cache
+F:\GitHub\MedicalHealth\ImportWorkItems\TFSideKicks\obj\Debug\TFSideKicks.csproj.AssemblyReference.cache
