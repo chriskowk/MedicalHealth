@@ -676,7 +676,6 @@ F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\tr\Microsoft.T
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\bin\Debug\zh-Hans\Microsoft.VisualStudio.GraphModel.resources.dll
-F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\VSPackage.resources
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.MainWindow.resources
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.csproj.GenerateResource.cache
@@ -692,3 +691,4 @@ F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItem
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.pkgdef
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.latest.pkgdef
 F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\extension.vsixmanifest
+F:\GitHub\MedicalHealth\ImportWorkItems\ImportWorkItems\obj\Debug\ImportWorkItems.csproj.AssemblyReference.cache
