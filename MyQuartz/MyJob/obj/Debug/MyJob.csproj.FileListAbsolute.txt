@@ -50,7 +50,6 @@ F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Plugins.dll
 F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Jobs.pdb
 F:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\Quartz.Plugins.pdb
 F:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csproj.CoreCompileInputs.cache
-F:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csprojAssemblyReference.cache
 E:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csproj.CoreCompileInputs.cache
 E:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.dll
 E:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.pdb
@@ -73,3 +72,4 @@ E:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\System.Memory.dll
 E:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\System.Numerics.Vectors.dll
 E:\GitHub\MedicalHealth\MyQuartz\MyJob\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 E:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csproj.CopyComplete
+F:\GitHub\MedicalHealth\MyQuartz\MyJob\obj\Debug\MyJob.csproj.AssemblyReference.cache

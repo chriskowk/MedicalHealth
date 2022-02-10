@@ -600,7 +600,6 @@ F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Core.pdb
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Quartz.pdb
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Quartz.Jobs.pdb
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Quartz.Plugins.pdb
-F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csprojAssemblyReference.cache
 F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.CopyComplete
 F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.MainForm.resources
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\Common.Logging.Log4Net1211.dll
@@ -809,3 +808,4 @@ E:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\tr\Microsoft.TeamFounda
 E:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 E:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\MyQuartz\JobController\bin\Debug\quartz_jobs.xml
+F:\GitHub\MedicalHealth\MyQuartz\JobController\obj\Debug\JobController.csproj.AssemblyReference.cache
