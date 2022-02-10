@@ -34,7 +34,7 @@ namespace ListWorkItems
                                                     null,                          // include changesets from all users
                                                     new ChangesetVersionSpec(1),   // start at the beginning of time
                                                     VersionSpec.Latest,            // end at latest
-                                                    100,                            // only return this many
+                                                    100,                            // only return these max count rows
                                                     false,                         // we don't want the files changed
                                                     true))                         // do history on the path
             {

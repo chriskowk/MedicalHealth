@@ -502,8 +502,6 @@ F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ru\Microsoft.TeamFounda
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\tr\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\zh-Hans\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
 F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\zh-Hant\Microsoft.TeamFoundation.WorkItemTracking.Proxy.resources.dll
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CopyComplete
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CoreCompileInputs.cache
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe.config
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.exe
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\ListWorkItems.pdb
@@ -511,8 +509,9 @@ E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.Co
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csproj.CopyComplete
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.exe
 E:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.pdb
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\sfw.exe.config
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\sfw.exe
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\sfw.pdb
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\sfw.exe
-F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\sfw.pdb
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\ListWorkItems.csprojResolveAssemblyReference.cache
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\SFW.exe.config
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\SFW.exe
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\bin\Debug\SFW.pdb
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\SFW.exe
+F:\GitHub\MedicalHealth\MyQuartz\ListWorkItems\obj\Debug\SFW.pdb

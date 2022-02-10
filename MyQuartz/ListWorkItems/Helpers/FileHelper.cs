@@ -9,7 +9,18 @@ namespace ListWorkItems
 {
     public static class FileHelper
     {
-        public static void SetFilesWritable(string foldername, SearchOption searchOption)
+        public static void SetFilesWritable(string[] args)
+        {
+            if (args.Length < 1)
+            {
+                Console.WriteLine("Usage: SFW.exe <FolderName>");
+                Console.WriteLine("提示：文件夹路径如有空格需用双引号括起来！");
+                return;
+            }
+            SetFilesWritable(args[0], SearchOption.AllDirectories);
+        }
+
+        private static void SetFilesWritable(string foldername, SearchOption searchOption)
         {
             if (!Directory.Exists(foldername))
             {

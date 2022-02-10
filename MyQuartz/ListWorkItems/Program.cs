@@ -15,16 +15,15 @@ namespace ListWorkItems
             //Console.WriteLine("Press any key...");
             //Console.ReadKey();
 
+
+            // 获取最近签入的100个变更集关联的工作项列表
             //WorkItemHelper.List(args);
+
+            // TFSH.exe 显示最近10条签入历史记录
             //TFSHelper.ShowHistory(args);
 
-            if (args.Length < 1)
-            {
-                Console.WriteLine("Usage: SFW.exe <FolderName>");
-                Console.WriteLine("提示：文件夹路径如有空格需用双引号括起来！");
-                return;
-            }
-            FileHelper.SetFilesWritable(args[0], System.IO.SearchOption.AllDirectories);
+            // SFW.exe 文件夹（及子文件夹）设置可写
+            FileHelper.SetFilesWritable(args);
         }
     }
 }
