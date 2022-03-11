@@ -1,0 +1,54 @@
+﻿<Window x:Class="KnowledgeBase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:conv="clr-namespace:KnowledgeBase.ViewModels.Converters"
+        xmlns:viewModels="clr-namespace:KnowledgeBase.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance d:Type=viewModels:AppViewModel, IsDesignTimeCreatable=True}"
+        Title="{Binding BrowserTitle, Mode=OneWay}" Height="550" Width="825">
+    <Grid Margin="5,5,5,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.Resources>
+                <conv:InverseBooleanConverter x:Key="InverseConv" />
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="About"
+                    Command="{Binding TestUrl0Command}"
+                    IsEnabled="{Binding ElementName=browser, Path=IsLoading, Converter={StaticResource InverseConv}}" />
+
+            <Button Content="Baidu.com" Grid.Column="2"
+                    Command="{Binding TestUrl1Command}"
+                    IsEnabled="{Binding ElementName=browser, Path=IsLoading, Converter={StaticResource InverseConv}}" />
+
+            <Button Content="Test URL 2" Grid.Column="4"
+                    Command="{Binding TestUrl2Command}"
+                    IsEnabled="{Binding ElementName=browser, Path=IsLoading, Converter={StaticResource InverseConv}}" />
+        </Grid>
+
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="0,5,0,5">
+            <cefSharp:ChromiumWebBrowser Address="{Binding BrowserAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Title="{Binding BrowserTitle, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Name="browser" />
+        </Border>
+
+        <StatusBar Grid.Row="2">
+            <TextBlock Name="Status" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </StatusBar>
+    </Grid>
+</Window>
