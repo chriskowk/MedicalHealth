@@ -24,17 +24,17 @@ namespace KnowledgeBase.ViewModels
         public ICommand TestUrl0Command { get; private set; }
 
         /// <summary>
-        /// Get test Command to browse to a test URL ...
+        ///  Get test Command to browse to a test URL ...
         /// </summary>
         public ICommand TestUrl1Command { get; private set; }
 
         /// <summary>
-        /// Get test Command to browse to a test URL 1 ...
+        ///  Get test Command to browse to a test URL 1 ...
         /// </summary>
         public ICommand TestUrl2Command { get; private set; }
 
         /// <summary>
-        /// AppViewModel Constructor
+        ///  AppViewModel Constructor
         /// </summary>
         public AppViewModel()
         {

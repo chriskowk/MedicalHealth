@@ -19,9 +19,7 @@ namespace KnowledgeBase
             InitializeComponent();
 
             AppViewModel.RegisterTestResources(browser);
-
             DataContext = new AppViewModel();
-
             browser.StatusMessage += Browser_StatusMessage;
             browser.NavStateChanged += Browser_NavStateChanged;
         }
