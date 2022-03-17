@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCefsharpChromiumWebBrowserDemo", "WpfCefsharpChromiumWebBrowserDemo\WpfCefsharpChromiumWebBrowserDemo.csproj", "{8DBD57E7-74DB-434A-BE38-5F9CF0BA89EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCefsharpChromiumWebBrowserDemo", "WpfCefsharpChromiumWebBrowserDemo.csproj", "{8DBD57E7-74DB-434A-BE38-5F9CF0BA89EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
