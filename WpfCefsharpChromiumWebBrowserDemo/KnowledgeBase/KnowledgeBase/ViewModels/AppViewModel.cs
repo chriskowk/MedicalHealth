@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text;
 using System.Windows.Input;
 using CefSharp;
 using GalaSoft.MvvmLight;
@@ -40,7 +41,7 @@ namespace KnowledgeBase.ViewModels
         {
             _assemblyTitle = Assembly.GetEntryAssembly().GetName().Name;
             BrowserAddress = _testBaiduResourceUrl;
-            
+
             TestUrl0Command = new RelayCommand(() =>
             {
                 // Setting this address sets the current address of the browser
@@ -116,7 +117,7 @@ namespace KnowledgeBase.ViewModels
                 factory.RegisterHandler(_testResourceUrl, ResourceHandler.FromString(responseBody));
 
                 string unicodeResponseBody = "<html><body>整体满意度</body></html>";
-                factory.RegisterHandler(_testUnicodeResourceUrl, ResourceHandler.FromString(unicodeResponseBody));
+                factory.RegisterHandler(_testUnicodeResourceUrl, ResourceHandler.FromString(unicodeResponseBody, Encoding.Unicode));
             }
         }
     }
