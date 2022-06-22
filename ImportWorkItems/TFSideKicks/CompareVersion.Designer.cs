@@ -46,6 +46,7 @@
             this.tabComponent = new System.Windows.Forms.TabPage();
             this.lvwComponent = new System.Windows.Forms.ListView();
             this.ComponentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.WcfServerPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LocalFileDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ServerFileDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LocalFileSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,6 +54,7 @@
             this.tabResource = new System.Windows.Forms.TabPage();
             this.lvwResource = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,6 +71,8 @@
             this.txtSummary = new System.Windows.Forms.TextBox();
             this._status = new System.Windows.Forms.TextBox();
             this._txtWarning = new System.Windows.Forms.TextBox();
+            this._clbWcfServer = new System.Windows.Forms.CheckedListBox();
+            this._chkDistributed = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabComponent.SuspendLayout();
             this.tabResource.SuspendLayout();
@@ -250,6 +254,7 @@
             this.lvwComponent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvwComponent.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ComponentName,
+            this.WcfServerPath,
             this.LocalFileDateTime,
             this.ServerFileDateTime,
             this.LocalFileSize,
@@ -269,27 +274,32 @@
             // ComponentName
             // 
             this.ComponentName.Text = "组件名称";
-            this.ComponentName.Width = 360;
+            this.ComponentName.Width = 240;
+            // 
+            // WcfServerPath
+            // 
+            this.WcfServerPath.Text = "中间层服务器路径";
+            this.WcfServerPath.Width = 230;
             // 
             // LocalFileDateTime
             // 
-            this.LocalFileDateTime.Text = "本地文件时间";
-            this.LocalFileDateTime.Width = 150;
+            this.LocalFileDateTime.Text = "文件时间";
+            this.LocalFileDateTime.Width = 130;
             // 
             // ServerFileDateTime
             // 
-            this.ServerFileDateTime.Text = "服务器文件时间";
-            this.ServerFileDateTime.Width = 150;
+            this.ServerFileDateTime.Text = "版本文件时间";
+            this.ServerFileDateTime.Width = 130;
             // 
             // LocalFileSize
             // 
-            this.LocalFileSize.Text = "本地文件大小";
+            this.LocalFileSize.Text = "文件大小";
             this.LocalFileSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.LocalFileSize.Width = 100;
+            this.LocalFileSize.Width = 80;
             // 
             // ServerFileSize
             // 
-            this.ServerFileSize.Text = "服务器文件大小";
+            this.ServerFileSize.Text = "版本文件大小";
             this.ServerFileSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ServerFileSize.Width = 100;
             // 
@@ -299,7 +309,7 @@
             this.tabResource.Location = new System.Drawing.Point(4, 22);
             this.tabResource.Name = "tabResource";
             this.tabResource.Padding = new System.Windows.Forms.Padding(3);
-            this.tabResource.Size = new System.Drawing.Size(897, 472);
+            this.tabResource.Size = new System.Drawing.Size(952, 462);
             this.tabResource.TabIndex = 1;
             this.tabResource.Text = "资源";
             this.tabResource.UseVisualStyleBackColor = true;
@@ -309,6 +319,7 @@
             this.lvwResource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvwResource.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
+            this.columnHeader12,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -320,7 +331,7 @@
             this.lvwResource.Location = new System.Drawing.Point(3, 3);
             this.lvwResource.MultiSelect = false;
             this.lvwResource.Name = "lvwResource";
-            this.lvwResource.Size = new System.Drawing.Size(891, 466);
+            this.lvwResource.Size = new System.Drawing.Size(946, 456);
             this.lvwResource.TabIndex = 1;
             this.lvwResource.UseCompatibleStateImageBehavior = false;
             this.lvwResource.View = System.Windows.Forms.View.Details;
@@ -328,27 +339,32 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "资源名称";
-            this.columnHeader1.Width = 360;
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "中间层服务器路径";
+            this.columnHeader12.Width = 260;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "本地文件时间";
-            this.columnHeader2.Width = 150;
+            this.columnHeader2.Text = "文件时间";
+            this.columnHeader2.Width = 130;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "服务器文件时间";
-            this.columnHeader3.Width = 150;
+            this.columnHeader3.Text = "版本文件时间";
+            this.columnHeader3.Width = 130;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "本地文件大小";
+            this.columnHeader4.Text = "文件大小";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 100;
+            this.columnHeader4.Width = 80;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "服务器文件大小";
+            this.columnHeader5.Text = "版本文件大小";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader5.Width = 100;
             // 
@@ -358,7 +374,7 @@
             this.tabDBScript.Location = new System.Drawing.Point(4, 22);
             this.tabDBScript.Name = "tabDBScript";
             this.tabDBScript.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDBScript.Size = new System.Drawing.Size(897, 472);
+            this.tabDBScript.Size = new System.Drawing.Size(952, 462);
             this.tabDBScript.TabIndex = 2;
             this.tabDBScript.Text = "数据库脚本";
             this.tabDBScript.UseVisualStyleBackColor = true;
@@ -380,7 +396,7 @@
             this.lvwDBScript.Location = new System.Drawing.Point(3, 3);
             this.lvwDBScript.MultiSelect = false;
             this.lvwDBScript.Name = "lvwDBScript";
-            this.lvwDBScript.Size = new System.Drawing.Size(891, 466);
+            this.lvwDBScript.Size = new System.Drawing.Size(946, 456);
             this.lvwDBScript.TabIndex = 2;
             this.lvwDBScript.UseCompatibleStateImageBehavior = false;
             this.lvwDBScript.View = System.Windows.Forms.View.Details;
@@ -461,11 +477,37 @@
             this._txtWarning.Size = new System.Drawing.Size(240, 61);
             this._txtWarning.TabIndex = 32;
             // 
+            // _clbWcfServer
+            // 
+            this._clbWcfServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._clbWcfServer.ColumnWidth = 200;
+            this._clbWcfServer.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this._clbWcfServer.FormattingEnabled = true;
+            this._clbWcfServer.Location = new System.Drawing.Point(12, 706);
+            this._clbWcfServer.MultiColumn = true;
+            this._clbWcfServer.Name = "_clbWcfServer";
+            this._clbWcfServer.Size = new System.Drawing.Size(956, 38);
+            this._clbWcfServer.TabIndex = 33;
+            // 
+            // _chkDistributed
+            // 
+            this._chkDistributed.AutoSize = true;
+            this._chkDistributed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._chkDistributed.Location = new System.Drawing.Point(12, 684);
+            this._chkDistributed.Name = "_chkDistributed";
+            this._chkDistributed.Size = new System.Drawing.Size(105, 16);
+            this._chkDistributed.TabIndex = 34;
+            this._chkDistributed.Text = "分发服务器清单";
+            this._chkDistributed.UseVisualStyleBackColor = true;
+            this._chkDistributed.CheckedChanged += new System.EventHandler(this._chkDistributed_CheckedChanged);
+            // 
             // CompareVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 684);
+            this.ClientSize = new System.Drawing.Size(984, 747);
+            this.Controls.Add(this._chkDistributed);
+            this.Controls.Add(this._clbWcfServer);
             this.Controls.Add(this._txtWarning);
             this.Controls.Add(this._status);
             this.Controls.Add(this.txtSummary);
@@ -542,5 +584,9 @@
         private System.Windows.Forms.TextBox txtSummary;
         private System.Windows.Forms.TextBox _status;
         private System.Windows.Forms.TextBox _txtWarning;
+        private System.Windows.Forms.CheckedListBox _clbWcfServer;
+        private System.Windows.Forms.CheckBox _chkDistributed;
+        private System.Windows.Forms.ColumnHeader WcfServerPath;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
     }
 }

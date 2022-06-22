@@ -16,6 +16,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TFSideKicks.Configuration;
+using TFSideKicks.Helpers;
 
 namespace TFSideKicks
 {
@@ -66,43 +68,42 @@ namespace TFSideKicks
                 sb.AppendLine($"资源清单文件{RESOURCE_FILENAME}");
             if (sb.Length > 0) _txtWarning.Text = $"运行路径不存在：\r\n{sb}";
 
-            Test(15);
-
-            T t = new T() { Id = 15 };
-            Test2(t);
+            //Test(15);
+            //T t = new T() { Id = 15 };
+            //Test2(t);
         }
 
-        private readonly object x = new object();
-        public void Test(int i)
-        {
-            lock (x)
-            {
-                if (i > 10)
-                {
-                    i--;
-                    Test(i);
-                    Debug.Print(i.ToString());
-                }
-            }
-        }
+        //private readonly object x = new object();
+        //public void Test(int i)
+        //{
+        //    lock (x)
+        //    {
+        //        if (i > 10)
+        //        {
+        //            i--;
+        //            Test(i);
+        //            Debug.Print(i.ToString());
+        //        }
+        //    }
+        //}
 
-        public class T
-        {
-            public int Id;
-        }
+        //public class T
+        //{
+        //    public int Id;
+        //}
 
-        public void Test2(T t)
-        {
-            lock (x)
-            {
-                if (t.Id > 10)
-                {
-                    t.Id--;
-                    Test2(t);
-                    Debug.Print(t.Id.ToString());
-                }
-            }
-        }
+        //public void Test2(T t)
+        //{
+        //    lock (x)
+        //    {
+        //        if (t.Id > 10)
+        //        {
+        //            t.Id--;
+        //            Test2(t);
+        //            Debug.Print(t.Id.ToString());
+        //        }
+        //    }
+        //}
 
         private void Desktop_Load(object sender, EventArgs e)
         {
@@ -110,6 +111,14 @@ namespace TFSideKicks
             txtVersionID.Visible = this.DevelopMode;
             btnExcel.Visible = this.DevelopMode;
             btnRar.Visible = this.DevelopMode;
+
+            _clbWcfServer.ColumnWidth = 160;
+            _clbWcfServer.MultiColumn = true;
+            foreach (WcfServerElement item in ConfigHelper.WcfServers)
+            {
+                _clbWcfServer.Items.Add(item);
+            }
+            _chkDistributed.Checked = true;
         }
 
         private void SetTextBoxBackColor(bool enabled)
@@ -218,7 +227,18 @@ namespace TFSideKicks
             return true;
         }
 
-        private void CheckFileVersion()
+        private void btnCheckVersion_Click(object sender, EventArgs e)
+        {
+            btnCheckVersion.Enabled = false;
+
+            CheckIssueFilesVersion();
+            CompareResources();
+            txtSummary.Text = string.Format("组件：{0}/{1}，资源：{2}/{3}，脚本：{4}个", lvwComponent.Items.Count, _components.Count, lvwResource.Items.Count, _resources.Count, _dbscripts.Count);
+
+            btnCheckVersion.Enabled = true;
+        }
+
+        private void CheckIssueFilesVersion()
         {
             IList<Component> components;
             lblStatus.Text = string.Empty;
@@ -227,8 +247,6 @@ namespace TFSideKicks
             string foldername = txtExecutePath.Text;
             if (!Directory.Exists(foldername)) return;
 
-            DirectoryInfo folder = new DirectoryInfo(foldername);
-            FileInfo[] fileInfos = folder.GetFiles("*", SearchOption.AllDirectories);
             if (chkIsWcfServer.Checked)
                 components = _components;
             else
@@ -242,12 +260,48 @@ namespace TFSideKicks
                 return;
             }
 
+            DoCheckPathFilesVersion(components, foldername, string.Empty);
+            CheckWcfServersFilesVersion();
+
+            lblStatus.ForeColor = (lvwComponent.Items.Count == 0) ? Color.Black : Color.Red;
+            lblStatus.Text = (lvwComponent.Items.Count == 0) ? "本次实施版本组件均相同" : "本次实施版本组件有差异，详见表格！";
+        }
+
+        private void CheckWcfServersFilesVersion()
+        {
+            if (!_chkDistributed.Checked) return;
+
+            IList<Component> components = _components.Where(a => a.FileName.EndsWith("ServiceModel.dll", StringComparison.OrdinalIgnoreCase) || a.FileName.EndsWith("ServiceLibrary.dll", StringComparison.OrdinalIgnoreCase)).ToList(); ;
+            if (components.Count == 0) return;
+
+            string path_key;
+            foreach (var item in _clbWcfServer.CheckedItems)
+            {
+                WcfServerElement elt = item as WcfServerElement;
+                path_key = elt.ServerName;
+                DoCheckPathFilesVersion(_components, elt.DistributePath, path_key);
+                path_key = $"{elt.ServerName}.Downloads";
+                DoCheckPathFilesVersion(_components, elt.DownloadsBinPath, path_key);
+                foreach (var site in elt.Sites)
+                {
+                    SiteElement se = site as SiteElement;
+                    path_key = $"{elt.ServerName}.{se.SiteName}";
+                    DoCheckPathFilesVersion(components, se.SharedPath, path_key);
+                }
+            }
+        }
+
+        private void DoCheckPathFilesVersion(IList<Component> components, string foldername, string path_key)
+        {
+            DirectoryInfo folder = new DirectoryInfo(foldername);
+            FileInfo[] fileInfos = folder.GetFiles("*", SearchOption.AllDirectories);
+
             foreach (Component item in components.OrderBy(a => a.FileName))
             {
                 FileInfo fi = fileInfos.FirstOrDefault(a => a.Name == item.FileName);
                 if (fi == null)
                 {
-                    ListViewItem lvi = new ListViewItem(new string[] { item.FileName, "本地缺失！" });
+                    ListViewItem lvi = new ListViewItem(new string[] { item.FileName, path_key, "本地缺失！" });
                     lvi.ForeColor = Color.Red;
                     lvwComponent.Items.Add(lvi);
                 }
@@ -255,36 +309,22 @@ namespace TFSideKicks
                 {
                     if (fi.Length != item.FileSize || Math.Abs((fi.LastWriteTime.Subtract(item.CompileDateTime)).TotalSeconds) > 1)
                     {
-                        ListViewItem lvi = new ListViewItem(new string[] { item.FileName, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.CompileDateTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.FileSize.ToString() });
+                        ListViewItem lvi = new ListViewItem(new string[] { item.FileName, path_key, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.CompileDateTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.FileSize.ToString() });
                         lvi.UseItemStyleForSubItems = false;
                         if (Math.Abs((fi.LastWriteTime.Subtract(item.CompileDateTime)).TotalSeconds) > 1)
                         {
-                            lvi.SubItems[1].ForeColor = Color.Red;
                             lvi.SubItems[2].ForeColor = Color.Red;
+                            lvi.SubItems[3].ForeColor = Color.Red;
                         }
                         if (fi.Length != item.FileSize)
                         {
-                            lvi.SubItems[3].ForeColor = Color.Red;
                             lvi.SubItems[4].ForeColor = Color.Red;
+                            lvi.SubItems[5].ForeColor = Color.Red;
                         }
                         lvwComponent.Items.Add(lvi);
                     }
                 }
             }
-
-            lblStatus.ForeColor = (lvwComponent.Items.Count == 0) ? Color.Black : Color.Red;
-            lblStatus.Text = (lvwComponent.Items.Count == 0) ? "本次实施版本组件均相同" : "本次实施版本组件有差异，详见表格！";
-        }
-
-        private void btnCheckVersion_Click(object sender, EventArgs e)
-        {
-            btnCheckVersion.Enabled = false;
-
-            CheckFileVersion();
-            CompareResources();
-            txtSummary.Text = string.Format("组件：{0}/{1}，资源：{2}/{3}，脚本：{4}个", lvwComponent.Items.Count, _components.Count, lvwResource.Items.Count, _resources.Count, _dbscripts.Count);
-
-            btnCheckVersion.Enabled = true;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -388,6 +428,25 @@ namespace TFSideKicks
             }
 
             string foldername = Path.Combine(RegistryHelper.GetExecutablePath(), "..\\Resources");
+            DoCompareResources(destfiles, foldername, string.Empty);
+
+            if (_chkDistributed.Checked)
+            {
+                foreach (var item in _clbWcfServer.CheckedItems)
+                {
+                    WcfServerElement elt = item as WcfServerElement;
+                    string path_key = $"{elt.ServerName}.Downloads.Resources";
+                    DoCompareResources(destfiles, elt.DownloadsResourcesPath, path_key);
+                }
+            }
+
+            lblStatus2.ForeColor = (lvwResource.Items.Count == 0) ? Color.Black : Color.Red;
+            lblStatus2.Text = (lvwResource.Items.Count == 0) ? "资源文件均相同" : "资源文件有差异，详见表格！";
+        }
+
+        private void DoCompareResources(FileInfo[] destfiles, string foldername, string path_key)
+        {
+
             if (!Directory.Exists(foldername)) return;
 
             DirectoryInfo folder = new DirectoryInfo(foldername);
@@ -401,7 +460,7 @@ namespace TFSideKicks
                 FileInfo fi = fileInfos.FirstOrDefault(a => a.FullName.EndsWith(sourcefile, StringComparison.OrdinalIgnoreCase));
                 if (fi == null)
                 {
-                    ListViewItem lvi = new ListViewItem(new string[] { sourcefile, "本地缺失！" });
+                    ListViewItem lvi = new ListViewItem(new string[] { sourcefile, path_key, "本地缺失！" });
                     lvi.ForeColor = Color.Red;
                     lvwResource.Items.Add(lvi);
                 }
@@ -409,26 +468,23 @@ namespace TFSideKicks
                 {
                     if (fi.Length != item.Length || Math.Abs((fi.LastWriteTime.Subtract(item.LastWriteTime)).TotalSeconds) > 1)
                     {
-                        ListViewItem lvi = new ListViewItem(new string[] { sourcefile, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.Length.ToString() });
+                        ListViewItem lvi = new ListViewItem(new string[] { sourcefile, path_key, fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), item.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss"), fi.Length.ToString(), item.Length.ToString() });
                         lvi.UseItemStyleForSubItems = false;
                         if (Math.Abs((fi.LastWriteTime.Subtract(item.LastWriteTime)).TotalSeconds) > 1)
                         {
-                            lvi.SubItems[1].ForeColor = Color.Red;
                             lvi.SubItems[2].ForeColor = Color.Red;
+                            lvi.SubItems[3].ForeColor = Color.Red;
                         }
                         if (fi.Length != item.Length)
                         {
-                            lvi.SubItems[3].ForeColor = Color.Red;
                             lvi.SubItems[4].ForeColor = Color.Red;
+                            lvi.SubItems[5].ForeColor = Color.Red;
                         }
                         lvwResource.Items.Add(lvi);
                     }
                     //bool issame = Utility.CompareFiles(fi.FullName, item.FullName);
                 }
             }
-
-            lblStatus2.ForeColor = (lvwResource.Items.Count == 0) ? Color.Black : Color.Red;
-            lblStatus2.Text = (lvwResource.Items.Count == 0) ? "资源文件均相同" : "资源文件有差异，详见表格！";
         }
 
         private void btnFolder_Click(object sender, EventArgs e)
@@ -467,6 +523,20 @@ namespace TFSideKicks
             if (fbd.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
                 CompressFilesAsZip(fbd.SelectedPath, Path.Combine(Directory.GetCurrentDirectory(), "resource.rar"));
+            }
+        }
+
+        private void _chkDistributed_CheckedChanged(object sender, EventArgs e)
+        {
+            bool checkedAll = _chkDistributed.Checked;
+            SetAllWcfServerChecked(checkedAll);
+        }
+
+        private void SetAllWcfServerChecked(bool isChecked)
+        {
+            for (int i = 0; i < _clbWcfServer.Items.Count; i++)
+            {
+                _clbWcfServer.SetItemChecked(i, isChecked);
             }
         }
     }

@@ -118,6 +118,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configuration\WcfServerCollection.cs" />
+    <Compile Include="Configuration\WcfServersSection.cs" />
     <Compile Include="Controls\MultiComboBox.cs" />
     <Compile Include="Datas\TraceModuleList.cs" />
     <Compile Include="Helpers\CryptographyHelper.cs" />
