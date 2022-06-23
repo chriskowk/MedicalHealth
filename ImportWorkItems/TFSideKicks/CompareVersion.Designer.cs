@@ -488,6 +488,7 @@
             this._clbWcfServer.Name = "_clbWcfServer";
             this._clbWcfServer.Size = new System.Drawing.Size(956, 38);
             this._clbWcfServer.TabIndex = 33;
+            this._clbWcfServer.Click += new System.EventHandler(this._clbWcfServer_Click);
             // 
             // _chkDistributed
             // 

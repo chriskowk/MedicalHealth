@@ -62,7 +62,7 @@
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="6,0" Width="405" Height="Auto">
                 <TextBox HorizontalAlignment="Left" Text="{Binding PlainText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="auto" MinWidth="405" Height="auto" MinHeight="40" Name="_txtPlainText" TextWrapping="WrapWithOverflow" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
             </ScrollViewer>
-            <Button Content="{Binding CommandText, UpdateSourceTrigger=PropertyChanged}" Height="25" VerticalAlignment="Center"  Width="75" Command="{Binding EncryptCommand}" Margin="0,0,5,0" />
+            <Button Name="_btnDecrypt" Content="{Binding CommandText, UpdateSourceTrigger=PropertyChanged}" Height="25" VerticalAlignment="Center"  Width="75" Command="{Binding EncryptCommand}" Margin="0,0,5,0" />
         </StackPanel>
 
     </Grid>

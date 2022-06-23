@@ -39,6 +39,9 @@
   <PropertyGroup>
     <ApplicationIcon>docfav.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TFSideKicks.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetSkin">
       <HintPath>Lib\DotNetSkin.dll</HintPath>
@@ -122,10 +125,12 @@
     <Compile Include="Configuration\WcfServersSection.cs" />
     <Compile Include="Controls\MultiComboBox.cs" />
     <Compile Include="Datas\TraceModuleList.cs" />
+    <Compile Include="Helpers\CommandLineUtility.cs" />
     <Compile Include="Helpers\CryptographyHelper.cs" />
     <Compile Include="Helpers\EncryptHepler.cs" />
     <Compile Include="Helpers\OracleDbHelper.cs" />
     <Compile Include="Helpers\WinRARHelper.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="ShowHistory.xaml.cs">
       <DependentUpon>ShowHistory.xaml</DependentUpon>
     </Compile>

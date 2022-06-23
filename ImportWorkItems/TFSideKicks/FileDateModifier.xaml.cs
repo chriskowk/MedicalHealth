@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TFSideKicks.Helpers;
 
 namespace TFSideKicks
 {
@@ -23,6 +24,14 @@ namespace TFSideKicks
         public FileDateModifier()
         {
             InitializeComponent();
+
+            _btnDecrypt.IsEnabled = false;
+            if (ConfigHelper.Arguments.Parameters.ContainsKey("IsDecryptEnabled"))
+            {
+                bool enabled;
+                bool.TryParse(ConfigHelper.Arguments["IsDecryptEnabled"], out enabled);
+                _btnDecrypt.IsEnabled = enabled;
+            }
             this.DataContext = new FileDateModifierViewMode() { CreatedChecked = true, AccessedChecked = true, ModifiedChecked = true };
         }
 
@@ -34,7 +43,7 @@ namespace TFSideKicks
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            _txtSelectedPath.Focus();   
+            _txtSelectedPath.Focus();
         }
     }
 }

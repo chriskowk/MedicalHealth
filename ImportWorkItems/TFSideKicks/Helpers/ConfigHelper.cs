@@ -10,6 +10,8 @@ namespace TFSideKicks.Helpers
 {
     public class ConfigHelper
     {
+        public static CommandLineArguments Arguments { get; set; }
+
         private static readonly IntegrationSection _integrationSection = ConfigurationManager.GetSection("integration.config") as IntegrationSection;
         private static readonly WcfServersSection _wcfserversSection = ConfigurationManager.GetSection("wcfservers.config") as WcfServersSection;
 

@@ -114,11 +114,54 @@ namespace TFSideKicks
 
             _clbWcfServer.ColumnWidth = 160;
             _clbWcfServer.MultiColumn = true;
+            _clbWcfServer.ItemCheck -= _clbWcfServer_ItemCheck;
+            _clbWcfServer.ItemCheck += _clbWcfServer_ItemCheck;
             foreach (WcfServerElement item in ConfigHelper.WcfServers)
             {
                 _clbWcfServer.Items.Add(item);
             }
             _chkDistributed.Checked = true;
+        }
+
+        static bool _changedByCode = false;
+        private void _chkDistributed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_changedByCode) return;
+
+            bool checkedAll = _chkDistributed.Checked;
+            SetAllWcfServerChecked(checkedAll);
+        }
+
+        static bool _checkedByCode = false;
+        private void SetAllWcfServerChecked(bool isChecked)
+        {
+            _checkedByCode = true;
+            for (int i = 0; i < _clbWcfServer.Items.Count; i++)
+            {
+                _clbWcfServer.SetItemChecked(i, isChecked);
+            }
+            _checkedByCode = false;
+        }
+
+        private void _clbWcfServer_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (!(e is ItemCheckEventArgs)) return;
+            if (_checkedByCode) return;
+
+            if (e.NewValue == CheckState.Checked)
+            {
+                _changedByCode = true;
+                _chkDistributed.Checked = true;
+                _changedByCode = false;
+            }
+            else
+            {
+                bool allUnchecked = (_clbWcfServer.CheckedItems.Count == 0)
+                    || (_clbWcfServer.CheckedItems.Count == 1 && _clbWcfServer.CheckedItems.Contains(_clbWcfServer.Items[e.Index]));
+                _changedByCode = true;
+                _chkDistributed.Checked = !allUnchecked;
+                _changedByCode = false;
+            }
         }
 
         private void SetTextBoxBackColor(bool enabled)
@@ -526,18 +569,8 @@ namespace TFSideKicks
             }
         }
 
-        private void _chkDistributed_CheckedChanged(object sender, EventArgs e)
+        private void _clbWcfServer_Click(object sender, EventArgs e)
         {
-            bool checkedAll = _chkDistributed.Checked;
-            SetAllWcfServerChecked(checkedAll);
-        }
-
-        private void SetAllWcfServerChecked(bool isChecked)
-        {
-            for (int i = 0; i < _clbWcfServer.Items.Count; i++)
-            {
-                _clbWcfServer.SetItemChecked(i, isChecked);
-            }
         }
     }
 }
