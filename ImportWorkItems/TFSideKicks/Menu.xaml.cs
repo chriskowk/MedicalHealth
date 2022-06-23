@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TFSideKicks.Helpers;
 
 namespace TFSideKicks
 {
@@ -126,7 +127,6 @@ namespace TFSideKicks
             if (string.Equals(button.Tag.ToString(), "CompareVersion", StringComparison.OrdinalIgnoreCase))
             {
                 CompareVersion form = new CompareVersion();
-                form.DevelopMode = true;
                 form.Activated -= Win_Activated;
                 form.Activated += Win_Activated;
                 form.FormClosed += Win_FormClosed;

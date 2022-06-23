@@ -127,11 +127,11 @@
             // 
             this.chkIsWcfServer.AutoSize = true;
             this.chkIsWcfServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkIsWcfServer.Location = new System.Drawing.Point(264, 30);
+            this.chkIsWcfServer.Location = new System.Drawing.Point(264, 32);
             this.chkIsWcfServer.Name = "chkIsWcfServer";
-            this.chkIsWcfServer.Size = new System.Drawing.Size(93, 16);
+            this.chkIsWcfServer.Size = new System.Drawing.Size(129, 16);
             this.chkIsWcfServer.TabIndex = 23;
-            this.chkIsWcfServer.Text = "中间层服务器";
+            this.chkIsWcfServer.Text = "本机为中间层服务器";
             this.chkIsWcfServer.UseVisualStyleBackColor = true;
             // 
             // txtVersionID
@@ -149,7 +149,7 @@
             // 
             this.chkVersion.AutoSize = true;
             this.chkVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkVersion.Location = new System.Drawing.Point(264, 57);
+            this.chkVersion.Location = new System.Drawing.Point(264, 58);
             this.chkVersion.Name = "chkVersion";
             this.chkVersion.Size = new System.Drawing.Size(69, 16);
             this.chkVersion.TabIndex = 21;
@@ -171,7 +171,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(479, 59);
+            this.label2.Location = new System.Drawing.Point(479, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 20;
@@ -449,7 +449,7 @@
             this.txtSummary.Location = new System.Drawing.Point(264, 81);
             this.txtSummary.Name = "txtSummary";
             this.txtSummary.ReadOnly = true;
-            this.txtSummary.Size = new System.Drawing.Size(253, 23);
+            this.txtSummary.Size = new System.Drawing.Size(266, 23);
             this.txtSummary.TabIndex = 30;
             // 
             // _status
@@ -506,7 +506,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 747);
+            this.ClientSize = new System.Drawing.Size(984, 752);
             this.Controls.Add(this._chkDistributed);
             this.Controls.Add(this._clbWcfServer);
             this.Controls.Add(this._txtWarning);

@@ -30,7 +30,6 @@ namespace TFSideKicks
         IList<Component> _components = new List<Component>();
         IList<DBScript> _dbscripts = new List<DBScript>();
         IList<string> _resources = new List<string>();
-        public bool DevelopMode = false;
         public CompareVersion()
         {
             InitializeComponent();
@@ -57,7 +56,7 @@ namespace TFSideKicks
 
             ToolTip tip3 = new ToolTip();
             tip3.ShowAlways = true;
-            tip3.SetToolTip(btnRar, "打包指定文件夹的所有文件");
+            tip3.SetToolTip(btnRar, "打包指定文件夹的所有文件生成resource.rar");
 
             StringBuilder sb = new StringBuilder();
             if (!File.Exists(Path.Combine(Environment.CurrentDirectory, COMPONENT_FILENAME)))
@@ -67,50 +66,30 @@ namespace TFSideKicks
             if (!File.Exists(Path.Combine(Environment.CurrentDirectory, RESOURCE_FILENAME)))
                 sb.AppendLine($"资源清单文件{RESOURCE_FILENAME}");
             if (sb.Length > 0) _txtWarning.Text = $"运行路径不存在：\r\n{sb}";
-
-            //Test(15);
-            //T t = new T() { Id = 15 };
-            //Test2(t);
         }
 
-        //private readonly object x = new object();
-        //public void Test(int i)
-        //{
-        //    lock (x)
-        //    {
-        //        if (i > 10)
-        //        {
-        //            i--;
-        //            Test(i);
-        //            Debug.Print(i.ToString());
-        //        }
-        //    }
-        //}
-
-        //public class T
-        //{
-        //    public int Id;
-        //}
-
-        //public void Test2(T t)
-        //{
-        //    lock (x)
-        //    {
-        //        if (t.Id > 10)
-        //        {
-        //            t.Id--;
-        //            Test2(t);
-        //            Debug.Print(t.Id.ToString());
-        //        }
-        //    }
-        //}
+        private static bool? _isAdvanced = null;
+        public bool IsAdvanced
+        {
+            get
+            {
+                if (!_isAdvanced.HasValue)
+                {
+                    bool isAdvanced = false;
+                    if (ConfigHelper.Arguments.Parameters.ContainsKey("IsAdvanced"))
+                        bool.TryParse(ConfigHelper.Arguments["IsAdvanced"], out isAdvanced);
+                    _isAdvanced = isAdvanced;
+                }
+                return _isAdvanced.Value;
+            }
+        }
 
         private void Desktop_Load(object sender, EventArgs e)
         {
-            chkVersion.Visible = this.DevelopMode;
-            txtVersionID.Visible = this.DevelopMode;
-            btnExcel.Visible = this.DevelopMode;
-            btnRar.Visible = this.DevelopMode;
+            chkVersion.Visible = this.IsAdvanced;
+            txtVersionID.Visible = this.IsAdvanced;
+            btnExcel.Visible = this.IsAdvanced;
+            btnRar.Visible = this.IsAdvanced;
 
             _clbWcfServer.ColumnWidth = 160;
             _clbWcfServer.MultiColumn = true;
@@ -148,20 +127,18 @@ namespace TFSideKicks
             if (!(e is ItemCheckEventArgs)) return;
             if (_checkedByCode) return;
 
+            _changedByCode = true;
             if (e.NewValue == CheckState.Checked)
             {
-                _changedByCode = true;
                 _chkDistributed.Checked = true;
-                _changedByCode = false;
             }
             else
             {
                 bool allUnchecked = (_clbWcfServer.CheckedItems.Count == 0)
                     || (_clbWcfServer.CheckedItems.Count == 1 && _clbWcfServer.CheckedItems.Contains(_clbWcfServer.Items[e.Index]));
-                _changedByCode = true;
                 _chkDistributed.Checked = !allUnchecked;
-                _changedByCode = false;
             }
+            _changedByCode = false;
         }
 
         private void SetTextBoxBackColor(bool enabled)

@@ -239,10 +239,10 @@
     <value>True</value>
   </metadata>
   <data name="_status.Text" xml:space="preserve">
-    <value>使用说明（勾选提交版本直接从JSDesk平台数据库查询组件和脚本信息，仅供开发用）：
-1、资源文件先从“提交版本”下载（resource.rar），放在比较工具的运行目录下；
-2、准备好component.xls和dbscript.xls（可以通过比较工具输入提交版本ID，点击excel图标按钮导出；
-3、指定实施完毕后的客户端机器的运行路径；
+    <value>使用说明(勾选提交版本直接从JSDesk平台数据库查询组件和脚本信息，仅供开发用)：
+1、资源文件先从“提交版本”下载(resource.rar)，放在比较工具的运行目录下；
+2、准备好component.xls和dbscript.xls(可以通过比较工具输入提交版本ID，点击excel图标按钮导出)；
+3、指定实施完毕后的客户端(或中间层)机器的运行路径(界面右上部)以及分发服务器(界面底部)；
 4、点击【执行比较】按钮，执行后查看比较结果。</value>
   </data>
   <metadata name="_txtWarning.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

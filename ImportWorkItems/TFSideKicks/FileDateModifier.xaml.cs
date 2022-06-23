@@ -25,13 +25,12 @@ namespace TFSideKicks
         {
             InitializeComponent();
 
-            _btnDecrypt.IsEnabled = false;
+            bool isDecryptEnabled = false;
             if (ConfigHelper.Arguments.Parameters.ContainsKey("IsDecryptEnabled"))
             {
-                bool enabled;
-                bool.TryParse(ConfigHelper.Arguments["IsDecryptEnabled"], out enabled);
-                _btnDecrypt.IsEnabled = enabled;
+                bool.TryParse(ConfigHelper.Arguments["IsDecryptEnabled"], out isDecryptEnabled);
             }
+            _btnDecrypt.IsEnabled = isDecryptEnabled;
             this.DataContext = new FileDateModifierViewMode() { CreatedChecked = true, AccessedChecked = true, ModifiedChecked = true };
         }
 
