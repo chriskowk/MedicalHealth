@@ -1,0 +1,8 @@
+﻿net stop procsvcl
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u "F:\GitHub\PycharmProjects\PyQtTest\dist\CheckProcService.exe"
+pause
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe "F:\GitHub\PycharmProjects\PyQtTest\dist\CheckProcService.exe"
+pause
+sc start procsvcl /period:300000 /procfilename:"F:\GitHub\PycharmProjects\PyQtTest\dist\trayicondemo.exe"
