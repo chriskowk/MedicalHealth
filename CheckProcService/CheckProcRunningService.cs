@@ -99,7 +99,8 @@ namespace CheckProcService
 
             // launch the application
             ApplicationLoader.PROCESS_INFORMATION procInfo;
-            ApplicationLoader.StartProcessAndBypassUAC(this.ProcFileName, out procInfo);
+            string currentDirectory = Path.GetDirectoryName(this.ProcFileName);
+            ApplicationLoader.StartProcessAndBypassUAC(this.ProcFileName, currentDirectory, out procInfo);
         }
     }
 }

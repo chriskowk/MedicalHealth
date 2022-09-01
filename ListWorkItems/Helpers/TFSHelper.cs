@@ -27,16 +27,22 @@ namespace ListWorkItems
                 return;
             }
 
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(args[0]), CredentialCache.DefaultNetworkCredentials);
-            tpc.Authenticate();
+            // 方法1：
+            //TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(args[0]), CredentialCache.DefaultNetworkCredentials);
+            //tpc.Authenticate();
 
-            VersionControlServer version = tpc.GetService(typeof(VersionControlServer)) as VersionControlServer;
-            var histories = version.QueryHistory("$/", VersionSpec.Latest, 0, RecursionType.Full, null, null, null, 10, true, false);
+            // 方法2：
+            NetworkCredential networkCredential = new NetworkCredential("guoshaoyue", "Bronzepen1o3$");
+            WindowsCredential winCred = new WindowsCredential(networkCredential);
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(args[0]), winCred);
+            tpc.EnsureAuthenticated();
+
+            VersionControlServer vcs = tpc.GetService(typeof(VersionControlServer)) as VersionControlServer;
+            var histories = vcs.QueryHistory("$/", VersionSpec.Latest, 0, RecursionType.Full, null, null, null, 10, true, false);
             foreach (Changeset change in histories)//每个历史版本下修改了几个文件
             {
                 Console.WriteLine($"{change.ChangesetId} {change.CommitterDisplayName} {change.CreationDate:yyyy-MM-dd HH:mm:ss}: {change.Comment}");
             }
-
         }
     }
 }

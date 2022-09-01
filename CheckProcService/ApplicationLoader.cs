@@ -125,7 +125,7 @@ namespace CheckProcService
         /// <param name="applicationName">The name of the application to launch</param>
         /// <param name="procInfo">Process information regarding the launched application that gets returned to the caller</param>
         /// <returns></returns>
-        public static bool StartProcessAndBypassUAC(String applicationName, out PROCESS_INFORMATION procInfo)
+        public static bool StartProcessAndBypassUAC(string applicationName, string currentDirectory, out PROCESS_INFORMATION procInfo)
         {
             uint winlogonPid = 0;
             IntPtr hUserTokenDup = IntPtr.Zero, hPToken = IntPtr.Zero, hProcess = IntPtr.Zero;
@@ -190,7 +190,7 @@ namespace CheckProcService
                                             false,                  // handles are not inheritable
                                             dwCreationFlags,        // creation flags
                                             IntPtr.Zero,            // pointer to new environment block 
-                                            null,                   // name of current directory 
+                                            currentDirectory,       // name of current directory 
                                             ref si,                 // pointer to STARTUPINFO structure
                                             out procInfo            // receives information about new process
                                             );

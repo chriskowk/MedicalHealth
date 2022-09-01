@@ -20,10 +20,11 @@ namespace ListWorkItems
             //WorkItemHelper.List(args);
 
             // TFSH.exe 显示最近10条签入历史记录
-            //TFSHelper.ShowHistory(args);
+            TFSHelper.ShowHistory(args);
+            Console.ReadKey();
 
             // SFW.exe 文件夹（及子文件夹）设置可写
-            FileHelper.SetFilesWritable(args);
+            //FileHelper.SetFilesWritable(args);
         }
     }
 }
