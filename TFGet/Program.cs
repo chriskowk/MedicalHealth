@@ -13,7 +13,7 @@ namespace TFGet
         {
             var tfsParams = TfsDownloadParams.Create(args);
 
-            var tpc = new TfsTeamProjectCollection(new Uri(tfsParams.ServerUrl), tfsParams.Credentials);
+            var tpc = new TfsTeamProjectCollection(new Uri(tfsParams.ServerTfsUrl), tfsParams.Credentials);
 
             CheckAccess(tpc, tfsParams);
 
@@ -31,9 +31,9 @@ namespace TFGet
             catch (Exception e)
             {
                 Console.WriteLine($"TFS Authentication Failed: {e.Message}");
-                Console.WriteLine("Server Url:{0}", tfsParams.ServerUrl);
-                Console.WriteLine("Project Path:{0}", tfsParams.ServerProjectPath);
-                Console.WriteLine("Target Path:{0}", tfsParams.TargetPath);
+                Console.WriteLine("Server Url:{0}", tfsParams.ServerTfsUrl);
+                Console.WriteLine("Project Path:{0}", tfsParams.ServerTfsPath);
+                Console.WriteLine("Target Path:{0}", tfsParams.LocalTfsPath);
                 Console.ReadKey();
 
                 Environment.Exit(1);
@@ -42,11 +42,22 @@ namespace TFGet
 
         static void Download(TfsTeamProjectCollection tpc, TfsDownloadParams tfsParams)
         {
-            var versionControl = tpc.GetService<VersionControlServer>();
+            var vcs = tpc.GetService<VersionControlServer>();
             // Listen for the Source Control events.
-            versionControl.NonFatalError += Program.OnNonFatalError;
+            vcs.NonFatalError += Program.OnNonFatalError;
 
-            var files = versionControl.GetItems(tfsParams.ServerProjectPath, VersionSpec.Latest, RecursionType.Full);
+            ItemSpec[] itemSpecs = new ItemSpec[1];
+            itemSpecs[0] = new ItemSpec(tfsParams.LocalTfsPath, RecursionType.Full);
+            Workspace ws;
+            Workspace[] wss = vcs.QueryWorkspaces("GUOSHAOYUE-5040", Environment.UserName, Environment.MachineName);
+            if (wss.Length > 0)
+                ws = wss[0];
+            int latestChangesetId = vcs.GetLatestChangesetId();
+            VersionSpec spec = new ChangesetVersionSpec(latestChangesetId);
+            //vcs.DownloadFile(tfsParams.ServerTfsPath, 0, spec, tfsParams.LocalTfsPath);  //从服务器上下载指定版本
+
+            Console.WriteLine("Download files started on: {0:yyyy-MM-dd hh:mm:ss}", DateTime.Now);
+            var files = vcs.GetItems(tfsParams.ServerTfsPath, spec, RecursionType.Full);
             foreach (Item item in files.Items)
             {
                 var localFilePath = GetLocalFilePath(tfsParams, item);
@@ -65,14 +76,16 @@ namespace TFGet
                         break;
                 }
             }
+            Console.WriteLine("Download files finished on: {0:yyyy-MM-dd hh:mm:ss}", DateTime.Now);
         }
 
         private static string GetLocalFilePath(TfsDownloadParams tfsParams, Item item)
         {
-            var projectPath = tfsParams.ServerProjectPath;
+            var projectPath = tfsParams.ServerTfsPath;
             var pathExcludingLastFolder = projectPath.Substring(0, projectPath.LastIndexOf('/') + 1);
             string relativePath = item.ServerItem.Replace(pathExcludingLastFolder, "");
-            var localFilePath = Path.Combine(tfsParams.TargetPath, relativePath);
+            relativePath = relativePath.Replace("/", "\\");
+            var localFilePath = Path.Combine(tfsParams.LocalTfsPath, relativePath);
             return localFilePath;
         }
 
@@ -85,9 +98,9 @@ namespace TFGet
 
     public class TfsDownloadParams
     {
-        public string ServerUrl { get; set; }
-        public string ServerProjectPath { get; set; }
-        public string TargetPath { get; set; }
+        public string ServerTfsUrl { get; set; }
+        public string ServerTfsPath { get; set; }
+        public string LocalTfsPath { get; set; }
         public WindowsCredential Credentials { get; set; }
         public bool Silent { get; set; }
 
@@ -123,9 +136,9 @@ namespace TFGet
 
             var tfsParams = new TfsDownloadParams
             {
-                ServerUrl = tfsServerUrl,
-                ServerProjectPath = serverProjectPath,
-                TargetPath = targetPath,
+                ServerTfsUrl = tfsServerUrl,
+                ServerTfsPath = serverProjectPath,
+                LocalTfsPath = targetPath,
                 Credentials = tfsCredentials,
                 Silent = silentFlag,
             };
