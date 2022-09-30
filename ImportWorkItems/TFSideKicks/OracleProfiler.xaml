@@ -53,11 +53,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" >Host:</Label>
-            <TextBox Name="tb_host" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="172.18.99.243" ToolTip="服务器的IP地址" />
+            <TextBox Name="tb_host" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="172.18.133.194" ToolTip="服务器的IP地址" />
             <Label Grid.Row="0" Grid.Column="2" >Port:</Label>
             <TextBox Name="tb_port" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Text="1521" ToolTip="端口号" />
             <Label Grid.Row="0" Grid.Column="4" >Service Name:</Label>
-            <TextBox Name="tb_service" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" Text="orclbak" ToolTip="服务名（或SID）" />
+            <TextBox Name="tb_service" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" Text="ZSYKTEST" ToolTip="服务名（或SID）" />
         </Grid>
         <TextBox Name="tb_log" Background="LightYellow" Foreground="DarkGray" IsReadOnly="True" Grid.Row="0" Grid.Column="5" Grid.RowSpan="9" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Margin="5,0,0,0"/>
         <Label Grid.Row="2" >User ID:</Label>
@@ -125,6 +125,7 @@
                     <DataGridTextColumn Width="120" Header="DATATYPE STRING" Binding="{Binding DATATYPE_STRING}" />
                     <DataGridTextColumn Width="*" Header="VALUE STRING" Binding="{Binding VALUE_STRING}" />
                     <DataGridTextColumn Width="140" Header="LAST CAPTURED" Binding="{Binding LAST_CAPTURED}" />
+                    <DataGridTextColumn Width="80" Header="WAS CAPTURED" Binding="{Binding WAS_CAPTURED}" />
                 </DataGrid.Columns>
             </DataGrid>
             <GridSplitter Grid.Row="0" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
