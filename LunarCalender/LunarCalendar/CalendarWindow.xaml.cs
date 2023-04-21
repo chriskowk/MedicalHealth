@@ -643,10 +643,12 @@ namespace LunarCalendar
         }
 
         private DateTime _latestRefreshOn = DateTime.Now;
+        private bool _isDateChanged = false;
         private void ResetTrayIcon(object state)
         {
             if (_latestRefreshOn.Date != DateTime.Now.Date)
             {
+                _isDateChanged = true;
                 _notifyIcon.Text = GetFullDateDesc(DateTime.Now, true);
                 _notifyIcon.Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri($"images/cal{DateTime.Now:dd}.ico", UriKind.Relative)).Stream);
             }
@@ -686,8 +688,19 @@ namespace LunarCalendar
 
         private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            _muiShow.Text = string.Format("{0}日历窗口", bool.Parse(e.NewValue.ToString()) ? "隐藏" : "显示");
-            string imagefile = bool.Parse(e.NewValue.ToString()) ? "noscreen.png" : "screen.png";
+            bool isVisible = bool.Parse(e.NewValue.ToString());
+            if (_isDateChanged && isVisible)
+            {
+                _isDateChanged = false;
+                _year = DateTime.Now.Year;
+                _month = DateTime.Now.Month;
+                _day = DateTime.Now.Day;
+
+                if (!this.IsLoaded) { MainWindow.Show(); }
+                DisplayCalendar(_year, _month, _day);
+            }
+            _muiShow.Text = string.Format("{0}日历窗口", isVisible ? "隐藏" : "显示");
+            string imagefile = isVisible ? "noscreen.png" : "screen.png";
             _muiShow.Image = new System.Drawing.Bitmap(Application.GetResourceStream(new Uri($"images/{imagefile}", UriKind.Relative)).Stream);
         }
 
