@@ -148,7 +148,7 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = $"CREATE TABLE {OracleDbContext.OldTable} AS SELECT * FROM v$sql";
+                string createTableSql = $"CREATE TABLE {OracleDbContext.OldTable} AS SELECT * FROM v$sqlarea";
                 //Context.DB.ExecSqlStatement(createTableSql);
                 OracleDbHelper.ExecuteSql(createTableSql);
                 this.Dispatcher.BeginInvoke(new Action(() => this.tb_log.AppendText("Create data table succeed.\r\n")));
@@ -197,7 +197,7 @@ namespace TFSideKicks
         {
             try
             {
-                string createTableSql = $"CREATE TABLE {OracleDbContext.NewTable} AS SELECT * FROM v$sql";
+                string createTableSql = $"CREATE TABLE {OracleDbContext.NewTable} AS SELECT * FROM v$sqlarea";
                 //Context.DB.ExecSqlStatement(createTableSql);
                 OracleDbHelper.ExecuteSql(createTableSql);
 
@@ -210,14 +210,15 @@ namespace TFSideKicks
                 //, round((a.cpu_time - nvl(b.cpu_time, 0)) / 1000000, 2) AS CPU_TIME 
                 //, round((a.cpu_time - nvl(b.cpu_time, 0)) / ((a.executions - nvl(b.executions, 0)) * 1000000), 2) AS CPU_TIME_PER_EXE 
                 //, round((a.elapsed_time - nvl(b.elapsed_time, 0)) / ((a.executions - nvl(b.executions, 0)) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
-                //, to_date(a.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, a.LAST_ACTIVE_TIME 
+                //, a.LAST_LOAD_TIME, a.LAST_ACTIVE_TIME 
                 //FROM {0} a LEFT JOIN {1} b ON a.hash_value = b.hash_value AND a.address = b.address 
-                //WHERE ( to_date(a.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR a.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
+                //WHERE ( a.LAST_LOAD_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') OR a.LAST_ACTIVE_TIME > to_date('{2}', 'yyyy/MM/dd hh24:mi:ss') )
                 //AND (a.executions - nvl(b.executions, 0)) > 0 <CRITERIA> 
-                //ORDER BY a.LAST_ACTIVE_TIME DESC, a.FIRST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
+                //ORDER BY a.LAST_ACTIVE_TIME DESC, a.LAST_LOAD_TIME DESC", OracleDbContext.NewTable, OracleDbContext.OldTable, this.StartOnText);
 
                 string sqlbase = string.Format(@"SELECT a.SQL_ID, a.parsing_schema_name AS SCHEMA, a.module AS MODULE, a.sql_text AS SQL_TEXT 
                 , a.sql_fulltext AS SQL_FULLTEXT 
+                , a.OPTIMIZER_COST AS OPTIMIZER_COST
                 , a.parse_calls AS PARSE_CALLS 
                 , a.buffer_gets AS BUFFER_GETS 
                 , a.disk_reads AS DISK_READS 
@@ -225,11 +226,11 @@ namespace TFSideKicks
                 , round(a.cpu_time / 1000000, 2) AS CPU_TIME 
                 , round(a.cpu_time / (decode(a.executions,0,1,a.executions) * 1000000), 2) AS CPU_TIME_PER_EXE 
                 , round(a.elapsed_time / (decode(a.executions,0,1,a.executions) * 1000000), 2) AS ELAPSED_TIME_PER_EXE 
-                , to_date(a.FIRST_LOAD_TIME, 'yyyy-MM-dd hh24:mi:ss') AS FIRST_LOAD_TIME, a.LAST_ACTIVE_TIME 
-                FROM v$sql a 
-                WHERE ( to_date(a.FIRST_LOAD_TIME, 'yyyy/MM/dd hh24:mi:ss') > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') OR a.LAST_ACTIVE_TIME > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') )
+                , a.LAST_LOAD_TIME, a.LAST_ACTIVE_TIME 
+                FROM gv$sqlarea a 
+                WHERE ( a.LAST_LOAD_TIME > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') OR a.LAST_ACTIVE_TIME > to_date('{0}', 'yyyy/MM/dd hh24:mi:ss') )
                 <CRITERIA> 
-                ORDER BY a.LAST_ACTIVE_TIME DESC, a.FIRST_LOAD_TIME DESC", this.StartOnText);
+                ORDER BY a.LAST_ACTIVE_TIME DESC, a.LAST_LOAD_TIME DESC", this.StartOnText);
 
                 string criteria = "";
                 string criteria2 = "";
