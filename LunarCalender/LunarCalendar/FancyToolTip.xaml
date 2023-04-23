@@ -59,14 +59,14 @@
                 <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Normal" Text="标题:" />
                 <TextBlock Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Normal" Text="内容:" />
                 <TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="16" FontWeight="Bold" Foreground="#FF575757" Text="{Binding ElementName=me, Path=Title}" />
-                <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="12" FontWeight="Normal" Foreground="#FF141414" Text="{Binding ElementName=me, Path=InfoText}" />
+                <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="12" FontFamily="宋体" Foreground="#FF141414" Text="{Binding ElementName=me, Path=InfoText}" />
                 <Grid Grid.Row="2" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="70" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Normal" Text="创建时间:" />
-                    <TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="12" FontWeight="Bold" Foreground="#FF141414" Text="{Binding ElementName=me, Path=Footer}" />
+                    <TextBlock Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Normal" Foreground="DarkGray" Text="创建时间:" />
+                    <TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="12" FontWeight="Normal" Foreground="DarkGray" Text="{Binding ElementName=me, Path=Footer}" />
                 </Grid>
             </Grid>
         </Border>
