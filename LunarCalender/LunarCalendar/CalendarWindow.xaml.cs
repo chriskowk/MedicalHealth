@@ -320,11 +320,20 @@ namespace LunarCalendar
             CalendarListBox.EndInit();
             this.text8.Text = string.Format("{0}\n{1}", lunarTerms[0], lunarTerms[1]);
             _changedByCode = true;
-            txtYear.Text = year.ToString();
+            txtYear.Text = YearFormatted(year);
             scrYear.Value = year;
-            txtMonth.Text = month.ToString();
+            txtMonth.Text = MonthFormatted(month);
             scrMonth.Value = month;
             _changedByCode = false;
+        }
+
+        private string YearFormatted(int year)
+        {
+            return $"{year} 年";
+        }
+        private string MonthFormatted(int month)
+        {
+            return $"{month} 月";
         }
 
         private static bool IsWeekEndOrFestival(UltraCalendar uc)
@@ -501,9 +510,9 @@ namespace LunarCalendar
             }
 
             _changedByCode = true;
-            txtYear.Text = _year.ToString();
+            txtYear.Text = YearFormatted(_year);
             scrYear.Value = _year;
-            txtMonth.Text = _month.ToString();
+            txtMonth.Text = MonthFormatted(_month);
             scrMonth.Value = _month;
             txtAnimalYear.Text = uc.AnimalYear + "年";
             txtHoroscope.Text = uc.Horoscope + "座";
@@ -541,12 +550,12 @@ namespace LunarCalendar
             int year;
             if (!_changedByCode)
             {
-                if (!int.TryParse(txtYear.Text, out year)) return;
+                if (!int.TryParse(txtYear.Text.Replace("年", "").Trim(), out year)) return;
 
                 year = e.NewValue < e.OldValue ? year + 1 : year - 1;
                 if (year < MINIMUM_YEAR || year > MAXIMUM_YEAR) return;
 
-                txtYear.Text = year.ToString();
+                txtYear.Text = YearFormatted(year);
             }
         }
 
@@ -555,38 +564,12 @@ namespace LunarCalendar
             int month;
             if (!_changedByCode)
             {
-                if (!int.TryParse(txtMonth.Text, out month)) return;
+                if (!int.TryParse(txtMonth.Text.Replace("月", "").Trim(), out month)) return;
 
                 month = e.NewValue < e.OldValue ? month + 1 : month - 1;
                 if (month < 1 || month > 12) return;
 
-                txtMonth.Text = month.ToString();
-            }
-        }
-
-        private void txtYear_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            int year;
-            if (!_changedByCode)
-            {
-                if (!int.TryParse(txtYear.Text, out year)) return;
-                if (year < MINIMUM_YEAR || year > MAXIMUM_YEAR) return;
-
-                _year = year;
-                UpdateMonth();
-            }
-        }
-
-        private void txtMonth_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            int month;
-            if (!_changedByCode)
-            {
-                if (!int.TryParse(txtMonth.Text, out month)) return;
-                if (month < 1 || month > 12) return;
-
-                _month = month;
-                UpdateMonth();
+                txtMonth.Text = MonthFormatted(month);
             }
         }
 
@@ -774,6 +757,56 @@ namespace LunarCalendar
             else if (e.Key == Key.Up && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
                 PreviousMonthOnClick(null, null);
+            }
+        }
+
+        private void txtYear_LostFocus(object sender, RoutedEventArgs e)
+        {
+            _changedByCode = true;
+            txtYear.Text = YearFormatted(scrYear.Value.ToInt());
+            _changedByCode = false;
+        }
+
+        private void txtMonth_LostFocus(object sender, RoutedEventArgs e)
+        {
+            _changedByCode = true;
+            txtMonth.Text = MonthFormatted(scrMonth.Value.ToInt());
+            _changedByCode = false;
+        }
+
+        private void txtYear_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            OnYearTextChanged();
+        }
+
+        private void OnYearTextChanged()
+        {
+            int year;
+            if (!_changedByCode)
+            {
+                if (!int.TryParse(txtYear.Text.Replace("年", "").Trim(), out year)) return;
+                if (year < MINIMUM_YEAR || year > MAXIMUM_YEAR) return;
+
+                _year = year;
+                UpdateMonth();
+            }
+        }
+
+        private void txtMonth_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            OnMonthTextChanged();
+        }
+
+        private void OnMonthTextChanged()
+        {
+            int month;
+            if (!_changedByCode)
+            {
+                if (!int.TryParse(txtMonth.Text.Replace("月", "").Trim(), out month)) return;
+                if (month < 1 || month > 12) return;
+
+                _month = month;
+                UpdateMonth();
             }
         }
     }
