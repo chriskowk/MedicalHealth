@@ -32,13 +32,15 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <TextBox Height="27" HorizontalAlignment="Right" Margin="0,40,40,0" Name="txtYear" VerticalAlignment="Top" Width="75" TextChanged="txtYear_TextChanged" FontSize="18" />
-        <ScrollBar Height="27" HorizontalAlignment="Right" Margin="0,40,17,0" Name="scrBar" VerticalAlignment="Top" Width="22"  ValueChanged="scrBar_ValueChanged" SmallChange="1" Minimum="1902" Maximum="2100" />
-        <Button Height="35" HorizontalAlignment="Right" Margin="0,80,15,0" Name="PreviousMonthButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.PreviousMonthText}"></Button>
-        <Button Height="35" HorizontalAlignment="Right" Margin="0,125,15,0" Name="NextMonthButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.NextMonthText}"></Button>
-        <Button Height="35" HorizontalAlignment="Right" Margin="0,170,15,0"  Name="PreviousYearButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.PreviousYearText}"></Button>
-        <Button Height="35" HorizontalAlignment="Right" Margin="0,215,15,0" Name="NextYearButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.NextYearText}"></Button>
-        <Button Height="35" HorizontalAlignment="Right" Margin="0,260,15,0" Name="CurrentMonthButton" VerticalAlignment="Top" Width="100" Foreground="Red" Content="{x:Static properties:Resources.CurrentMonthText}"></Button>
+        <TextBox Height="25" HorizontalAlignment="Right" Margin="0,40,40,0" Name="txtYear" VerticalAlignment="Top" Width="75" TextChanged="txtYear_TextChanged" FontSize="18" />
+        <ScrollBar Height="25" HorizontalAlignment="Right" Margin="0,40,17,0" Name="scrYear" VerticalAlignment="Top" Width="22"  ValueChanged="scrYear_ValueChanged" SmallChange="1" Minimum="1902" Maximum="2100" />
+        <TextBox Height="25" HorizontalAlignment="Right" Margin="0,75,40,0" Name="txtMonth" VerticalAlignment="Top" Width="75" TextChanged="txtMonth_TextChanged" FontSize="18" />
+        <ScrollBar Height="25" HorizontalAlignment="Right" Margin="0,75,17,0" Name="scrMonth" VerticalAlignment="Top" Width="22"  ValueChanged="scrMonth_ValueChanged" SmallChange="1" Minimum="1" Maximum="12" />
+        <Button Height="30" HorizontalAlignment="Right" Margin="0,110,15,0" Name="PreviousMonthButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.PreviousMonthText}"></Button>
+        <Button Height="30" HorizontalAlignment="Right" Margin="0,150,15,0" Name="NextMonthButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.NextMonthText}"></Button>
+        <Button Height="30" HorizontalAlignment="Right" Margin="0,190,15,0"  Name="PreviousYearButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.PreviousYearText}"></Button>
+        <Button Height="30" HorizontalAlignment="Right" Margin="0,230,15,0" Name="NextYearButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.NextYearText}"></Button>
+        <Button Height="30" HorizontalAlignment="Right" Margin="0,270,15,0" Name="CurrentMonthButton" VerticalAlignment="Top" Width="100" Foreground="Red" Content="{x:Static properties:Resources.CurrentMonthText}"></Button>
         <StackPanel VerticalAlignment="Bottom" Margin="20,0,0,0" >
             <TextBlock HorizontalAlignment="Left" Name="text7" >TextBlock</TextBlock>
             <TextBlock HorizontalAlignment="Left" Name="txtHolidayTips" >Holiday</TextBlock>
