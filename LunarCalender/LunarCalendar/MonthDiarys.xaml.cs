@@ -122,8 +122,8 @@ namespace LunarCalendar
 
         public static void StartRemindJobs(DateTime recordedOn, out ObservableCollection<Diary> diaries)
         {
-            DateTime start = new DateTime(recordedOn.Year, recordedOn.Month, 1);
-            DateTime end = GetNextMonthFirstDate(recordedOn);
+            DateTime start = new DateTime(recordedOn.Year, 1, 1); //new DateTime(recordedOn.Year, recordedOn.Month, 1);
+            DateTime end = new DateTime(recordedOn.Year + 1, 1, 1); //GetNextMonthFirstDate(recordedOn);
 
             string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
             diaries = new ObservableCollection<Diary>(new DiaryDAL().GetDiaries(sql));
