@@ -501,7 +501,7 @@ namespace LunarCalendar
             else
                 strFullHolidayDesc += (strTmp == "" ? "" : "\n" + strTmp);
             txtHolidayTips.Foreground = Brushes.Red;
-            txtHolidayTips.ToolTip = string.IsNullOrWhiteSpace(strFullHolidayDesc) ? null : strFullHolidayDesc;
+            txtHolidayTips.ToolTip = (string.IsNullOrWhiteSpace(strFullHolidayDesc) || txtHolidayTips.Text == strFullHolidayDesc) ? null : strFullHolidayDesc;
             imgFestival.Visibility = uc.IsFestival ? Visibility.Visible : Visibility.Collapsed;
 
             if (txtHolidayTips.Text == "")

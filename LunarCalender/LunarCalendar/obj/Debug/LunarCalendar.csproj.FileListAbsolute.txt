@@ -173,4 +173,3 @@ F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Diagnostics
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Memory.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Numerics.Vectors.xml
 F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-F:\GitHub\MedicalHealth\LunarCalender\LunarCalendar\obj\Debug\LunarCalendar.csproj.AssemblyReference.cache
