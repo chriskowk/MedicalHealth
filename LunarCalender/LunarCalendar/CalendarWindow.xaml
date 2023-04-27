@@ -42,12 +42,15 @@
         <Button Height="30" HorizontalAlignment="Right" Margin="0,230,15,0" Name="NextYearButton" VerticalAlignment="Top" Width="100" Content="{x:Static properties:Resources.NextYearText}"></Button>
         <Button Height="30" HorizontalAlignment="Right" Margin="0,270,15,0" Name="CurrentMonthButton" VerticalAlignment="Top" Width="100" Foreground="Red" Content="{x:Static properties:Resources.CurrentMonthText}"></Button>
         <StackPanel VerticalAlignment="Bottom" Margin="20,0,0,0" >
-            <TextBlock HorizontalAlignment="Left" Name="text7" >TextBlock</TextBlock>
-            <TextBlock HorizontalAlignment="Left" Name="txtHolidayTips" >Holiday</TextBlock>
+            <TextBlock HorizontalAlignment="Left" Name="text7">TextBlock</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,2,0,0">
+                <Image Name="imgFestival" Width="16" Height="16" Stretch="Fill" Margin="0,0,5,0" Source="images/festival.png" Visibility="Collapsed"/>
+                <TextBlock HorizontalAlignment="Left" Name="txtHolidayTips">Holiday</TextBlock>
+            </StackPanel> 
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Margin="200,0,0,0" >
-            <TextBlock HorizontalAlignment="Left" Name="txtAnimalYear" >TextBlock</TextBlock>
-            <TextBlock HorizontalAlignment="Left" Name="txtHoroscope" >Horoscope</TextBlock>
+            <TextBlock HorizontalAlignment="Left" Name="txtAnimalYear">TextBlock</TextBlock>
+            <TextBlock HorizontalAlignment="Left" Name="txtHoroscope"  Margin="0,2,0,0">Horoscope</TextBlock>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Margin="300,0,0,0">
             <TextBlock HorizontalAlignment="Left" Name="text8" >TextBlock</TextBlock>
