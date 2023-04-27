@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/noscreen.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/screen.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/festival.png")]
 
 

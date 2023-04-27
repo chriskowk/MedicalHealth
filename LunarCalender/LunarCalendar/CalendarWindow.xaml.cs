@@ -160,7 +160,7 @@ namespace LunarCalendar
             if (weekday == 6) brush = Brushes.DarkGreen;
             if (uc != null && uc.SolarDate.Date == DateTime.Now.Date) brush = Brushes.DarkOrange;
             if (uc != null && !string.IsNullOrEmpty(uc.SolarTerm)) brush = Brushes.Cyan;
-            if (uc != null && uc.IsFestival) brush = Brushes.Red;
+            if (uc != null && uc.IsFestival) brush = Brushes.Gold;
 
             return brush;
         }
