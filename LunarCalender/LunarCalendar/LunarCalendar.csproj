@@ -18,7 +18,7 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
-    <ApplicationIcon>images\cal.ico</ApplicationIcon>
+    <ApplicationIcon>images\Calendar2.ico</ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -325,6 +325,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\festival.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Calendar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Calendar2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

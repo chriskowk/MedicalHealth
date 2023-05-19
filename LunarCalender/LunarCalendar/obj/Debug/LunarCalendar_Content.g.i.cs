@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/festival.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/calendar2.ico")]
 
 
