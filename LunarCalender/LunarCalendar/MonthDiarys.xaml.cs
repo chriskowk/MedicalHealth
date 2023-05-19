@@ -126,7 +126,7 @@ namespace LunarCalendar
             DateTime end = new DateTime(recordedOn.Year + 1, 1, 1); //GetNextMonthFirstDate(recordedOn);
 
             string sql = $"SELECT * FROM Diary WHERE RecordDate >= '{start:yyyy-MM-dd}' AND RecordDate < '{end:yyyy-MM-dd}'";
-            diaries = new ObservableCollection<Diary>(new DiaryDAL().GetDiaries(sql));
+            diaries = new ObservableCollection<Diary>(new DiaryDAL().GetDiaries(sql).OrderBy(a => a.RecordDate).ThenBy(a => a.RowVersion));
             foreach (var item in diaries.Where(a => a.IsRemindRequired).ToList())
             {
                 JobCenter.StartScheduleJobAsync(item).Wait();
@@ -204,9 +204,16 @@ namespace LunarCalendar
             this.Close();
         }
 
-        private void MnuRecordTime_Click(object sender, RoutedEventArgs e)
+        private void MnuRecordDate_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem mi = sender as MenuItem;
             // handle ascending/descending last name context menu choices
+            if (mi.Header.ToString() == "Ascending")
+                Diaries = new ObservableCollection<Diary>(Diaries.OrderBy(a => a.RecordDate).ThenBy(a => a.RowVersion));
+            else
+                Diaries = new ObservableCollection<Diary>(Diaries.OrderByDescending(a => a.RecordDate).ThenBy(a => a.RowVersion));
+            this.DataContext = null;
+            this.DataContext = Diaries;
         }
 
         private void _lvwDiarys_SelectionChanged(object sender, SelectionChangedEventArgs e)

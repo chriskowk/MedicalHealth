@@ -296,7 +296,7 @@ namespace LunarCalendar
 
                 Border border = new Border
                 {
-                    Margin = new Thickness(1.5),
+                    Margin = new Thickness(1),
                     Child = stackPanel
                 };
                 CalendarListBox.Items.Add(border);

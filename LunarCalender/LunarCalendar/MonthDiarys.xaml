@@ -38,9 +38,9 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Path=RecordDate, StringFormat=yyyy/MM/dd}" Width="80">
                         <GridViewColumnHeader>日期
                             <GridViewColumnHeader.ContextMenu>
-                                <ContextMenu  MenuItem.Click="MnuRecordTime_Click" Name="_recordTime">
-                                    <MenuItem Header="Ascending" />
-                                    <MenuItem Header="Descending" />
+                                <ContextMenu  Name="_mnuRecordDate">
+                                    <MenuItem Header="Ascending" Click="MnuRecordDate_Click" />
+                                    <MenuItem Header="Descending" Click="MnuRecordDate_Click"/>
                                 </ContextMenu>
                             </GridViewColumnHeader.ContextMenu>
                         </GridViewColumnHeader>
