@@ -29,7 +29,8 @@
             <Button Content="Browse..." Height="25" VerticalAlignment="Top"  Width="75" Command="{Binding BrowseCommand}" />
         </StackPanel>
 
-        <TextBlock Grid.Row="3" FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="142" />
+        <TextBlock Grid.Row="3" FontSize="15" FontWeight="SemiBold" Height="29" HorizontalAlignment="Left" Margin="12,8,0,0" Name="textBlock1" Text="File Date Attributes:" VerticalAlignment="Top" Width="155" />
+        <Button Grid.Row="3" Content="转换为Rdlc2008格式" Height="25" VerticalAlignment="Top"  Width="120" Margin="360,8,0,0" Command="{Binding ConvertCommand}" />
         <Rectangle Grid.Row="4" Height="254" Margin="12,0,11,0" Name="rectangle1" Stroke="Black" />
         <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="66,3,65,0">
             <StackPanel Orientation="Horizontal" Grid.Row="1" Height="50" Margin="5">

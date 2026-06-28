@@ -42,6 +42,10 @@ namespace TFSideKicks
         /// </summary>
         private RelayCommand _encryptCommand;
         /// <summary>
+        /// 
+        /// </summary>
+        private RelayCommand _convertCommand;
+        /// <summary>
         /// Backing field for the SelectedPath property.
         /// </summary>
         private string _selectedPath;
@@ -154,6 +158,11 @@ namespace TFSideKicks
             {
                 DoEncrypt();
             });
+
+            _convertCommand = new RelayCommand(obj =>
+            {
+                DoConvert2Rdlc2008();
+            });
         }
         #endregion // Ctor
 
@@ -162,6 +171,11 @@ namespace TFSideKicks
         /// Gets the browse command.
         /// </summary>
         public ICommand BrowseCommand => _browseCommand;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICommand ConvertCommand => _convertCommand;
 
         /// <summary>
         /// Gets the encrypt command.
@@ -359,6 +373,83 @@ namespace TFSideKicks
                 CommandText = isEncrypt ? "Encrypt" : "Decrypt";
             }
         }
+
+        private void DoConvert2Rdlc2008()
+        {
+            string destinationFilePath = $@"C:\Temp\output{DateTime.Now:yyyyMMddHHmmss}.rdlc";
+            int startline = 0;
+            int idx = 0;
+            try
+            {
+                if (!String.IsNullOrEmpty(SelectedPath))
+                {
+                    if (File.Exists(SelectedPath))
+                    {
+                        string extension = Path.GetExtension(SelectedPath);
+                        if (!extension.Equals(".rdlc", StringComparison.OrdinalIgnoreCase))
+                        {
+                            MessageBox.Show("不能转换非 RDLC 文件！", "DoConvert2Rdlc2008");
+                            return;
+                        }
+
+                        using (StreamWriter writer = new StreamWriter(destinationFilePath))
+                        {
+                            // 读取源文件
+                            using (StreamReader reader = new StreamReader(SelectedPath))
+                            {
+                                string line;
+                                while ((line = reader.ReadLine()) != null)
+                                {
+                                    idx++;
+
+                                    // 判断行是否包含特定字符
+                                    if (line.Contains("/reporting/2016/01/"))
+                                    {
+                                        // 2016替换为2008
+                                        writer.WriteLine(line.Replace("/reporting/2016/01/", "/reporting/2008/01/"));
+                                    }
+                                    else if (line.Contains("ReportSection"))
+                                    {
+                                        //不复制报表参数SECTION标记行<ReportSections>, <ReportSection>, </ReportSection>, </ReportSections>
+                                    }
+                                    else if (line.Contains("<ReportParametersLayout>"))
+                                    {
+                                        startline = idx;
+                                    }
+                                    else if (line.Contains("</ReportParametersLayout>"))
+                                    {
+                                        startline = 0;
+                                    }
+                                    else if (startline > 0)
+                                    {
+                                        //不复制报表参数布局块
+                                    }
+                                    else
+                                    {
+                                        //复制文本行
+                                        writer.WriteLine(line);
+                                    }
+                                }
+                            }
+                        }
+
+                        MessageBox.Show("Successfully convert to Rdlc2008!", "Convert2Rdlc2008 Successful");
+                        Process.Start("notepad.exe", destinationFilePath);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a RDLC file", "DoConvert2Rdlc2008");
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+            }
+        }
+        
 
         private static string _filename = Path.Combine(Environment.CurrentDirectory, "TF_GET_MedicalHealth.bat");
         /// <summary>
