@@ -1,1 +1,2 @@
+VSTS工具套装TFSideKicks2020
 导入JSDESK平台工作项插件（VS2015版）
